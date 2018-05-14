@@ -5,8 +5,11 @@
 	"license": "MIT",
 	"scripts": {
 		"buildLib": "ng build ngx-ytd-api-lib",
-		"publishLib": "cd dist && echo \"\\x1b[31mWarning! This will publish the library to npm! Ensure that you're logged in before continuing!\\x1b[0m\" && npm publish",
-		"buildPublishLib": "npm run buildLib && npm run publishLib",
+		"buildLibLatest": "npm run buildLib && cd dist && npm publish",
+		"buildLibAlpha": "npm run buildLib && cd dist && npm publish --tag alpha",
+		"buildLibBeta": "npm run buildLib && cd dist && npm publish --tag beta",
+		"buildLibNext": "npm run buildLib && cd dist && npm publish --tag next",
+		"buildLibRc": "npm run buildLib && cd dist && npm publish --tag rc",
 		"lintLib": "ng lint ngx-ytd-api-lib",
 		"testLib": "ng test ngx-ytd-api-lib"
 	},
