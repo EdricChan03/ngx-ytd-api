@@ -6,7 +6,7 @@
 
 <!-- Badges -->
 [![ngx-ytd-api@latest](https://img.shields.io/npm/v/ngx-ytd-api.svg?style=flat-square)][package-url]
-[![ngx-ytd-api@alpha](https://img.shields.io/npm/v/ngx-ytd-api/alpha.svg?style=flat-square)][package-url]
+[![ngx-ytd-api@next](https://img.shields.io/npm/v/ngx-ytd-api/next.svg?style=flat-square)][package-url]
 <!-- [![GitHub latest release](https://img.shields.io/github/release/Chan4077/ngx-ytd-api/all.svg?style=flat-square)][package-url] -->
 
 <!-- END Badges -->
