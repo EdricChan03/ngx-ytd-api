@@ -4,7 +4,6 @@
 		"entryFile": "public_api.ts",
 		"comments": "none"
 	},
-	"deleteDestPath": false,
 	"whitelistedNonPeerDependencies": [
 		"tslib"
 	],
