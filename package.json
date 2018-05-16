@@ -4,14 +4,13 @@
 	"homepage": "https://github.com/Chan4077/ngx-ytd-api",
 	"license": "MIT",
 	"scripts": {
-		"buildLib": "ng build ngx-ytd-api-lib",
-		"buildLibLatest": "npm run buildLib && cd dist && npm publish",
-		"buildLibAlpha": "npm run buildLib && cd dist && npm publish --tag alpha",
-		"buildLibBeta": "npm run buildLib && cd dist && npm publish --tag beta",
-		"buildLibNext": "npm run buildLib && cd dist && npm publish --tag next",
-		"buildLibRc": "npm run buildLib && cd dist && npm publish --tag rc",
+		"buildLib": "bash ./scripts/scripts.sh build",
+		"buildLibDryRun": "bash ./scripts/scripts.sh build --dryRun",
+		"buildLibNext": "bash ./scripts/scripts.sh build --publishNext",
 		"lintLib": "ng lint ngx-ytd-api-lib",
-		"testLib": "ng test ngx-ytd-api-lib"
+		"testLib": "ng test ngx-ytd-api-lib",
+		"compodoc": "./node_modules/.bin/compodoc -p src/lib/tsconfig.lib.json --theme material -d api -n ngx-ytd-api Docs",
+		"packageTags": "bash ./scripts/scripts.sh package --tags"
 	},
 	"private": true,
 	"dependencies": {
@@ -28,6 +27,7 @@
 		"@angular/cli": "^6.0.1",
 		"@angular/compiler-cli": "^6.0.1",
 		"@angular/language-service": "^6.0.1",
+		"@compodoc/compodoc": "^1.1.2",
 		"@types/jasmine": "^2.8.7",
 		"@types/jasminewd2": "~2.0.3",
 		"@types/node": "~10.0.8",
