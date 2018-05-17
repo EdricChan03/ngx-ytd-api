@@ -17,6 +17,11 @@ cache:
 branches:
   only:
   - master
+before_script:
+  # Workaround for permission problems
+  # See https://github.com/travis-ci/travis-ci/issues/9024 for more info
+  - "sudo chown root /opt/google/chrome/chrome-sandbox"
+  - "sudo chmod 4755 /opt/google/chrome/chrome-sandbox"
 before_install:
   - export CHROME_BIN=/usr/bin/google-chrome
   - export DISPLAY=:99.0
