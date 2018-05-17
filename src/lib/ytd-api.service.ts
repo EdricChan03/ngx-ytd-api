@@ -21,7 +21,14 @@ export class NgxYtdApiService {
 	 * @returns Results of the search as a stream
 	*/
 	searchVideos(query: string, opts: ytdApiInterfaces.NgxYtdApiVideoSearchOpts): Observable<ytdApiInterfaces.NgxYtdApiSearchResult> {
-		let _apiUrl = `${this.ytdApiBaseUrl}search?q=${query}&maxResults=${opts.maxResults ? opts.maxResults : 50}&type=video&part=snippet,id&key=${opts.apiKey}`;
+		// Encode the query
+		query = encodeURI(query);
+		let _apiUrl = `${this.ytdApiBaseUrl}search?q=${query}&type=video&part=snippet,id&key=${opts.apiKey}`;
+		if (opts.maxResults) {
+			_apiUrl += `&maxResults=${opts.maxResults}`;
+		} else {
+			_apiUrl += '&maxResults=50';
+		}
 		if (opts.videoEmbeddable) {
 			_apiUrl += `&videoEmbeddable=${opts.videoEmbeddable}`;
 		}
@@ -34,7 +41,13 @@ export class NgxYtdApiService {
 	 * @returns Results of the search as a stream
 	 */
 	search(query: string, opts: ytdApiInterfaces.NgxYtdApiSearchOpts): Observable<ytdApiInterfaces.NgxYtdApiSearchResult> {
-		let _apiUrl = `${this.ytdApiBaseUrl}search?q=${query}&maxResults=${opts.maxResults ? opts.maxResults : 50}&part=snippet&key=${opts.apiKey}`;
+		query = encodeURI(query);
+		let _apiUrl = `${this.ytdApiBaseUrl}search?q=${query}&type=video&part=snippet,id&key=${opts.apiKey}`;
+		if (opts.maxResults) {
+			_apiUrl += `&maxResults=${opts.maxResults}`;
+		} else {
+			_apiUrl += '&maxResults=50';
+		}
 		if (opts.channelId) {
 			_apiUrl += `&channelId=${opts.channelId}`;
 		}

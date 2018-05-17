@@ -53,7 +53,7 @@ export interface NgxYtdApiSearchResult extends NgxYtdApiGenericResult {
 		videoId?: string;
 		channelId?: string;
 		playlistId?: string;
-	}
+	};
 	/**
 	 * The `snippet` object contains info on the search result
 	 */
@@ -86,7 +86,7 @@ export interface NgxYtdApiSearchResult extends NgxYtdApiGenericResult {
 		 * See https://developers.google.com/youtube/v3/docs/search#snippet.liveBroadcastContent for more info
 		 */
 		liveBroadcastContent?: 'upcoming' | 'live' | 'none';
-	}
+	};
 }
 
 /**

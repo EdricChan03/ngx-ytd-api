@@ -4,7 +4,7 @@
 	"newProjectRoot": "projects",
 	"projects": {
 		"ngx-ytd-api-lib": {
-			"root": "/src/lib",
+			"root": "./",
 			"sourceRoot": "/src/lib",
 			"projectType": "library",
 			"prefix": "ngx",

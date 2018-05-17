@@ -7,6 +7,10 @@
 ## Building
 To build the package, run `bash ./scripts/build-lib.sh --dryRun`.
 
+The package should be available in the `dist` directory to be compiled with `npm pack` which should result in a tarball at the root of the project.
+
+Afterwards, this tarball can be linked to another project using `npm link`.
+
 ## Running linting tests
 To lint the package, run `npm run lintLib`.
 
