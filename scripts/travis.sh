@@ -8,12 +8,14 @@ CLICOLOR=1
 set -e
 
 # Go to project directory
-cd $(dirname $0)/../..
+if [[ ! -z ${TRAVIS_BUILD_DIR+x} ]]; then
+	cd $TRAVIS_BUILD_DIR
+fi
 
-if [ "$MODE" = "lint" ]; then
+if [[ "$MODE" = "lint" ]]; then
 	# Lint mode
 	ng lint
-elif [ "$MODE" = "test" ]; then
+elif [[ "$MODE" = "test" ]]; then
 	# Test mode
 	ng test --watch=false
 fi
