@@ -72,7 +72,7 @@ else
 						if [[ $SKIP_CONFIRM == false ]] && [[ $SKIP_NPM == false ]]; then
 							read -p "Please press ENTER to publish to the NPM registry. " CONFIRMATION
 						else
-							CONFIRMATION=true
+							CONFIRMATION=0
 						fi
 						if [[ ${#CONFIRMATION} -eq 0 ]]; then
 							# Check if NPM exists
@@ -80,10 +80,10 @@ else
 								echo -e "\x1b[31mNPM is not installed. Please visit https://nodejs.org to get the latest package for your OS.\x1b[0m"
 								exit 1
 							else
-								if [[ $PUBLISH_NEXT == true ]]; then
+								if [[ $PUBLISH_NEXT = true ]]; then
 									npm publish --tag next
 								else
-									npm publish --tag
+									npm publish
 								fi
 							fi
 						else
