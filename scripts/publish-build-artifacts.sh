@@ -52,11 +52,11 @@ publishPackage() {
 
 	echo -e "\x1b[34mStarting publish process of ${packageName} for ${buildVersionName} into ${branchName}..\x1b[0m"
 
-	if [[ ! ${COMMAND_ARGS} == *--no-build* ]]; then
-		if [[ ${COMMAND_ARGS} == *--publishNext* ]]; then
-			./scripts/scripts.sh build --publishNext
+	if [[ ! ${COMMAND_ARGS} = *--no-build* ]]; then
+		if [[ ${COMMAND_ARGS} = *--publishNext* ]]; then
+			./scripts/scripts.sh build --publishNext --skipNpm
 		else
-			./scripts/scripts.sh build 
+			./scripts/scripts.sh build --skipNpm
 		fi
 		# Create a release of the current repository.
 	fi

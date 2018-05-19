@@ -8,12 +8,13 @@ DRY_RUN=false
 INVALID_ARGS=()
 FROM_SCRIPTS=false
 SKIP_CONFIRM=false
-
+SKIP_NPM=false
 # Immediately exit if any command in the script fails
 set -e
 # Arguments
 while
-	[[ $# -gt 0 ]]; do
+	[[ $# -gt 0 ]]
+do
 	opt="$1"
 	shift # expose next argument
 	case "$opt" in
@@ -28,6 +29,9 @@ while
 		;;
 	"--skip-confirm")
 		SKIP_CONFIRM=true
+		;;
+	"--skipNpm")
+		SKIP_NPM=true
 		;;
 	"--help" | "-h")
 		if [[ "$FROM_SCRIPTS" == true ]]; then
@@ -61,33 +65,36 @@ else
 				exit 1
 			else
 				echo -e "\x1b[32mDone copying files.\x1b[0m"
-				if [[ $DRY_RUN == false ]]; then
-					# Actually publish to NPM
-					cd dist
-					if [[ $SKIP_CONFIRM == false ]]; then
-						read -p "Please press ENTER to publish to the NPM registry. " CONFIRMATION
-					else
-						CONFIRMATION=true
-					fi
-					if [[ ${#CONFIRMATION} -eq 0 ]]; then
-						# Check if NPM exists
-						if [[ ! -x $(type -P npm >/dev/null) ]] && [[ ! -x $(command -v npm) ]]; then
-							echo -e "\x1b[31mNPM is not installed. Please visit https://nodejs.org to get the latest package for your OS.\x1b[0m"
-							exit 1
+				if [[ $SKIP_NPM == false ]]; then
+					if [[ $DRY_RUN == false ]]; then
+						# Actually publish to NPM
+						cd dist
+						if [[ $SKIP_CONFIRM == false ]] && [[ $SKIP_NPM == false ]]; then
+							read -p "Please press ENTER to publish to the NPM registry. " CONFIRMATION
 						else
-							if [[ $PUBLISH_NEXT == true ]]; then
-								npm publish --tag next
+							CONFIRMATION=true
+						fi
+						if [[ ${#CONFIRMATION} -eq 0 ]]; then
+							# Check if NPM exists
+							if [[ ! -x $(type -P npm >/dev/null) ]] && [[ ! -x $(command -v npm) ]]; then
+								echo -e "\x1b[31mNPM is not installed. Please visit https://nodejs.org to get the latest package for your OS.\x1b[0m"
+								exit 1
 							else
-								npm publish --tag
+								if [[ $PUBLISH_NEXT == true ]]; then
+									npm publish --tag next
+								else
+									npm publish --tag
+								fi
 							fi
+						else
+							echo -e "\x1b[31mUser didn't press the ENTER key. Exiting..\x1b[0m" >&2
+							exit 1
 						fi
 					else
-						echo -e "\x1b[31mUser didn't press the ENTER key. Exiting..\x1b[0m" >&2
-						exit 1
+						echo -e "\x1b[33mDry run has been enabled. Files will not be published to the NPM registry.\x1b[0m"
+						echo -e "\x1b[32mDone executing.\x1b[0m"
+						exit 0
 					fi
-				else
-					echo -e "\x1b[33mDry run has been enabled. Files will not be published to the NPM registry.\x1b[0m"
-					exit 0
 				fi
 			fi
 		fi

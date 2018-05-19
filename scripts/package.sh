@@ -32,7 +32,7 @@ while
 		FROM_SCRIPTS=true
 		;;
 	"--help" | "-h")
-		if [[ "$FROM_SCRIPTS" == true ]]; then
+		if [[ "$FROM_SCRIPTS" = true ]]; then
 			echo -e "\x1b[33mSyntax: ./scripts.sh (package-script | package-info | package) [--get-tags | --published-tags | --tags | --help | -h]"
 		else
 			echo -e "\x1b[33mSyntax: ./package.sh [--get-tags | --published-tags | --tags | --help | -h]"
