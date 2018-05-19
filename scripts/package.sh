@@ -8,6 +8,9 @@ CLICOLOR=1
 INVALID_ARGS=()
 FROM_SCRIPTS=false
 
+# Immediately exit if any command in the script fails
+set -e
+
 # Arguments
 while
 	[[ $# -gt 0 ]]; do

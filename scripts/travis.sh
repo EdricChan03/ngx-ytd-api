@@ -4,6 +4,12 @@
 # Enable color support
 CLICOLOR=1
 
+# Immediately exit if any command in the script fails
+set -e
+
+# Go to project directory
+cd $(dirname $0)/../..
+
 if [ "$MODE" = "lint" ]; then
 	# Lint mode
 	ng lint

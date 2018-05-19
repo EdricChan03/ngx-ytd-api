@@ -9,6 +9,8 @@ INVALID_ARGS=()
 FROM_SCRIPTS=false
 SKIP_CONFIRM=false
 
+# Immediately exit if any command in the script fails
+set -e
 # Arguments
 while
 	[[ $# -gt 0 ]]; do
