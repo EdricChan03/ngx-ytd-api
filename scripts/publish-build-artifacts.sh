@@ -11,7 +11,7 @@
 set -e
 
 # Go to the project root directory
-cd $(dirname ${0})/../..
+# cd $(dirname ${0})/../..
 
 if [ -z ${NGX_YTD_API_BUILDS_TOKEN} ]; then
 	echo -e "\x1b[31m\x1b[1mError: No access token for GitHub could be found." \
@@ -34,8 +34,8 @@ publishPackage() {
 	packageName=${1}
 	packageRepo=${2}
 
-	buildDir="$(pwd)/dist"
-	buildVersion=$(node -pe "require('../src/lib/package.json').version")
+	buildDir="$TRAVIS_BUILD_DIR/dist"
+	buildVersion=$(node -pe "require('$TRAVIS_BUILD_DIR/src/lib/package.json').version")
 	branchName=${TRAVIS_BRANCH:-'master'}
 
 	commitSha=$(git rev-parse --short HEAD)
