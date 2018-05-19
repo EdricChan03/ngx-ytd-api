@@ -17,6 +17,19 @@ cache:
 branches:
   only:
   - master
+
+jobs:
+  include:
+    # Linting mode
+    - env: "MODE=lint"
+    # Test mode
+    - env: "MODE=test"
+    # Build artifacts
+    - env: "DEPLOY_MODE=build-artifacts"
+      if: type = push
+    # Deploy docs weekly
+    - env: "DEPLOY_MODE=docs"
+      if: type = cron
 before_script:
   # Workaround for permission problems
   # See https://github.com/travis-ci/travis-ci/issues/9024 for more info
@@ -33,8 +46,7 @@ before_install:
 install:
   - npm install
 script:
-  - ng test --watch=false
-  - ng lint
+  - ./scripts/travis.sh
 notifications:
   webhooks:
     on_success: change
