@@ -19,6 +19,7 @@ if [ -z ${NGX_YTD_API_BUILDS_TOKEN} ]; then
 	exit 1
 fi
 
+echo -e "\x1b[34mDEBUG: Current directory: $(pwd)\x1b[0m"
 # Material packages that need to published.
 PACKAGES=(ngx-ytd-api)
 REPOSITORIES=(ngx-ytd-api-builds)
@@ -34,7 +35,7 @@ publishPackage() {
 	packageRepo=${2}
 
 	buildDir="$(pwd)/dist"
-	buildVersion=$(node -pe "require('./src/lib/package.json').version")
+	buildVersion=$(node -pe "require('../src/lib/package.json').version")
 	branchName=${TRAVIS_BRANCH:-'master'}
 
 	commitSha=$(git rev-parse --short HEAD)
