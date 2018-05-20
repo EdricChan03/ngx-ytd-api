@@ -1,0 +1,37 @@
+<div class="padding-percentage-container">
+	<mat-card>
+		<mat-card-content fxLayout="column">
+			<form [formGroup]="searchForm" class="demo-form" fxLayout="column">
+				<mat-form-field>
+					<mat-label>Search</mat-label>
+					<input matInput formControlName="query">
+					<mat-error *ngIf="searchForm.get('query')?.hasError('required')">This is required.</mat-error>
+				</mat-form-field>
+				<br>
+				<mat-checkbox formControlName="embeddable">Embeddable?</mat-checkbox>
+				<br>
+				<mat-form-field>
+					<mat-label>Max results</mat-label>
+					<input type="number" matInput formControlName="maxResults">
+					<mat-error *ngIf="searchForm.get('maxResults')?.hasError('required')">This is required.</mat-error>
+					<mat-error *ngIf="searchForm.get('maxResults')?.hasError('min') || searchForm.get('maxResults')?.hasError('max')">The range of allowed values are from 1 to 100.</mat-error>
+				</mat-form-field>
+			</form>
+		</mat-card-content>
+		<mat-card-actions align="end">
+			<button (click)="searchVideos(); clearForm();" mat-raised-button color="warn" [disabled]="searchForm.invalid">Search &amp; clear form</button>
+			<button (click)="searchVideos()" mat-raised-button color="primary" [disabled]="searchForm.invalid">Search</button>
+		</mat-card-actions>
+	</mat-card>
+	<hr>
+	<div id="search-result" *ngIf="searchResult">
+		<mat-card *ngFor="let result of searchResult">
+			<pre><code>{{result | json}}</code></pre>
+		</mat-card>
+	</div>
+	<div id="error-result" *ngIf="errorResult">
+		<p>An error occured:</p>
+		<pre><code>{{errorResult | json}}</code></pre>
+	</div>
+	<pre><code id="output">{{searchResult | json}}</code></pre>
+</div>

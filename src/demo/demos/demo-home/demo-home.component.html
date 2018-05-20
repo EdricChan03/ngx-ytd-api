@@ -1,0 +1,13 @@
+<div class="padding-percentage-container">
+	<h1>Demos</h1>
+	<mat-card class="demo-card">
+		<a class="demo-card-section" fxLayout="row" [routerLink]="['/demos', demo.id]" *ngFor="let demo of demos">
+			<mat-icon *ngIf="demo.icon && !demo.svgIcon">{{demo.icon}}</mat-icon>
+			<mat-icon *ngIf="!demo.icon && demo.svgIcon" [svgIcon]="demo.svgIcon"></mat-icon>
+			<span fxFlex="3"></span>
+			<span>{{demo.name}}</span>
+			<span fxFlex></span>
+			<mat-icon>navigate_next</mat-icon>
+		</a>
+	</mat-card>
+</div>

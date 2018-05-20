@@ -1,0 +1,23 @@
+mat-card.demo-card {
+    padding: 0 !important;
+}
+
+mat-card .demo-card-section {
+	align-items: center;
+    text-decoration: none;
+    color: rgba(0, 0, 0, .87);
+    border-bottom: 1px solid rgba(0, 0, 0, .12);
+    padding: 16px 24px;
+}
+
+mat-card .demo-card-section:hover {
+    background-color: rgba(0, 0, 0, .04);
+}
+
+mat-card span {
+    font-size: 18px;
+}
+
+mat-card mat-icon {
+    color: rgba(0, 0, 0, .54);
+}

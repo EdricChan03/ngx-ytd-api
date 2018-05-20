@@ -1,0 +1,35 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+pre,
+code,
+xmp,
+kbd {
+    font-family: 'Roboto Mono', monospace;
+    white-space: pre-wrap;
+}
+
+/* Code adapted from material.angular.io */
+
+app-root {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.docs-sidenav {
+    min-width: 250px;
+}
+
+.active-link {
+    color: #3f51b5 !important;
+    background-color: #dcdcdc !important;
+}
+
+.padding-percentage-container {
+    padding: 5%;
+}
