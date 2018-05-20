@@ -8,5 +8,5 @@
 	"whitelistedNonPeerDependencies": [
 		"tslib"
 	],
-	"dest": "../../dist"
+	"dest": "../../dist/ngx-ytd-api-lib"
 }
