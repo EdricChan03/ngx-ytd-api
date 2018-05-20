@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
-import { NgxYtdApiSearchResult, NgxYtdApiSearchOpts, NgxYtdApiVideoSearchOpts } from './search/ytd-api-search.interfaces';
+import { NgxYtdApiVideoSearchOpts, NgxYtdApiSearchOpts, NgxYtdApiSearchResult } from './ytd-api-search.interfaces';
 
 @Injectable({
 	providedIn: 'root'
 })
-export class NgxYtdApiService {
+export class NgxYtdApiSearchService {
 	/**
 	 * The YouTube base API URL
 	 */
@@ -18,7 +18,6 @@ export class NgxYtdApiService {
 	 * Searches for videos using the YouTube HTTP Data API
 	 * @param query The query to search for
 	 * @param opts Options for YouTube Data API for Videos
-	 * @deprecated Use this method from the `search` submodule
 	 * @returns Results of the search as a stream
 	*/
 	searchVideos(query: string, opts: NgxYtdApiVideoSearchOpts): Observable<NgxYtdApiSearchResult> {
@@ -38,8 +37,7 @@ export class NgxYtdApiService {
 	/**
 	 * Searches using the YouTube HTTP Data API
 	 * @param query The query to search for
-	 * @param opts
-	 * @deprecated Use this method from the `search` submodule
+	 * @param opts Options for searching
 	 * @returns Results of the search as a stream
 	 */
 	search(query: string, opts: NgxYtdApiSearchOpts): Observable<NgxYtdApiSearchResult> {
