@@ -20,10 +20,14 @@ branches:
 
 jobs:
   include:
-    # Linting mode
-    - env: "MODE=lint"
-    # Test mode
-    - env: "MODE=test"
+    # Lint the library
+    - env: "MODE=lint-lib"
+    # Test the library
+    - env: "MODE=test-lib"
+    # Lint the demo
+    - env: "MODE=lint-demo"
+    # Test the demo
+    - env: "MODE=test-demo"
     # Build artifacts
     - env: "DEPLOY_MODE=build-artifacts"
       if: type = push
