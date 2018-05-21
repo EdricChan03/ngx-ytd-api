@@ -24,7 +24,7 @@ case $MODE in
 		ng lint ngx-ytd-api-demo-e2e;;
 	"test-demo")
 		echo -e "\x1b[34mTesting the demo app...\x1b[0m"
-		ng test ngx-ytd-api-demo-e2e --watch=false;;
+		ng e2e ngx-ytd-api-demo-e2e;;
 esac
 
 # Deploying
