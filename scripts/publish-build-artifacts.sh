@@ -23,18 +23,19 @@ echo -e "\x1b[34mDEBUG: Current directory: $(pwd)\x1b[0m"
 # Material packages that need to published.
 PACKAGES=(ngx-ytd-api)
 REPOSITORIES=(ngx-ytd-api-builds)
-
+PACKAGE_LOCATIONS=(ngx-ytd-api-lib)
 # Command line arguments.
 COMMAND_ARGS=${*}
 
 # Function to publish artifacts of a package to Github.
 #   @param ${1} Name of the package
 #   @param ${2} Repository name of the package.
+#   @param ${3} Location of the package after `dist`
 publishPackage() {
 	packageName=${1}
 	packageRepo=${2}
-
-	buildDir="$TRAVIS_BUILD_DIR/dist"
+	packageLocation=${3}
+	buildDir="$TRAVIS_BUILD_DIR/dist/${packageLocation}"
 	buildVersion=$(node -pe "require('$TRAVIS_BUILD_DIR/src/lib/package.json').version")
 	branchName=${TRAVIS_BRANCH:-'master'}
 
@@ -124,8 +125,8 @@ publishPackage() {
 for ((i = 0; i < ${#PACKAGES[@]}; i++)); do
 	packageName=${PACKAGES[${i}]}
 	packageRepo=${REPOSITORIES[${i}]}
-
+	packageLocation=${PACKAGE_LOCATIONS[${i}]}
 	# Publish artifacts of the current package. Run publishing in a sub-shell to avoid working
 	# directory changes.
-	(publishPackage ${packageName} ${packageRepo})
+	(publishPackage ${packageName} ${packageRepo} ${packageLocation})
 done
