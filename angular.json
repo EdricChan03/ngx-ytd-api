@@ -4,7 +4,7 @@
 	"newProjectRoot": "projects",
 	"projects": {
 		"ngx-ytd-api-demo": {
-			"root": "./",
+			"root": "",
 			"sourceRoot": "/src/demo",
 			"projectType": "application",
 			"prefix": "app",
@@ -133,7 +133,7 @@
 			}
 		},
 		"ngx-ytd-api-lib": {
-			"root": "./",
+			"root": "",
 			"sourceRoot": "/src/lib",
 			"projectType": "library",
 			"prefix": "ngx",

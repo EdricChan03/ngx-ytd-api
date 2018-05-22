@@ -35,9 +35,9 @@ do
 		;;
 	"--help" | "-h")
 		if [[ "$FROM_SCRIPTS" == true ]]; then
-			echo -e "\x1b[33mSyntax: ./scripts.sh (build-script | build) [--publishNext | --publish-next | --skip-confirm | --dry-run | --dryRun | --help | -h]\x1b[0m"
+			echo -e "\x1b[33mSyntax: ./scripts.sh (build-script | build) [--publishNext | --publish-next | --skip-confirm | --dry-run | --dryRun | --skipNpm | --help | -h]\x1b[0m"
 		else
-			echo -e "\x1b[33mSyntax: ./build-lib.sh [--publishNext | --publish-next | --skip-confirm | --dry-run | --dryRun | --help | -h]\x1b[0m"
+			echo -e "\x1b[33mSyntax: ./build-lib.sh [--publishNext | --publish-next | --skip-confirm | --dry-run | --dryRun | --skipNpm | --help | -h]\x1b[0m"
 		fi
 		exit 0
 		;;
@@ -58,7 +58,7 @@ else
 		if [[ $? -eq 0 ]]; then
 			sleep 1
 			echo -e "\n\x1b[34mCopying files..\x1b[0m"
-			cp {LICENSE,README.md} dist
+			cp {LICENSE,README.md} dist/ngx-ytd-api-lib
 			# Check if cp returns exit code 0
 			if [[ $? -ne 0 ]]; then
 				echo -e "\x1b[31m\x1b[1mCouldn't copy files to the dist directory.\x1b[0m" >&2
@@ -68,7 +68,7 @@ else
 				if [[ $SKIP_NPM == false ]]; then
 					if [[ $DRY_RUN == false ]]; then
 						# Actually publish to NPM
-						cd dist
+						cd dist/ngx-ytd-api-lib
 						if [[ $SKIP_CONFIRM == false ]] && [[ $SKIP_NPM == false ]]; then
 							read -p "Please press ENTER to publish to the NPM registry. " CONFIRMATION
 						else
