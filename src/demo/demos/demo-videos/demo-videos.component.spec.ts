@@ -7,19 +7,19 @@ describe('DemoVideosComponent', () => {
   let fixture: ComponentFixture<DemoVideosComponent>;
 
   beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ DemoVideosComponent ]
-    })
-    .compileComponents();
+	TestBed.configureTestingModule({
+		declarations: [ DemoVideosComponent ]
+	})
+	.compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DemoVideosComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+	fixture = TestBed.createComponent(DemoVideosComponent);
+	component = fixture.componentInstance;
+	fixture.detectChanges();
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+	expect(component).toBeTruthy();
   });
 });

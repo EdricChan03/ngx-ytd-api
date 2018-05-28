@@ -48,15 +48,16 @@ export class AppComponent implements OnInit {
 		event.stopImmediatePropagation();
 		event.stopPropagation();
 	}
+	// tslint:disable-next-line:no-shadowed-variable
 	toggleStates(state: 'demos' | 'docs') {
-		if (state == 'demos') {
-			if (this.toggleState == 'toggled') {
+		if (state === 'demos') {
+			if (this.toggleState === 'toggled') {
 				this.toggleState = 'notToggled';
 			} else {
 				this.toggleState = 'toggled';
 			}
-		} else if (state == 'docs') {
-			if (this.toggleStateDocs == 'toggled') {
+		} else if (state === 'docs') {
+			if (this.toggleStateDocs === 'toggled') {
 				this.toggleStateDocs = 'notToggled';
 			} else {
 				this.toggleStateDocs = 'toggled';

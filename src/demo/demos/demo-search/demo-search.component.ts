@@ -29,6 +29,9 @@ export class DemoSearchComponent {
 			showJsonResult: false
 		});
 	}
+	getValue(value: any, defaultValue: any) {
+		return value ? value : defaultValue;
+	}
 	submitForm() {
 		if (this.searchForm.valid) {
 			this.searchVideos();
@@ -38,21 +41,20 @@ export class DemoSearchComponent {
 		this.searchForm.reset();
 	}
 	searchVideos(pageToken?: string) {
+		const _apiConfig = {
+			apiKey: 'AIzaSyBfSbMRADGI3zILVFbej0zb2v9_020SHlY',
+			videoEmbeddable: this.getValue(this.searchForm.get('embeddable').value, false),
+			maxResults: this.getValue(this.searchForm.get('maxResults').value, 50)
+		};
 		if (pageToken) {
-			this.ytApi.searchVideos(this.searchForm.get('query').value, { apiKey: 'AIzaSyBfSbMRADGI3zILVFbej0zb2v9_020SHlY', videoEmbeddable: this.searchForm.get('embeddable').value, maxResults: this.searchForm.get('maxResults').value, pageToken: pageToken }).subscribe(result => {
-				this.searchResult = result;
-				console.log(result);
-			}, error => {
-				this.errorResult = error;
-			})
-		} else {
-			this.ytApi.searchVideos(this.searchForm.get('query').value, { apiKey: 'AIzaSyBfSbMRADGI3zILVFbej0zb2v9_020SHlY', videoEmbeddable: this.searchForm.get('embeddable').value, maxResults: this.searchForm.get('maxResults').value }).subscribe(result => {
-				this.searchResult = result;
-				console.log(result);
-			}, error => {
-				this.errorResult = error;
-			})
+			_apiConfig[pageToken] = pageToken;
 		}
+		this.ytApi.searchVideos(this.searchForm.get('query').value, _apiConfig).subscribe(result => {
+			this.searchResult = result;
+			console.log(result);
+		}, error => {
+			this.errorResult = error;
+		});
 	}
 	openCodeDialog(templateRef: TemplateRef<any>) {
 		this.codeDialogRef = this.dialog.open(templateRef);

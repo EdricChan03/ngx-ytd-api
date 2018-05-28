@@ -6,13 +6,15 @@ export interface Demo {
 	icon?: string;
 	svgIcon?: string;
 }
-export interface Doc extends Demo {
-
-};
+export declare type Doc = Demo;
 /**
  * @deprecated Use `Demo[]` instead
  */
 export declare type Demos = Demo[];
+/**
+ * @deprecated Use `Doc[]` instead
+ */
+export declare type Docs = Doc[];
 
 const DEMOS: Demo[] = [
 	{
@@ -25,14 +27,14 @@ const DEMOS: Demo[] = [
 		id: 'videos',
 		svgIcon: 'docs:video'
 	}
-]
+];
 const DOCS: Doc[] = [
 	{
 		name: 'Getting started',
 		id: 'getting-started',
 		icon: 'chrome_reader_mode'
 	}
-]
+];
 @Injectable({
 	providedIn: 'root'
 })
@@ -50,7 +52,7 @@ export class ListsService {
 	addDemo(demo: Demo) {
 		DEMOS.push(demo);
 	}
-	
+
 	/**
 	 * Retrieves documentation
 	 */

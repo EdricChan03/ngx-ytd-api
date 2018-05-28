@@ -36,7 +36,7 @@ export interface NgxYtdApiSearchResult extends NgxYtdApiGenericResult {
 	 */
 	prevPageToken?: string;
 	/**
-	 * The region code used for the search query. 
+	 * The region code used for the search query.
 	 */
 	regionCode?: string;
 	/**
@@ -51,7 +51,7 @@ export interface NgxYtdApiSearchResult extends NgxYtdApiGenericResult {
 		 * Number of results included in response
 		 */
 		resultsPerPage?: number;
-	}
+	};
 	/**
 	 * An array of results that match the criteria
 	 */

@@ -17,6 +17,6 @@ const APP_ROUTES: Route[] = [
 		{ path: 'docList', component: DocsHomeComponent },
 		{ path: '**', redirectTo: '/docs/docList'}
 	]}
-]
+];
 
 export const AppRouting: ModuleWithProviders = RouterModule.forRoot(APP_ROUTES);
