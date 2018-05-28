@@ -1,7 +1,8 @@
 <div class="padding-percentage-container">
 	<mat-card>
+		<mat-card-title>YouTube Search</mat-card-title>
 		<mat-card-content fxLayout="column">
-			<form [formGroup]="searchForm" class="demo-form" fxLayout="column">
+			<form [formGroup]="searchForm" class="demo-form" fxLayout="column" (keydown.enter)="submitForm()">
 				<mat-form-field>
 					<mat-label>Search</mat-label>
 					<input matInput formControlName="query">
@@ -14,8 +15,9 @@
 					<mat-label>Max results</mat-label>
 					<input type="number" matInput formControlName="maxResults">
 					<mat-error *ngIf="searchForm.get('maxResults')?.hasError('required')">This is required.</mat-error>
-					<mat-error *ngIf="searchForm.get('maxResults')?.hasError('min') || searchForm.get('maxResults')?.hasError('max')">The range of allowed values are from 1 to 100.</mat-error>
+					<mat-error *ngIf="searchForm.get('maxResults')?.hasError('min') || searchForm.get('maxResults')?.hasError('max')">The range of allowed values are from 0 to 50.</mat-error>
 				</mat-form-field>
+				<mat-checkbox formControlName="showJsonResult">Show JSON result?</mat-checkbox>
 			</form>
 		</mat-card-content>
 		<mat-card-actions align="end">
@@ -24,14 +26,52 @@
 		</mat-card-actions>
 	</mat-card>
 	<hr>
-	<div id="search-result" *ngIf="searchResult">
-		<mat-card *ngFor="let result of searchResult">
-			<pre><code>{{result | json}}</code></pre>
-		</mat-card>
+	<div id="search-result" *ngIf="searchResult && !searchForm.get('showJsonResult').value">
+		<div class="paginator">
+			<button mat-stroked-button color="accent" (click)="searchVideos(searchResult.prevPageToken)" *ngIf="searchResult.prevPageToken">&lt; Previous page</button>
+			<button mat-stroked-button color="accent" (click)="searchVideos(searchResult.nextPageToken)" *ngIf="searchResult.nextPageToken">Next page &gt;</button>
+		</div>
+		<div id="cards-container" fxLayout="row wrap">
+			<mat-card *ngFor="let result of searchResult.items" class="example-search-result-card">
+				<mat-card-header>
+					<mat-card-title>{{result.snippet.channelTitle}}</mat-card-title>
+					<mat-card-subtitle>Published on {{result.snippet.publishedAt | date}}</mat-card-subtitle>
+					<span fxFlex></span>
+					<button mat-icon-button (click)="openCodeDialog(codeDialog)" matTooltip="Show JSON">
+						<mat-icon>code</mat-icon>
+					</button>
+				</mat-card-header>
+				<img mat-card-image [src]="result.snippet.thumbnails.high.url">
+				<mat-card-title>{{result.snippet.title}}</mat-card-title>
+				<mat-card-content>
+					<p>Video ID: {{result.id.videoId}}</p>
+				</mat-card-content>
+				<mat-card-actions align="end">
+					<a mat-stroked-button color="primary" href="https://youtu.be/{{result.id.videoId}}" *ngIf="result.id.videoId" target="_blank">
+						View on YouTube
+					</a>
+				</mat-card-actions>
+				<ng-template #codeDialog>
+					<h2 matDialogTitle>Code Dialog</h2>
+					<mat-dialog-content>
+						<pre><code>{{result | json}}</code></pre>
+					</mat-dialog-content>
+					<mat-dialog-actions align="end">
+						<button mat-button color="primary" (click)="closeCodeDialog()">Close</button>
+					</mat-dialog-actions>
+				</ng-template>
+			</mat-card>
+		</div>
+		<div class="paginator">
+			<button mat-stroked-button color="accent" (click)="searchVideos(searchResult.prevPageToken)" *ngIf="searchResult.prevPageToken">&lt; Previous page</button>
+			<button mat-stroked-button color="accent" (click)="searchVideos(searchResult.nextPageToken)" *ngIf="searchResult.nextPageToken">Next page &gt;</button>
+		</div>
 	</div>
-	<div id="error-result" *ngIf="errorResult">
+	<ng-container id="error-result" *ngIf="errorResult">
 		<p>An error occured:</p>
 		<pre><code>{{errorResult | json}}</code></pre>
-	</div>
-	<pre><code id="output">{{searchResult | json}}</code></pre>
+	</ng-container>
+	<ng-container *ngIf="searchForm.get('showJsonResult').value">
+		<pre><code id="output">{{searchResult | json}}</code></pre>
+	</ng-container>
 </div>
