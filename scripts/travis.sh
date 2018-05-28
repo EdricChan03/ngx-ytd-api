@@ -21,7 +21,7 @@ case $MODE in
 		ng test ngx-ytd-api-lib --watch=false;;
 	"lint-demo")
 		echo -e "\x1b[34mLinting the demo app...\x1b[0m"
-		ng lint ngx-ytd-api-demo-e2e;;
+		ng lint ngx-ytd-api-demo;;
 	"test-demo")
 		echo -e "\x1b[34mTesting the demo app...\x1b[0m"
 		ng e2e ngx-ytd-api-demo-e2e;;
