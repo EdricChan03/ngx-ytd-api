@@ -30,8 +30,16 @@ npm install ngx-ytd-api --save
 
 #### Next
 To get the latest `next` tag, run the following command:
+
 ```bash
 npm install ngx-ytd-api@next --save
+```
+
+#### Snapshot builds
+Alternatively, you can get a snapshot build with the latest changes from `master`. Note that this snapshot build should not be considered stable and may break between releases.
+
+```bash
+npm install --save Chan4077/ngx-ytd-api-builds
 ```
 
 ## Features
