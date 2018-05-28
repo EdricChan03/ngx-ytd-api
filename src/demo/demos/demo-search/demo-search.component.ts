@@ -1,5 +1,5 @@
 import { Component, TemplateRef } from '@angular/core';
-import { NgxYtdApiSearchService, NgxYtdApiSearchResult } from 'ngx-ytd-api/search';
+import { NgxYtdApiSearchService, NgxYtdApiSearchResult, NgxYtdApiVideoSearchOpts } from 'ngx-ytd-api/search';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef, MatDialog } from '@angular/material/dialog';
 
@@ -41,13 +41,13 @@ export class DemoSearchComponent {
 		this.searchForm.reset();
 	}
 	searchVideos(pageToken?: string) {
-		const _apiConfig = {
+		const _apiConfig: NgxYtdApiVideoSearchOpts = {
 			apiKey: 'AIzaSyBfSbMRADGI3zILVFbej0zb2v9_020SHlY',
 			videoEmbeddable: this.getValue(this.searchForm.get('embeddable').value, false),
 			maxResults: this.getValue(this.searchForm.get('maxResults').value, 50)
 		};
 		if (pageToken) {
-			_apiConfig[pageToken] = pageToken;
+			_apiConfig['pageToken'] = pageToken;
 		}
 		this.ytApi.searchVideos(this.searchForm.get('query').value, _apiConfig).subscribe(result => {
 			this.searchResult = result;
