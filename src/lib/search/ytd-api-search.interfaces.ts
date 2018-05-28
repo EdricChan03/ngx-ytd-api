@@ -9,6 +9,10 @@ export interface NgxYtdApiSearchOpts extends NgxYtdApiGenericOpts {
 	 * Maximum results for video searching
 	 */
 	maxResults?: number;
+	/**
+	 * The page token to navigate to
+	 */
+	pageToken?: string;
 }
 export interface NgxYtdApiVideoSearchOpts extends NgxYtdApiSearchOpts {
 	/**
@@ -24,14 +28,46 @@ export interface NgxYtdApiVideoSearchOpts extends NgxYtdApiSearchOpts {
 // Result interfaces
 export interface NgxYtdApiSearchResult extends NgxYtdApiGenericResult {
 	/**
+	 * The token that can be used as the value of the `pageToken` parameter to retrieve the next page in the result set.
+	 */
+	nextPageToken?: string;
+	/**
+	 * The token that can be used as the value of the `pageToken` parameter to retrieve the previous page in the result set.
+	 */
+	prevPageToken?: string;
+	/**
+	 * The region code used for the search query. 
+	 */
+	regionCode?: string;
+	/**
+	 * Paging info about the result
+	 */
+	pagingInfo?: {
+		/**
+		 * Total results. Note that the max value is `1000000` and is approximate.
+		 */
+		totalResults?: number;
+		/**
+		 * Number of results included in response
+		 */
+		resultsPerPage?: number;
+	}
+	/**
+	 * An array of results that match the criteria
+	 */
+	items?: NgxYtdApiSearchResultItem[];
+}
+
+export interface NgxYtdApiSearchResultItem extends NgxYtdApiGenericResult {
+	/**
 	 * The id object contains info which can be used for uniquely identifing the resource
 	 * See the [documentation]{@link https://developers.google.com/youtube/v3/docs/search#id} for more info
 	 */
-	id: {
+	id?: {
 		/**
 		 * The type of the resource
 		 */
-		kind: string;
+		kind?: string;
 		videoId?: string;
 		channelId?: string;
 		playlistId?: string;
@@ -39,39 +75,34 @@ export interface NgxYtdApiSearchResult extends NgxYtdApiGenericResult {
 	/**
 	 * The `snippet` object contains info on the search result
 	 */
-	snippet: {
+	snippet?: {
 		/**
 		 * The creation date and time of the resource. The value is specified in ISO 8601 `(YYYY-MM-DDThh:mm:ss.sZ)` format.
 		 */
-		publishedAt: string | any;
+		publishedAt?: string | any;
 		/**
 		 * The channel's ID
 		 */
-		channelId: string;
+		channelId?: string;
 		/**
 		 * The title of the search result
 		 */
-		title: string;
+		title?: string;
 		/**
 		 * A description of the search result
 		 */
-		description: string;
+		description?: string;
 		/**
 		 * An object of the thumbnails
 		 */
-		thumbnails: any;
+		thumbnails?: any;
 		/**
 		 * The title of the channel that published the resource
 		 */
-		channelTitle: string;
+		channelTitle?: string;
 		/**
 		 * See https://developers.google.com/youtube/v3/docs/search#snippet.liveBroadcastContent for more info
 		 */
 		liveBroadcastContent?: 'upcoming' | 'live' | 'none';
 	};
 }
-
-/**
- * @deprecated Use `NgxYtdApiSearchResult[]` instead
- */
-export declare type NgxYtdApiSearchResults = NgxYtdApiSearchResult[];

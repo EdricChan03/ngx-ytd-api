@@ -32,6 +32,9 @@ export class NgxYtdApiSearchService {
 		if (opts.videoEmbeddable) {
 			_apiUrl += `&videoEmbeddable=${opts.videoEmbeddable}`;
 		}
+		if (opts.pageToken) {
+			_apiUrl += `&pageToken=${opts.pageToken}`;
+		}
 		return this.http.get<NgxYtdApiSearchResult>(_apiUrl);
 	}
 	/**
