@@ -66,7 +66,7 @@ publishPackage() {
 	rm -rf ${repoDir}
 	mkdir -p ${repoDir}
 
-	echo -e "Starting cloning process of ${repoUrl} into ${repoDir}..\x1b[0m"
+	echo -e "\x1b[34mStarting cloning process of ${repoUrl} into ${repoDir}..\x1b[0m"
 
 	# Clone the repository and only fetch the last commit to download less unused data.
 	git clone ${repoUrl} ${repoDir} --depth 1

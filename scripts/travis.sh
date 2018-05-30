@@ -33,6 +33,9 @@ case $DEPLOY_MODE in
 		echo -e "\x1b[34mGenerating build artifacts...\x1b[0m"
 		./scripts/publish-build-artifacts.sh;;
 	"docs")
-		echo -e "\x1b[33m\x1b[1mWARN: Docs mode hasn't been implemented yet. Exiting...\x1b[0m"
-		exit 0;;
+		echo -e "\x1b[34mGenerating docs for tag ${TRAVIS_TAG}...\x1b[0m"
+		./scripts/docs.sh;;
+	"changelog")
+		echo -e "\x1b[34mGenerating changelog for tag ${TRAVIS_TAG}...\x1b[0m"
+		gulp changelog;;
 esac
