@@ -4,6 +4,13 @@
     margin: 16px;
 }
 
+.example-search-result-card .example-search-result-card-title {
+	line-height: 30px;
+}
+
+.example-card-actions > * {
+	margin: 0 8px;
+}
 .paginator {
 	text-align: center;
 	margin: 8px;

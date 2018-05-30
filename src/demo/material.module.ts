@@ -11,6 +11,7 @@ import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -27,12 +28,13 @@ import { DomSanitizer } from '@angular/platform-browser';
 		MatIconModule,
 		MatInputModule,
 		MatListModule,
+		MatSlideToggleModule,
 		MatSidenavModule,
 		MatToolbarModule,
 		MatTooltipModule
 	],
 	providers: [
-		{ provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'standard' } }
+		{ provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } }
 	]
 })
 export class MaterialModule {

@@ -16,6 +16,7 @@ export class DemoSearchComponent {
 	// embeddable: boolean = false;
 	// maxResults: number = 50;
 	searchForm: FormGroup;
+	searchOptionsForm: FormGroup;
 	codeDialogRef: MatDialogRef<any>;
 	constructor(
 		private ytApi: NgxYtdApiSearchService,
@@ -25,8 +26,11 @@ export class DemoSearchComponent {
 		this.searchForm = fb.group({
 			query: ['', Validators.required],
 			embeddable: false,
-			maxResults: [50, [Validators.required, Validators.min(0), Validators.max(50)]],
-			showJsonResult: false
+			maxResults: [50, [Validators.required, Validators.min(0), Validators.max(50)]]
+		});
+		this.searchOptionsForm = fb.group({
+			showJsonResult: false,
+			showDescription: false
 		});
 	}
 	getValue(value: any, defaultValue: any) {
