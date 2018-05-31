@@ -19,3 +19,7 @@
 .paginator > * {
 	margin: 8px;
 }
+
+.example-form > * {
+	margin-bottom: 10px;
+}

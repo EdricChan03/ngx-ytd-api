@@ -1,10 +1,20 @@
+<mat-toolbar color="primary" class="mat-elevation-z3">
+	<button mat-icon-button (click)="shared.sidenav.toggle()">
+		<mat-icon>menu</mat-icon>
+	</button>
+	Angular YouTube Data API
+	<span fxFlex></span>
+	<a routerLink="." mat-icon-button matTooltip="API Docs">
+		<mat-icon>code</mat-icon>
+	</a>
+</mat-toolbar>
 <div class="padding-percentage-container">
 	<mat-card>
 		<mat-card-title>YouTube Search</mat-card-title>
 		<mat-card-content fxLayout="column">
-			<form [formGroup]="searchForm" class="demo-form" fxLayout="column" (keydown.enter)="submitForm()">
+			<form [formGroup]="searchForm" class="example-form" fxLayout="column" (keydown.enter)="submitForm()">
 				<mat-form-field>
-					<mat-label>Search</mat-label>
+					<mat-label>Query</mat-label>
 					<input matInput formControlName="query">
 					<mat-error *ngIf="searchForm.get('query')?.hasError('required')">This is required.</mat-error>
 				</mat-form-field>
@@ -18,14 +28,14 @@
 					<mat-error *ngIf="searchForm.get('maxResults')?.hasError('min') || searchForm.get('maxResults')?.hasError('max')">The range of allowed values are from 0 to 50.</mat-error>
 				</mat-form-field>
 			</form>
-			<form [formGroup]="searchOptionsForm" class='demo-form' fxLayout="column">
+			<form [formGroup]="searchOptionsForm" class="example-form" fxLayout="column">
 				<h3>Options</h3>
 				<mat-slide-toggle formControlName="showJsonResult">Show JSON result?</mat-slide-toggle>
 				<mat-slide-toggle formControlName="showDescription">Show description?</mat-slide-toggle>
 			</form>
 			</mat-card-content>
 		<mat-card-actions align="end" class="example-card-actions">
-			<button (click)="searchVideos(); clearForm();" mat-stroked-button color="warn" [disabled]="searchForm.invalid">Search &amp; clear form</button>
+			<button (click)="clearForm()" mat-stroked-button color="warn" [disabled]="searchForm.invalid">Clear form</button>
 			<button (click)="searchVideos()" mat-stroked-button color="primary" [disabled]="searchForm.invalid">Search</button>
 		</mat-card-actions>
 	</mat-card>

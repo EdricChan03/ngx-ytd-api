@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 
 import { ListsService, Demo, Doc } from './lists.service';
+import { SharedService } from './shared.service';
+import { MatSidenav } from '@angular/material/sidenav';
 
 @Component({
 	selector: 'app-root',
@@ -38,10 +40,15 @@ export class AppComponent implements OnInit {
 	toggleStateDocs: 'toggled' | 'notToggled' = 'notToggled';
 	demos: Demo[];
 	docs: Doc[];
-	constructor(private listsService: ListsService) { }
+	@ViewChild('docsSidenav') sidenav: MatSidenav;
+	constructor(
+		private listsService: ListsService,
+		private shared: SharedService
+	) { }
 	ngOnInit() {
 		this.demos = this.listsService.getDemos();
 		this.docs = this.listsService.getDocs();
+		this.shared.sidenav = this.sidenav;
 	}
 	preventDefault(event: KeyboardEvent | MouseEvent) {
 		event.preventDefault();

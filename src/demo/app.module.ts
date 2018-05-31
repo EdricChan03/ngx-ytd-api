@@ -17,6 +17,7 @@ import { ListsService } from './lists.service';
 
 import { AppRouting } from './app.routing';
 import { DocsHomeComponent } from './docs/docs-home/docs-home.component';
+import { SharedService } from './shared.service';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { DocsHomeComponent } from './docs/docs-home/docs-home.component';
 	],
 	providers: [
 		NgxYtdApiService,
-		ListsService
+		ListsService,
+		SharedService
 	],
 	bootstrap: [AppComponent]
 })

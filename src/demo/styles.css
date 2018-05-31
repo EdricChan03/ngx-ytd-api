@@ -33,3 +33,7 @@ app-root {
 .padding-percentage-container {
     padding: 5%;
 }
+
+.mat-button, .mat-stroked-button, .mat-raised-button, .mat-flat-button, .mat-simple-snackbar-action {
+	text-transform: uppercase;
+}

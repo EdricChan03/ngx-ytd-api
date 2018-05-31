@@ -2,6 +2,7 @@ import { Component, TemplateRef } from '@angular/core';
 import { NgxYtdApiSearchService, NgxYtdApiSearchResult, NgxYtdApiVideoSearchOpts } from 'ngx-ytd-api/search';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef, MatDialog } from '@angular/material/dialog';
+import { SharedService } from '../../shared.service';
 
 @Component({
 	selector: 'app-demo-search',
@@ -21,7 +22,8 @@ export class DemoSearchComponent {
 	constructor(
 		private ytApi: NgxYtdApiSearchService,
 		private fb: FormBuilder,
-		private dialog: MatDialog
+		private dialog: MatDialog,
+		public shared: SharedService
 	) {
 		this.searchForm = fb.group({
 			query: ['', Validators.required],
