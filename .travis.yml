@@ -31,9 +31,13 @@ jobs:
     # Build artifacts
     - env: "DEPLOY_MODE=build-artifacts"
       if: type = push
-    # Deploy docs weekly
-    - env: "DEPLOY_MODE=docs"
-      if: type = cron
+    # Deploy changelog once a tag is published
+    - env: "DEPLOY_MODE=changelog"
+      if: tag IS present
+    # Deploy docs once a tag is published
+    - env: "DEPLOY_MODE=docs-tag"
+      if: tag IS present
+    - env: "DEPLOY_MODE=docs-master"
 before_script:
   # Workaround for permission problems
   # See https://github.com/travis-ci/travis-ci/issues/9024 for more info
