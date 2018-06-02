@@ -34,10 +34,10 @@ case $DEPLOY_MODE in
 		./scripts/publish-build-artifacts.sh;;
 	"docs-tag")
 		echo -e "\x1b[34mGenerating docs for tag ${TRAVIS_TAG}...\x1b[0m"
-		./scripts/docs.sh --generate-for-tag --deploy-folder $TRAVIS_TAG;;
+		./scripts/build-docs.sh --generate-for-tag;;
 	"docs-master")
 		echo -e "\x1b[34mGenerating docs for commit ${TRAVIS_COMMIT}...\x1b[0m"
-		./scripts/docs.sh --generate-for-master --deploy-folder master;;
+		./scripts/build-docs.sh --generate-for-master --deploy-folder master;;
 	"changelog")
 		echo -e "\x1b[34mGenerating changelog for tag ${TRAVIS_TAG}...\x1b[0m"
 		gulp changelog;;

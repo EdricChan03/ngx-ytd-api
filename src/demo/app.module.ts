@@ -18,6 +18,8 @@ import { ListsService } from './lists.service';
 import { AppRouting } from './app.routing';
 import { DocsHomeComponent } from './docs/docs-home/docs-home.component';
 import { SharedService } from './shared.service';
+import { VersionPickerModule } from './shared/version-picker/version-picker.module';
+import { SharedModule } from './shared.module';
 
 
 @NgModule({
@@ -36,12 +38,13 @@ import { SharedService } from './shared.service';
 		HttpClientModule,
 		MaterialModule,
 		AppRouting,
-		FlexLayoutModule
+		FlexLayoutModule,
+		VersionPickerModule,
+		SharedModule
 	],
 	providers: [
 		NgxYtdApiService,
-		ListsService,
-		SharedService
+		ListsService
 	],
 	bootstrap: [AppComponent]
 })

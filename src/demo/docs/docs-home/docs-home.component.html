@@ -1,3 +1,16 @@
+<mat-toolbar color="primary" class="mat-elevation-z3">
+	<button mat-icon-button (click)="shared.sidenav.toggle()">
+		<mat-icon>menu</mat-icon>
+	</button>
+	Angular YouTube Data API
+	<span fxFlex></span>
+	<mat-chip-list>
+		<mat-chip *ngIf="!shared.isProd" color="accent" (click)="shared.openDevConfig()">
+			<mat-icon inline class="chip-icon">build</mat-icon>
+			Developer Mode</mat-chip>
+	</mat-chip-list>
+	<app-version-picker></app-version-picker>
+</mat-toolbar>
 <div class="padding-percentage-container">
 	<h1>Docs</h1>
 	<mat-card class="docs-card">

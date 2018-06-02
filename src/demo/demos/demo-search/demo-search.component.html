@@ -7,6 +7,12 @@
 	<a routerLink="." mat-icon-button matTooltip="API Docs">
 		<mat-icon>code</mat-icon>
 	</a>
+	<mat-chip-list>
+		<mat-chip *ngIf="!shared.isProd" color="accent" (click)="shared.openDevConfig()">
+			<mat-icon inline class="chip-icon">build</mat-icon>
+			Developer Mode</mat-chip>
+	</mat-chip-list>
+	<app-version-picker></app-version-picker>
 </mat-toolbar>
 <div class="padding-percentage-container">
 	<mat-card>
@@ -33,7 +39,7 @@
 				<mat-slide-toggle formControlName="showJsonResult">Show JSON result?</mat-slide-toggle>
 				<mat-slide-toggle formControlName="showDescription">Show description?</mat-slide-toggle>
 			</form>
-			</mat-card-content>
+		</mat-card-content>
 		<mat-card-actions align="end" class="example-card-actions">
 			<button (click)="clearForm()" mat-stroked-button color="warn" [disabled]="searchForm.invalid">Clear form</button>
 			<button (click)="searchVideos()" mat-stroked-button color="primary" [disabled]="searchForm.invalid">Search</button>

@@ -8,15 +8,15 @@ import { DocsHomeComponent } from './docs/docs-home/docs-home.component';
 
 const APP_ROUTES: Route[] = [
 	{ path: 'demos', children: [
+		{ path: '', component: DemoHomeComponent },
 		{ path: 'videos', component: DemoVideosComponent },
-		{ path: 'search', component: DemoSearchComponent },
-		{ path: 'demoList', component: DemoHomeComponent },
-		{ path: '**', redirectTo: '/demos/demoList' }
+		{ path: 'search', component: DemoSearchComponent }
 	]},
 	{ path: 'docs', children: [
-		{ path: 'docList', component: DocsHomeComponent },
-		{ path: '**', redirectTo: '/docs/docList'}
-	]}
+		{ path: '', component: DocsHomeComponent }
+	]},
+	// { path: 'docs', redirectTo: '/docs/docsList' },
+	{ path: '**', redirectTo: '/docs' }
 ];
 
 export const AppRouting: ModuleWithProviders = RouterModule.forRoot(APP_ROUTES);

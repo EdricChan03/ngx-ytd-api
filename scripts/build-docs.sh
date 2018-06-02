@@ -1,26 +1,25 @@
 #!/bin/bash
 
-# Script for deploying docs to GitHub Pages
+# Script for building docs
+# Note that Firebase deploying will be automatically done by the Travis CI
 
 # Enable color support
 CLICOLOR=1
+
 DEPLOY_FOLDER=""
-BASE_HREF=""
+
 # Exit the script if any command exits with a non-zero value
 set -e
 # Function to build the docs & demo
 #   @param ${1} The location to deploy to
 buildDocs() {
 	deployAt=${1}
+	echo -e "\x1b[34mBuilding demo & docs...\x1b[0m"
 	ng build ngx-ytd-api-demo --prod --base-href "/ngx-ytd-api/${deployAt}/" --delete-output-path false --output-path "dist/ngx-ytd-api-demo/${deployAt}"
 	echo -e "\x1b[32mDone building.\x1b[0m"
 	exit 0
 }
-# Function to publish docs to GitHub Pages
-publishDocs() {
-	buildDir="$TRAVIS_BUILD_DIR/dist/ngx-ytd-api-demo"
-	ngh --name="Travis CI" --email="edric.chan.1997@gmail.com" --message="docs: deploy demo for ${TRAVIS_TAG}" --dir=$buildDir
-}
+
 # Arguments
 while
 	[[ $# -gt 0 ]]; do
@@ -28,8 +27,6 @@ while
 	# shift # expose next argument
 	case "$opt" in
 	"--generate-for-tag" | "--tag")
-		shift
-		echo "$1"
 		DEPLOY_FOLDER="$TRAVIS_TAG"
 		;;
 	"--generate-for-master" | "--master" | "--head")
@@ -45,7 +42,7 @@ while
 		shift
 		;;
 	"--help" | "-h")
-		echo -e "\x1b[33mSyntax: ./docs.sh [--generate-for-tag | --tag | --generate-for-master | --master | --deploy-folder | --head | --help | -h]\x1b[0m"
+		echo -e "\x1b[33mSyntax: ./build-docs.sh [--generate-for-tag | --tag | --generate-for-master | --master | --deploy-folder | --head | --help | -h]\x1b[0m"
 		exit 0
 		;;
 	*)
@@ -60,12 +57,7 @@ if [[ ${#INVALID_ARGS[@]} -ne 0 ]]; then
 else
 	# Check if commit has a tag
 	if [[ ! -z ${TRAVIS_TAG+x} ]]; then
-		echo -e "\x1b[34mBuilding demo & docs...\x1b[0m"
 		(buildDocs ${TRAVIS_TAG})
-		echo -e "\x1b[32mDone building.\x1b[0m"
-		# Deploy with angular-cli-ghpages
-
-		(publishDocs)
 	else
 		(buildDocs ${DEPLOY_FOLDER})
 	fi

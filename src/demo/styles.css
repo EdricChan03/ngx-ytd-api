@@ -37,3 +37,10 @@ app-root {
 .mat-button, .mat-stroked-button, .mat-raised-button, .mat-flat-button, .mat-simple-snackbar-action {
 	text-transform: uppercase;
 }
+.active-menu-item {
+	color: #3F51B5;
+	background-color: #E8E8E8 !important;
+}
+.chip-icon {
+	margin-right: 8px;
+}

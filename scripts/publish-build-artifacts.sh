@@ -20,7 +20,7 @@ if [ -z ${NGX_YTD_API_BUILDS_TOKEN} ]; then
 fi
 
 echo -e "\x1b[34mDEBUG: Current directory: $(pwd)\x1b[0m"
-# Material packages that need to published.
+# Material packages that need to be published.
 PACKAGES=(ngx-ytd-api)
 REPOSITORIES=(ngx-ytd-api-builds)
 PACKAGE_LOCATIONS=(ngx-ytd-api-lib)

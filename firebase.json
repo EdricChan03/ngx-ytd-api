@@ -1,0 +1,22 @@
+{
+	"hosting": {
+		"public": "dist/ngx-ytd-api-demo",
+		"ignore": [
+			"firebase.json",
+			"**/.*",
+			"**/node_modules/**"
+		],
+		"rewrites": [
+			{
+				"source": "/",
+				"destination": "/latest",
+				"type": 302
+			},
+			{
+				"source": "/head",
+				"destination": "/master",
+				"type": 302
+			}
+		]
+	}
+}

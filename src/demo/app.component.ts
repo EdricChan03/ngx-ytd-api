@@ -38,6 +38,7 @@ import { MatSidenav } from '@angular/material/sidenav';
 export class AppComponent implements OnInit {
 	toggleState: 'toggled' | 'notToggled' = 'notToggled';
 	toggleStateDocs: 'toggled' | 'notToggled' = 'notToggled';
+	toggleStateList: 'toggled' | 'notToggled' = 'notToggled';
 	demos: Demo[];
 	docs: Doc[];
 	@ViewChild('docsSidenav') sidenav: MatSidenav;
@@ -50,7 +51,7 @@ export class AppComponent implements OnInit {
 		this.docs = this.listsService.getDocs();
 		this.shared.sidenav = this.sidenav;
 	}
-	preventDefault(event: KeyboardEvent | MouseEvent) {
+	preventDefault(event: Event) {
 		event.preventDefault();
 		event.stopImmediatePropagation();
 		event.stopPropagation();
@@ -71,13 +72,31 @@ export class AppComponent implements OnInit {
 			}
 		}
 	}
-	toggleDemosList(event: KeyboardEvent | MouseEvent) {
-		this.preventDefault(event);
+	toggleLists(event?: Event) {
+		if (this.toggleStateList === 'toggled') {
+			this.toggleStateList = 'notToggled';
+		} else {
+			this.toggleStateList = 'toggled';
+		}
+		if (event) {
+			this.toggleDemosList(event);
+			this.toggleDocsList(event);
+		} else {
+			this.toggleDemosList();
+			this.toggleDocsList();
+		}
+	}
+	toggleDemosList(event?: Event) {
+		if (event) {
+			this.preventDefault(event);
+		}
 		this.toggleStates('demos');
 		// Do some stuff
 	}
-	toggleDocsList(event: KeyboardEvent | MouseEvent) {
-		this.preventDefault(event);
+	toggleDocsList(event?: Event) {
+		if (event) {
+			this.preventDefault(event);
+		}
 		this.toggleStates('docs');
 		// Do some stuff
 	}

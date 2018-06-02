@@ -3,10 +3,15 @@
 		<mat-toolbar>
 			Links
 			<span fxFlex></span>
-			<button mat-icon-button (click)="docsSidenav.close()" matTooltip="Close" matTooltipPosition="right" aria-label="Close sidenav"><mat-icon>keyboard_arrow_left</mat-icon></button>
+			<button mat-icon-button (click)="toggleLists()" matTooltip="Toggle all lists">
+				<mat-icon>{{toggleStateList === 'notToggled' ? 'unfold_more' : 'unfold_less'}}</mat-icon>
+			</button>
+			<button mat-icon-button (click)="docsSidenav.close()" matTooltip="Close" matTooltipPosition="right" aria-label="Close sidenav">
+				<mat-icon>keyboard_arrow_left</mat-icon>
+			</button>
 		</mat-toolbar>
 		<mat-nav-list>
-			<a mat-list-item routerLink="/demos/demoList" routerLinkActive="active-link">
+			<a mat-list-item routerLink="/demos" routerLinkActive="active-link">
 				<mat-icon matListIcon svgIcon="docs:demo"></mat-icon>
 				<h3 matLine>Demos</h3>
 				<span fxFlex></span>
@@ -22,7 +27,7 @@
 				</a>
 			</div>
 			<mat-divider></mat-divider>
-			<a mat-list-item routerLink="/docs/docList" routerLinkActive="active-link">
+			<a mat-list-item routerLink="/docs" routerLinkActive="active-link">
 				<mat-icon matListIcon>chrome_reader_mode</mat-icon>
 				<h3 matLine>Docs</h3>
 				<span fxFlex></span>

@@ -1,10 +1,8 @@
-
 os:
-  - linux
+- linux
 language: node_js
 node_js:
-  - "10.1.0"
-# Addons
+- 10.1.0
 addons:
   apt:
     sources:
@@ -13,50 +11,42 @@ addons:
     - google-chrome-stable
 cache:
   directories:
-    - node_modules
+  - node_modules
 branches:
   only:
   - master
-
 jobs:
   include:
-    # Lint the library
-    - env: "MODE=lint-lib"
-    # Test the library
-    - env: "MODE=test-lib"
-    # Lint the demo
-    - env: "MODE=lint-demo"
-    # Test the demo
-    - env: "MODE=test-demo"
-    # Build artifacts
-    - env: "DEPLOY_MODE=build-artifacts"
-      if: type = push
-    # Deploy changelog once a tag is published
-    - env: "DEPLOY_MODE=changelog"
-      if: tag IS present
-    # Deploy docs once a tag is published
-    - env: "DEPLOY_MODE=docs-tag"
-      if: tag IS present
-    - env: "DEPLOY_MODE=docs-master"
+  - env: MODE=lint-lib
+  - env: MODE=test-lib
+  - env: MODE=lint-demo
+  - env: MODE=test-demo
+  - env: DEPLOY_MODE=build-artifacts
+    if: type = push
+  - env: DEPLOY_MODE=changelog
+    if: tag IS present
+  - env: DEPLOY_MODE=docs-tag
+    if: tag IS present
+  - env: DEPLOY_MODE=docs-master
 before_script:
-  # Workaround for permission problems
-  # See https://github.com/travis-ci/travis-ci/issues/9024 for more info
-  - "sudo chown root /opt/google/chrome/chrome-sandbox"
-  - "sudo chmod 4755 /opt/google/chrome/chrome-sandbox"
+- sudo chown root /opt/google/chrome/chrome-sandbox
+- sudo chmod 4755 /opt/google/chrome/chrome-sandbox
 before_install:
-  - export CHROME_BIN=/usr/bin/google-chrome
-  - export DISPLAY=:99.0
-  - sh -e /etc/init.d/xvfb start
-  # Globally install Angular CLI
-  - npm install -g @angular/cli
-  # Output Angular CLI version
-  - ng --version
+- export CHROME_BIN=/usr/bin/google-chrome
+- export DISPLAY=:99.0
+- sh -e /etc/init.d/xvfb start
+- npm install -g @angular/cli
+- ng --version
 install:
-  - npm install
+- npm install
 script:
-  - ./scripts/travis.sh
+- "./scripts/travis.sh"
 notifications:
   webhooks:
     on_success: change
     on_failure: always
     on_start: false
+deploy:
+  provider: firebase
+  token:
+    secure: rgLs0QcAxI+/7h62bY/D9DaNF5acVSWpWe6X/zvwMBJ4TwETlCjr9+0cQAAWro1LuwiWoDytDZrToSPqgiS/naFIiACRAdbRYWBPYDyYtvJ/99Rs2LxbltSF2cCa+ycARu/ckY2prEPF9NG5p5pmQYP2h3pcBhU9hG4APfLWXcp3Whyxv1Tc8WvgwLnCeAoczlP2jz+kvJAlNaovLxzRlsbI5QZ0frWESdxHq+WYF+dTDfZsWRG6hTROI19QYT41WY0AO8h1UeFXX6wiSimrFxwWvLlYkVk/0pjyNjR84+sUuLYqUIxWvpZ6T3D809aUyVVmmTvxApPMbYgrUP49Vxho7NtTGEiubqUvDOhAaO8wZtZeHPmmPIUaKplrZRC/KSNAlq4NVxkCwU0UvnEP3tshGhIASYoWNarHWTFBHZ1miDAXVyvbIWUyoiG31zYn4kV96+6NV+kX9ZJFRcgGgxc2gDZ4XFLfze5oQXbX0Q2wzXExcQlrmFmZIpk/X6kILnNTzs4LwFoJxOJJG2js7mOmVci3bNFVNUQRnumshYN5yMBCom0wTC70MLrfpp39fLNS8m+/nvBUtt/Bv2WlZM7Wy5Q7orkTImtMe1B0dADbAMyjpyClKEME+h80iuiHGzFMXTIN634wTJW49JPJ45I/hUgvvrRwMf2VzZaJhoE=

@@ -48,7 +48,7 @@ export class DemoSearchComponent {
 	}
 	searchVideos(pageToken?: string) {
 		const _apiConfig: NgxYtdApiVideoSearchOpts = {
-			apiKey: 'AIzaSyBfSbMRADGI3zILVFbej0zb2v9_020SHlY',
+			apiKey: 'AIzaSyBmfHhVrxcau7hOicv9ksQ6uW2PQMLzv10',
 			videoEmbeddable: this.getValue(this.searchForm.get('embeddable').value, false),
 			maxResults: this.getValue(this.searchForm.get('maxResults').value, 50)
 		};
