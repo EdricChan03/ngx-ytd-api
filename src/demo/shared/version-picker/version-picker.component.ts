@@ -11,7 +11,7 @@ export interface VersionMenuItem {
 	styleUrls: ['./version-picker.component.css']
 })
 export class VersionPickerComponent {
-	@Input() currentVersion?: string = '1.0.0-alpha.2';
+	@Input() currentVersion = '1.0.0-alpha.2';
 	@Input() versions?: VersionMenuItem[] = [
 		{
 			routerLink: '/master',

@@ -24,7 +24,7 @@ buildDocs() {
 while
 	[[ $# -gt 0 ]]; do
 	opt="$1"
-	# shift # expose next argument
+	shift # expose next argument
 	case "$opt" in
 	"--generate-for-tag" | "--tag")
 		DEPLOY_FOLDER="$TRAVIS_TAG"

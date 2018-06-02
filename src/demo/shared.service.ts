@@ -4,6 +4,27 @@ import { environment } from './environments/environment';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MaterialModule } from './material.module';
 
+@Component({
+	selector: 'app-dev-mode-dialog',
+	template: `
+	<h2 matDialogTitle>Developer Mode</h2>
+	<mat-dialog-content fxLayout="column">
+		<p>This dialog is used for configuring options in developer mode.</p>
+		<mat-slide-toggle>Show version picker</mat-slide-toggle>
+		<br>
+	</mat-dialog-content>
+	<mat-dialog-actions align="end">
+		<button mat-button color="primary" matDialogClose>Cancel</button>
+		<button mat-button color="primary" (click)="onSave()">Save</button>
+	`
+})
+export class DevModeDialogComponent {
+	constructor(private dialogRef: MatDialogRef<DevModeDialogComponent>) { }
+	onSave() {
+		this.dialogRef.close();
+	}
+}
+
 @Injectable({
 	providedIn: 'root'
 })
@@ -33,25 +54,4 @@ export class SharedService {
 		}
 	}
 	*/
-}
-
-@Component({
-	selector: 'app-dev-mode-dialog',
-	template: `
-	<h2 matDialogTitle>Developer Mode</h2>
-	<mat-dialog-content fxLayout="column">
-		<p>This dialog is used for configuring options in developer mode.</p>
-		<mat-slide-toggle>Show version picker</mat-slide-toggle>
-		<br>
-	</mat-dialog-content>
-	<mat-dialog-actions align="end">
-		<button mat-button color="primary" matDialogClose>Cancel</button>
-		<button mat-button color="primary" (click)="onSave()">Save</button>
-	`
-})
-export class DevModeDialogComponent {
-	constructor(private dialogRef: MatDialogRef<DevModeDialogComponent>) { }
-	onSave() {
-		this.dialogRef.close();
-	}
 }

@@ -3,7 +3,7 @@ import { NgxYtdApiSearchService } from './ytd-api-search.service';
 import { HttpClientModule } from '@angular/common/http';
 
 // TODO(Edric): Make this private
-const API_KEY = 'AIzaSyBfSbMRADGI3zILVFbej0zb2v9_020SHlY';
+const API_KEY = 'AIzaSyBmfHhVrxcau7hOicv9ksQ6uW2PQMLzv10';
 describe('NgxYtdApiService', () => {
 	let service: NgxYtdApiSearchService;
 	beforeEach(() => {
