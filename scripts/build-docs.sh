@@ -13,6 +13,7 @@ set -e
 # Function to build the docs & demo
 #   @param ${1} The location to deploy to
 buildDocs() {
+	echo "$1"
 	deployAt="$1"
 	echo -e "\x1b[34mBuilding demo & docs...\x1b[0m"
 	echo -e "\x1b[34mDEBUG: Current directory: $TRAVIS_BUILD_DIR\x1b[0m"
@@ -35,7 +36,7 @@ while
 		DEPLOY_FOLDER="$TRAVIS_TAG"
 		;;
 	"--generate-for-master" | "--master" | "--head")
-		DEPLOY_FOLDER=master
+		DEPLOY_FOLDER="master"
 		;;
 	"--deploy-folder")
 		DEPLOY_FOLDER="$1"
