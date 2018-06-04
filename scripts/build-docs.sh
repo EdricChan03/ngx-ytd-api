@@ -18,11 +18,10 @@ buildDocs() {
 	echo -e "\x1b[34mDEBUG: Current directory: $TRAVIS_BUILD_DIR\x1b[0m"
 	ng build ngx-ytd-api-demo --prod --base-href "/${deployAt}/" --delete-output-path false --output-path "dist/ngx-ytd-api-demo/${deployAt}"
 	echo -e "\x1b[32mDone building.\x1b[0m"
-	ls $TRAVIS_BUILD_DIR/dist/ngx-ytd-api-demo
 	if [[ ! -d "$TRAVIS_BUILD_DIR/dist/ngx-ytd-api-demo" ]]; then
 		echo -e "\x1b[34mDEBUG: Build directory doesn't exist\x1b[0m"
 	fi
-	
+
 	exit 0
 }
 
