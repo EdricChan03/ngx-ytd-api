@@ -30,8 +30,8 @@ echo -e "\x1b[34m\x1b[1mRemoving previous snapshot...\x1b[0m"
 rm -rf $TRAVIS_BUILD_DIR/ngx-ytd-api-demo-builds/master
 
 echo -e "\x1b[34mDEBUG: Listing dist files...\x1b[0m"
-ls ./dist
-ls ./dist/ngx-ytd-api-demo
+ls -hAFl ./dist
+ls -hAFl ./dist/ngx-ytd-api-demo
 echo -e "\x1b[34mDEBUG: Current directory: $(pwd)\x1b[0m"
 echo -e "\x1b[34m\x1b[1mCopying docs site to snapshot...\x1b[0m"
 cp -Rf $TRAVIS_BUILD_DIR/dist/ngx-ytd-api-demo/master $TRAVIS_BUILD_DIR/ngx-ytd-api-demo-builds/master
