@@ -8,11 +8,11 @@
 		],
 		"rewrites": [
 			{
-				"source": "/latest/**",
+				"source": "/latest/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
 				"destination": "/latest/index.html"
 			},
 			{
-				"source": "/master/**",
+				"source": "/master/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
 				"destination": "/master/index.html"
 			}
 		],

@@ -37,7 +37,7 @@ case $DEPLOY_MODE in
 		./scripts/build-docs.sh --generate-for-tag;;
 	"docs-master")
 		echo -e "\x1b[34mGenerating docs for commit ${TRAVIS_COMMIT}...\x1b[0m"
-		./scripts/build-docs.sh --generate-for-master --deploy-folder master;;
+		./scripts/snapshot-docs.sh;;
 	"changelog")
 		echo -e "\x1b[34mGenerating changelog for tag ${TRAVIS_TAG}...\x1b[0m"
 		gulp changelog;;
