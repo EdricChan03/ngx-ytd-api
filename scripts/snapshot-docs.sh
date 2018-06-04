@@ -21,6 +21,10 @@ echo -e "\x1b[34m\x1b[1mBuilding docs site release...\x1b[0m"
 rm -rf dist
 ./scripts/build-docs.sh --generate-for-master
 
+echo -e "\x1b[34mDEBUG: Listing dist files...\x1b[0m"
+ls dist
+echo -e "\x1b[34mDEBUG: Current directory: $(pwd)\x1b[0m"
+
 echo -e "\x1b[34m\x1b[1mCloning ngx-ytd-api-demo-builds...\x1b[0m"
 rm -rf ngx-ytd-api-demo-builds
 git clone https://github.com/Chan4077/ngx-ytd-api-demo-builds --depth=1
