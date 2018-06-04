@@ -8,6 +8,16 @@
 		],
 		"rewrites": [
 			{
+				"source": "/latest/**",
+				"destination": "/latest/index.html"
+			},
+			{
+				"source": "/master/**",
+				"destination": "/master/index.html"
+			}
+		]
+		"redirects": [
+			{
 				"source": "/",
 				"destination": "/latest",
 				"type": 302
