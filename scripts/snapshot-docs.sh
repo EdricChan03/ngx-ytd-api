@@ -19,7 +19,7 @@ buildTagName="${branchName}-${commitSha}"
 buildCommitMessage="${branchName} - ${commitMessage}"
 echo -e "\x1b[34m\x1b[1mBuilding docs site release...\x1b[0m"
 rm -rf dist
-./build-docs.sh --generate-for-master
+./scripts/build-docs.sh --generate-for-master
 
 echo -e "\x1b[34m\x1b[1mCloning ngx-ytd-api-demo-builds...\x1b[0m"
 rm -rf ngx-ytd-api-demo-builds
