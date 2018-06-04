@@ -46,8 +46,9 @@ notifications:
     on_success: change
     on_failure: always
     on_start: false
-before_deploy: "ls -l && ls -l dist && ls -l dist/ngx-ytd-api-demo"
+# before_deploy: "ls -l && ls -l dist && ls -l dist/ngx-ytd-api-demo"
 deploy:
   provider: firebase
+  skip_cleanup: true
   token:
     secure: rgLs0QcAxI+/7h62bY/D9DaNF5acVSWpWe6X/zvwMBJ4TwETlCjr9+0cQAAWro1LuwiWoDytDZrToSPqgiS/naFIiACRAdbRYWBPYDyYtvJ/99Rs2LxbltSF2cCa+ycARu/ckY2prEPF9NG5p5pmQYP2h3pcBhU9hG4APfLWXcp3Whyxv1Tc8WvgwLnCeAoczlP2jz+kvJAlNaovLxzRlsbI5QZ0frWESdxHq+WYF+dTDfZsWRG6hTROI19QYT41WY0AO8h1UeFXX6wiSimrFxwWvLlYkVk/0pjyNjR84+sUuLYqUIxWvpZ6T3D809aUyVVmmTvxApPMbYgrUP49Vxho7NtTGEiubqUvDOhAaO8wZtZeHPmmPIUaKplrZRC/KSNAlq4NVxkCwU0UvnEP3tshGhIASYoWNarHWTFBHZ1miDAXVyvbIWUyoiG31zYn4kV96+6NV+kX9ZJFRcgGgxc2gDZ4XFLfze5oQXbX0Q2wzXExcQlrmFmZIpk/X6kILnNTzs4LwFoJxOJJG2js7mOmVci3bNFVNUQRnumshYN5yMBCom0wTC70MLrfpp39fLNS8m+/nvBUtt/Bv2WlZM7Wy5Q7orkTImtMe1B0dADbAMyjpyClKEME+h80iuiHGzFMXTIN634wTJW49JPJ45I/hUgvvrRwMf2VzZaJhoE=
