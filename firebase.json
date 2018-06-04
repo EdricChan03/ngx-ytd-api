@@ -15,7 +15,7 @@
 				"source": "/master/**",
 				"destination": "/master/index.html"
 			}
-		]
+		],
 		"redirects": [
 			{
 				"source": "/",
