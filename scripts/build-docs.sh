@@ -33,13 +33,18 @@ while
 	shift # expose next argument
 	case "$opt" in
 	"--generate-for-tag" | "--tag")
+		echo "Generating for tag..."
 		DEPLOY_FOLDER="$TRAVIS_TAG"
+		echo "$DEPLOY_FOLDER"
 		;;
 	"--generate-for-master" | "--master" | "--head")
+		echo "Generating for master..."
 		DEPLOY_FOLDER="master"
+		echo "$DEPLOY_FOLDER"
 		;;
 	"--deploy-folder")
 		DEPLOY_FOLDER="$1"
+		echo "$DEPLOY_FOLDER"
 		# Expose the next argument
 		shift
 		;;
