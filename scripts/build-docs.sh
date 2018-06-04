@@ -63,9 +63,9 @@ if [[ ${#INVALID_ARGS[@]} -ne 0 ]]; then
 else
 	# Check if commit has a tag
 	if [[ ! -z ${TRAVIS_TAG+x} ]]; then
-		(buildDocs ${TRAVIS_TAG})
+		buildDocs "$TRAVIS_TAG"
 	else
-		(buildDocs ${DEPLOY_FOLDER})
+		buildDocs "$DEPLOY_FOLDER"
 	fi
 
 fi
