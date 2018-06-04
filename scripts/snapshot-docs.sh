@@ -23,6 +23,7 @@ rm -rf dist
 
 echo -e "\x1b[34mDEBUG: Listing dist files...\x1b[0m"
 ls dist
+ls dist/ngx-ytd-api-demo
 echo -e "\x1b[34mDEBUG: Current directory: $(pwd)\x1b[0m"
 
 echo -e "\x1b[34m\x1b[1mCloning ngx-ytd-api-demo-builds...\x1b[0m"
