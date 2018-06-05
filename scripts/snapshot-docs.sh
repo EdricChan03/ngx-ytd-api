@@ -19,7 +19,7 @@ buildTagName="${branchName}-${commitSha}"
 buildCommitMessage="${branchName} - ${commitMessage}"
 echo -e "\x1b[34m\x1b[1mBuilding docs site release...\x1b[0m"
 rm -rf dist
-./scripts/build-docs.sh --generate-for-master
+./scripts/build-docs.sh --generate-for-master --version $buildVersionName
 
 
 echo -e "\x1b[34m\x1b[1mCloning ngx-ytd-api-demo-builds...\x1b[0m"
@@ -37,9 +37,6 @@ cp -Rf dist/ngx-ytd-api-demo/. ngx-ytd-api-demo-builds
 
 cd ngx-ytd-api-demo-builds
 
-echo -e "\x1b[34mModifying version placeholders to the current commit SHA...\x1b[0m"
-# Replace placeholder versions with the current build version name
-sed -i "s/0.0.0-PLACEHOLDER/${buildVersionName}/g" $(find . -type f -not -path '*\/.*')
 # GitHub token specified as Travis environment variable
 git config user.name "${commitAuthorName}"
 git config user.email "${commitAuthorEmail}"

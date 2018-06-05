@@ -13,7 +13,11 @@ set -e
 # Function to build the docs & demo
 #   @param ${1} The location to deploy to
 buildDocs() {
-	echo "$1"
+	if [[ -n "$VERSION" ]]; then
+		echo -e "\x1b[34mModifying version placeholders to the current commit SHA...\x1b[0m"
+		# Replace placeholder versions with the current build version name
+		sed -i "s/0.0.0-PLACEHOLDER/${VERSION}/g" $(find . -type f -not -path '*\/.*')
+	fi
 	deployAt="$1"
 	echo -e "\x1b[34mBuilding demo & docs...\x1b[0m"
 	ng build ngx-ytd-api-demo --prod --base-href "/${deployAt}/" --delete-output-path false --output-path "dist/ngx-ytd-api-demo/${deployAt}"
@@ -26,8 +30,8 @@ buildDocs() {
 }
 
 # Arguments
-while
-	[[ $# -gt 0 ]]; do
+while [[ $# -gt 0 ]];
+do
 	opt="$1"
 	shift # expose next argument
 	case "$opt" in
@@ -46,8 +50,12 @@ while
 		BASE_HREF="$1"
 		shift
 		;;
+	"--version")
+		VERSION="$1"
+		shift
+		;;
 	"--help" | "-h")
-		echo -e "\x1b[33mSyntax: ./build-docs.sh [--generate-for-tag | --tag | --generate-for-master | --master | --deploy-folder | --head | --help | -h]\x1b[0m"
+		echo -e "\x1b[33mSyntax: ./build-docs.sh [--generate-for-tag | --tag | --generate-for-master | --master | --deploy-folder | --version | --head | --help | -h]\x1b[0m"
 		exit 0
 		;;
 	*)
