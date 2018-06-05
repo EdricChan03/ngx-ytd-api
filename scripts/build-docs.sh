@@ -16,7 +16,7 @@ buildDocs() {
 	if [[ -n "$VERSION" ]]; then
 		echo -e "\x1b[34mModifying version placeholders to the current commit SHA...\x1b[0m"
 		# Replace placeholder versions with the current build version name
-		sed -i "s/0.0.0-PLACEHOLDER/${VERSION}/g" $(find . -type f -not -path '*\/.*')
+		sed -i "s/0.0.0-PLACEHOLDER/${VERSION}/g" $(find . -type f -not \( -path '*\/.*' -o -path '*\/node_modules/*' -o -path '*\/scripts/*' -o -path '*\/e2e/*' \))
 	fi
 	deployAt="$1"
 	echo -e "\x1b[34mBuilding demo & docs...\x1b[0m"

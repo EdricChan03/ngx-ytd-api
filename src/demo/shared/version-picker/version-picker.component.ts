@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { VERSION as ngxYtdApiVersion } from 'ngx-ytd-api';
 import { environment } from '../../environments/environment';
 
 export interface VersionFile {
@@ -18,7 +19,7 @@ export interface VersionMenuItem {
 	styleUrls: ['./version-picker.component.css']
 })
 export class VersionPickerComponent implements OnInit {
-	currentVersion = '0.0.0-PLACEHOLDER';
+	currentVersion = ngxYtdApiVersion.full;
 	versions: VersionFile;
 	constructor(private http: HttpClient) { }
 	ngOnInit() {

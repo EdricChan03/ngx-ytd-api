@@ -53,13 +53,13 @@ publishPackage() {
 
 	echo -e "\x1b[34mStarting publish process of ${packageName} for ${buildVersionName} into ${branchName}..\x1b[0m"
 
+	# Create a release of the current repository.
 	if [[ ! ${COMMAND_ARGS} = *--no-build* ]]; then
 		if [[ ${COMMAND_ARGS} = *--publishNext* ]]; then
-			./scripts/scripts.sh build --publishNext --skipNpm
+			./scripts/scripts.sh build --publishNext --skipNpm --version ${buildVersionName}
 		else
-			./scripts/scripts.sh build --skipNpm
+			./scripts/scripts.sh build --skipNpm --version ${buildVersionName}
 		fi
-		# Create a release of the current repository.
 	fi
 
 	# Prepare cloning the builds repository

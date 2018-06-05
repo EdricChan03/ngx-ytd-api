@@ -33,6 +33,10 @@ do
 	"--skipNpm")
 		SKIP_NPM=true
 		;;
+	"--version")
+		VERSION="$1"
+		shift
+		;;
 	"--help" | "-h")
 		if [[ "$FROM_SCRIPTS" == true ]]; then
 			echo -e "\x1b[33mSyntax: ./scripts.sh (build-script | build) [--publishNext | --publish-next | --skip-confirm | --dry-run | --dryRun | --skipNpm | --help | -h]\x1b[0m"
@@ -51,6 +55,11 @@ if [[ ${#INVALID_ARGS[@]} -ne 0 ]]; then
 	echo -e "\x1b[31m\x1b[1mInvalid option(s): ${INVALID_ARGS[*]}\nRun --help for all valid options.\x1b[0m" >&2
 	exit 1
 else
+	if [[ -n "$VERSION" ]]; then
+		echo -e "\x1b[34mModifying version placeholders...\x1b[0m"
+		# Replace placeholder versions with the current build version name
+		sed -i "" "s/0.0.0-PLACEHOLDER/${VERSION}/g" $(find . -type f -not \( -path '*\/.*' -o -path '*\/node_modules/*' -o -path '*\/scripts/*' -o -path '*\/e2e/*' \))
+	fi
 	# Check if Angular CLI exists
 	if [[ -f $(pwd)/node_modules/.bin/ng ]]; then
 		$(pwd)/node_modules/.bin/ng build --prod ngx-ytd-api-lib
