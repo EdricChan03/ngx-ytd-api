@@ -29,7 +29,6 @@ git clone https://github.com/Chan4077/ngx-ytd-api-demo-builds --depth=1
 echo -e "\x1b[34m\x1b[1mRemoving previous snapshot...\x1b[0m"
 rm -rf ngx-ytd-api-demo-builds/master
 
-echo -e "\x1b[34mDEBUG: Listing dist files...\x1b[0m"
 # ls -hAFl ./dist
 # ls -hAFl ./dist/ngx-ytd-api-demo
 echo -e "\x1b[34mDEBUG: Current directory: $(pwd)\x1b[0m"
@@ -37,6 +36,8 @@ echo -e "\x1b[34m\x1b[1mCopying docs site to snapshot...\x1b[0m"
 cp -Rf dist/ngx-ytd-api-demo ngx-ytd-api-demo-builds
 
 cd ngx-ytd-api-demo-builds
+
+echo -e "\x1b[34mModifying version placeholders to the current commit SHA...\x1b[0m"
 # Replace placeholder versions with the current build version name
 sed -i "s/0.0.0-PLACEHOLDER/${buildVersionName}/g" $(find . -type f -not -path '*\/.*')
 # GitHub token specified as Travis environment variable
