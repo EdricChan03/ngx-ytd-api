@@ -60,9 +60,9 @@ else
 		# Replace placeholder versions with the current build version name
 		# Code snippet adapted from https://stackoverflow.com/a/17072017
 		if [ "$(uname)" == "Darwin" ]; then
-			sed -i "" "s/0.0.0-PLACEHOLDER/${VERSION}/g" $(find . -type f -not \( -path '*\/.*' -o -path '*\/node_modules/*' -o -path '*\/scripts/*' -o -path '*\/e2e/*' \))
+			sed -i "" "s/0.0.0-PLACEHOLDER/${VERSION}/g" $(find ./src/lib -type f)
 		else
-			sed -i "s/0.0.0-PLACEHOLDER/${VERSION}/g" $(find . -type f -not \( -path '*\/.*' -o -path '*\/node_modules/*' -o -path '*\/scripts/*' -o -path '*\/e2e/*' \))
+			sed -i "s/0.0.0-PLACEHOLDER/${VERSION}/g" $(find ./src/lib -type f)
 		fi
 	fi
 	# Check if Angular CLI exists
