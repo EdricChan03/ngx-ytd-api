@@ -25,7 +25,7 @@ export class VersionPickerComponent implements OnInit {
 		if (environment.production) {
 			this.http.get<VersionMenuItem[]>('/versions.json').subscribe(result => {
 				this.versions = result;
-			})
+			});
 		}
 	}
 }
