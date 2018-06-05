@@ -18,25 +18,25 @@ buildVersionName="${buildVersion}-${commitSha}"
 buildTagName="${branchName}-${commitSha}"
 buildCommitMessage="${branchName} - ${commitMessage}"
 echo -e "\x1b[34m\x1b[1mBuilding docs site release...\x1b[0m"
-rm -rf $TRAVIS_BUILD_DIR/dist
+rm -rf dist
 ./scripts/build-docs.sh --generate-for-master
 
 
 echo -e "\x1b[34m\x1b[1mCloning ngx-ytd-api-demo-builds...\x1b[0m"
-rm -rf $TRAVIS_BUILD_DIR/ngx-ytd-api-demo-builds
+rm -rf ngx-ytd-api-demo-builds
 git clone https://github.com/Chan4077/ngx-ytd-api-demo-builds --depth=1
 
 echo -e "\x1b[34m\x1b[1mRemoving previous snapshot...\x1b[0m"
-rm -rf $TRAVIS_BUILD_DIR/ngx-ytd-api-demo-builds/master
+rm -rf ngx-ytd-api-demo-builds/master
 
 echo -e "\x1b[34mDEBUG: Listing dist files...\x1b[0m"
-ls -hAFl ./dist
-ls -hAFl ./dist/ngx-ytd-api-demo
+# ls -hAFl ./dist
+# ls -hAFl ./dist/ngx-ytd-api-demo
 echo -e "\x1b[34mDEBUG: Current directory: $(pwd)\x1b[0m"
 echo -e "\x1b[34m\x1b[1mCopying docs site to snapshot...\x1b[0m"
-cp -Rf $TRAVIS_BUILD_DIR/dist/ngx-ytd-api-demo/master $TRAVIS_BUILD_DIR/ngx-ytd-api-demo-builds/master
+cp -Rf dist/ngx-ytd-api-demo/master ngx-ytd-api-demo-builds/master
 
-cd $TRAVIS_BUILD_DIR/ngx-ytd-api-demo-builds
+cd ngx-ytd-api-demo-builds
 
 # GitHub token specified as Travis environment variable
 git config user.name "${commitAuthorName}"

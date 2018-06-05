@@ -1,0 +1,16 @@
+[
+	{
+		"version": "master",
+		"link": "/master"
+	},
+	{
+		"version": "1.0.0-alpha.1",
+		"link": "/1.0.0-alpha.1",
+		"hidden": true
+	},
+	{
+		"version": "1.0.0-alpha.2",
+		"link": "/1.0.0-alpha.2",
+		"hidden": true
+	}
+]

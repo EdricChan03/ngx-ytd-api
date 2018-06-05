@@ -16,12 +16,11 @@ buildDocs() {
 	echo "$1"
 	deployAt="$1"
 	echo -e "\x1b[34mBuilding demo & docs...\x1b[0m"
-	echo -e "\x1b[34mDEBUG: Current directory: $TRAVIS_BUILD_DIR\x1b[0m"
 	ng build ngx-ytd-api-demo --prod --base-href "/${deployAt}/" --delete-output-path false --output-path "dist/ngx-ytd-api-demo/${deployAt}"
 	echo -e "\x1b[32mDone building.\x1b[0m"
-	if [[ ! -d "$TRAVIS_BUILD_DIR/dist/ngx-ytd-api-demo" ]]; then
-		echo -e "\x1b[34mDEBUG: Build directory doesn't exist\x1b[0m"
-	fi
+	echo -e "\x1b[34mCopying files...\x1b[0m"
+	cp ./src/demo/versions.json ./dist/ngx-ytd-api-demo
+	echo -e "\x1b[34mDone copying.\x1b[0m"
 
 	exit 0
 }
@@ -33,18 +32,13 @@ while
 	shift # expose next argument
 	case "$opt" in
 	"--generate-for-tag" | "--tag")
-		echo "Generating for tag..."
 		DEPLOY_FOLDER="$TRAVIS_TAG"
-		echo "$DEPLOY_FOLDER"
 		;;
 	"--generate-for-master" | "--master" | "--head")
-		echo "Generating for master..."
 		DEPLOY_FOLDER="master"
-		echo "$DEPLOY_FOLDER"
 		;;
 	"--deploy-folder")
 		DEPLOY_FOLDER="$1"
-		echo "$DEPLOY_FOLDER"
 		# Expose the next argument
 		shift
 		;;
@@ -68,10 +62,10 @@ if [[ ${#INVALID_ARGS[@]} -ne 0 ]]; then
 else
 	# Check if commit has a tag
 	if [[ -n "$TRAVIS_TAG" ]]; then
-		echo "Building for tag"
+		echo -e "\x1b[34mGenerating docs for tag ${TRAVIS_TAG}...\x1b[0m"
 		buildDocs "$TRAVIS_TAG"
 	else
-		echo "Building for folder"
+		echo -e "\x1b[34mGenerating docs for master...\x1b[0m"
 		buildDocs "$DEPLOY_FOLDER"
 	fi
 
