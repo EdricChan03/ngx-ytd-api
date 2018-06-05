@@ -8,7 +8,7 @@ CLICOLOR=1
 set -e
 
 # Go to project directory
-if [[ ! -z ${TRAVIS_BUILD_DIR+x} ]]; then
+if [[ -n ${TRAVIS_BUILD_DIR+x} ]]; then
 	cd $TRAVIS_BUILD_DIR
 fi
 
