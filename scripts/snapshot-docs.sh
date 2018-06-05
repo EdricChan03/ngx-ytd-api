@@ -34,7 +34,7 @@ echo -e "\x1b[34mDEBUG: Listing dist files...\x1b[0m"
 # ls -hAFl ./dist/ngx-ytd-api-demo
 echo -e "\x1b[34mDEBUG: Current directory: $(pwd)\x1b[0m"
 echo -e "\x1b[34m\x1b[1mCopying docs site to snapshot...\x1b[0m"
-cp -Rf dist/ngx-ytd-api-demo/master ngx-ytd-api-demo-builds/master
+cp -Rf dist/ngx-ytd-api-demo ngx-ytd-api-demo-builds
 
 cd ngx-ytd-api-demo-builds
 
