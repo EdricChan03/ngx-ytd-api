@@ -58,7 +58,12 @@ else
 	if [[ -n "$VERSION" ]]; then
 		echo -e "\x1b[34mModifying version placeholders...\x1b[0m"
 		# Replace placeholder versions with the current build version name
-		sed -i "" "s/0.0.0-PLACEHOLDER/${VERSION}/g" $(find . -type f -not \( -path '*\/.*' -o -path '*\/node_modules/*' -o -path '*\/scripts/*' -o -path '*\/e2e/*' \))
+		# Code snippet adapted from https://stackoverflow.com/a/17072017
+		if [ "$(uname)" == "Darwin" ]; then
+			sed -i "" "s/0.0.0-PLACEHOLDER/${VERSION}/g" $(find . -type f -not \( -path '*\/.*' -o -path '*\/node_modules/*' -o -path '*\/scripts/*' -o -path '*\/e2e/*' \))
+		else
+			sed -i "s/0.0.0-PLACEHOLDER/${VERSION}/g" $(find . -type f -not \( -path '*\/.*' -o -path '*\/node_modules/*' -o -path '*\/scripts/*' -o -path '*\/e2e/*' \))
+		fi
 	fi
 	# Check if Angular CLI exists
 	if [[ -f $(pwd)/node_modules/.bin/ng ]]; then
