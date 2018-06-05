@@ -8,7 +8,8 @@ CLICOLOR=1
 set -e
 
 # Go to project directory
-if [[ -v TRAVIS_BUILD_DIR ]]; then
+if [[ -n "$TRAVIS_BUILD_DIR" ]]; then
+	echo -e "\x1b[34mChanging to the build directory...\x1b[0m"
 	cd $TRAVIS_BUILD_DIR
 fi
 
