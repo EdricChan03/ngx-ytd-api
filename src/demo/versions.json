@@ -1,16 +1,30 @@
-[
-	{
-		"version": "master",
-		"link": "/master"
-	},
-	{
-		"version": "1.0.0-alpha.1",
-		"link": "/1.0.0-alpha.1",
-		"hidden": true
-	},
-	{
-		"version": "1.0.0-alpha.2",
-		"link": "/1.0.0-alpha.2",
-		"hidden": true
-	}
-]
+{
+	"latest": null,
+	"versions": [
+		{
+			"type": "subheader",
+			"name": "Snapshots"
+		},
+		{
+			"type": "version",
+			"name": "master",
+			"link": "/master"
+		},
+		{
+			"type": "subheader",
+			"name": "All versions"
+		},
+		{
+			"type": "version",
+			"name": "1.0.0-alpha.1",
+			"link": "/1.0.0-alpha.1",
+			"hidden": true
+		},
+		{
+			"type": "version",
+			"name": "1.0.0-alpha.1",
+			"link": "/1.0.0-alpha.1",
+			"hidden": true
+		}
+	]
+}

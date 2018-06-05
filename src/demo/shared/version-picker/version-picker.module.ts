@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 
 import { VersionPickerComponent } from './version-picker.component';
@@ -16,6 +17,7 @@ import { VersionPickerComponent } from './version-picker.component';
 		RouterModule,
 		MatButtonModule,
 		MatIconModule,
+		MatListModule,
 		MatMenuModule
 	],
 	declarations: [

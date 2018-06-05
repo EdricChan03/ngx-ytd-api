@@ -4,6 +4,15 @@
 </button>
 <mat-menu #versionPickerMenu="matMenu">
 	<ng-template matMenuContent>
+		<mat-nav-list>
+			<ng-container *ngFor="let version of versions.versions">
+				<ng-container [ngSwitch]="version.type">
+					<h3 matSubheader *ngSwitchCase="subheader">{{version.name}}</h3>
+					<a mat-list-item *ngSwitchCase="version" [routerLink]="[version.link]" [style.display]="version.hidden ? 'none' : 'block'">{{version.name}}</a>
+				</ng-container>
+			</ng-container>
+		</mat-nav-list>
+		<ng-container 
 		<a mat-menu-item *ngFor="let version of versions" [routerLink]="version.routerLink" [disabled]="version.disabled" (click)="onMenuItemClick(version, $event)" routerLinkActive="active-menu-item">
 			{{version.version}}
 		</a>
