@@ -21,11 +21,6 @@ export class VersionPickerComponent implements OnInit {
 	currentVersion = '0.0.0-PLACEHOLDER';
 	versions: VersionFile;
 	constructor(private http: HttpClient) { }
-	onMenuItemClick(version: VersionMenuItem, event: Event) {
-		if (version.disabled) {
-			event.preventDefault();
-		}
-	}
 	ngOnInit() {
 		if (environment.production) {
 			this.http.get<VersionFile>('/versions.json').subscribe(result => {
