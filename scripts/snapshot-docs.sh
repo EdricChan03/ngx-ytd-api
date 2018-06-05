@@ -37,7 +37,8 @@ echo -e "\x1b[34m\x1b[1mCopying docs site to snapshot...\x1b[0m"
 cp -Rf dist/ngx-ytd-api-demo ngx-ytd-api-demo-builds
 
 cd ngx-ytd-api-demo-builds
-
+# Replace placeholder versions with the current build version name
+sed -i "s/0.0.0-PLACEHOLDER/${buildVersionName}/g" $(find . -type f -not -path '*\/.*')
 # GitHub token specified as Travis environment variable
 git config user.name "${commitAuthorName}"
 git config user.email "${commitAuthorEmail}"
@@ -51,7 +52,7 @@ git commit -m "snapshot: $buildVersionName"
 echo -e "\x1b[34m\x1b[1mPushing snapshot...\x1b[0m"
 git push -q origin master
 
-cd $TRAVIS_BUILD_DIR
+cd ..
 
 echo -e "\x1b[34m\x1b[1mCleaning up...\x1b[0m"
 rm -rf $TRAVIS_BUILD_DIR/ngx-ytd-api-demo-builds
