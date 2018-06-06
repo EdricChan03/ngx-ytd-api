@@ -8,7 +8,7 @@
 			<ng-container *ngFor="let version of versions.versions">
 				<ng-container [ngSwitch]="version.type">
 					<h3 matSubheader *ngSwitchCase="'subheader'" [style.display]="version.hidden ? 'none' : 'block'">{{version.name}}</h3>
-					<a mat-list-item *ngSwitchCase="'version'" [routerLink]="[version.link]" [style.display]="version.hidden ? 'none' : 'block'">{{version.name}}</a>
+					<a mat-list-item *ngSwitchCase="'version'" [href]="version.link" [style.display]="version.hidden ? 'none' : 'block'">{{version.name}}</a>
 				</ng-container>
 			</ng-container>
 		</mat-nav-list>

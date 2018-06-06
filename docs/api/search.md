@@ -26,7 +26,7 @@ Searches for content such as channels, videos and livestream broadcasts.
 Name | Description | Notes
 ---|---|---
 `query: string` | The query to search for | -
-`opts: NgxYtdApiSerchOpts` | Options for the API | See [NgxYtdApiSearchOpts](#ngxytdsearchopts) for all properties
+`opts: NgxYtdApiSerchOpts` | Options for the API | See [NgxYtdApiSearchOpts](#ngxytdapisearchopts) for all properties
 
 #### Returns
 `Observable<NgxYtdApiSearchResult>`: Results of the search as a stream
@@ -35,6 +35,20 @@ Name | Description | Notes
 This is deprecated (will be removed in the beta). Consider using [`NgxYtdApiService#searchVideos`](#ngxytdapiservicesearchvideos) instead.
 
 ### `NgxYtdApiService#searchVideos`
+
+#### Description
+Searches for content such as channels, videos and livestream broadcasts.
+
+#### Parameters
+Name | Description | Notes
+---|---|---
+`query: string` | The query to search for | -
+`opts: NgxYtdApiSerchOpts` | Options for the API | See [NgxYtdApiSearchOpts](#ngxytdapisearchopts) for all properties
+
+#### Returns
+`Observable<NgxYtdApiSearchResult>`: Results of the search as a stream
+
+---
 
 ## Interfaces
 
