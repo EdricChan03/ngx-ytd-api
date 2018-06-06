@@ -14,6 +14,7 @@ set -e
 #   @param ${1} The location to deploy to
 buildDocs() {
 	if [[ -n "$VERSION" ]]; then
+		echo "Version: ${VERSION}"
 		echo -e "\x1b[34mModifying version placeholders to the current commit SHA...\x1b[0m"
 		# Replace placeholder versions with the current build version name
 		# Code snippet adapted from https://stackoverflow.com/a/17072017
