@@ -1,5 +1,4 @@
 {
-	"latest": "0.0.0-PLACEHOLDER",
 	"versions": [
 		{
 			"type": "subheader",
@@ -7,12 +6,13 @@
 		},
 		{
 			"type": "version",
-			"name": "master",
+			"name": "0.0.0-PLACEHOLDER",
 			"link": "/master"
 		},
 		{
 			"type": "subheader",
-			"name": "All versions"
+			"name": "All versions",
+			"hidden": true
 		},
 		{
 			"type": "version",
@@ -22,8 +22,8 @@
 		},
 		{
 			"type": "version",
-			"name": "1.0.0-alpha.1",
-			"link": "/1.0.0-alpha.1",
+			"name": "1.0.0-alpha.2",
+			"link": "/1.0.0-alpha.2",
 			"hidden": true
 		}
 	]
