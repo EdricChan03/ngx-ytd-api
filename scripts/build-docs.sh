@@ -15,14 +15,14 @@ set -e
 buildDocs() {
 	if [[ -n "$VERSION" ]]; then
 		echo "Version: ${VERSION}"
-		echo -e "\x1b[34mModifying version placeholders to the current commit SHA...\x1b[0m"
+		# echo -e "\x1b[34mModifying version placeholders to the current commit SHA...\x1b[0m"
 		# Replace placeholder versions with the current build version name
 		# Code snippet adapted from https://stackoverflow.com/a/17072017
-		if [ "$(uname)" == "Darwin" ]; then
-			sed -i "" "s/0.0.0-PLACEHOLDER/${VERSION}/g" $(find ./src/demo -type f)
-		else
-			sed -i "s/0.0.0-PLACEHOLDER/${VERSION}/g" $(find ./src/demo -type f)
-		fi
+		# if [ "$(uname)" == "Darwin" ]; then
+		#	sed -i "" "s/0.0.0-PLACEHOLDER/${VERSION}/g" $(find ./src -type f)
+		# else
+		#	sed -i "s/0.0.0-PLACEHOLDER/${VERSION}/g" $(find ./src -type f)
+		# fi
 	fi
 	deployAt="$1"
 	echo -e "\x1b[34mBuilding demo & docs...\x1b[0m"

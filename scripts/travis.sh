@@ -7,6 +7,27 @@ CLICOLOR=1
 # Immediately exit if any command in the script fails
 set -e
 
+buildVersion=$(node -pe "require('$TRAVIS_BUILD_DIR/src/lib/package.json').version")
+branchName=${TRAVIS_BRANCH:-'master'}
+
+commitSha=$(git rev-parse --short HEAD)
+commitAuthorName=$(git --no-pager show -s --format='%an' HEAD)
+commitAuthorEmail=$(git --no-pager show -s --format='%ae' HEAD)
+commitMessage=$(git log --oneline -n 1)
+
+if [[ -n "$TRAVIS_TAG" ]]; then
+	buildVersionName="${TRAVIS_TAG}"
+else
+	buildVersionName="${buildVersion}-${commitSha}"
+fi
+echo -e "\x1b[34mModifying placeholder versions...\x1b[0m"
+# Replace placeholder versions with the current build version name
+# Code snippet adapted from https://stackoverflow.com/a/17072017
+if [ "$(uname)" == "Darwin" ]; then
+	sed -i "" "s/0.0.0-PLACEHOLDER/${buildVersionName}/g" $(find ./src -type f)
+else
+	sed -i "s/0.0.0-PLACEHOLDER/${buildVersionName}/g" $(find ./src -type f)
+fi
 # Go to project directory
 if [[ -n "$TRAVIS_BUILD_DIR" ]]; then
 	echo -e "\x1b[34mChanging to the build directory...\x1b[0m"
@@ -14,32 +35,40 @@ if [[ -n "$TRAVIS_BUILD_DIR" ]]; then
 fi
 
 case $MODE in
-	"lint-lib")
-		echo -e "\x1b[34mLinting the library...\x1b[0m"
-		ng lint ngx-ytd-api-lib;;
-	"test-lib")
-		echo -e "\x1b[34mTesting the library...\x1b[0m"
-		ng test ngx-ytd-api-lib --watch=false;;
-	"lint-demo")
-		echo -e "\x1b[34mLinting the demo app...\x1b[0m"
-		ng lint ngx-ytd-api-demo;;
-	"test-demo")
-		echo -e "\x1b[34mTesting the demo app...\x1b[0m"
-		ng e2e ngx-ytd-api-demo-e2e;;
+"lint-lib")
+	echo -e "\x1b[34mLinting the library...\x1b[0m"
+	ng lint ngx-ytd-api-lib
+	;;
+"test-lib")
+	echo -e "\x1b[34mTesting the library...\x1b[0m"
+	ng test ngx-ytd-api-lib --watch=false
+	;;
+"lint-demo")
+	echo -e "\x1b[34mLinting the demo app...\x1b[0m"
+	ng lint ngx-ytd-api-demo
+	;;
+"test-demo")
+	echo -e "\x1b[34mTesting the demo app...\x1b[0m"
+	ng e2e ngx-ytd-api-demo-e2e
+	;;
 esac
 
 # Deploying
 case $DEPLOY_MODE in
-	"build-artifacts")
-		echo -e "\x1b[34mGenerating build artifacts...\x1b[0m"
-		./scripts/publish-build-artifacts.sh;;
-	"docs-tag")
-		echo -e "\x1b[34mGenerating docs for tag ${TRAVIS_TAG}...\x1b[0m"
-		./scripts/build-docs.sh --generate-for-tag;;
-	"docs-master")
-		echo -e "\x1b[34mGenerating docs for commit ${TRAVIS_COMMIT}...\x1b[0m"
-		./scripts/snapshot-docs.sh;;
-	"changelog")
-		echo -e "\x1b[34mGenerating changelog for tag ${TRAVIS_TAG}...\x1b[0m"
-		gulp changelog;;
+"build-artifacts")
+	echo -e "\x1b[34mGenerating build artifacts...\x1b[0m"
+	./scripts/publish-build-artifacts.sh
+	;;
+"docs-tag")
+	echo -e "\x1b[34mGenerating docs for tag ${TRAVIS_TAG}...\x1b[0m"
+	./scripts/build-docs.sh --generate-for-tag
+	;;
+"docs-master")
+	echo -e "\x1b[34mGenerating docs for commit ${TRAVIS_COMMIT}...\x1b[0m"
+	./scripts/snapshot-docs.sh
+	;;
+"changelog")
+	echo -e "\x1b[34mGenerating changelog for tag ${TRAVIS_TAG}...\x1b[0m"
+	gulp changelog
+	;;
 esac

@@ -25,9 +25,12 @@ jobs:
     if: type = push
   - env: DEPLOY_MODE=changelog
     if: tag IS present
+  # Don't deploy docs on PRs
   - env: DEPLOY_MODE=docs-tag
-    if: tag IS present
+    if: type = push AND tag IS present
+  # Don't deploy docs on PRs
   - env: DEPLOY_MODE=docs-master
+    if: type = push
 before_script:
 - sudo chown root /opt/google/chrome/chrome-sandbox
 - sudo chmod 4755 /opt/google/chrome/chrome-sandbox
