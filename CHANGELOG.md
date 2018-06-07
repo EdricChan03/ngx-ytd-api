@@ -1,6 +1,9 @@
-<a name=""></a>
+<a name="1.0.0-alpha.2"></a>
 # [1.0.0-alpha.2 capybara-spaniel](https://github.com/Chan4077/ngx-ytd-api/releases/tag/1.0.0-alpha.2) (2018-06-07)
 
+### Highlights
+- New API docs! This can be accessible by visiting the `docs` directory at the root of this project, as well as the individual `README.md` in every module.
+- New version picker on the demo site! You can see it on the top right of the site at <https://ngx-ytd-api.firebaseapp.com>.
 
 ### Bug Fixes
 
