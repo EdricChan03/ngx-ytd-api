@@ -42,7 +42,12 @@ do
 	shift # expose next argument
 	case "$opt" in
 	"--generate-for-tag" | "--tag")
-		DEPLOY_FOLDER="$TRAVIS_TAG"
+		if [[ -n "$TRAVIS_TAG" ]]; then
+			DEPLOY_FOLDER="$TRAVIS_TAG"
+		else
+			echo -e "\x1b[31m\x1b[1mERROR: The environment variable TRAVIS_TAG isn't set and you're trying to generate for a tag. Aborting...\x1b[0m" >&2
+			exit 1
+		fi
 		;;
 	"--generate-for-master" | "--master" | "--head")
 		DEPLOY_FOLDER="master"

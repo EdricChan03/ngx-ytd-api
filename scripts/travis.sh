@@ -59,11 +59,11 @@ case $DEPLOY_MODE in
 	echo -e "\x1b[34mGenerating build artifacts...\x1b[0m"
 	./scripts/publish-build-artifacts.sh
 	;;
-"docs-tag")
-	echo -e "\x1b[34mGenerating docs for tag ${TRAVIS_TAG}...\x1b[0m"
-	./scripts/build-docs.sh --generate-for-tag
-	;;
-"docs-master")
+"docs")
+	if [[ -n "$TRAVIS_TAG" ]]; then
+		echo -e "\x1b[34mGenerating docs for tag ${TRAVIS_TAG}...\x1b[0m"
+		./scripts/build-docs.sh --generate-for-tag
+	fi
 	echo -e "\x1b[34mGenerating docs for commit ${TRAVIS_COMMIT}...\x1b[0m"
 	./scripts/snapshot-docs.sh
 	;;
