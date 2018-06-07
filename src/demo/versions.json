@@ -23,8 +23,7 @@
 		{
 			"type": "version",
 			"name": "1.0.0-alpha.2",
-			"link": "/1.0.0-alpha.2",
-			"hidden": true
+			"link": "/1.0.0-alpha.2"
 		}
 	]
 }
