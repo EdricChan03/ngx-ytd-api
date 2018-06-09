@@ -41,3 +41,5 @@ import { NgModule } from '@angular/core';
 })
 export class AppModule { }
 ```
+
+That's it! For documentation on a submodule, see the individual `README.md` in the specified submodule.
