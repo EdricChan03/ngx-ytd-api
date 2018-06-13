@@ -54,7 +54,7 @@
 				<mat-icon>keyboard_arrow_right</mat-icon>
 			</button>
 		</div>
-		<div id="cards-container" fxLayout="row wrap">
+		<div id="cards-container" fxLayout="row wrap" fxLayoutAlign="center center">
 			<mat-card *ngFor="let result of searchResult?.items" class="example-search-result-card">
 				<mat-card-header>
 					<mat-card-title>{{result?.snippet?.channelTitle}}</mat-card-title>

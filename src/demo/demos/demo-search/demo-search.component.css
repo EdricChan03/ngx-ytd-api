@@ -1,7 +1,7 @@
 .example-search-result-card {
-    width: 350px;
+    max-width: 350px;
     box-sizing: border-box;
-    margin: 16px;
+    margin: 8px;
 }
 
 .example-search-result-card .example-search-result-card-title {
