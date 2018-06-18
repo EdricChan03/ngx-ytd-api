@@ -15,6 +15,7 @@ cache:
 branches:
   only:
   - master
+  - /^greenkeeper/.*$/
 jobs:
   include:
   - env: MODE=lint-lib
