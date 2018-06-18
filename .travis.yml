@@ -23,13 +23,13 @@ jobs:
   - env: MODE=lint-demo
   - env: MODE=test-demo
   - env: DEPLOY_MODE=build-artifacts
-    if: type = push
+    if: type = push AND branch = master
   # For now, changelog will be manually edited
   # - env: DEPLOY_MODE=changelog
   #  if: tag IS present
   # Don't deploy docs on PRs
   - env: DEPLOY_MODE=docs
-    if: type = push
+    if: type = push AND branch = master
 before_script:
 - sudo chown root /opt/google/chrome/chrome-sandbox
 - sudo chmod 4755 /opt/google/chrome/chrome-sandbox
