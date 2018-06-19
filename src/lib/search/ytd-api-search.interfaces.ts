@@ -98,6 +98,12 @@ export interface NgxYtdApiSearchOpts extends NgxYtdApiGenericOpts {
 	 */
 	videoDefinition?: 'any' | 'high' | 'standard';
 	/**
+	 * Restricts a search to only retrieve 2D or 3D videos.
+	 * Note: the `type` parameter's value must be set to `video`
+	 * See the {@link https://developers.google.com/youtube/v3/docs/search/list#videoDimension|developer docs} for more info
+	 */
+	videoDimension?: 'any' | '2d' | '3d';
+	/**
 	 * Filters video search results based on their duration.
 	 * Note: the `type` parameter's value must be set to `video`
 	 * See the {@link https://developers.google.com/youtube/v3/docs/search/list#videoDuration|developer docs} for more info
