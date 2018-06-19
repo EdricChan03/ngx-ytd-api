@@ -134,8 +134,14 @@
 					<p [innerText]="result?.snippet?.description"></p>
 				</mat-card-content>
 				<mat-card-actions align="end">
-					<a mat-stroked-button color="primary" href="https://youtu.be/{{result.id.videoId}}" *ngIf="result?.id?.videoId" target="_blank">
-						View on YouTube
+					<a mat-stroked-button color="primary" href="https://youtu.be/{{result?.id?.videoId}}" *ngIf="result?.id?.videoId" target="_blank">
+						View video on YouTube
+					</a>
+					<a mat-stroked-button color="primary" href="https://youtube.com/channel/{{result?.id?.channelId}}" *ngIf="result?.id?.channelId" target="_blank">
+						View channel on YouTube
+					</a>
+					<a mat-stroked-button color="primary" href="https://www.youtube.com/playlist?list={{result?.id?.playlistId}}" *ngIf="result?.id?.playlistId" target="_blank">
+						View playlist on YouTube
 					</a>
 				</mat-card-actions>
 				<ng-template #codeDialog>
