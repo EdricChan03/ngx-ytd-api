@@ -96,9 +96,21 @@ export class DemoSearchComponent {
 		this.searchForm.reset();
 	}
 	search(pageToken?: string) {
+		const _apiConfig = {
+			key: ''
+		};
+		const _rawValue = this.searchForm.getRawValue();
+		for (const prop in _rawValue) {
+			if (typeof _rawValue[prop] === 'object') {
+				// Assume object is `videoOptions`
+				console.log(_rawValue[prop]);
+			} else {
+				_apiConfig[prop] = _rawValue[prop];
+			}
+		}
 		// const _apiConfig: NgxYtdApiSearchOpts = this.searchForm.getRawValue();
 		console.log(this.searchForm.getRawValue());
-		this.ytApi.search(this.searchForm.get('query').value, { key: this.searchForm.controls['key'].value }).subscribe(result => {
+		this.ytApi.search(this.searchForm.get('query').value, _apiConfig).subscribe(result => {
 			this.searchResult = result;
 			console.log(result);
 		}, error => {
