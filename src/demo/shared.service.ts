@@ -1,8 +1,7 @@
-import { Injectable, Component, NgModule } from '@angular/core';
+import { Injectable, Component } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { environment } from './environments/environment';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { MaterialModule } from './material.module';
 
 @Component({
 	selector: 'app-dev-mode-dialog',
@@ -10,7 +9,9 @@ import { MaterialModule } from './material.module';
 	<h2 matDialogTitle>Developer Mode</h2>
 	<mat-dialog-content fxLayout="column">
 		<p>This dialog is used for configuring options in developer mode.</p>
-		<mat-slide-toggle>Show version picker</mat-slide-toggle>
+		<mat-checkbox>Show version picker</mat-checkbox>
+		<br>
+		<mat-checkbox>Show developer mode chip</mat-checkbox>
 		<br>
 	</mat-dialog-content>
 	<mat-dialog-actions align="end">

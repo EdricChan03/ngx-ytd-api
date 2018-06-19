@@ -1,5 +1,5 @@
 import { Component, TemplateRef } from '@angular/core';
-import { NgxYtdApiSearchService, NgxYtdApiSearchResult, NgxYtdApiVideoSearchOpts } from 'ngx-ytd-api/search';
+import { NgxYtdApiSearchService, NgxYtdApiSearchResult, NgxYtdApiSearchOpts } from 'ngx-ytd-api/search';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef, MatDialog } from '@angular/material/dialog';
 import { SharedService } from '../../shared.service';
@@ -19,6 +19,36 @@ export class DemoSearchComponent {
 	searchForm: FormGroup;
 	searchOptionsForm: FormGroup;
 	codeDialogRef: MatDialogRef<any>;
+	types = [
+		{
+			value: 'video',
+			name: 'Videos only'
+		},
+		{
+			value: 'channel',
+			name: 'Channels only'
+		},
+		{
+			value: 'playlist',
+			name: 'Playlists only'
+		},
+		{
+			value: 'video,channel',
+			name: 'Videos & Channels only'
+		},
+		{
+			value: 'video,playlist',
+			name: 'Videos & Playlists only'
+		},
+		{
+			value: 'channel,playlist',
+			name: 'Channels & Playlists only'
+		},
+		{
+			value: 'video,channel,playlist',
+			name: 'Videos, Channels & Playlists (default)'
+		}
+	];
 	constructor(
 		private ytApi: NgxYtdApiSearchService,
 		private fb: FormBuilder,
@@ -27,35 +57,48 @@ export class DemoSearchComponent {
 	) {
 		this.searchForm = fb.group({
 			query: ['', Validators.required],
+			apiKey: ['', [Validators.required, Validators.maxLength(39), Validators.minLength(39)]],
 			embeddable: false,
-			maxResults: [50, [Validators.required, Validators.min(0), Validators.max(50)]]
+			maxResults: [50, [Validators.required, Validators.min(0), Validators.max(50)]],
+			type: ['video,channel,playlist', Validators.required],
+			videoOptions: fb.group({
+				videoCaption: 'any',
+				videoCategoryId: '',
+				videoDefinition: 'any',
+				videoDuration: 'any',
+				videoEmbeddable: 'any',
+				videoLicense: 'any',
+				videoSyndicated: 'any',
+				videoType: 'any'
+			})
 		});
 		this.searchOptionsForm = fb.group({
 			showJsonResult: false,
 			showDescription: false
 		});
 	}
+	get isVideoType(): boolean {
+		if (this.searchForm.get('type').value.indexOf('video') > -1) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 	getValue(value: any, defaultValue: any) {
 		return value ? value : defaultValue;
 	}
 	submitForm() {
 		if (this.searchForm.valid) {
-			this.searchVideos();
+			this.search();
 		}
 	}
 	clearForm() {
 		this.searchForm.reset();
 	}
-	searchVideos(pageToken?: string) {
-		const _apiConfig: NgxYtdApiVideoSearchOpts = {
-			apiKey: 'AIzaSyBmfHhVrxcau7hOicv9ksQ6uW2PQMLzv10',
-			videoEmbeddable: this.getValue(this.searchForm.get('embeddable').value, false),
-			maxResults: this.getValue(this.searchForm.get('maxResults').value, 50)
-		};
-		if (pageToken) {
-			_apiConfig['pageToken'] = pageToken;
-		}
-		this.ytApi.searchVideos(this.searchForm.get('query').value, _apiConfig).subscribe(result => {
+	search(pageToken?: string) {
+		// const _apiConfig: NgxYtdApiSearchOpts = this.searchForm.getRawValue();
+		console.log(this.searchForm.getRawValue());
+		this.ytApi.search(this.searchForm.get('query').value, { apiKey: this.searchForm.controls['apiKey'].value }).subscribe(result => {
 			this.searchResult = result;
 			console.log(result);
 		}, error => {

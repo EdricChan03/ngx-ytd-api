@@ -27,6 +27,22 @@ export class VersionPickerComponent implements OnInit {
 			this.http.get<VersionFile>('/versions.json').subscribe(result => {
 				this.versions = result;
 			});
+		} else {
+			this.versions = {
+				latest: 'my-version',
+				versions: [
+					{
+						type: 'version',
+						name: 'testing-version',
+						link: '/'
+					},
+					{
+						type: 'version',
+						name: 'testing-version',
+						link: '/'
+					}
+				]
+			};
 		}
 	}
 }

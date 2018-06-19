@@ -24,9 +24,72 @@
 					<input matInput formControlName="query">
 					<mat-error *ngIf="searchForm.get('query')?.hasError('required')">This is required.</mat-error>
 				</mat-form-field>
-				<br>
-				<mat-checkbox formControlName="embeddable">Embeddable?</mat-checkbox>
-				<br>
+				<mat-form-field>
+					<mat-label>API Key</mat-label>
+					<input matInput formControlName="apiKey">
+					<mat-error *ngIf="searchForm.get('apiKey')?.hasError('required')">This is required.</mat-error>
+					<mat-error *ngIf="searchForm.get('apiKey')?.hasError('minlength') || searchForm.get('apiKey')?.hasError('maxlength')">Please enter a valid API key.</mat-error>
+				</mat-form-field>
+				<mat-form-field>
+					<mat-label>Search types</mat-label>
+					<mat-select formControlName="type">
+						<mat-option *ngFor="let typeOpt of types" [value]="typeOpt.value">{{typeOpt.name}}</mat-option>
+					</mat-select>
+					<mat-error *ngIf="searchForm.get('type')?.hasError('required')">This is required.</mat-error>
+				</mat-form-field>
+				<mat-expansion-panel [style.display]="isVideoType ? 'block' : 'none'">
+					<mat-expansion-panel-header>
+						<mat-panel-title>Video search options</mat-panel-title>
+					</mat-expansion-panel-header>
+					<form formGroupName="videoOptions" fxLayout="column">
+						<h4>Video category ID</h4>
+						<mat-form-field>
+							<mat-label>Video category ID</mat-label>
+							<input matInput formControlName="videoCategoryId">
+						</mat-form-field>
+						<h4>Video captions</h4>
+						<mat-radio-group formControlName="videoCaption" fxLayout="column">
+							<mat-radio-button class="example-radio-button" value="any">Any</mat-radio-button>
+							<mat-radio-button class="example-radio-button" value="closedcaption">Closed Caption (CC)</mat-radio-button>
+							<mat-radio-button class="example-radio-button" value="none">None</mat-radio-button>
+						</mat-radio-group>
+						<h4>Video definition</h4>
+						<mat-radio-group formControlName="videoDefinition" fxLayout="column">
+							<mat-radio-button class="example-radio-button" value="any">Any</mat-radio-button>
+							<mat-radio-button class="example-radio-button" value="high">High (HD)</mat-radio-button>
+							<mat-radio-button class="example-radio-button" value="standard">Standard (SD)</mat-radio-button>
+						</mat-radio-group>
+						<h4>Video duration</h4>
+						<mat-radio-group formControlName="videoDuration" fxLayout="column">
+							<mat-radio-button class="example-radio-button" value="any">Any</mat-radio-button>
+							<mat-radio-button class="example-radio-button" value="long">Long</mat-radio-button>
+							<mat-radio-button class="example-radio-button" value="medium">Medium</mat-radio-button>
+							<mat-radio-button class="example-radio-button" value="short">Short</mat-radio-button>
+						</mat-radio-group>
+						<h4>Video embeddable</h4>
+						<mat-radio-group formControlName="videoEmbeddable" fxLayout="column">
+							<mat-radio-button class="example-radio-button" value="any">Any</mat-radio-button>
+							<mat-radio-button class="example-radio-button" value="true">True</mat-radio-button>
+						</mat-radio-group>
+						<h4>Video license</h4>
+						<mat-radio-group formControlName="videoLicense" fxLayout="column">
+							<mat-radio-button class="example-radio-button" value="any">Any</mat-radio-button>
+							<mat-radio-button class="example-radio-button" value="creativeCommon">Creative Commons</mat-radio-button>
+							<mat-radio-button class="example-radio-button" value="youtube">YouTube</mat-radio-button>
+						</mat-radio-group>
+						<h4>Video syndicated</h4>
+						<mat-radio-group formControlName="videoSyndicated" fxLayout="column">
+							<mat-radio-button class="example-radio-button" value="any">Any</mat-radio-button>
+							<mat-radio-button class="example-radio-button" value="true">True</mat-radio-button>
+						</mat-radio-group>
+						<h4>Video type</h4>
+						<mat-radio-group formControlName="videoType" fxLayout="column">
+							<mat-radio-button class="example-radio-button" value="any">Any</mat-radio-button>
+							<mat-radio-button class="example-radio-button" value="episode">Episode</mat-radio-button>
+							<mat-radio-button class="example-radio-button" value="movie">Movie</mat-radio-button>
+						</mat-radio-group>
+					</form>
+				</mat-expansion-panel>
 				<mat-form-field>
 					<mat-label>Max results</mat-label>
 					<input type="number" matInput formControlName="maxResults">
@@ -35,22 +98,22 @@
 				</mat-form-field>
 			</form>
 			<form [formGroup]="searchOptionsForm" class="example-form" fxLayout="column">
-				<h3>Options</h3>
+				<h3>Options (for result)</h3>
 				<mat-slide-toggle formControlName="showJsonResult">Show JSON result?</mat-slide-toggle>
 				<mat-slide-toggle formControlName="showDescription">Show description?</mat-slide-toggle>
 			</form>
 		</mat-card-content>
 		<mat-card-actions align="end" class="example-card-actions">
-			<button (click)="clearForm()" mat-stroked-button color="warn" [disabled]="searchForm.invalid">Clear form</button>
-			<button (click)="searchVideos()" mat-stroked-button color="primary" [disabled]="searchForm.invalid">Search</button>
+			<button (click)="clearForm()" mat-stroked-button color="warn" [disabled]="searchForm.invalid">Reset</button>
+			<button (click)="search()" mat-stroked-button color="primary" [disabled]="searchForm.invalid">Search</button>
 		</mat-card-actions>
 	</mat-card>
 	<hr>
 	<div id="search-result" *ngIf="searchResult && !searchOptionsForm.get('showJsonResult').value">
 		<div class="paginator">
-			<button mat-stroked-button color="accent" (click)="searchVideos(searchResult?.prevPageToken)" *ngIf="searchResult?.prevPageToken">
+			<button mat-stroked-button color="accent" (click)="search(searchResult?.prevPageToken)" *ngIf="searchResult?.prevPageToken">
 				<mat-icon>keyboard_arrow_left</mat-icon> Previous page</button>
-			<button mat-stroked-button color="accent" (click)="searchVideos(searchResult?.nextPageToken)" *ngIf="searchResult?.nextPageToken">Next page
+			<button mat-stroked-button color="accent" (click)="search(searchResult?.nextPageToken)" *ngIf="searchResult?.nextPageToken">Next page
 				<mat-icon>keyboard_arrow_right</mat-icon>
 			</button>
 		</div>
@@ -87,9 +150,9 @@
 			</mat-card>
 		</div>
 		<div class="paginator">
-			<button mat-stroked-button color="accent" (click)="searchVideos(searchResult.prevPageToken)" *ngIf="searchResult.prevPageToken">
+			<button mat-stroked-button color="accent" (click)="search(searchResult.prevPageToken)" *ngIf="searchResult.prevPageToken">
 				<mat-icon>keyboard_arrow_left</mat-icon> Previous page</button>
-			<button mat-stroked-button color="accent" (click)="searchVideos(searchResult.nextPageToken)" *ngIf="searchResult.nextPageToken">Next page
+			<button mat-stroked-button color="accent" (click)="search(searchResult.nextPageToken)" *ngIf="searchResult.nextPageToken">Next page
 				<mat-icon>keyboard_arrow_right</mat-icon>
 			</button>
 		</div>

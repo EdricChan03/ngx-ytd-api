@@ -17,27 +17,10 @@ See the [readme for search](../../src/lib/search/README.md) to view the docs.
 
 ## Methods
 
-### `NgxYtdApiService#search` <sub><sup>DEPRECATED</sup></sub>
+### `NgxYtdApiService#search`
 
 #### Description
-Searches for content such as channels, videos and livestream broadcasts.
-
-#### Parameters
-Name | Description | Notes
----|---|---
-`query: string` | The query to search for | -
-`opts: NgxYtdApiSerchOpts` | Options for the API | See [NgxYtdApiSearchOpts](#ngxytdapisearchopts) for all properties
-
-#### Returns
-`Observable<NgxYtdApiSearchResult>`: Results of the search as a stream
-
-#### Notes
-This is deprecated (will be removed in the beta). Consider using [`NgxYtdApiService#searchVideos`](#ngxytdapiservicesearchvideos) instead.
-
-### `NgxYtdApiService#searchVideos`
-
-#### Description
-Searches for content such as channels, videos and livestream broadcasts.
+Searches for content on YouTube using the YouTube Data API v3.
 
 #### Parameters
 Name | Description | Notes
@@ -55,11 +38,9 @@ Name | Description | Notes
 ### `NgxYtdApiSearchOpts`
 
 #### Description
-
-### `NgxYtdApiVideoSearchOpts`
-
-#### Description
+Search options for `NgxYtdApiSearch#search`.
 
 ### `NgxYtdApiSearchResult`
 
 #### Description
+The result of `NgxYtdApiSearch#search`.
