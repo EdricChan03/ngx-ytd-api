@@ -19,11 +19,6 @@ describe('NgxYtdApiService', () => {
 	it('should be created', () => {
 		expect(service).toBeTruthy();
 	});
-	it('#searchVideos should return a result', async(() => {
-		service.searchVideos('minecraft', { apiKey: API_KEY }).subscribe(result => {
-			expect(result).not.toBeNull();
-		});
-	}));
 	it('#search should return a result', async(() => {
 		service.search('let\'s play', { apiKey: API_KEY }).subscribe(result => {
 			expect(result).not.toBeNull();
