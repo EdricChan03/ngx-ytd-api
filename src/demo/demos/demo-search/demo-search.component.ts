@@ -57,7 +57,7 @@ export class DemoSearchComponent {
 	) {
 		this.searchForm = fb.group({
 			query: ['', Validators.required],
-			apiKey: ['', [Validators.required, Validators.maxLength(39), Validators.minLength(39)]],
+			key: ['', [Validators.required, Validators.maxLength(39), Validators.minLength(39)]],
 			embeddable: false,
 			maxResults: [50, [Validators.required, Validators.min(0), Validators.max(50)]],
 			type: ['video,channel,playlist', Validators.required],
@@ -98,7 +98,7 @@ export class DemoSearchComponent {
 	search(pageToken?: string) {
 		// const _apiConfig: NgxYtdApiSearchOpts = this.searchForm.getRawValue();
 		console.log(this.searchForm.getRawValue());
-		this.ytApi.search(this.searchForm.get('query').value, { apiKey: this.searchForm.controls['apiKey'].value }).subscribe(result => {
+		this.ytApi.search(this.searchForm.get('query').value, { key: this.searchForm.controls['key'].value }).subscribe(result => {
 			this.searchResult = result;
 			console.log(result);
 		}, error => {

@@ -25,7 +25,32 @@ To use the search module, follow these steps:
 ## Examples
 Here's a list of examples that you can use:
 
-### Searching for videos
+### Searching for videos, channels & playlists with safe search enabled
+
+```typescript
+import { NgxYtdApiSearchService } from 'ngx-ytd-api/search';
+
+@Component({
+	template: `
+	<input [(ngModel)]="query" placeholder="Query">
+	<button (click)="search()">Search</button>
+	<pre><code id="result"></code></pre>
+	`
+})
+export class MyAppComponent {
+	constructor(private ytdApi: NgxYtdApiSearchService) { }
+	query: string = '';
+	search() {
+		// Note: Replace 'your-youtube-api-key' with the API key that you've retrieved from the Cloud Console
+		this.ytdApi.search(this.query, { key: 'your-youtube-api-key', type: 'video,channel,playlist', safeSearch: 'strict' }).subscribe(result => {
+			console.log(`Result: ${JSON.stringify(result.items)}`);
+			document.getElementById('result').innerText = result;
+		})
+	}
+}
+```
+
+### Searching for videos only
 
 ```typescript
 import { NgxYtdApiSearchService } from 'ngx-ytd-api/search';
@@ -39,8 +64,8 @@ import { NgxYtdApiSearchService } from 'ngx-ytd-api/search';
 export class MyAppComponent {
 	constructor(private ytdApi: NgxYtdApiSearchService) { }
 	searchVideos() {
-		// Note: Please replace 'your-youtube-api-key' with the API key that you've retrieved from the Cloud Console
-		this.ytdApi.searchVideos({ apiKey: 'your-youtube-api-key', query: 'meme review' }).subscribe(result => {
+		// Note: Replace 'your-youtube-api-key' with the API key that you've retrieved from the Cloud Console
+		this.ytdApi.search('meme review', { key: 'your-youtube-api-key', type: 'video' }).subscribe(result => {
 			console.log(`Result: ${JSON.stringify(result.items)}`);
 			document.getElementById('result').innerText = result;
 		})

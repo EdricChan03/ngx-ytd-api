@@ -26,9 +26,9 @@
 				</mat-form-field>
 				<mat-form-field>
 					<mat-label>API Key</mat-label>
-					<input matInput formControlName="apiKey">
-					<mat-error *ngIf="searchForm.get('apiKey')?.hasError('required')">This is required.</mat-error>
-					<mat-error *ngIf="searchForm.get('apiKey')?.hasError('minlength') || searchForm.get('apiKey')?.hasError('maxlength')">Please enter a valid API key.</mat-error>
+					<input matInput formControlName="key">
+					<mat-error *ngIf="searchForm.get('key')?.hasError('required')">This is required.</mat-error>
+					<mat-error *ngIf="searchForm.get('key')?.hasError('minlength') || searchForm.get('key')?.hasError('maxlength')">Please enter a valid API key.</mat-error>
 				</mat-form-field>
 				<mat-form-field>
 					<mat-label>Search types</mat-label>

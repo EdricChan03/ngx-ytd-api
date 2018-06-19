@@ -2,11 +2,7 @@
  * Generic options
  */
 export interface NgxYtdApiGenericOpts {
-	/**
-	 * The API key.
-	 * @todo Add support for adding an API key via `forRoot` or `providers`
-	 */
-	apiKey: string;
+	key: string;
 }
 
 
