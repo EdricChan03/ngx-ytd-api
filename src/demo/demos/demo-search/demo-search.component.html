@@ -59,6 +59,12 @@
 							<mat-radio-button class="example-radio-button" value="high">High (HD)</mat-radio-button>
 							<mat-radio-button class="example-radio-button" value="standard">Standard (SD)</mat-radio-button>
 						</mat-radio-group>
+						<h4>Video dimension</h4>
+						<mat-radio-group formControlName="videoDimension" fxLayout="column">
+							<mat-radio-button class="example-radio-button" value="any">Any</mat-radio-button>
+							<mat-radio-button class="example-radio-button" value="2d">2D</mat-radio-button>
+							<mat-radio-button class="example-radio-button" value="3d">3D</mat-radio-button>
+						</mat-radio-group>
 						<h4>Video duration</h4>
 						<mat-radio-group formControlName="videoDuration" fxLayout="column">
 							<mat-radio-button class="example-radio-button" value="any">Any</mat-radio-button>
@@ -137,10 +143,12 @@
 					<a mat-stroked-button color="primary" href="https://youtu.be/{{result?.id?.videoId}}" *ngIf="result?.id?.videoId" target="_blank">
 						View video on YouTube
 					</a>
-					<a mat-stroked-button color="primary" href="https://youtube.com/channel/{{result?.id?.channelId}}" *ngIf="result?.id?.channelId" target="_blank">
+					<a mat-stroked-button color="primary" href="https://youtube.com/channel/{{result?.id?.channelId}}" *ngIf="result?.id?.channelId"
+					 target="_blank">
 						View channel on YouTube
 					</a>
-					<a mat-stroked-button color="primary" href="https://www.youtube.com/playlist?list={{result?.id?.playlistId}}" *ngIf="result?.id?.playlistId" target="_blank">
+					<a mat-stroked-button color="primary" href="https://www.youtube.com/playlist?list={{result?.id?.playlistId}}" *ngIf="result?.id?.playlistId"
+					 target="_blank">
 						View playlist on YouTube
 					</a>
 				</mat-card-actions>
