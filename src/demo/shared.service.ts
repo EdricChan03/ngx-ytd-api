@@ -34,15 +34,33 @@ export class SharedService {
 		private dialog: MatDialog
 	) { }
 	private _sidenav: MatSidenav;
+	/**
+	 * A sidenav to set
+	 */
 	set sidenav(sidenavVar: MatSidenav) {
 		this._sidenav = sidenavVar;
 	}
+	/**
+	 * Getter to retrieve sidenav
+	 */
 	get sidenav(): MatSidenav {
 		return this._sidenav;
 	}
+	/**
+	 * Checks whether the app is deployed in production mode
+	 */
 	get isProd(): boolean {
 		return environment.production;
 	}
+	/**
+	 * Checks whether the user is online
+	 */
+	get isOnline(): boolean {
+		return navigator.onLine;
+	}
+	/**
+	 * Opens a developer config dialog
+	 */
 	openDevConfig() {
 		this.dialog.open(DevModeDialogComponent);
 	}

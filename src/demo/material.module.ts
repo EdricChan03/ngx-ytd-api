@@ -16,6 +16,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
@@ -39,11 +40,16 @@ import { DomSanitizer } from '@angular/platform-browser';
 		MatSelectModule,
 		MatSlideToggleModule,
 		MatSidenavModule,
+		MatSnackBarModule,
 		MatToolbarModule,
 		MatTooltipModule
 	],
 	providers: [
-		{ provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } }
+		{ provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } },
+		{
+			provide: MAT_SNACK_BAR_DEFAULT_OPTIONS,
+			useValue: { duration: 2500, panelClass: 'mat-elevation-z3', horizontalPosition: 'start' }
+		}
 	]
 })
 export class MaterialModule {

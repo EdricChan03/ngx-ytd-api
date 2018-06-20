@@ -2,6 +2,7 @@ import { Component, TemplateRef } from '@angular/core';
 import { NgxYtdApiSearchService, NgxYtdApiSearchResult, NgxYtdApiSearchOpts } from 'ngx-ytd-api/search';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef, MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { SharedService } from '../../shared.service';
 
 @Component({
@@ -53,6 +54,7 @@ export class DemoSearchComponent {
 		private ytApi: NgxYtdApiSearchService,
 		private fb: FormBuilder,
 		private dialog: MatDialog,
+		private snackBar: MatSnackBar,
 		public shared: SharedService
 	) {
 		this.searchForm = fb.group({
@@ -88,12 +90,39 @@ export class DemoSearchComponent {
 		return value ? value : defaultValue;
 	}
 	submitForm() {
-		if (this.searchForm.valid) {
-			this.search();
+		if (!this.shared.isOnline) {
+			const snackBarRef = this.snackBar.open(
+				'Error: Your device is offline. Please check and ensure that you have a stable internet connection before retrying.',
+				'Retry',
+				{ duration: 5000 }
+			);
+			snackBarRef.onAction().subscribe(() => {
+				this.submitForm();
+			});
+		} else {
+			if (this.searchForm.valid) {
+				this.search();
+			}
 		}
 	}
 	clearForm() {
-		this.searchForm.reset();
+		this.searchForm.reset({
+			query: '',
+			key: '',
+			maxResults: 50,
+			type: 'video,channel,playlist',
+			videoOptions: {
+				videoCaption: 'any',
+				videoCategoryId: '',
+				videoDefinition: 'any',
+				videoDimension: 'any',
+				videoDuration: 'any',
+				videoEmbeddable: 'any',
+				videoLicense: 'any',
+				videoSyndicated: 'any',
+				videoType: 'any'
+			}
+		});
 	}
 	search(pageToken?: string) {
 		const _apiConfig: NgxYtdApiSearchOpts = {

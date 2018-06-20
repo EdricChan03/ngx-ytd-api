@@ -110,8 +110,8 @@
 			</form>
 		</mat-card-content>
 		<mat-card-actions align="end" class="example-card-actions">
-			<button (click)="clearForm()" mat-stroked-button color="warn" [disabled]="searchForm.invalid">Reset</button>
-			<button (click)="search()" mat-stroked-button color="primary" [disabled]="searchForm.invalid">Search</button>
+			<button (click)="clearForm()" mat-stroked-button color="warn">Reset</button>
+			<button (click)="submitForm()" mat-stroked-button color="primary" [disabled]="searchForm.invalid">Search</button>
 		</mat-card-actions>
 	</mat-card>
 	<hr>

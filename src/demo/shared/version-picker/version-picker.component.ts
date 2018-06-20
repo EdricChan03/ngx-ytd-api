@@ -4,12 +4,12 @@ import { VERSION as ngxYtdApiVersion } from 'ngx-ytd-api';
 import { environment } from '../../environments/environment';
 
 export interface VersionFile {
-	latest: string;
 	versions: VersionMenuItem[];
 }
 export interface VersionMenuItem {
-	type: 'version' | 'subheader';
-	name: string;
+	type: 'version' | 'subheader' | 'divider' | 'dividerInset';
+	isSelected?: boolean;
+	name?: string;
 	link?: string;
 	hidden?: boolean;
 }
@@ -29,16 +29,33 @@ export class VersionPickerComponent implements OnInit {
 			});
 		} else {
 			this.versions = {
-				latest: 'my-version',
 				versions: [
 					{
 						type: 'version',
-						name: 'testing-version',
+						name: this.currentVersion,
+						link: '/',
+						isSelected: true
+					},
+					{
+						type: 'divider'
+					},
+					{
+						type: 'subheader',
+						name: 'Other versions'
+					},
+					{
+						type: 'version',
+						name: '0.0.0-alpha.0',
 						link: '/'
 					},
 					{
 						type: 'version',
-						name: 'testing-version',
+						name: '0.0.0-beta.0',
+						link: '/'
+					},
+					{
+						type: 'version',
+						name: '0.0.0-rc.0',
 						link: '/'
 					}
 				]
