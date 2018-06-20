@@ -6,7 +6,7 @@
 > - :warning: This file may get huge. Consider using the _Find_ command on your browser/code editor to find the method/interface you're looking for.
 > - :warning: Since the library is in **alpha**, some of the APIs you see below may change or get removed entirely. Please check back to this page weekly.
 
-<sub>_Updated as of `1.0.0-alpha.1`_</sub>
+<sub>_Updated as of `1.0.0-alpha.3`_</sub>
 
 ---
 

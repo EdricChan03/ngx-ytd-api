@@ -1,3 +1,28 @@
+<a name="1.0.0-alpha.3"></a>
+# [1.0.0-alpha.3 greyhound-puma](https://github.com/Chan4077/ngx-ytd-api/compare/1.0.0-alpha.3...1.0.0-alpha.2) (2018-06-19)
+
+
+### Bug Fixes
+
+* **demo:** update card styles ([70bcccb](https://github.com/Chan4077/ngx-ytd-api/commit/70bcccb))
+* **lib:** change `apiKey` to `key` ([985595b](https://github.com/Chan4077/ngx-ytd-api/commit/985595b))
+* **lib:** correct dest path for `ng-packagr` ([aac1cb2](https://github.com/Chan4077/ngx-ytd-api/commit/aac1cb2))
+
+
+### Features
+
+* **lib:** add `videoDimension` property ([e888586](https://github.com/Chan4077/ngx-ytd-api/commit/e888586))
+* **lib/search:** add new options for config ([383dfcc](https://github.com/Chan4077/ngx-ytd-api/commit/383dfcc))
+
+
+### BREAKING CHANGES
+
+* **lib:** `NgxYtdApiGenericOpts#apiKey` has been renamed to `NgxYtdApiGenericOpts#key` for convenience with the YouTube Data v3 API.
+
+* **lib/search:** `NgxYtdApiService#searchVideos` has been removed in favour of `NgxYtdApiService#search` as the former is the same, except that the `type` parameter would be set as `video`. For those who want to filter videos, pass in a `type` parameter of `video` as the configuration to only search videos. See `NgxYtdApiSearchOpts#type` for more info.
+
+
+
 <a name="1.0.0-alpha.2"></a>
 # [1.0.0-alpha.2 capybara-spaniel](https://github.com/Chan4077/ngx-ytd-api/releases/tag/1.0.0-alpha.2) (2018-06-07)
 

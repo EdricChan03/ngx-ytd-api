@@ -10,9 +10,11 @@
 			"link": "/master"
 		},
 		{
+			"type": "divider"
+		},
+		{
 			"type": "subheader",
-			"name": "All versions",
-			"hidden": true
+			"name": "All versions"
 		},
 		{
 			"type": "version",
@@ -24,6 +26,11 @@
 			"type": "version",
 			"name": "1.0.0-alpha.2",
 			"link": "/1.0.0-alpha.2"
+		},
+		{
+			"type": "version",
+			"name": "1.0.0-alpha.3",
+			"link": "/1.0.0-alpha.3"
 		}
 	]
 }
