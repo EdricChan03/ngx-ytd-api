@@ -51,25 +51,46 @@ npm install --save Chan4077/ngx-ytd-api-builds
 
 ### Available features
 
-Feature | Notes | Docs
----|---|---
-Search |  | Coming soon
+<table>
+	<tbody>
+		<tr>
+			<th>Feature</th>
+			<th>Notes</th>
+			<th>Docs</th>
+		</tr>
+		<tr>
+			<td>Search</td>
+			<td>
+				<ul>
+					<li>Full API documentation coming soon!</li>
+					<li>Most API features are available.</li>
+				</ul>
+			</td>
+			<td>
+				<ul>
+					<li><a href="https://developers.google.com/youtube/v3/docs/search/list#parameters">API parameters</a></li>
+					<li><a href="https://developers.google.com/youtube/v3/docs/search#resource-representation">Resource representation</a></li>
+					<li><a href="https://developers.google.com/youtube/v3/docs/search#properties">Properties</a></li>
+				</ul>
+			</td>
+	</tbody>
+</table>
 
 ### In-progress / planned / non-planned features
 
 Feature | Status | Issue
 ---|---|---
-Activities | Not started / planned | - 
-Captions | Not started / planned | -
-Channel banner / Channel sections / Channels | Not started / planned | -
-Comment threads / Comments | Not started / planned | -
-Guide categories | Not started / planned | -
-I18n | Not started / planned | -
-Playlist items / Playlists | Not started / planned | -
-Subscriptions | Not started / planned | -
-Thumbnails | Not started / planned | -
-Video abuse report reasons / Video categories / Videos | Not started / planned | -
-Watermarks | Not started / planned | -
+Activities | Not planned | - 
+Captions | Not planned | -
+Channel banner / Channel sections / Channels | Not planned | -
+Comment threads / Comments | Planned | [#6](https://github.com/Chan4077/ngx-ytd-api/issues/6)
+Guide categories | Not planned | -
+I18n | Not planned | -
+Playlist items / Playlists | Not planned | -
+Subscriptions | Not planned | -
+Thumbnails | Not planned | -
+Video abuse report reasons / Video categories / Videos | Not planned | -
+Watermarks | Not planned | -
 
 See [here](https://developers.google.com/youtube/v3/docs) for a list of all endpoints of the YouTube Data API.
 

@@ -60,6 +60,7 @@ case $DEPLOY_MODE in
 	./scripts/publish-build-artifacts.sh
 	;;
 "docs")
+	echo "Tag: $TRAVIS_TAG"
 	if [[ -n "$TRAVIS_TAG" ]]; then
 		echo -e "\x1b[34mGenerating docs for tag ${TRAVIS_TAG}...\x1b[0m"
 		./scripts/build-docs.sh --generate-for-tag
