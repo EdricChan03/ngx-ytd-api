@@ -136,6 +136,23 @@ export interface NgxYtdApiSearchOpts extends NgxYtdApiGenericOpts {
 
 }
 
+export interface NgxYtdApiSearchResultItemThumbnails {
+	[key: string]: NgxYtdApiSearchResultItemThumbnail;
+}
+export interface NgxYtdApiSearchResultItemThumbnail {
+	/**
+	 * The URL of the thumbnail
+	 */
+	url?: string;
+	/**
+	 * The width of the thumbnail
+	 */
+	width?: number;
+	/**
+	 * The height of the thumbnail
+	 */
+	height?: number;
+}
 export interface NgxYtdApiSearchResultItem extends NgxYtdApiGenericResult {
 	/**
 	 * The id object contains info which can be used for uniquely identifing the resource
@@ -173,7 +190,7 @@ export interface NgxYtdApiSearchResultItem extends NgxYtdApiGenericResult {
 		/**
 		 * An object of the thumbnails
 		 */
-		thumbnails?: any;
+		thumbnails?: NgxYtdApiSearchResultItemThumbnails;
 		/**
 		 * The title of the channel that published the resource
 		 */
