@@ -135,8 +135,11 @@ export class DemoSearchComponent {
 				if (this.isVideoType) {
 					// tslint:disable-next-line:forin
 					for (const objProp in _rawValueObj) {
-						// console.log(_rawValueObj[objProp])
-						_apiConfig[objProp] = _rawValueObj[objProp];
+						if (typeof _apiConfig[objProp] === 'string') {
+							if (_apiConfig[objProp].length > 0) {
+								_apiConfig[objProp] = _rawValueObj[objProp];
+							}
+						}
 					}
 				}
 				// Assume object is `videoOptions`

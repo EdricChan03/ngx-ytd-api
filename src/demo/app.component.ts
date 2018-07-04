@@ -5,6 +5,8 @@ import { ListsService, Demo, Doc } from './lists.service';
 import { SharedService } from './shared.service';
 import { MatSidenav } from '@angular/material/sidenav';
 
+declare type ToggleState = 'notToggled' | 'toggled';
+
 @Component({
 	selector: 'app-root',
 	templateUrl: './app.component.html',
@@ -36,9 +38,9 @@ import { MatSidenav } from '@angular/material/sidenav';
 	]
 })
 export class AppComponent implements OnInit {
-	toggleState: 'toggled' | 'notToggled' = 'notToggled';
-	toggleStateDocs: 'toggled' | 'notToggled' = 'notToggled';
-	toggleStateList: 'toggled' | 'notToggled' = 'notToggled';
+	toggleStateDemos: ToggleState = 'notToggled';
+	toggleStateDocs: ToggleState = 'notToggled';
+	toggleStateList: ToggleState = 'notToggled';
 	demos: Demo[];
 	docs: Doc[];
 	@ViewChild('docsSidenav') sidenav: MatSidenav;
@@ -59,10 +61,10 @@ export class AppComponent implements OnInit {
 	// tslint:disable-next-line:no-shadowed-variable
 	toggleStates(state: 'demos' | 'docs') {
 		if (state === 'demos') {
-			if (this.toggleState === 'toggled') {
-				this.toggleState = 'notToggled';
+			if (this.toggleStateDemos === 'toggled') {
+				this.toggleStateDemos = 'notToggled';
 			} else {
-				this.toggleState = 'toggled';
+				this.toggleStateDemos = 'toggled';
 			}
 		} else if (state === 'docs') {
 			if (this.toggleStateDocs === 'toggled') {
@@ -71,19 +73,21 @@ export class AppComponent implements OnInit {
 				this.toggleStateDocs = 'toggled';
 			}
 		}
+		if (this.toggleStateDemos === 'toggled' && this.toggleStateDocs === 'toggled') {
+			this.toggleStateList = 'toggled';
+		} else {
+			this.toggleStateList = 'notToggled';
+		}
 	}
 	toggleLists(event?: Event) {
 		if (this.toggleStateList === 'toggled') {
 			this.toggleStateList = 'notToggled';
+			this.toggleStateDemos = 'notToggled';
+			this.toggleStateDocs = 'notToggled';
 		} else {
 			this.toggleStateList = 'toggled';
-		}
-		if (event) {
-			this.toggleDemosList(event);
-			this.toggleDocsList(event);
-		} else {
-			this.toggleDemosList();
-			this.toggleDocsList();
+			this.toggleStateDemos = 'toggled';
+			this.toggleStateDocs = 'toggled';
 		}
 	}
 	toggleDemosList(event?: Event) {
