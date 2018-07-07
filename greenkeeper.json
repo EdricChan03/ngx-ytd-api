@@ -1,11 +1,10 @@
 {
-  "groups": {
-    "default": {
-      "packages": [
-        "package.json",
-        "src/lib/package.json",
-        "src/lib/search/package.json"
-      ]
-    }
-  }
+	"groups": {
+		"default": {
+			"packages": [
+				"package.json",
+				"src/lib/package.json"
+			]
+		}
+	}
 }
