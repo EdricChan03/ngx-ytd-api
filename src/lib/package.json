@@ -25,11 +25,11 @@
 		"email": "edric.chan.1997@gmail.com"
 	},
 	"peerDependencies": {
-		"@angular/common": "^6.0.4",
-		"@angular/core": "^6.0.4",
+		"@angular/common": "^6.0.9",
+		"@angular/core": "^6.0.9",
 		"rxjs": "^6.2.1"
 	},
 	"dependencies": {
-		"tslib": "^1.9.2"
+		"tslib": "^1.9.3"
 	}
 }
