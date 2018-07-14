@@ -1,10 +1,10 @@
-import { TestBed, inject, async, fakeAsync } from '@angular/core/testing';
+import { TestBed, async } from '@angular/core/testing';
 import { NgxYtdApiSearchService } from './ytd-api-search.service';
 import { HttpClientModule } from '@angular/common/http';
 
 // TODO(Edric): Make this private
 const API_KEY = 'AIzaSyBmfHhVrxcau7hOicv9ksQ6uW2PQMLzv10';
-describe('NgxYtdApiService', () => {
+describe('NgxYtdApiSearchService', () => {
 	let service: NgxYtdApiSearchService;
 	beforeEach(() => {
 		// Configure the module for testing

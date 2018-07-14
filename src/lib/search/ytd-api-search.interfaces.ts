@@ -1,6 +1,6 @@
-import { NgxYtdApiGenericOpts, NgxYtdApiGenericResult } from '../ytd-api.interfaces';
+import { NgxYtdApiGenericOpts, NgxYtdApiGenericResult } from 'ngx-ytd-api/core';
 
-export interface NgxYtdApiSearchOpts extends NgxYtdApiGenericOpts {
+export interface NgxYtdApiSearchListOpts extends NgxYtdApiGenericOpts {
 	/**
 	 * The channel ID to search videos from
 	 */
@@ -66,7 +66,7 @@ export interface NgxYtdApiSearchOpts extends NgxYtdApiGenericOpts {
 	 */
 	relevanceLanguage?: string;
 	/**
-	 * Indicates whether the search results should include restriected content as well as standard content.
+	 * Indicates whether the search results should include restricted content as well as standard content.
 	 * See the {@link https://developers.google.com/youtube/v3/docs/search/list#safeSearch|developer docs} for more info
 	 */
 	safeSearch?: 'moderate' | 'none' | 'strict';
@@ -128,7 +128,7 @@ export interface NgxYtdApiSearchOpts extends NgxYtdApiGenericOpts {
 	 */
 	videoSyndicated?: 'any' | 'true';
 	/**
-	 * Restrict a search to a particulat type of videos
+	 * Restrict a search to a particular type of videos
 	 * Note: the `type` parameter's value must be set to `video`
 	 * See the {@link https://developers.google.com/youtube/v3/docs/search/list#videoType|developer docs} for more info
 	 */
@@ -136,10 +136,10 @@ export interface NgxYtdApiSearchOpts extends NgxYtdApiGenericOpts {
 
 }
 
-export interface NgxYtdApiSearchResultItemThumbnails {
-	[key: string]: NgxYtdApiSearchResultItemThumbnail;
+export interface NgxYtdApiSearchListResultItemThumbnails {
+	[key: string]: NgxYtdApiSearchListResultItemThumbnail;
 }
-export interface NgxYtdApiSearchResultItemThumbnail {
+export interface NgxYtdApiSearchListResultItemThumbnail {
 	/**
 	 * The URL of the thumbnail
 	 */
@@ -153,7 +153,7 @@ export interface NgxYtdApiSearchResultItemThumbnail {
 	 */
 	height?: number;
 }
-export interface NgxYtdApiSearchResultItem extends NgxYtdApiGenericResult {
+export interface NgxYtdApiSearchListResultItem extends NgxYtdApiGenericResult {
 	/**
 	 * The id object contains info which can be used for uniquely identifing the resource
 	 * See the [documentation]{@link https://developers.google.com/youtube/v3/docs/search#id} for more info
@@ -190,7 +190,7 @@ export interface NgxYtdApiSearchResultItem extends NgxYtdApiGenericResult {
 		/**
 		 * An object of the thumbnails
 		 */
-		thumbnails?: NgxYtdApiSearchResultItemThumbnails;
+		thumbnails?: NgxYtdApiSearchListResultItemThumbnails;
 		/**
 		 * The title of the channel that published the resource
 		 */
@@ -203,7 +203,7 @@ export interface NgxYtdApiSearchResultItem extends NgxYtdApiGenericResult {
 }
 
 // Result interfaces
-export interface NgxYtdApiSearchResult extends NgxYtdApiGenericResult {
+export interface NgxYtdApiSearchListResult extends NgxYtdApiGenericResult {
 	/**
 	 * The token that can be used as the value of the `pageToken` parameter to retrieve the next page in the result set.
 	 */
@@ -232,5 +232,5 @@ export interface NgxYtdApiSearchResult extends NgxYtdApiGenericResult {
 	/**
 	 * An array of results that match the criteria
 	 */
-	items?: NgxYtdApiSearchResultItem[];
+	items?: NgxYtdApiSearchListResultItem[];
 }
