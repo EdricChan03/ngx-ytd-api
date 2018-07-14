@@ -2,6 +2,7 @@ import { Injectable, Component } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { environment } from './environments/environment';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
 	selector: 'app-dev-mode-dialog',
@@ -31,7 +32,14 @@ export class DevModeDialogComponent {
 })
 export class SharedService {
 	constructor(
-		private dialog: MatDialog
+		/**
+		 * An instance of the Material dialog component
+		 */
+		public dialog: MatDialog,
+		/**
+		 * An instance of the Material snackbar component
+		 */
+		public snackbar: MatSnackBar
 	) { }
 	private _sidenav: MatSidenav;
 	/**

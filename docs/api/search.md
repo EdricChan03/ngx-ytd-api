@@ -29,19 +29,19 @@ Searches for content on YouTube using the YouTube Data API v3.
 Name | Description | Notes
 ---|---|---
 `query: string` | The query to search for | -
-`opts?: NgxYtdApiSearchOpts` | Options for the API | See [NgxYtdApiSearchOpts](#ngxytdapisearchopts) for all properties
+`opts?: NgxYtdApiSearchListOpts` | Options for the API | See [NgxYtdApiSearchListOpts](#ngxytdapisearchlistopts) for all properties
 
 #### Returns
 
-`Observable<NgxYtdApiSearchResult>`: Results of the search as an observable
+`Observable<NgxYtdApiSearchListResult>`: Results of the search as an observable
 
 ---
 
 ## Interfaces
 
-### `NgxYtdApiSearchOpts`
+### `NgxYtdApiSearchListOpts`
 
-Search options for `NgxYtdApiSearch#search`.
+Search options for `NgxYtdApiSearchService#list`.
 
 #### Properties
 
@@ -235,6 +235,6 @@ Search options for `NgxYtdApiSearch#search`.
 	</tbody>
  </table>
 
-### `NgxYtdApiSearchResult`
+### `NgxYtdApiSearchListResult`
 
-The result of `NgxYtdApiSearch#search`.
+The result of `NgxYtdApiSearchService#list`.

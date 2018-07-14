@@ -1,7 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { NgxYtdApiService } from 'ngx-ytd-api';
+import { NgxYtdApiSearchService } from 'ngx-ytd-api/search';
+import { NgxYtdApiCommentService } from 'ngx-ytd-api/comments';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -21,6 +22,10 @@ import { SharedService } from './shared.service';
 import { VersionPickerModule } from './shared/version-picker/version-picker.module';
 import { SharedModule } from './shared.module';
 
+const YTD_API_DEMO_SERVICES = [
+	NgxYtdApiCommentService,
+	NgxYtdApiSearchService
+];
 
 @NgModule({
 	declarations: [
@@ -43,8 +48,9 @@ import { SharedModule } from './shared.module';
 		SharedModule
 	],
 	providers: [
-		NgxYtdApiService,
-		ListsService
+		YTD_API_DEMO_SERVICES,
+		ListsService,
+		SharedService
 	],
 	bootstrap: [AppComponent]
 })

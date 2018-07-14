@@ -1,5 +1,5 @@
 import { Component, TemplateRef } from '@angular/core';
-import { NgxYtdApiSearchService, NgxYtdApiSearchResult, NgxYtdApiSearchOpts } from 'ngx-ytd-api/search';
+import { NgxYtdApiSearchService, NgxYtdApiSearchListResult, NgxYtdApiSearchListOpts } from 'ngx-ytd-api/search';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef, MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -12,7 +12,7 @@ import { SharedService } from '../../shared.service';
 })
 export class DemoSearchComponent {
 
-	searchResult: NgxYtdApiSearchResult;
+	searchResult: NgxYtdApiSearchListResult;
 	errorResult: any;
 	// query: string;
 	// embeddable: boolean = false;
@@ -125,7 +125,7 @@ export class DemoSearchComponent {
 		});
 	}
 	search(pageToken?: string) {
-		const _apiConfig: NgxYtdApiSearchOpts = {
+		const _apiConfig: NgxYtdApiSearchListOpts = {
 			key: ''
 		};
 		const _rawValue = this.searchForm.getRawValue();

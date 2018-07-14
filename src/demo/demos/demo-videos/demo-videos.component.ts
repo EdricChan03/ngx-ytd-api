@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { NgxYtdApiService } from 'ngx-ytd-api';
 import { SharedService } from '../../shared.service';
+import { NgxYtdApiVideoService, NgxYtdApiVideosListOpts, NgxYtdApiVideosListResult } from 'ngx-ytd-api/videos';
 
 @Component({
 	selector: 'app-demo-videos',
@@ -9,6 +9,12 @@ import { SharedService } from '../../shared.service';
 })
 export class DemoVideosComponent {
 	constructor(
-		public shared: SharedService
+		public shared: SharedService,
+		private ytApi: NgxYtdApiVideoService
 	) { }
+	testing() {
+		this.ytApi.list({ key: 'trhrtht'}).subscribe(result => {
+			// result.items[0].fileDetails.videoStreams[2]
+		})
+	}
 }

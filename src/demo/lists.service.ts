@@ -18,15 +18,20 @@ export declare type Docs = Doc[];
 
 const DEMOS: Demo[] = [
 	{
+		name: 'Comments',
+		id: 'comments',
+		icon: 'comment'
+	},
+	{
 		name: 'Search',
 		id: 'search',
 		icon: 'search'
 	},
-	{
+	/*{
 		name: 'Videos',
 		id: 'videos',
 		svgIcon: 'docs:video'
-	}
+	}*/
 ];
 const DOCS: Doc[] = [
 	{
