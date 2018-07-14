@@ -11,7 +11,6 @@ import { SharedService } from '../../shared.service';
 	styleUrls: ['./demo-search.component.css']
 })
 export class DemoSearchComponent {
-
 	searchResult: NgxYtdApiSearchListResult;
 	errorResult: any;
 	// query: string;
@@ -86,6 +85,32 @@ export class DemoSearchComponent {
 			return false;
 		}
 	}
+	get demoApiConfig(): any {
+		const _apiConfig: NgxYtdApiSearchListOpts = {
+			key: ''
+		};
+		const _rawValue = this.searchForm.getRawValue();
+		for (const prop in _rawValue) {
+			if (typeof _rawValue[prop] === 'object') {
+				const _rawValueObj = _rawValue[prop];
+				if (this.isVideoType) {
+					// tslint:disable-next-line:forin
+					for (const objProp in _rawValueObj) {
+						if (typeof _apiConfig[objProp] === 'string') {
+							if (_apiConfig[objProp].length > 0) {
+								_apiConfig[objProp] = _rawValueObj[objProp];
+							}
+						}
+					}
+				}
+				// Assume object is `videoOptions`
+				console.log(_rawValue[prop]);
+			} else {
+				_apiConfig[prop] = _rawValue[prop];
+			}
+		}
+		return _apiConfig;
+	}
 	getValue(value: any, defaultValue: any) {
 		return value ? value : defaultValue;
 	}
@@ -125,35 +150,12 @@ export class DemoSearchComponent {
 		});
 	}
 	search(pageToken?: string) {
-		const _apiConfig: NgxYtdApiSearchListOpts = {
-			key: ''
-		};
-		const _rawValue = this.searchForm.getRawValue();
-		for (const prop in _rawValue) {
-			if (typeof _rawValue[prop] === 'object') {
-				const _rawValueObj = _rawValue[prop];
-				if (this.isVideoType) {
-					// tslint:disable-next-line:forin
-					for (const objProp in _rawValueObj) {
-						if (typeof _apiConfig[objProp] === 'string') {
-							if (_apiConfig[objProp].length > 0) {
-								_apiConfig[objProp] = _rawValueObj[objProp];
-							}
-						}
-					}
-				}
-				// Assume object is `videoOptions`
-				console.log(_rawValue[prop]);
-			} else {
-				_apiConfig[prop] = _rawValue[prop];
-			}
-		}
+		const _apiConfig = this.demoApiConfig;
 		if (pageToken) {
 			_apiConfig.pageToken = pageToken;
 		}
-		// const _apiConfig: NgxYtdApiSearchOpts = this.searchForm.getRawValue();
 		console.log(this.searchForm.getRawValue());
-		this.ytApi.search(this.searchForm.get('query').value, _apiConfig).subscribe(result => {
+		this.ytApi.list(this.searchForm.get('query').value, _apiConfig).subscribe(result => {
 			this.searchResult = result;
 			console.log(result);
 		}, error => {

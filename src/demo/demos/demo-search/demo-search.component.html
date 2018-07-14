@@ -133,7 +133,7 @@
 						<mat-icon>code</mat-icon>
 					</button>
 				</mat-card-header>
-				<img mat-card-image [src]="result?.snippet?.thumbnails?.high?.url">
+				<img mat-card-image [src]="result?.snippet?.thumbnails['high']?.url">
 				<mat-card-title class="example-search-result-card-title">{{result?.snippet?.title}}</mat-card-title>
 				<mat-card-content *ngIf="searchOptionsForm.get('showDescription').value">
 					<strong>Description:</strong>

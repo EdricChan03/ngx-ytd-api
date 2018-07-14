@@ -12,9 +12,4 @@ export class DemoVideosComponent {
 		public shared: SharedService,
 		private ytApi: NgxYtdApiVideoService
 	) { }
-	testing() {
-		this.ytApi.list({ key: 'trhrtht'}).subscribe(result => {
-			// result.items[0].fileDetails.videoStreams[2]
-		})
-	}
 }
