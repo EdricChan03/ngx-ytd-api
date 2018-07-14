@@ -186,8 +186,8 @@ export interface NgxYtdApiVideosListResultItem {
 		scheduledEndTime?: string;
 		concurrentViewers?: number;
 		activeLiveChatId?: string;
-	}
-	localizations?: 
+	};
+	localizations?: NgxYtdApiVideosListResultItemLocalizations;
 }
 export interface NgxYtdApiVideosListResult extends NgxYtdApiGenericResult {
 	nextPageToken?: string;
