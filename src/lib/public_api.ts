@@ -1,15 +1,9 @@
-// Interfaces
-export * from './ytd-api.interfaces';
+export * from 'ngx-ytd-api/core';
 
-// Services
-export * from './ytd-api.service';
-
-// Search submodule
-/**
- * @deprecated Use from the `search` submodule instead.
- * @deletion-target 1.0.0-alpha.4
- */
-export * from './search/public_api';
-
-// Version
-export * from './version';
+/*
+Allow developers to import from `ngx-ytd-api` instead of a submodule.
+Note that this may functionality may be removed in a future release.
+*/
+export * from 'ngx-ytd-api/comments';
+export * from 'ngx-ytd-api/search';
+export * from 'ngx-ytd-api/videos';
