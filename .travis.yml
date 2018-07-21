@@ -15,21 +15,35 @@ cache:
 branches:
   only:
   - master
+  # Allow testing on greenkeeper branches
   - /^greenkeeper/.*$/
+stages:
+  - lint
+  - test
+  # Only allow building if the branch is master and is pushed
+  - name: build
+    if: type = push AND branch = master
 jobs:
   include:
-  - env: MODE=lint-lib
-  - env: MODE=test-lib
+  - stage: lint
+    env: MODE=lint-lib
+    name: "Library linting"
   - env: MODE=lint-demo
+    name: "Demo linting"
+  - stage: test
+    env: MODE=test-lib
+    name: "Library testing"
   - env: MODE=test-demo
-  - env: DEPLOY_MODE=build-artifacts
-    if: type = push AND branch = master
-  # For now, changelog will be manually edited
-  # - env: DEPLOY_MODE=changelog
-  #  if: tag IS present
-  # Don't deploy docs on PRs
+    name: "e2e demo testing"
+  - stage: build
+    env: DEPLOY_MODE=build-artifacts
+    name: "Build artifacts"
+    # For now, changelog will be manually edited
+    # - env: DEPLOY_MODE=changelog
+    #  if: tag IS present
+    # Don't deploy docs on PRs
   - env: DEPLOY_MODE=docs
-    if: type = push AND branch = master
+    name: "Documentation"
 before_script:
 - sudo chown root /opt/google/chrome/chrome-sandbox
 - sudo chmod 4755 /opt/google/chrome/chrome-sandbox
