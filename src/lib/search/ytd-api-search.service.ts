@@ -52,7 +52,7 @@ export class NgxYtdApiSearchService {
 		}
 		// Default if `part` parameter isn't specified
 		if (!_hasPartOpt) {
-			_apiUrl += '&part=snippet,id';
+			_apiUrl += '&part=snippet';
 		}
 		return this.http.get<NgxYtdApiSearchListResult>(_apiUrl);
 	}
