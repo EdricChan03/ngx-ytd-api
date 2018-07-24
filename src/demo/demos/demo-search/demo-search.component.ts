@@ -130,7 +130,7 @@ export class DemoSearchComponent {
 			}
 		}
 	}
-	clearForm() {
+	reset() {
 		this.searchForm.reset({
 			query: '',
 			key: '',
@@ -148,6 +148,7 @@ export class DemoSearchComponent {
 				videoType: 'any'
 			}
 		});
+		this.searchResult = null;
 	}
 	search(pageToken?: string) {
 		const _apiConfig = this.demoApiConfig;
