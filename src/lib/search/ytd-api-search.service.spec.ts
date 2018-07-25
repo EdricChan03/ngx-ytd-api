@@ -19,8 +19,8 @@ describe('NgxYtdApiSearchService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
-  it('#search should return a result', async(() => {
-    service.search('let\'s play', { key: API_KEY }).subscribe(result => {
+  it('#list should return a result', async(() => {
+    service.list('let\'s play', { key: API_KEY }).subscribe(result => {
       expect(result).not.toBeNull();
     });
   }));
