@@ -52,7 +52,8 @@ export interface NgxYtdApiSearchListOpts extends NgxYtdApiGenericOpts {
   /**
    * The parameter tells the API to return search results for videos that can be viewed in the specific country.
    * Allowed values:
-   * an {@link http://www.iso.org/iso/country_codes/iso_3166_code_lists/country_names_and_code_elements.htm|ISO 3166-1 alpha-2} country code.
+   * an {@link http://www.iso.org/iso/country_codes/iso_3166_code_lists/country_names_and_code_elements.htm|ISO 3166-1 alpha-2}
+   * country code.
    * See the {@link https://developers.google.com/youtube/v3/docs/search/list#regionCode|developer docs} for more info
    */
   regionCode?: string;

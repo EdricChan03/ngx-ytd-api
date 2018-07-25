@@ -92,7 +92,9 @@ export interface NgxYtdApiCommentListResultItem {
     videoId?: string;
     /**
      * The comment's text. The text can be retrieved in either plain text or HTML.
-     * (The `comments.list` and `commentThreads.list` methods both support a `textFormat` parameter, which specifies the desired text format.)
+	 *
+     * (The `comments.list` and `commentThreads.list` methods
+	 * both support a `textFormat` parameter, which specifies the desired text format.)
      *
      * Note that even the plain text may differ from the original comment text. For example, it may replace video links with video titles.
      */
