@@ -23,35 +23,35 @@ import { VersionPickerModule } from './shared/version-picker/version-picker.modu
 import { SharedModule } from './shared.module';
 
 const YTD_API_DEMO_SERVICES = [
-	NgxYtdApiCommentService,
-	NgxYtdApiSearchService
+  NgxYtdApiCommentService,
+  NgxYtdApiSearchService
 ];
 
 @NgModule({
-	declarations: [
-		AppComponent,
-		DemoVideosComponent,
-		DemoHomeComponent,
-		DemoSearchComponent,
-		DocsHomeComponent
-	],
-	imports: [
-		BrowserModule,
-		BrowserAnimationsModule,
-		FormsModule,
-		ReactiveFormsModule,
-		HttpClientModule,
-		MaterialModule,
-		AppRouting,
-		FlexLayoutModule,
-		VersionPickerModule,
-		SharedModule
-	],
-	providers: [
-		YTD_API_DEMO_SERVICES,
-		ListsService,
-		SharedService
-	],
-	bootstrap: [AppComponent]
+  declarations: [
+    AppComponent,
+    DemoVideosComponent,
+    DemoHomeComponent,
+    DemoSearchComponent,
+    DocsHomeComponent
+  ],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    MaterialModule,
+    AppRouting,
+    FlexLayoutModule,
+    VersionPickerModule,
+    SharedModule
+  ],
+  providers: [
+    YTD_API_DEMO_SERVICES,
+    ListsService,
+    SharedService
+  ],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

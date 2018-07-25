@@ -3,13 +3,13 @@ import { SharedService } from '../../shared.service';
 import { NgxYtdApiVideoService, NgxYtdApiVideosListOpts, NgxYtdApiVideosListResult } from 'ngx-ytd-api/videos';
 
 @Component({
-	selector: 'app-demo-videos',
-	templateUrl: './demo-videos.component.html',
-	styleUrls: ['./demo-videos.component.css']
+  selector: 'app-demo-videos',
+  templateUrl: './demo-videos.component.html',
+  styleUrls: ['./demo-videos.component.css']
 })
 export class DemoVideosComponent {
-	constructor(
-		public shared: SharedService,
-		private ytApi: NgxYtdApiVideoService
-	) { }
+  constructor(
+    public shared: SharedService,
+    private ytApi: NgxYtdApiVideoService
+  ) { }
 }

@@ -7,19 +7,19 @@ describe('VersionPickerComponent', () => {
   let fixture: ComponentFixture<VersionPickerComponent>;
 
   beforeEach(async(() => {
-	TestBed.configureTestingModule({
-		declarations: [ VersionPickerComponent ]
-	})
-	.compileComponents();
+  TestBed.configureTestingModule({
+    declarations: [ VersionPickerComponent ]
+  })
+  .compileComponents();
   }));
 
   beforeEach(() => {
-	fixture = TestBed.createComponent(VersionPickerComponent);
-	component = fixture.componentInstance;
-	fixture.detectChanges();
+  fixture = TestBed.createComponent(VersionPickerComponent);
+  component = fixture.componentInstance;
+  fixture.detectChanges();
   });
 
   it('should create', () => {
-	expect(component).toBeTruthy();
+  expect(component).toBeTruthy();
   });
 });

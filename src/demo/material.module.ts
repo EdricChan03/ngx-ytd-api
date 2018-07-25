@@ -23,37 +23,37 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { DomSanitizer } from '@angular/platform-browser';
 
 @NgModule({
-	exports: [
-		MatButtonModule,
-		MatCardModule,
-		MatCheckboxModule,
-		MatChipsModule,
-		MatDialogModule,
-		MatDividerModule,
-		MatExpansionModule,
-		MatFormFieldModule,
-		MatGridListModule,
-		MatIconModule,
-		MatInputModule,
-		MatListModule,
-		MatRadioModule,
-		MatSelectModule,
-		MatSlideToggleModule,
-		MatSidenavModule,
-		MatSnackBarModule,
-		MatToolbarModule,
-		MatTooltipModule
-	],
-	providers: [
-		{ provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } },
-		{
-			provide: MAT_SNACK_BAR_DEFAULT_OPTIONS,
-			useValue: { duration: 2500, panelClass: 'mat-elevation-z3', horizontalPosition: 'start' }
-		}
-	]
+  exports: [
+    MatButtonModule,
+    MatCardModule,
+    MatCheckboxModule,
+    MatChipsModule,
+    MatDialogModule,
+    MatDividerModule,
+    MatExpansionModule,
+    MatFormFieldModule,
+    MatGridListModule,
+    MatIconModule,
+    MatInputModule,
+    MatListModule,
+    MatRadioModule,
+    MatSelectModule,
+    MatSlideToggleModule,
+    MatSidenavModule,
+    MatSnackBarModule,
+    MatToolbarModule,
+    MatTooltipModule
+  ],
+  providers: [
+    { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } },
+    {
+      provide: MAT_SNACK_BAR_DEFAULT_OPTIONS,
+      useValue: { duration: 2500, panelClass: 'mat-elevation-z3', horizontalPosition: 'start' }
+    }
+  ]
 })
 export class MaterialModule {
-	constructor(private dom: DomSanitizer, private iconRegistry: MatIconRegistry) {
-		iconRegistry.addSvgIconSetInNamespace('docs', dom.bypassSecurityTrustResourceUrl('assets/mdi-icons.svg'));
-	}
+  constructor(private dom: DomSanitizer, private iconRegistry: MatIconRegistry) {
+    iconRegistry.addSvgIconSetInNamespace('docs', dom.bypassSecurityTrustResourceUrl('assets/mdi-icons.svg'));
+  }
 }

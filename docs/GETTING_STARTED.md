@@ -35,9 +35,9 @@ import { NgxYtdApiService } from 'ngx-ytd-api';
 import { NgModule } from '@angular/core';
 
 @NgModule({
-	providers: [
-		NgxYtdApiService
-	]
+  providers: [
+    NgxYtdApiService
+  ]
 })
 export class AppModule { }
 ```

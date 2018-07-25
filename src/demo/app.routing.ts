@@ -7,16 +7,16 @@ import { DemoSearchComponent } from './demos/demo-search/demo-search.component';
 import { DocsHomeComponent } from './docs/docs-home/docs-home.component';
 
 const APP_ROUTES: Route[] = [
-	{ path: 'demos', children: [
-		{ path: '', component: DemoHomeComponent },
-		{ path: 'videos', component: DemoVideosComponent },
-		{ path: 'search', component: DemoSearchComponent }
-	]},
-	{ path: 'docs', children: [
-		{ path: '', component: DocsHomeComponent }
-	]},
-	// { path: 'docs', redirectTo: '/docs/docsList' },
-	{ path: '**', redirectTo: '/docs' }
+  { path: 'demos', children: [
+    { path: '', component: DemoHomeComponent },
+    { path: 'videos', component: DemoVideosComponent },
+    { path: 'search', component: DemoSearchComponent }
+  ]},
+  { path: 'docs', children: [
+    { path: '', component: DocsHomeComponent }
+  ]},
+  // { path: 'docs', redirectTo: '/docs/docsList' },
+  { path: '**', redirectTo: '/docs' }
 ];
 
 export const AppRouting: ModuleWithProviders = RouterModule.forRoot(APP_ROUTES);

@@ -11,20 +11,20 @@ import { MatMenuModule } from '@angular/material/menu';
 import { VersionPickerComponent } from './version-picker.component';
 
 @NgModule({
-	imports: [
-		CommonModule,
-		HttpClientModule,
-		RouterModule,
-		MatButtonModule,
-		MatIconModule,
-		MatListModule,
-		MatMenuModule
-	],
-	declarations: [
-		VersionPickerComponent
-	],
-	exports: [
-		VersionPickerComponent
-	]
+  imports: [
+    CommonModule,
+    HttpClientModule,
+    RouterModule,
+    MatButtonModule,
+    MatIconModule,
+    MatListModule,
+    MatMenuModule
+  ],
+  declarations: [
+    VersionPickerComponent
+  ],
+  exports: [
+    VersionPickerComponent
+  ]
 })
 export class VersionPickerModule { }

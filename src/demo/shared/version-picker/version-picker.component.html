@@ -1,17 +1,17 @@
 <button mat-button [matMenuTriggerFor]="versionPickerMenu" class="docs-version-picker-button">
-	{{currentVersion}}
+  {{currentVersion}}
 </button>
 <mat-menu #versionPickerMenu="matMenu">
-	<ng-template matMenuContent>
-		<mat-nav-list>
-			<ng-container *ngFor="let version of versions.versions">
-				<ng-container [ngSwitch]="version.type">
-					<mat-divider *ngSwitchCase="'divider'"></mat-divider>
-					<mat-divider *ngSwitchCase="'dividerInset'" inset></mat-divider>
-					<h3 matSubheader *ngSwitchCase="'subheader'" [style.display]="version.hidden ? 'none' : 'block'">{{version.name}}</h3>
-					<a mat-list-item *ngSwitchCase="'version'" [href]="version.link" [style.display]="version.hidden ? 'none' : 'block'" [class.active-link]="version.isSelected">{{version.name}}</a>
-				</ng-container>
-			</ng-container>
-		</mat-nav-list>
-	</ng-template>
+  <ng-template matMenuContent>
+    <mat-nav-list>
+      <ng-container *ngFor="let version of versions.versions">
+        <ng-container [ngSwitch]="version.type">
+          <mat-divider *ngSwitchCase="'divider'"></mat-divider>
+          <mat-divider *ngSwitchCase="'dividerInset'" inset></mat-divider>
+          <h3 matSubheader *ngSwitchCase="'subheader'" [style.display]="version.hidden ? 'none' : 'block'">{{version.name}}</h3>
+          <a mat-list-item *ngSwitchCase="'version'" [href]="version.link" [style.display]="version.hidden ? 'none' : 'block'" [class.active-link]="version.isSelected">{{version.name}}</a>
+        </ng-container>
+      </ng-container>
+    </mat-nav-list>
+  </ng-template>
 </mat-menu>

@@ -3,20 +3,20 @@ import { DevModeDialogComponent, SharedService } from './shared.service';
 import { MaterialModule } from './material.module';
 
 @NgModule({
-	declarations: [
-		DevModeDialogComponent
-	],
-	entryComponents: [
-		DevModeDialogComponent
-	],
-	imports: [
-		MaterialModule
-	],
-	providers: [
-		SharedService
-	],
-	exports: [
-		DevModeDialogComponent
-	]
+  declarations: [
+    DevModeDialogComponent
+  ],
+  entryComponents: [
+    DevModeDialogComponent
+  ],
+  imports: [
+    MaterialModule
+  ],
+  providers: [
+    SharedService
+  ],
+  exports: [
+    DevModeDialogComponent
+  ]
 })
 export class SharedModule { }
