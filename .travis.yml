@@ -44,6 +44,16 @@ jobs:
     # Don't deploy docs on PRs
   - env: DEPLOY_MODE=docs
     name: "Documentation"
+  - stage: NPM release
+    env: DEPLOY_MODE=npm
+    name: "Deploying of library to NPM"
+    if: tag IS present
+    deploy:
+      # Deploy to npm
+      provider: npm
+      api_key: $NGX_YTD_API_NPM_TOKEN
+      # Only deploy on tags
+      tags: true
 before_script:
 - sudo chown root /opt/google/chrome/chrome-sandbox
 - sudo chmod 4755 /opt/google/chrome/chrome-sandbox

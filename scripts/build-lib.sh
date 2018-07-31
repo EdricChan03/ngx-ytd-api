@@ -18,21 +18,27 @@ do
   opt="$1"
   shift # expose next argument
   case "$opt" in
+  # Publish to the `next` tag
   "--publish-next" | "--publishNext")
     PUBLISH_NEXT=true
     ;;
+  # Prevent builds from being uploaded
   "--dry-run" | "--dryRun")
     DRY_RUN=true
     ;;
+  # Whether this script was executed from `scripts.sh`
   "--from-scripts")
     FROM_SCRIPTS=true
     ;;
-  "--skip-confirm")
+  # Whether to skip confirmations
+  "--skip-confirm" | "--skipConfirm")
     SKIP_CONFIRM=true
     ;;
-  "--skipNpm")
+  # Whether to skip NPM altogether
+  "--skip-npm" | "--skipNpm" | "--skipNPM")
     SKIP_NPM=true
     ;;
+  # The version of the library to build
   "--version")
     VERSION="$1"
     shift
@@ -60,9 +66,9 @@ else
     # Replace placeholder versions with the current build version name
     # Code snippet adapted from https://stackoverflow.com/a/17072017
     if [ "$(uname)" == "Darwin" ]; then
-      sed -i "" "s/0.0.0-PLACEHOLDER/${buildVersionName}/g" $(find ./src -type f)
+      sed -i "" "s/0.0.0-PLACEHOLDER/$buildVersionName/g" $(find ./src -type f)
     else
-      sed -i "s/0.0.0-PLACEHOLDER/${buildVersionName}/g" $(find ./src -type f)
+      sed -i "s/0.0.0-PLACEHOLDER/$buildVersionName/g" $(find ./src -type f)
     fi
   fi
   # Check if Angular CLI exists

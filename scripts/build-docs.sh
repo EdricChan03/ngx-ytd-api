@@ -14,19 +14,19 @@ set -e
 #   @param ${1} The location to deploy to
 buildDocs() {
   if [[ -n "$VERSION" ]]; then
-    echo "Version: ${VERSION}"
+    echo "Version: $VERSION"
     # echo -e "\x1b[34mModifying version placeholders to the current commit SHA...\x1b[0m"
     # Replace placeholder versions with the current build version name
     # Code snippet adapted from https://stackoverflow.com/a/17072017
     # if [ "$(uname)" == "Darwin" ]; then
-    # sed -i "" "s/0.0.0-PLACEHOLDER/${VERSION}/g" $(find ./src -type f)
+    # sed -i "" "s/0.0.0-PLACEHOLDER/$VERSION/g" $(find ./src -type f)
     # else
-    # sed -i "s/0.0.0-PLACEHOLDER/${VERSION}/g" $(find ./src -type f)
+    # sed -i "s/0.0.0-PLACEHOLDER/$VERSION/g" $(find ./src -type f)
     # fi
   fi
   deployAt="$1"
   echo -e "\x1b[34mBuilding demo & docs...\x1b[0m"
-  ng build ngx-ytd-api-demo --prod --base-href "/${deployAt}/" --delete-output-path false --output-path "dist/ngx-ytd-api-demo/${deployAt}"
+  ng build ngx-ytd-api-demo --prod --base-href "/$deployAt/" --delete-output-path false --output-path "dist/ngx-ytd-api-demo/$deployAt"
   echo -e "\x1b[32mDone building.\x1b[0m"
   echo -e "\x1b[34mCopying files...\x1b[0m"
   cp ./src/demo/versions.json ./dist/ngx-ytd-api-demo
@@ -81,7 +81,7 @@ if [[ ${#INVALID_ARGS[@]} -ne 0 ]]; then
 else
   # Check if commit has a tag
   if [[ -n "$TRAVIS_TAG" ]]; then
-    echo -e "\x1b[34mGenerating docs for tag ${TRAVIS_TAG}...\x1b[0m"
+    echo -e "\x1b[34mGenerating docs for tag $TRAVIS_TAG...\x1b[0m"
     buildDocs "$TRAVIS_TAG"
   else
     echo -e "\x1b[34mGenerating docs for master...\x1b[0m"
