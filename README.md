@@ -2,7 +2,7 @@
 
 <h1 align="center">ngx-ytd-api</h1>
 
-<p align="center">An unofficial library of integrating Angular with the YouTube Data API</p>
+<p align="center">An unofficial integration of the YouTube Data v3 API with Angular</p>
 
 <div align="center">
 
@@ -59,24 +59,43 @@ npm install --save Chan4077/ngx-ytd-api-builds
   <tbody>
     <tr>
       <th>Feature</th>
-        <th>Notes</th>
-        <th>Docs</th>
-      </tr>
-      <tr>
-        <td>Search</td>
-          <td>
-            <ul>
-              <li>Most API features are available, apart from OAuth</li>
-            </ul>
-          </td>
-          <td>
-            <ul>
-              <li><a href="https://developers.google.com/youtube/v3/docs/search/list#parameters">API parameters</a></li>
-              <li><a href="https://developers.google.com/youtube/v3/docs/search#resource-representation">Resource representation</a></li>
+      <th>Notes</th>
+      <th>Docs</th>
+    </tr>
+    <tr>
+      <td>Comments</td>
+      <td>
+        <ul>
+          <li>So far, only the minimal API to get a comment has been implemented.</li>
+          <li>This should be released with the upcoming version.</li>
+        </ul>
+      </td>
+      <td><em>No docs available</em></td>
+    </tr>
+    <tr>
+      <td>Search</td>
+      <td>
+        <ul>
+          <li>Most API features are available, apart from OAuth</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li><a href="https://developers.google.com/youtube/v3/docs/search/list#parameters">API parameters</a></li>
+          <li><a href="https://developers.google.com/youtube/v3/docs/search#resource-representation">Resource representation</a></li>
           <li><a href="https://developers.google.com/youtube/v3/docs/search#properties">Properties</a></li>
         </ul>
       </td>
     </tr>
+    <tr>
+      <td>Videos</td>
+      <td>
+        <ul>
+          <li>Only the method for getting info about a video has been implemented.</li>
+          <li>The API is currently postponed due to the lack of time to continue.</li>
+        </ul>
+      </td>
+      <td><em>No docs available</em></td>
   </tbody>
 </table>
 
