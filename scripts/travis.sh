@@ -1,8 +1,7 @@
 #!/bin/bash
-# Travis script
 
 # Enable color support
-CLICOLOR=1
+export CLICOLOR=1
 
 # Immediately exit if any command in the script fails
 set -e
@@ -21,7 +20,7 @@ else
   buildVersionName="$buildVersion-$commitSha"
 fi
 echo -e "\x1b[34mModifying placeholder versions...\x1b[0m"
-# Replace placeholder versions with the current build version name
+# Replace placeholder versions ('0.0.0-PLACEHOLDER') with the current build version name/tag
 # Code snippet adapted from https://stackoverflow.com/a/17072017
 if [ "$(uname)" == "Darwin" ]; then
   sed -i "" "s/0.0.0-PLACEHOLDER/$buildVersionName/g" $(find ./src -type f)
@@ -53,7 +52,6 @@ case "$MODE" in
   ;;
 esac
 
-# Deploying
 case "$DEPLOY_MODE" in
 "build-artifacts")
   echo -e "\x1b[34mGenerating build artifacts...\x1b[0m"
@@ -70,10 +68,12 @@ case "$DEPLOY_MODE" in
   ;;
 "changelog")
   echo -e "\x1b[34mGenerating changelog for tag $TRAVIS_TAG...\x1b[0m"
+  # Generate a changelog through a gulp task located at the `gulpfile.js` file in the root of this project.
   gulp changelog
   ;;
 "npm")
   echo -e "\x1b[34mGenerating release for tag $TRAVIS_TAG for NPM...\x1b[0m"
+  # Skip confirmations, enable dry run mode (which skips publishing to NPM locally) and set the version to '$TRAVIS_TAG'.
   ./scripts/build-lib.sh --skip-confirm --dry-run --version "$TRAVIS_TAG"
 
 esac

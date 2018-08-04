@@ -16,13 +16,13 @@ while
   [[ $# -gt 0 ]]
 do
   opt="$1"
-  shift # expose next argument
+  shift # Expose the next argument
   case "$opt" in
-  # Publish to the `next` tag
+  # Publish to the `next` tag on NPM
   "--publish-next" | "--publishNext")
     PUBLISH_NEXT=true
     ;;
-  # Prevent builds from being uploaded
+  # Prevent builds from being published to NPM
   "--dry-run" | "--dryRun")
     DRY_RUN=true
     ;;
@@ -34,7 +34,7 @@ do
   "--skip-confirm" | "--skipConfirm")
     SKIP_CONFIRM=true
     ;;
-  # Whether to skip NPM altogether
+  # Whether to skip publishing to NPM altogether
   "--skip-npm" | "--skipNpm" | "--skipNPM")
     SKIP_NPM=true
     ;;
@@ -87,9 +87,9 @@ else
         echo -e "\x1b[32mDone copying files.\x1b[0m"
         if [[ $SKIP_NPM == false ]]; then
           if [[ $DRY_RUN == false ]]; then
-            # Actually publish to NPM
             cd dist/ngx-ytd-api-lib
-            if [[ $SKIP_CONFIRM == false ]] && [[ $SKIP_NPM == false ]]; then
+            if [[ $SKIP_CONFIRM == false ]]; then
+              # Require confirmation to prevent accidental publishing of the library to NPM
               read -p "Please press ENTER to publish to the NPM registry. " CONFIRMATION
             else
               CONFIRMATION=0
