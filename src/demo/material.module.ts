@@ -45,7 +45,7 @@ import { DomSanitizer } from '@angular/platform-browser';
     MatTooltipModule
   ],
   providers: [
-    { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } },
+    { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'outline' } },
     {
       provide: MAT_SNACK_BAR_DEFAULT_OPTIONS,
       useValue: { duration: 2500, panelClass: 'mat-elevation-z3', horizontalPosition: 'start' }
@@ -55,5 +55,6 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class MaterialModule {
   constructor(private dom: DomSanitizer, private iconRegistry: MatIconRegistry) {
     iconRegistry.addSvgIconSetInNamespace('docs', dom.bypassSecurityTrustResourceUrl('assets/mdi-icons.svg'));
+    iconRegistry.setDefaultFontSetClass('material-icons-extended');
   }
 }
