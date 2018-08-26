@@ -45,10 +45,10 @@ import { DomSanitizer } from '@angular/platform-browser';
     MatTooltipModule
   ],
   providers: [
-    { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'outline' } },
+    { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'standard' } },
     {
       provide: MAT_SNACK_BAR_DEFAULT_OPTIONS,
-      useValue: { duration: 2500, panelClass: 'mat-elevation-z3', horizontalPosition: 'start' }
+      useValue: { duration: 4000, panelClass: 'mat-elevation-z3', horizontalPosition: 'start' }
     }
   ]
 })
