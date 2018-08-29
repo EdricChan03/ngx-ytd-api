@@ -18,7 +18,7 @@ export interface NgxYtdApiCommentListOpts extends NgxYtdApiGenericOpts {
   /**
    * Specifies the maximum number of items that should be returned in the results.
    *
-   * See the {@link https://developers.google.com/youtube/v3/docs/comments/list#parentId|developer docs} for more info
+   * See the {@link https://developers.google.com/youtube/v3/docs/comments/list#maxResults|developer docs} for more info
    * Note: This parameter is not supported for use in conjunction with the id parameter.
    * Acceptable values are 1 to 100, inclusive. The default value is 20.
    */
@@ -26,14 +26,14 @@ export interface NgxYtdApiCommentListOpts extends NgxYtdApiGenericOpts {
   /**
    * Identifies a specific page in the result set that should be returned.
    *
-   * See the {@link https://developers.google.com/youtube/v3/docs/comments/list#parentId|developer docs} for more info
+   * See the {@link https://developers.google.com/youtube/v3/docs/comments/list#pageToken|developer docs} for more info
    * Note: This parameter is not supported for use in conjunction with the id parameter.
    */
   pageToken?: string;
   /**
    * Indicates whether the API should return comments formatted as HTML or as plain text.
    *
-   * See the {@link https://developers.google.com/youtube/v3/docs/comments/list#parentId|developer docs} for more info
+   * See the {@link https://developers.google.com/youtube/v3/docs/comments/list#textFormat|developer docs} for more info
    * Acceptable values are:
    * - html – Returns the comments in HTML format. This is the default value.
    * - plainText – Returns the comments in plain text format.
