@@ -7,14 +7,6 @@ export interface Demo {
   svgIcon?: string;
 }
 export declare type Doc = Demo;
-/**
- * @deprecated Use `Demo[]` instead
- */
-export declare type Demos = Demo[];
-/**
- * @deprecated Use `Doc[]` instead
- */
-export declare type Docs = Doc[];
 
 const DEMOS: Demo[] = [
   {
