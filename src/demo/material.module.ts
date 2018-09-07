@@ -20,29 +20,35 @@ import { MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/mater
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
+import { ScrollDispatchModule } from '@angular/cdk/scrolling';
+
 import { DomSanitizer } from '@angular/platform-browser';
+
+const MATERIAL_MODULES = [
+  MatButtonModule,
+  MatCardModule,
+  MatCheckboxModule,
+  MatChipsModule,
+  MatDialogModule,
+  MatDividerModule,
+  MatExpansionModule,
+  MatFormFieldModule,
+  MatGridListModule,
+  MatIconModule,
+  MatInputModule,
+  MatListModule,
+  MatRadioModule,
+  MatSelectModule,
+  MatSlideToggleModule,
+  MatSidenavModule,
+  MatSnackBarModule,
+  MatToolbarModule,
+  MatTooltipModule
+];
 
 @NgModule({
   exports: [
-    MatButtonModule,
-    MatCardModule,
-    MatCheckboxModule,
-    MatChipsModule,
-    MatDialogModule,
-    MatDividerModule,
-    MatExpansionModule,
-    MatFormFieldModule,
-    MatGridListModule,
-    MatIconModule,
-    MatInputModule,
-    MatListModule,
-    MatRadioModule,
-    MatSelectModule,
-    MatSlideToggleModule,
-    MatSidenavModule,
-    MatSnackBarModule,
-    MatToolbarModule,
-    MatTooltipModule
+    MATERIAL_MODULES
   ],
   providers: [
     { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'standard' } },
