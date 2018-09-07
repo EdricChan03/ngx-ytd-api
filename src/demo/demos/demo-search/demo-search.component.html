@@ -21,14 +21,17 @@
       <form [formGroup]="searchForm" class="example-form" fxLayout="column" (keydown.enter)="submitForm()">
         <mat-form-field>
           <mat-label>Query</mat-label>
-          <input matInput formControlName="query">
-          <mat-error *ngIf="searchForm.get('query')?.hasError('required')">This is required.</mat-error>
+          <input matInput formControlName="q">
+          <mat-error *ngIf="searchForm.get('q')?.hasError('required')">This is required.</mat-error>
+          <!-- <a mat-icon-button matSuffix href="https://developers.google.com/youtube/v3/docs/search/list#q" matTooltip="View parameter on API docs"><mat-icon>open_in_new</mat-icon></a> -->
+          <button mat-icon-button matSuffix matTooltip="View parameter on API docs"><mat-icon>open_in_new</mat-icon></button>
         </mat-form-field>
         <mat-form-field>
           <mat-label>API Key</mat-label>
           <input matInput formControlName="key">
           <mat-error *ngIf="searchForm.get('key')?.hasError('required')">This is required.</mat-error>
           <mat-error *ngIf="searchForm.get('key')?.hasError('minlength') || searchForm.get('key')?.hasError('maxlength')">Please enter a valid API key.</mat-error>
+          <a mat-icon-button matSuffix matTooltip="View parameter on API docs" href="https://developers.google.com/youtube/v3/docs/search/list#apiKey"><mat-icon>open_in_new</mat-icon></a>
         </mat-form-field>
         <mat-form-field>
           <mat-label>Search types</mat-label>

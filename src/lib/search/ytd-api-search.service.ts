@@ -23,8 +23,8 @@ export class NgxYtdApiSearchService {
    * @param opts Options for searching
    * @returns Results of the search as a stream
    */
-  list(query: string, opts: NgxYtdApiSearchListOpts): Observable<NgxYtdApiSearchListResult> {
-    query = encodeURI(query);
+  list(opts: NgxYtdApiSearchListOpts): Observable<NgxYtdApiSearchListResult> {
+    const query = encodeURI(opts.q);
     let _hasPartOpt = false;
     let _apiUrl = `${this.ytdSearchBaseApiUrl}?q=${query}`;
     // Loop through every property in the opts object

@@ -57,7 +57,7 @@ export class DemoSearchComponent {
     public shared: SharedService
   ) {
     this.searchForm = fb.group({
-      query: ['', Validators.required],
+      q: ['', Validators.required],
       key: ['', [Validators.required, Validators.maxLength(39), Validators.minLength(39)]],
       maxResults: [50, [Validators.required, Validators.min(0), Validators.max(50)]],
       type: ['video,channel,playlist', Validators.required],
@@ -87,7 +87,8 @@ export class DemoSearchComponent {
   }
   get demoApiConfig(): any {
     const _apiConfig: NgxYtdApiSearchListOpts = {
-      key: ''
+      key: '',
+      q: ''
     };
     const _rawValue = this.searchForm.getRawValue();
     for (const prop in _rawValue) {
@@ -156,7 +157,7 @@ export class DemoSearchComponent {
       _apiConfig.pageToken = pageToken;
     }
     console.log(this.searchForm.getRawValue());
-    this.ytApi.list(this.searchForm.get('query').value, _apiConfig).subscribe(result => {
+    this.ytApi.list(_apiConfig).subscribe(result => {
       this.searchResult = result;
       console.log(result);
     }, error => {

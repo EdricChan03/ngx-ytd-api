@@ -40,6 +40,10 @@ export interface NgxYtdApiSearchListOpts extends NgxYtdApiGenericOpts {
    */
   pageToken?: string;
   /**
+   * The query to search for
+   */
+  q: string;
+  /**
    * See https://developers.google.com/youtube/v3/docs/search/list#publishedAfter for more info
    * Allowed values: an RFC 3339 formatted date-time value (1970-01-01T00:00:00Z)
    */
