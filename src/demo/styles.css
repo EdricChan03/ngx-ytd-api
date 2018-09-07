@@ -1,46 +1,49 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
-pre,
-code,
-xmp,
-kbd {
-    font-family: 'Roboto Mono', monospace;
-    white-space: pre-wrap;
+pre, code, xmp, kbd {
+  font-family: 'Roboto Mono', monospace;
+  white-space: pre-wrap;
 }
 
 /* Code adapted from material.angular.io */
 
 app-root {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 .docs-sidenav {
-    min-width: 250px;
+  min-width: 250px;
 }
 
 .active-link {
-    color: #3f51b5 !important;
-    background-color: #dcdcdc !important;
+  color: #3F51B5 !important;
+  background-color: #DCDCDC !important;
+}
+
+.mat-list-item:not(.active-link) .mat-list-item-content mat-icon, .icon {
+  color: rgba(0, 0, 0, .54);
 }
 
 .padding-percentage-container {
-    padding: 5%;
+  padding: 5%;
 }
 
 .mat-button, .mat-stroked-button, .mat-raised-button, .mat-flat-button, .mat-simple-snackbar-action {
   text-transform: uppercase;
 }
+
 .active-menu-item {
   color: #3F51B5;
   background-color: #E8E8E8 !important;
 }
+
 .chip-icon {
   margin-right: 8px;
 }
