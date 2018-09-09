@@ -10,9 +10,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialModule } from './material.module';
 
 import { AppComponent } from './app.component';
-import { DemoVideosComponent } from './demos/demo-videos/demo-videos.component';
-import { DemoHomeComponent } from './demos/demo-home/demo-home.component';
-import { DemoSearchComponent } from './demos/demo-search/demo-search.component';
+import { DemoVideosComponent } from './demos/videos/demo-videos.component';
+import { DemoHomeComponent } from './demos/home/demo-home.component';
+import { DemoSearchListComponent } from './demos/search/list/demo-search-list.component';
 
 import { ListsService } from './lists.service';
 
@@ -32,7 +32,7 @@ const YTD_API_DEMO_SERVICES = [
     AppComponent,
     DemoVideosComponent,
     DemoHomeComponent,
-    DemoSearchComponent,
+    DemoSearchListComponent,
     DocsHomeComponent
   ],
   imports: [

@@ -15,6 +15,10 @@ export class DemoHomeComponent implements OnInit {
     public shared: SharedService
   ) { }
   demos: Demo[];
+  moreMenuClick(ev: MouseEvent) {
+    ev.stopPropagation();
+    ev.preventDefault();
+  }
   ngOnInit() {
     this.demos = this.listsService.getDemos();
   }

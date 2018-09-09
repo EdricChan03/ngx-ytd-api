@@ -3,14 +3,14 @@ import { NgxYtdApiSearchService, NgxYtdApiSearchListResult, NgxYtdApiSearchListO
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef, MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { SharedService } from '../../shared.service';
+import { SharedService } from '../../../shared.service';
 
 @Component({
-  selector: 'app-demo-search',
-  templateUrl: './demo-search.component.html',
-  styleUrls: ['./demo-search.component.css']
+  selector: 'app-demo-search-list',
+  templateUrl: './demo-search-list.component.html',
+  styleUrls: ['./demo-search-list.component.css']
 })
-export class DemoSearchComponent {
+export class DemoSearchListComponent {
   searchResult: NgxYtdApiSearchListResult;
   errorResult: any;
   // query: string;
@@ -75,7 +75,8 @@ export class DemoSearchComponent {
     });
     this.searchOptionsForm = fb.group({
       showJsonResult: false,
-      showDescription: false
+      showDescription: false,
+      resultsView: 'card'
     });
   }
   get isVideoType(): boolean {

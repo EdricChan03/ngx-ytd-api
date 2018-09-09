@@ -47,3 +47,10 @@ app-root {
 .chip-icon {
   margin-right: 8px;
 }
+
+.mat-expansion-panel-header-title {
+  align-items: center;
+}
+.mat-expansion-panel-header-title mat-icon {
+  margin-right: 20px;
+}

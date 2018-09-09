@@ -204,6 +204,14 @@
         <h3>Options (for result)</h3>
         <mat-slide-toggle formControlName="showJsonResult">Show JSON result?</mat-slide-toggle>
         <mat-slide-toggle formControlName="showDescription">Show description?</mat-slide-toggle>
+        <section fxLayout="column">
+          <h3>Results view</h3>
+          <mat-radio-group formControlName="resultsView" fxLayout="column">
+            <mat-radio-button class="example-radio-button" value="table">Table</mat-radio-button>
+            <mat-radio-button class="example-radio-button" value="card">Card</mat-radio-button>
+            <mat-radio-button class="example-radio-button" value="list">List</mat-radio-button>
+          </mat-radio-group>
+        </section>
       </form>
     </mat-card-content>
     <mat-card-actions align="end" class="example-card-actions">
@@ -222,7 +230,7 @@
         <mat-icon>keyboard_arrow_right</mat-icon>
       </button>
     </div>
-    <div id="cards-container" fxLayout="row wrap" fxLayoutAlign="center center">
+    <div id="cards-container" fxLayout="row wrap" fxLayoutAlign="center center" *ngIf="searchOptionsForm.get('resultsView')?.value === 'card'">
       <mat-card *ngFor="let result of searchResult?.items" class="example-search-result-card">
         <mat-card-header>
           <mat-card-title>{{result?.snippet?.channelTitle}}</mat-card-title>

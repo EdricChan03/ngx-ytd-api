@@ -1,0 +1,67 @@
+<mat-toolbar color="primary" class="mat-elevation-z3">
+  <button mat-icon-button (click)="shared.sidenav.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  Angular YouTube Data API
+  <span fxFlex></span>
+  <a routerLink="." mat-icon-button matTooltip="View docs">
+    <mat-icon>code</mat-icon>
+  </a>
+  <mat-chip-list>
+    <mat-chip *ngIf="!shared.isProd" color="accent" (click)="shared.openDevConfig()">
+      <mat-icon inline class="chip-icon">build</mat-icon>
+      Developer Mode
+    </mat-chip>
+  </mat-chip-list>
+  <app-version-picker></app-version-picker>
+</mat-toolbar>
+<div class="padding-percentage-container">
+  <h1>Demos</h1>
+  <mat-accordion>
+    <mat-expansion-panel *ngFor="let demo of demos">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <mat-icon *ngIf="demo?.icon && !demo?.svgIcon" class="icon">{{demo?.icon}}</mat-icon>
+          <mat-icon *ngIf="demo?.svgIcon && !demo?.icon" [svgIcon]="demo?.svgIcon" class="icon"></mat-icon>
+          {{demo?.name}}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-nav-list>
+        <h3 matSubheader>API Method Demos</h3>
+        <ng-template #nocontent>
+          <mat-list-item>No demos available!</mat-list-item>
+        </ng-template>
+        <ng-container *ngIf="demo?.methods; else: nocontent">
+          <a mat-list-item [routerLink]="['/demos', demo?.id, method?.id]" *ngFor="let method of demo?.methods">
+            <h3 matLine><code>{{method?.name}}</code></h3>
+            <span fxFlex></span>
+            <mat-menu #methodMenu="matMenu">
+              <a mat-menu-item href="https://developers.google.com/youtube/v3/docs/{{demo?.id}}/{{method?.id}}" target="_blank">
+                <mat-icon svgIcon="docs:youtube"></mat-icon>
+                YouTube API Docs
+              </a>
+              <a mat-menu-item href="https://github.com/Chan4077/ngx-ytd-api/blob/master/docs/api/{{demo?.id}}.md"
+                target="_blank">
+                <mat-icon svgIcon="docs:github"></mat-icon>
+                ngx-ytd-api API Docs
+              </a>
+            </mat-menu>
+            <button mat-icon-button [matMenuTriggerFor]="methodMenu" (click)="moreMenuClick($event)">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+          </a>
+        </ng-container>
+      </mat-nav-list>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <!-- <mat-card class="demo-card">
+    <a class="demo-card-section" fxLayout="row" [routerLink]="['/demos', demo.id]" *ngFor="let demo of demos">
+      <mat-icon *ngIf="demo.icon && !demo.svgIcon">{{demo.icon}}</mat-icon>
+      <mat-icon *ngIf="!demo.icon && demo.svgIcon" [svgIcon]="demo.svgIcon"></mat-icon>
+      <span fxFlex="3"></span>
+      <span>{{demo.name}}</span>
+      <span fxFlex></span>
+      <mat-icon>navigate_next</mat-icon>
+    </a>
+  </mat-card> -->
+</div>

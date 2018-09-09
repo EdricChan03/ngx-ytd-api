@@ -38,7 +38,6 @@ declare type ToggleState = 'notToggled' | 'toggled';
   ]
 })
 export class AppComponent implements OnInit {
-  toggleStateDemos: ToggleState = 'notToggled';
   toggleStateDocs: ToggleState = 'notToggled';
   toggleStateList: ToggleState = 'notToggled';
   demos: Demo[];
@@ -53,27 +52,21 @@ export class AppComponent implements OnInit {
     this.docs = this.listsService.getDocs();
     this.shared.sidenav = this.sidenav;
   }
-  preventDefault(event: Event) {
+  preventDefault(event: MouseEvent) {
     event.preventDefault();
     event.stopImmediatePropagation();
     event.stopPropagation();
   }
   // tslint:disable-next-line:no-shadowed-variable
   toggleStates(state: 'demos' | 'docs') {
-    if (state === 'demos') {
-      if (this.toggleStateDemos === 'toggled') {
-        this.toggleStateDemos = 'notToggled';
-      } else {
-        this.toggleStateDemos = 'toggled';
-      }
-    } else if (state === 'docs') {
+     if (state === 'docs') {
       if (this.toggleStateDocs === 'toggled') {
         this.toggleStateDocs = 'notToggled';
       } else {
         this.toggleStateDocs = 'toggled';
       }
     }
-    if (this.toggleStateDemos === 'toggled' && this.toggleStateDocs === 'toggled') {
+    if (this.toggleStateDocs === 'toggled') {
       this.toggleStateList = 'toggled';
     } else {
       this.toggleStateList = 'notToggled';
@@ -82,22 +75,13 @@ export class AppComponent implements OnInit {
   toggleLists(event?: Event) {
     if (this.toggleStateList === 'toggled') {
       this.toggleStateList = 'notToggled';
-      this.toggleStateDemos = 'notToggled';
       this.toggleStateDocs = 'notToggled';
     } else {
       this.toggleStateList = 'toggled';
-      this.toggleStateDemos = 'toggled';
       this.toggleStateDocs = 'toggled';
     }
   }
-  toggleDemosList(event?: Event) {
-    if (event) {
-      this.preventDefault(event);
-    }
-    this.toggleStates('demos');
-    // Do some stuff
-  }
-  toggleDocsList(event?: Event) {
+  toggleDocsList(event?: MouseEvent) {
     if (event) {
       this.preventDefault(event);
     }

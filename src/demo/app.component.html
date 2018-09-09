@@ -14,18 +14,7 @@
       <a mat-list-item routerLink="/demos" routerLinkActive="active-link">
         <mat-icon matListIcon svgIcon="docs:demo"></mat-icon>
         <h3 matLine>Demos</h3>
-        <span fxFlex></span>
-        <button mat-icon-button (click)="toggleDemosList($event)" aria-label="Toggle demos" matTooltip="Toggle demos list" matTooltipPosition="right">
-          <mat-icon [@toggleIconAnim]="toggleStateDemos">keyboard_arrow_right</mat-icon>
-        </button>
       </a>
-      <div [@toggleItemsAnim]="toggleStateDemos">
-        <a mat-list-item *ngFor="let demo of demos" [routerLink]="['demos', demo.id]" routerLinkActive="active-link">
-          <mat-icon matListIcon *ngIf="demo.icon && !demo.svgIcon">{{demo.icon}}</mat-icon>
-          <mat-icon matListIcon *ngIf="demo.svgIcon" [svgIcon]="demo.svgIcon"></mat-icon>
-          <h3 matLine>{{demo.name}}</h3>
-        </a>
-      </div>
       <mat-divider></mat-divider>
       <a mat-list-item routerLink="/docs" routerLinkActive="active-link">
         <mat-icon matListIcon>chrome_reader_mode</mat-icon>
