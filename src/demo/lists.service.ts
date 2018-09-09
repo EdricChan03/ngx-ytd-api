@@ -18,7 +18,7 @@ interface GenericItem {
    */
   svgIcon?: string;
 }
-export interface Demo extends GenericItem { 
+export interface Demo extends GenericItem {
   /**
    * Methods of the API the demo is showcasing
    */
