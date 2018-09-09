@@ -1,12 +1,32 @@
 import { Injectable } from '@angular/core';
 
-export interface Demo {
+interface GenericItem {
+  /**
+   * The name of the demo
+   */
   name: string;
+  /**
+   * The ID of the demo (to be used with the Angular Router)
+   */
   id: string;
+  /**
+   * The (Material) icon
+   */
   icon?: string;
+  /**
+   * An SVG icon reference
+   */
   svgIcon?: string;
 }
-export declare type Doc = Demo;
+export interface Demo extends GenericItem { 
+  /**
+   * Methods of the API the demo is showcasing
+   */
+  methods?: Demo[];
+}
+export interface Doc extends GenericItem {
+  href?: string;
+}
 
 const DEMOS: Demo[] = [
   {
@@ -17,7 +37,14 @@ const DEMOS: Demo[] = [
   {
     name: 'Search',
     id: 'search',
-    icon: 'search'
+    icon: 'search',
+    methods: [
+      {
+        name: 'list',
+        id: 'list',
+        icon: 'search'
+      }
+    ]
   },
   /*{
     name: 'Videos',
@@ -43,25 +70,9 @@ export class ListsService {
     return DEMOS;
   }
   /**
-   * Adds a demo to the demos array
-   * @param demo The demo to add
-   */
-  addDemo(demo: Demo) {
-    DEMOS.push(demo);
-  }
-
-  /**
    * Retrieves documentation
    */
   getDocs(): Doc[] {
     return DOCS;
   }
-  /**
-   * Adds a doc to the docs array
-   * @param doc The doc to add
-   */
-  addDoc(doc: Doc) {
-    DOCS.push(doc);
-  }
-
 }
