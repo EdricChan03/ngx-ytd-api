@@ -1,4 +1,4 @@
-# API for search
+# API for YouTube Data v3 Search
 
 ```typescript
 import { NgxYtdApiSearchService } from 'ngx-ytd-api/search';
@@ -20,7 +20,7 @@ See the [readme for search](../../src/lib/search/README.md) to view the docs.
 
 ## Methods
 
-### `NgxYtdApiService#search`
+### `NgxYtdApiService#list`
 
 Searches for content on YouTube using the YouTube Data API v3.
 
