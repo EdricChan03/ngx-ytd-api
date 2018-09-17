@@ -26,8 +26,8 @@
 		"email": "edric.chan.1997@gmail.com"
 	},
 	"peerDependencies": {
-		"@angular/common": "^6.1.6",
-		"@angular/core": "^6.1.6",
+		"@angular/common": "^6.0.0",
+		"@angular/core": "^6.0.0",
 		"rxjs": "^6.2.2"
 	},
 	"dependencies": {
