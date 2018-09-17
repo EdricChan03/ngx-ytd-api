@@ -23,9 +23,15 @@ while
       echo -e "\x1b[31mNPM is not installed. Please visit https://nodejs.org to get the latest package for your OS.\x1b[0m"
       exit 1
     else
-      # Continue execution
-      cd dist
-      npm dist-tag ls
+      # Check if the dist directory exists
+      if [[ -d "dist" ]]; then
+        # Continue execution
+        cd dist
+        npm dist-tag ls
+      else
+        echo -e "\x1b[33mWARN: The dist directory doesn't exist! Skipping...\x1b[0m"
+        exit 1
+      fi
     fi
     ;;
   "--from-scripts")
