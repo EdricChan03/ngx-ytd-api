@@ -19,11 +19,12 @@ export class NgxYtdApiCommentService {
    */
   list(opts: NgxYtdApiCommentListOpts): Observable<NgxYtdApiCommentListResult> {
     let _hasPartOpt = false;
-    let _apiUrl = this.ytdCommentBaseApiUrl;
+    let _apiUrl = `${this.ytdCommentBaseApiUrl}?key=${opts.key}`;
     // Loop through every property in the opts object
     for (const prop in opts) {
       // Check if property has a non-null value
-      if (opts.hasOwnProperty(prop) && opts[prop] !== null) {
+      // Also checks if the property is not `key` to prevent duplication
+      if (opts.hasOwnProperty(prop) && opts[prop] !== null && prop !== 'key') {
         // Add parameter to the API URL
         _apiUrl += `&${prop}=${encodeURI(opts[prop])}`;
         if (prop === 'part') {

@@ -30,7 +30,8 @@ export class NgxYtdApiSearchService {
     // Loop through every property in the opts object
     for (const prop in opts) {
       // Check if property has a non-null value
-      if (opts.hasOwnProperty(prop) && opts[prop] !== null) {
+      // Also checks if the property is not `q` to prevent duplication
+      if (opts.hasOwnProperty(prop) && opts[prop] !== null && prop !== 'q') {
         // Add parameter to the API URL
         _apiUrl += `&${prop}=${encodeURI(opts[prop])}`;
         if (prop === 'part') {
