@@ -55,7 +55,7 @@
     "ng-packagr": "^4.1.1",
     "protractor": "^5.4.0",
     "ts-node": "^7.0.1",
-    "tsickle": "^0.32.0",
+    "tsickle": "^0.33.0",
     "tslib": "^1.9.3",
     "tslint": "~5.10.0",
     "typescript": "^2.9.2"
