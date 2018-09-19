@@ -25,5 +25,5 @@ describe('NgxYtdApiSearchService', () => {
         expect(result).not.toBeNull();
       });
     }));
-  })
+  });
 });
