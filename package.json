@@ -39,7 +39,7 @@
     "@compodoc/compodoc": "^1.1.5",
     "@types/jasmine": "^2.8.8",
     "@types/jasminewd2": "~2.0.3",
-    "@types/node": "^10.10.1",
+    "@types/node": "^10.10.2",
     "angular-cli-ghpages": "^0.5.3",
     "codelyzer": "~4.3.0",
     "gulp": "^4.0.0",
