@@ -2,8 +2,7 @@ import { TestBed, async, inject } from '@angular/core/testing';
 import { NgxYtdApiCommentService } from './ytd-api-comments.service';
 import { HttpClientModule } from '@angular/common/http';
 
-// TODO(Edric): Make this private
-const API_KEY = 'AIzaSyBmfHhVrxcau7hOicv9ksQ6uW2PQMLzv10';
+const API_KEY = 'AIzaSyDFmrH-gObYTelaYtA19bnDuP5VBsawlJ8';
 describe('NgxYtdApiCommentService', () => {
   let service: NgxYtdApiCommentService;
   beforeEach(() => {
