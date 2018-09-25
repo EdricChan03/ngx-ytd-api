@@ -180,7 +180,7 @@ export class DemoSearchListComponent {
     return _apiConfig;
   }
   copyLink() {
-    let baseUrl = window.location.href;
+    let baseUrl = `${window.location.origin}${window.location.pathname}`;
     const searchFormVal = this.searchForm.getRawValue();
     const searchOptsFormVal = this.searchOptionsForm.getRawValue();
     for (const key in searchFormVal) {
@@ -195,9 +195,9 @@ export class DemoSearchListComponent {
             // question mark at the end.
             // This is to prevent duplicate question marks from showing
             if (new RegExp(/.+\?.*=.*/).test(baseUrl)) {
-              baseUrl = `${baseUrl}&${videoOptKey}=${searchFormVal[key][videoOptKey]}`;
+              baseUrl = `${baseUrl}&${videoOptKey}=${encodeURIComponent(searchFormVal[key][videoOptKey])}`;
             } else {
-              baseUrl = `${baseUrl}?${videoOptKey}=${searchFormVal[key][videoOptKey]}`;
+              baseUrl = `${baseUrl}?${videoOptKey}=${encodeURIComponent(searchFormVal[key][videoOptKey])}`;
             }
           }
         }
@@ -207,9 +207,9 @@ export class DemoSearchListComponent {
           // question mark at the end.
           // This is to prevent duplicate question marks from showing
           if (new RegExp(/.+\?.*=.*/).test(baseUrl)) {
-            baseUrl = `${baseUrl}&${key}=${searchFormVal[key]}`;
+            baseUrl = `${baseUrl}&${key}=${encodeURIComponent(searchFormVal[key])}`;
           } else {
-            baseUrl = `${baseUrl}?${key}=${searchFormVal[key]}`;
+            baseUrl = `${baseUrl}?${key}=${encodeURIComponent(searchFormVal[key])}`;
           }
         }
       }
@@ -224,9 +224,9 @@ export class DemoSearchListComponent {
         // question mark at the end.
         // This is to prevent duplicate question marks from showing
         if (new RegExp(/.+\?.*=.*/).test(baseUrl)) {
-          baseUrl = `${baseUrl}&${key}=${searchOptsFormVal[key]}`;
+          baseUrl = `${baseUrl}&${key}=${encodeURIComponent(searchOptsFormVal[key])}`;
         } else {
-          baseUrl = `${baseUrl}?${key}=${searchOptsFormVal[key]}`;
+          baseUrl = `${baseUrl}?${key}=${encodeURIComponent(searchOptsFormVal[key])}`;
         }
       }
     }
