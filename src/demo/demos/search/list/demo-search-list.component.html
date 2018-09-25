@@ -17,6 +17,10 @@
 </mat-toolbar>
 <div class="padding-percentage-container">
   <mat-card>
+    <mat-card-header>
+      <span fxFlex></span>
+      <button mat-icon-button (click)="copyLink()" matTooltip="Copy form link"><mat-icon>link</mat-icon></button>
+    </mat-card-header>
     <mat-card-title>YouTube Search</mat-card-title>
     <mat-card-content fxLayout="column">
       <form [formGroup]="searchForm" class="example-form" fxLayout="column" (keydown.enter)="submitForm()">

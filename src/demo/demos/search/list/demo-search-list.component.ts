@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef, MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SharedService } from '../../../shared.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-demo-search-list',
@@ -54,7 +55,8 @@ export class DemoSearchListComponent {
     private fb: FormBuilder,
     private dialog: MatDialog,
     private snackBar: MatSnackBar,
-    public shared: SharedService
+    public shared: SharedService,
+    private route: ActivatedRoute
   ) {
     this.searchForm = fb.group({
       q: ['', Validators.required],
@@ -77,6 +79,70 @@ export class DemoSearchListComponent {
       showJsonResult: false,
       showDescription: false,
       resultsView: 'card'
+    });
+    this.route.queryParams.subscribe(result => {
+      for (const prop in result) {
+        if (result.hasOwnProperty(prop)) {
+          // TODO(Edric): Find out a way to handle query params without a huge switch statement
+          switch (prop) {
+            case 'showJsonResult':
+            case 'showDescription':
+            case 'resultsView':
+              // Checks if the URL has duplicate query params
+              if (result[prop].constructor === Array) {
+                if (result[prop].length > 0) {
+                  // Only get the first index for this case
+                  this.searchOptionsForm.patchValue({ [prop]: result[prop][0] });
+                  console.warn(`Duplicate query parameter "${prop}": using first parameter's value`);
+                }
+              } else {
+                this.searchOptionsForm.patchValue({ [prop]: result[prop] });
+              }
+              break;
+            case 'videoCaption':
+            case 'videoCategoryId':
+            case 'videoDefinition':
+            case 'videoDimension':
+            case 'videoDuration':
+            case 'videoEmbeddable':
+            case 'videoLicense':
+            case 'videoSyndicated':
+            case 'videoType':
+              // Checks if the URL has duplicate query params
+              if (result[prop].constructor === Array) {
+                console.log(result[prop]);
+                if (result[prop].length > 0) {
+                  // Only get the first index for this case
+                  this.searchForm.get('videoOptions').patchValue({ [prop]: result[prop][0] });
+                  console.warn(`Duplicate query parameter "${prop}": using first parameter's value`);
+                }
+              } else {
+                this.searchForm.get('videoOptions').patchValue({ [prop]: result[prop] });
+              }
+              break;
+            case 'q':
+            case 'query':
+            case 'key':
+            case 'apiKey':
+            case 'maxResults':
+            case 'type':
+              // Checks if the URL has duplicate query params
+              if (result[prop].constructor === Array) {
+                if (result[prop].length > 0) {
+                  // Only get the first index for this case
+                  this.searchForm.patchValue({ [prop]: result[prop][0] });
+                  console.warn(`Duplicate query parameter "${prop}": using first parameter's value`);
+                }
+              } else {
+                this.searchForm.patchValue({ [prop]: result[prop] });
+              }
+              break;
+            default:
+              console.warn(`The parameter ${prop} isn't defined in the form!`);
+              break;
+          }
+        }
+      }
     });
   }
   get isVideoType(): boolean {
@@ -112,6 +178,74 @@ export class DemoSearchListComponent {
       }
     }
     return _apiConfig;
+  }
+  copyLink() {
+    let baseUrl = window.location.href;
+    const searchFormVal = this.searchForm.getRawValue();
+    const searchOptsFormVal = this.searchOptionsForm.getRawValue();
+    for (const key in searchFormVal) {
+      // Check if a key's value is an object.
+      // Note that null is reported as object when checked
+      // against typeof, thus the check for null here.
+      if (typeof searchFormVal[key] === 'object') {
+        // Assume that we're looking at the 'videoOptions' form group here
+        for (const videoOptKey in searchFormVal[key]) {
+          if (searchFormVal[key][videoOptKey] !== undefined && searchFormVal[key][videoOptKey]) {
+            // Checks if the URL that we're working with doesn't have a
+            // question mark at the end.
+            // This is to prevent duplicate question marks from showing
+            if (new RegExp(/.+\?.*=.*/).test(baseUrl)) {
+              baseUrl = `${baseUrl}&${videoOptKey}=${searchFormVal[key][videoOptKey]}`;
+            } else {
+              baseUrl = `${baseUrl}?${videoOptKey}=${searchFormVal[key][videoOptKey]}`;
+            }
+          }
+        }
+      } else {
+        if (searchFormVal[key] !== undefined && searchFormVal[key]) {
+          // Checks if the URL that we're working with doesn't have a
+          // question mark at the end.
+          // This is to prevent duplicate question marks from showing
+          if (new RegExp(/.+\?.*=.*/).test(baseUrl)) {
+            baseUrl = `${baseUrl}&${key}=${searchFormVal[key]}`;
+          } else {
+            baseUrl = `${baseUrl}?${key}=${searchFormVal[key]}`;
+          }
+        }
+      }
+    }
+    for (const key in searchOptsFormVal) {
+      // Note: Since the form has no nested FormGroup, we don't need to check
+      // for a nested object.
+      // However, we'll still need a null check to ensure that inputs that
+      // are empty won't be added to the query parameters.
+      if (searchOptsFormVal[key] !== undefined && searchOptsFormVal[key]) {
+        // Checks if the URL that we're working with doesn't have a
+        // question mark at the end.
+        // This is to prevent duplicate question marks from showing
+        if (new RegExp(/.+\?.*=.*/).test(baseUrl)) {
+          baseUrl = `${baseUrl}&${key}=${searchOptsFormVal[key]}`;
+        } else {
+          baseUrl = `${baseUrl}?${key}=${searchOptsFormVal[key]}`;
+        }
+      }
+    }
+    try {
+      const selBox = document.createElement('textarea');
+      selBox.style.position = 'fixed';
+      selBox.style.left = '0';
+      selBox.style.top = '0';
+      selBox.style.opacity = '0';
+      selBox.value = baseUrl;
+      document.body.appendChild(selBox);
+      selBox.focus();
+      selBox.select();
+      document.execCommand('copy');
+      document.body.removeChild(selBox);
+      this.snackBar.open('Link copied to clipboard');
+    } catch (e) {
+      // TODO(Edric): Implement catch statement for when browser can't handle this.
+    }
   }
   getValue(value: any, defaultValue: any) {
     return value ? value : defaultValue;
