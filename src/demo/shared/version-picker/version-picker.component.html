@@ -1,5 +1,6 @@
 <button mat-button [matMenuTriggerFor]="versionPickerMenu" class="docs-version-picker-button">
   {{currentVersion}}
+  <mat-icon *ngIf="!hideDropDownArrow">arrow_drop_down</mat-icon>
 </button>
 <mat-menu #versionPickerMenu="matMenu">
   <ng-template matMenuContent>

@@ -19,6 +19,8 @@ export interface VersionMenuItem {
   styleUrls: ['./version-picker.component.css']
 })
 export class VersionPickerComponent implements OnInit {
+  /** Whether to hide the dropdown arrow. */
+  @Input() hideDropDownArrow = false;
   currentVersion = ngxYtdApiVersion.full;
   versions: VersionFile;
   constructor(private http: HttpClient) { }
