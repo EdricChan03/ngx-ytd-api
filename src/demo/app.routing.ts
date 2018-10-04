@@ -5,6 +5,7 @@ import { DemoVideosComponent } from './demos/videos/demo-videos.component';
 import { DemoHomeComponent } from './demos/home/demo-home.component';
 import { DemoSearchListComponent } from './demos/search/list/demo-search-list.component';
 import { DocsHomeComponent } from './docs/docs-home/docs-home.component';
+import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 
 const APP_ROUTES: Route[] = [
   {
@@ -25,6 +26,9 @@ const APP_ROUTES: Route[] = [
     ]
   },
   // { path: 'docs', redirectTo: '/docs/docsList' },
+  { path: 'privacy-policy', component: PrivacyPolicyComponent },
+  { path: 'policy', redirectTo: '/privacy-policy' },
+  { path: 'privacy', redirectTo: '/privacy-policy' },
   { path: '**', redirectTo: '/docs' }
 ];
 

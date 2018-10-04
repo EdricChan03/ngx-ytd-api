@@ -21,6 +21,7 @@ import { DocsHomeComponent } from './docs/docs-home/docs-home.component';
 import { SharedService } from './shared.service';
 import { VersionPickerModule } from './shared/version-picker/version-picker.module';
 import { SharedModule } from './shared.module';
+import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 
 const YTD_API_DEMO_SERVICES = [
   NgxYtdApiCommentService,
@@ -33,7 +34,8 @@ const YTD_API_DEMO_SERVICES = [
     DemoVideosComponent,
     DemoHomeComponent,
     DemoSearchListComponent,
-    DocsHomeComponent
+    DocsHomeComponent,
+    PrivacyPolicyComponent
   ],
   imports: [
     BrowserModule,
