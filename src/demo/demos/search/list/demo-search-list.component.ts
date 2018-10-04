@@ -157,7 +157,7 @@ export class DemoSearchListComponent {
       key: '',
       q: ''
     };
-    const _rawValue = this.searchForm.getRawValue();
+    const _rawValue = this.searchForm.value;
     for (const prop in _rawValue) {
       if (typeof _rawValue[prop] === 'object') {
         const _rawValueObj = _rawValue[prop];
@@ -181,8 +181,8 @@ export class DemoSearchListComponent {
   }
   copyLink() {
     let baseUrl = `${window.location.origin}${window.location.pathname}`;
-    const searchFormVal = this.searchForm.getRawValue();
-    const searchOptsFormVal = this.searchOptionsForm.getRawValue();
+    const searchFormVal = this.searchForm.value;
+    const searchOptsFormVal = this.searchOptionsForm.value;
     for (const key in searchFormVal) {
       // Check if a key's value is an object.
       // Note that null is reported as object when checked
@@ -291,7 +291,7 @@ export class DemoSearchListComponent {
     if (pageToken) {
       _apiConfig.pageToken = pageToken;
     }
-    console.log(this.searchForm.getRawValue());
+    console.log(this.searchForm.value);
     this.ytApi.list(_apiConfig).subscribe(result => {
       this.searchResult = result;
       console.log(result);
