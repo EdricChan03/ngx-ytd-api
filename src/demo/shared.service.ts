@@ -72,12 +72,6 @@ export class SharedService {
   openDevConfig() {
     this.dialog.open(DevModeDialogComponent);
   }
-  /*
-  toggleSidenav(sidenav?: MatSidenav) {
-    if (this._sidenav && !sidenav) {
-      this._sidenav.toggle();
-    } else {
-      sidenav.toggle();
   /**
    * Shortcut method to print the current document
    */
@@ -86,5 +80,4 @@ export class SharedService {
   }
     }
   }
-  */
 }
