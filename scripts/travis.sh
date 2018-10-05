@@ -47,8 +47,8 @@ case "$MODE" in
   ng lint ngx-ytd-api-demo
   ;;
 "test-demo")
-  echo -e "\x1b[34mTesting the demo app...\x1b[0m"
-  ng e2e ngx-ytd-api-demo-e2e
+  echo -e "\x1b[31m\x1b[1mERROR: The demo can no longer be tested. Exiting...\x1b[0m"
+  exit 1
   ;;
 esac
 

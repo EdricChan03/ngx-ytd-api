@@ -33,8 +33,6 @@ jobs:
   - stage: test
     env: MODE=test-lib
     name: "Library testing"
-  - env: MODE=test-demo
-    name: "e2e demo testing"
   - stage: build
     env: DEPLOY_MODE=build-artifacts
     name: "Build artifacts"
