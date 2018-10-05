@@ -125,7 +125,7 @@ app-root {
     }
   }
   // Hide website controls when printing
-  #app-toolbar, .hide-print {
+  #app-toolbar, .hide-print, .mat-tooltip-panel {
     display: none !important;
   }
 }
