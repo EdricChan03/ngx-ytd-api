@@ -78,6 +78,12 @@ export class SharedService {
       this._sidenav.toggle();
     } else {
       sidenav.toggle();
+  /**
+   * Shortcut method to print the current document
+   */
+  printDocument() {
+    window.print();
+  }
     }
   }
   */
