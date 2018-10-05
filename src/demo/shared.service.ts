@@ -78,6 +78,4 @@ export class SharedService {
   printDocument() {
     window.print();
   }
-    }
-  }
 }
