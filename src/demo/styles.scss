@@ -1,0 +1,137 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+pre, code, xmp, kbd {
+  font-family: 'Roboto Mono', monospace;
+  white-space: pre-wrap;
+}
+
+/* Code adapted from material.angular.io */
+
+app-root {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.docs-sidenav {
+  min-width: 250px;
+}
+
+.active-link {
+  color: #3F51B5 !important;
+  background-color: #DCDCDC !important;
+}
+
+.mat-list-item:not(.active-link) .mat-list-item-content mat-icon, .icon {
+  color: rgba(0, 0, 0, .54);
+}
+
+.padding-percentage-container {
+  padding: 5%;
+}
+
+.center-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.error-icon {
+  font-size: 72px;
+  width: 72px !important;
+  height: 72px !important;
+  color: #f44336 !important;
+}
+
+.mat-button, .mat-stroked-button, .mat-raised-button, .mat-flat-button, .mat-simple-snackbar-action {
+  text-transform: uppercase;
+}
+
+.active-menu-item {
+  color: #3F51B5;
+  background-color: #E8E8E8 !important;
+}
+
+.chip-icon {
+  margin-right: 8px;
+}
+
+.mat-expansion-panel-header-title {
+  align-items: center;
+}
+
+.mat-expansion-panel-header-title mat-icon {
+  margin-right: 20px;
+}
+
+// Adapted from https://github.com/angular/material.angular.io/issues/333#issuecomment-410070162
+@media print {
+  // Force to print colors, otherwise the material components will look white
+  color-adjust: exact;
+  -webkit-print-color-adjust: exact;
+
+  body {
+    overflow: auto;
+    // Roboto not printing ok on Chrome, fallback on supported fonts
+    font-family: 'Helvetica Neue', sans-serif !important;
+    
+    mat-sidenav-container {
+      // Remove background color to save toner
+      background-color: transparent !important;
+      // Override the color from the template
+      color: black !important;
+      // Position needs to be relative
+      position: relative !important;
+      overflow: visible !important;
+      mat-sidenav-content {
+        // Remove the content margin if sidenav is expanded when hidden for print
+        margin: 0 !important;
+
+        // Remove max width and padding from containers to flow text depending on printer page sizes
+        [class$="container"] {
+          min-width: 0 !important;
+          padding: 0 !important;
+        }
+
+        // Roboto not printing ok on Chrome, fallback on supported fonts
+        .mat-typography, .mat-card {
+          font-family: 'Helvetica Neue', sans-serif !important;
+          h1, h2, h3, h4, h5 {
+            font-family: 'Helvetica Neue', sans-serif !important;
+          }
+        }
+        .mat-button, .mat-raised-button, .mat-icon-button,
+        .mat-stroked-button, .mat-flat-button, .mat-fab, .mat-mini-fab {
+          font-family: 'Helvetica Neue', sans-serif !important;
+        }
+
+        // Define where a page break should occur when printing
+        h2 {
+          page-break-before: always; // always break before h2 elements, for chapters for example
+        }
+        h3, h4 {
+          page-break-after: avoid; // avoid breaking after subtitles, it looks weird
+        }
+        pre, blockquote, img {
+          page-break-inside: avoid; // avoid breaking inside pre and blockquotes
+        }
+      }
+    }
+  }
+  // Hide website controls when printing
+  #app-toolbar, .hide-print {
+    display: none !important;
+  }
+}
+.print-btn {
+  position: fixed !important;
+  bottom: 40px;
+  right: 40px;
+  z-index: 1;
+}

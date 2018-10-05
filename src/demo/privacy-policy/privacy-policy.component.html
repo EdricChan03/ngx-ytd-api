@@ -1,4 +1,4 @@
-<mat-toolbar color="primary" class="mat-elevation-z3">
+<mat-toolbar color="primary" class="mat-elevation-z3" id="app-toolbar">
   <button mat-icon-button (click)="shared.sidenav.toggle()">
     <mat-icon>menu</mat-icon>
   </button>
@@ -13,6 +13,7 @@
   <app-version-picker></app-version-picker>
 </mat-toolbar>
 <div class="padding-percentage-container">
+  <button mat-fab color="primary" (click)="shared.printDocument()" class="hide-print print-btn" matTooltip="Print document" matTooltipPosition="before"><mat-icon>print</mat-icon></button>
   <h1>Privacy Policy</h1>
   <p>Effective date: October 04, 2018</p>
   <p>Angular YouTube Data v3 API Demo ("us", "we", or "our") operates the https://ngx-ytd-api.firebaseapp.com website
