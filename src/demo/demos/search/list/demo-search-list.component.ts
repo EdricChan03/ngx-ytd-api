@@ -1,6 +1,6 @@
 import { Component, TemplateRef } from '@angular/core';
 import { NgxYtdApiSearchService, NgxYtdApiSearchListResult, NgxYtdApiSearchListOpts } from 'ngx-ytd-api/search';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { MatDialogRef, MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SharedService } from '../../../shared.service';
@@ -19,6 +19,7 @@ export class DemoSearchListComponent {
   // maxResults: number = 50;
   searchForm: FormGroup;
   searchOptionsForm: FormGroup;
+  authMethod: FormControl;
   codeDialogRef: MatDialogRef<any>;
   types = [
     {
@@ -61,6 +62,7 @@ export class DemoSearchListComponent {
     this.searchForm = fb.group({
       q: ['', Validators.required],
       key: ['', [Validators.required, Validators.maxLength(39), Validators.minLength(39)]],
+      accessToken: [{ value: '', disabled: true }],
       maxResults: [50, [Validators.required, Validators.min(0), Validators.max(50)]],
       type: ['video,channel,playlist', Validators.required],
       videoOptions: fb.group({
@@ -79,6 +81,24 @@ export class DemoSearchListComponent {
       showJsonResult: false,
       showDescription: false,
       resultsView: 'card'
+    });
+    this.authMethod = new FormControl('key');
+    this.authMethod.valueChanges.subscribe(result => {
+      if (result === 'key') {
+        if (this.searchForm.get('key').disabled) {
+          this.searchForm.get('key').enable();
+        }
+        if (this.searchForm.get('accessToken').enabled) {
+          this.searchForm.get('accessToken').disable();
+        }
+      } else if (result === 'oauth') {
+        if (this.searchForm.get('key').enabled) {
+          this.searchForm.get('key').disable();
+        }
+        if (this.searchForm.get('accessToken').disabled) {
+          this.searchForm.get('accessToken').enable();
+        }
+      }
     });
     this.route.queryParams.subscribe(result => {
       for (const prop in result) {
@@ -144,6 +164,10 @@ export class DemoSearchListComponent {
         }
       }
     });
+    if (this.shared.getLocalStorageProperty('oauth-token')) {
+      this.searchForm.patchValue({ 'accessToken': this.shared.getLocalStorageProperty('oauth-token') });
+      this.authMethod.patchValue('oauth');
+    }
   }
   get isVideoType(): boolean {
     if (this.searchForm.get('type').value.indexOf('video') > -1) {
@@ -178,6 +202,9 @@ export class DemoSearchListComponent {
       }
     }
     return _apiConfig;
+  }
+  get oAuthValue(): string {
+    return this.shared.getLocalStorageProperty('oauth-token');
   }
   copyLink() {
     let baseUrl = `${window.location.origin}${window.location.pathname}`;
@@ -270,6 +297,7 @@ export class DemoSearchListComponent {
     this.searchForm.reset({
       query: '',
       key: '',
+      accessToken: '',
       maxResults: 50,
       type: 'video,channel,playlist',
       videoOptions: {

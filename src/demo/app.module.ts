@@ -22,6 +22,8 @@ import { SharedService } from './shared.service';
 import { VersionPickerModule } from './shared/version-picker/version-picker.module';
 import { SharedModule } from './shared.module';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
+import { CallbackComponent } from './callback/callback.component';
+import { RoutingStateService } from './routingstate.service';
 
 const YTD_API_DEMO_SERVICES = [
   NgxYtdApiCommentService,
@@ -35,7 +37,8 @@ const YTD_API_DEMO_SERVICES = [
     DemoHomeComponent,
     DemoSearchListComponent,
     DocsHomeComponent,
-    PrivacyPolicyComponent
+    PrivacyPolicyComponent,
+    CallbackComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +55,8 @@ const YTD_API_DEMO_SERVICES = [
   providers: [
     YTD_API_DEMO_SERVICES,
     ListsService,
-    SharedService
+    SharedService,
+    RoutingStateService
   ],
   bootstrap: [AppComponent]
 })

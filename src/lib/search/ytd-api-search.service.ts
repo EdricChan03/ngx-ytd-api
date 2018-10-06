@@ -1,5 +1,5 @@
-import { Injectable, Optional } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { NgxYtdApiSearchListOpts, NgxYtdApiSearchListResult } from './ytd-api-search.interfaces';
@@ -27,6 +27,7 @@ export class NgxYtdApiSearchService {
     const query = encodeURI(opts.q);
     let _hasPartOpt = false;
     let _apiUrl = `${this.ytdSearchBaseApiUrl}?q=${query}`;
+    let _httpHeaders;
     // Loop through every property in the opts object
     for (const prop in opts) {
       // Check if property has a non-null value
@@ -37,11 +38,19 @@ export class NgxYtdApiSearchService {
         if (prop === 'part') {
           _hasPartOpt = true;
         }
+        // Special case as the API doesn't accept camcel case for the
+        // access token parameter.
+        if (prop === 'accessToken') {
+          _httpHeaders = new HttpHeaders({'Authorization': `Bearer ${opts[prop]}`});
+        }
       }
     }
     // Default if `part` parameter isn't specified
     if (!_hasPartOpt) {
       _apiUrl += '&part=snippet';
+    }
+    if (_httpHeaders) {
+      return this.http.get<NgxYtdApiSearchListResult>(_apiUrl, {headers: _httpHeaders});
     }
     return this.http.get<NgxYtdApiSearchListResult>(_apiUrl);
   }

@@ -6,6 +6,7 @@ import { DemoHomeComponent } from './demos/home/demo-home.component';
 import { DemoSearchListComponent } from './demos/search/list/demo-search-list.component';
 import { DocsHomeComponent } from './docs/docs-home/docs-home.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
+import { CallbackComponent } from './callback/callback.component';
 
 const APP_ROUTES: Route[] = [
   {
@@ -20,12 +21,9 @@ const APP_ROUTES: Route[] = [
       }
     ]
   },
-  {
-    path: 'docs', children: [
-      { path: '', component: DocsHomeComponent }
-    ]
-  },
-  // { path: 'docs', redirectTo: '/docs/docsList' },
+  // Handler for Google's OAuth
+  { path: 'callback', component: CallbackComponent },
+  { path: 'docs', component: DocsHomeComponent },
   { path: 'privacy-policy', component: PrivacyPolicyComponent },
   { path: 'policy', redirectTo: '/privacy-policy' },
   { path: 'privacy', redirectTo: '/privacy-policy' },

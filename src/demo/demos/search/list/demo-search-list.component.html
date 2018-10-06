@@ -1,4 +1,4 @@
-<mat-toolbar color="primary" class="mat-elevation-z3">
+<mat-toolbar color="primary" class="mat-elevation-z3" id="app-toolbar">
   <button mat-icon-button (click)="shared.sidenav.toggle()">
     <mat-icon>menu</mat-icon>
   </button>
@@ -19,7 +19,9 @@
   <mat-card>
     <mat-card-header>
       <span fxFlex></span>
-      <button mat-icon-button (click)="copyLink()" matTooltip="Copy form link"><mat-icon>link</mat-icon></button>
+      <button mat-icon-button (click)="copyLink()" matTooltip="Copy form link">
+        <mat-icon>link</mat-icon>
+      </button>
     </mat-card-header>
     <mat-card-title>YouTube Search</mat-card-title>
     <mat-card-content fxLayout="column">
@@ -33,14 +35,30 @@
           </a>
         </mat-form-field>
         <mat-form-field>
+          <mat-label>Authentication method</mat-label>
+          <mat-select [formControl]="authMethod">
+            <mat-option value="key">API Key</mat-option>
+            <mat-option value="oauth">Google OAuth 2.0</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
           <mat-label>API Key</mat-label>
           <input matInput formControlName="key">
           <mat-error *ngIf="searchForm.get('key')?.hasError('required')">This is required.</mat-error>
           <mat-error *ngIf="searchForm.get('key')?.hasError('minlength') || searchForm.get('key')?.hasError('maxlength')">Please
             enter a valid API key.</mat-error>
-          <a mat-icon-button matSuffix matTooltip="View parameter on API docs" href="https://developers.google.com/youtube/v3/docs/search/list#apiKey">
+          <a mat-icon-button matSuffix matTooltip="View parameter on API docs" href="https://developers.google.com/youtube/v3/docs/search/list#apiKey"
+            [disabled]="searchForm.get('key')?.disabled">
             <mat-icon>open_in_new</mat-icon>
           </a>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>OAuth access token</mat-label>
+          <input matInput formControlName="accessToken">
+          <button mat-icon-button matSuffix matTooltip="Authenticate using OAuth" (click)="shared.oauth2SignIn('_blank', 'https://www.googleapis.com/auth/youtube')"
+            [disabled]="searchForm.get('accessToken')?.disabled">
+            <mat-icon>open_in_new</mat-icon>
+          </button>
         </mat-form-field>
         <mat-form-field>
           <mat-label>Search types</mat-label>

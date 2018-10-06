@@ -67,15 +67,86 @@ export class SharedService {
     return navigator.onLine;
   }
   /**
+   * Retrieves the OAuth 2.0 access token saved in local storage.
+   */
+  get oAuthAccessToken(): string {
+    return localStorage.getItem('oauth-token');
+  }
+  /**
    * Opens a developer config dialog
    */
   openDevConfig() {
     this.dialog.open(DevModeDialogComponent);
   }
   /**
+   * Retrieves a property from local storage
+   * @param property The property to access
+   * @returns The value of the property, or `null` if the property doesn't exist.
+   */
+  getLocalStorageProperty(property: string) {
+    if (localStorage.getItem(property)) {
+      return localStorage.getItem(property);
+    }
+    return;
+  }
+  /**
    * Shortcut method to print the current document
    */
   printDocument() {
     window.print();
+  }
+  /**
+   * Retrieves a fragment's value.
+   * Useful for OAuth 2.0.
+   * @param name The fragment name to search for
+   */
+  getFragmentValue(name: string): string {
+    const regex = new RegExp(`^.*${name}=([^&]+).*$`);
+    return window.location.hash.replace(regex, '$1');
+  }
+  /**
+   * Create form to request access token from Google's OAuth 2.0 server.
+   * @param target The target to open the form in.
+   * @param scope The scope to access
+   * @param clientId The client ID. This can be accessed from Google's Developer Console.
+   * @param redirectUri The URL to redirect to after authenticating.
+   */
+  oauth2SignIn(
+    target = '_self',
+    scope = 'https://www.googleapis.com/auth/userinfo.email',
+    clientId = '96941029893-421qi0p79ccsdo5fck9jqkcmflcpa2uu.apps.googleusercontent.com',
+    redirectUri = 'http://localhost:4200/callback'
+  ) {
+    // Google's OAuth 2.0 endpoint for requesting an access token
+    const oauth2Endpoint = 'https://accounts.google.com/o/oauth2/v2/auth';
+
+    // Create element to open OAuth 2.0 endpoint in new window.
+    const form = document.createElement('form');
+    form.setAttribute('method', 'GET'); // Send as a GET request.
+    form.setAttribute('action', oauth2Endpoint);
+    form.setAttribute('target', target);
+    // Parameters to pass to OAuth 2.0 endpoint.
+    const params = {
+      'client_id': clientId,
+      'redirect_uri': redirectUri,
+      'scope': scope,
+      'include_granted_scopes': 'true',
+      'response_type': 'token'
+    };
+
+    // Add form parameters as hidden input values.
+    for (const p in params) {
+      if (p in params) {
+        const input = document.createElement('input');
+        input.setAttribute('type', 'hidden');
+        input.setAttribute('name', p);
+        input.setAttribute('value', params[p]);
+        form.appendChild(input);
+      }
+    }
+
+    // Add form to page and submit it to open the OAuth 2.0 endpoint.
+    document.body.appendChild(form);
+    form.submit();
   }
 }

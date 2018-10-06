@@ -1,0 +1,14 @@
+<div class="center-container">
+  <ng-template #error>
+    <div>
+      <mat-icon class="error-icon">error</mat-icon>
+      <h1>An error occurred while authenticating.</h1>
+      <p>Error code: {{ errorCode }}</p>
+      <a mat-button color="primary" [routerLink]="['/' + routingState.getPreviousUrl()]">Back</a>
+    </div>
+  </ng-template>
+  <div *ngIf="!hasError; else: error">
+    <h1>Redirecting&#8230;</h1>
+    <mat-spinner></mat-spinner>
+  </div>
+</div>

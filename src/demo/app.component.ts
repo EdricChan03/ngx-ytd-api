@@ -4,6 +4,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 import { ListsService, Demo, Doc } from './lists.service';
 import { SharedService } from './shared.service';
 import { MatSidenav } from '@angular/material/sidenav';
+import { RoutingStateService } from './routingstate.service';
 
 declare type ToggleState = 'notToggled' | 'toggled';
 
@@ -45,9 +46,11 @@ export class AppComponent implements OnInit {
   @ViewChild('docsSidenav') sidenav: MatSidenav;
   constructor(
     private listsService: ListsService,
-    private shared: SharedService
+    private shared: SharedService,
+    private routingState: RoutingStateService
   ) { }
   ngOnInit() {
+    this.routingState.init();
     this.demos = this.listsService.getDemos();
     this.docs = this.listsService.getDocs();
     this.shared.sidenav = this.sidenav;
