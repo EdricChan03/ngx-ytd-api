@@ -257,22 +257,7 @@ export class DemoSearchListComponent {
         }
       }
     }
-    try {
-      const selBox = document.createElement('textarea');
-      selBox.style.position = 'fixed';
-      selBox.style.left = '0';
-      selBox.style.top = '0';
-      selBox.style.opacity = '0';
-      selBox.value = baseUrl;
-      document.body.appendChild(selBox);
-      selBox.focus();
-      selBox.select();
-      document.execCommand('copy');
-      document.body.removeChild(selBox);
-      this.snackBar.open('Link copied to clipboard');
-    } catch (e) {
-      // TODO(Edric): Implement catch statement for when browser can't handle this.
-    }
+    this.shared.copyText(baseUrl);
   }
   getValue(value: any, defaultValue: any) {
     return value ? value : defaultValue;

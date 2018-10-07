@@ -105,6 +105,29 @@ export class SharedService {
     return window.location.hash.replace(regex, '$1');
   }
   /**
+   * Copies text to the clipboard.
+   * @param text The text to copy
+   */
+  copyText(text: string) {
+    try {
+      const selBox = document.createElement('textarea');
+      selBox.style.position = 'fixed';
+      selBox.style.left = '0';
+      selBox.style.top = '0';
+      selBox.style.opacity = '0';
+      selBox.value = text;
+      document.body.appendChild(selBox);
+      selBox.focus();
+      selBox.select();
+      document.execCommand('copy');
+      document.body.removeChild(selBox);
+      this.snackbar.open('Link copied to clipboard');
+    } catch (e) {
+      // TODO(Edric): Implement catch statement for when the browser can't handle this.
+      console.error('An error occurred while copying:', e);
+    }
+  }
+  /**
    * Create form to request access token from Google's OAuth 2.0 server.
    * @param target The target to open the form in.
    * @param scope The scope to access
