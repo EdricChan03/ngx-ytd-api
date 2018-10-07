@@ -137,12 +137,21 @@ export class SharedService {
   oauth2SignIn(
     target = '_self',
     scope = 'https://www.googleapis.com/auth/userinfo.email',
-    clientId = '96941029893-421qi0p79ccsdo5fck9jqkcmflcpa2uu.apps.googleusercontent.com',
-    redirectUri = `${window.location.origin}/callback`
+    clientId = '96941029893-421qi0p79ccsdo5fck9jqkcmflcpa2uu.apps.googleusercontent.com'
+    // redirectUri = `${window.location.origin}/callback`
   ) {
     // Google's OAuth 2.0 endpoint for requesting an access token
     const oauth2Endpoint = 'https://accounts.google.com/o/oauth2/v2/auth';
 
+    let redirectUri: string;
+    // Since the demo has multiple versions, check if the app is running on Firebase.
+    if (window.location.host === 'ngx-ytd-api.firebaseapp.com') {
+      // Get the version and paste it in the URI below
+      redirectUri = `${window.location.origin}/${window.location.pathname.split('/')[1]}/callback`;
+    } else {
+      // Assume that the app is running locally.
+      redirectUri = `${window.location.origin}/callback`;
+    }
     // Create element to open OAuth 2.0 endpoint in new window.
     const form = document.createElement('form');
     form.setAttribute('method', 'GET'); // Send as a GET request.
