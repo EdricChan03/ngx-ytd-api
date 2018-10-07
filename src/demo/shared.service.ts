@@ -138,7 +138,7 @@ export class SharedService {
     target = '_self',
     scope = 'https://www.googleapis.com/auth/userinfo.email',
     clientId = '96941029893-421qi0p79ccsdo5fck9jqkcmflcpa2uu.apps.googleusercontent.com',
-    redirectUri = 'http://localhost:4200/callback'
+    redirectUri = `${window.location.origin}/callback`
   ) {
     // Google's OAuth 2.0 endpoint for requesting an access token
     const oauth2Endpoint = 'https://accounts.google.com/o/oauth2/v2/auth';
