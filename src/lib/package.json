@@ -1,36 +1,36 @@
 {
-	"name": "ngx-ytd-api",
-	"description": "Unofficial YouTube Data API for Angular",
-	"version": "1.0.0-alpha.3",
-	"license": "MIT",
-	"keywords": [
-		"youtube",
-		"ytd-api",
-		"youtube-data-api",
-		"angular",
-		"ngx-ytd-api"
-	],
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/Chan4077/ngx-ytd-api"
-	},
-	"author": {
-		"email": "edric.chan.1997@gmail.com",
-		"name": "Edric Chan",
-		"url": "https://github.com/Chan4077"
-	},
-	"readme": "https://github.com/Chan4077/ngx-ytd-api#readme",
-	"homepage": "https://ngx-ytd-api.firebaseapp.com",
-	"bugs": {
-		"url": "https://github.com/Chan4077/ngx-ytd-api",
-		"email": "edric.chan.1997@gmail.com"
-	},
-	"peerDependencies": {
-		"@angular/common": "^6.0.0",
-		"@angular/core": "^6.0.0",
-		"rxjs": "^6.2.2"
-	},
-	"dependencies": {
-		"tslib": "^1.9.3"
-	}
+  "name": "ngx-ytd-api",
+  "description": "Unofficial YouTube Data API for Angular",
+  "version": "1.0.0-alpha.3",
+  "license": "MIT",
+  "keywords": [
+    "youtube",
+    "ytd-api",
+    "youtube-data-api",
+    "angular",
+    "ngx-ytd-api"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Chan4077/ngx-ytd-api"
+  },
+  "author": {
+    "email": "edric.chan.1997@gmail.com",
+    "name": "Edric Chan",
+    "url": "https://github.com/Chan4077"
+  },
+  "readme": "https://github.com/Chan4077/ngx-ytd-api#readme",
+  "homepage": "https://ngx-ytd-api.firebaseapp.com",
+  "bugs": {
+    "url": "https://github.com/Chan4077/ngx-ytd-api",
+    "email": "edric.chan.1997@gmail.com"
+  },
+  "peerDependencies": {
+    "@angular/common": "^6.0.0",
+    "@angular/core": "^6.0.0",
+    "rxjs": "^6.2.2"
+  },
+  "dependencies": {
+    "tslib": "^1.9.3"
+  }
 }

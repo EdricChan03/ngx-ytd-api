@@ -1,11 +1,11 @@
 {
-	"$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
-	"lib": {
-		"entryFile": "public_api.ts",
-		"comments": "none"
-	},
-	"whitelistedNonPeerDependencies": [
-		"tslib"
-	],
-	"dest": "../../dist/ngx-ytd-api-lib"
+  "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
+  "lib": {
+    "entryFile": "public_api.ts",
+    "comments": "none"
+  },
+  "whitelistedNonPeerDependencies": [
+    "tslib"
+  ],
+  "dest": "../../dist/ngx-ytd-api-lib"
 }

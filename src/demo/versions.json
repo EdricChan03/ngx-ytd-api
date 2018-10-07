@@ -1,36 +1,36 @@
 {
-	"versions": [
-		{
-			"type": "subheader",
-			"name": "Snapshots"
-		},
-		{
-			"type": "version",
-			"name": "0.0.0-PLACEHOLDER",
-			"link": "/master"
-		},
-		{
-			"type": "divider"
-		},
-		{
-			"type": "subheader",
-			"name": "All versions"
-		},
-		{
-			"type": "version",
-			"name": "1.0.0-alpha.1",
-			"link": "/1.0.0-alpha.1",
-			"hidden": true
-		},
-		{
-			"type": "version",
-			"name": "1.0.0-alpha.2",
-			"link": "/1.0.0-alpha.2"
-		},
-		{
-			"type": "version",
-			"name": "1.0.0-alpha.3",
-			"link": "/1.0.0-alpha.3"
-		}
-	]
+  "versions": [
+    {
+      "type": "subheader",
+      "name": "Snapshots"
+    },
+    {
+      "type": "version",
+      "name": "0.0.0-PLACEHOLDER",
+      "link": "/master"
+    },
+    {
+      "type": "divider"
+    },
+    {
+      "type": "subheader",
+      "name": "All versions"
+    },
+    {
+      "type": "version",
+      "name": "1.0.0-alpha.1",
+      "link": "/1.0.0-alpha.1",
+      "hidden": true
+    },
+    {
+      "type": "version",
+      "name": "1.0.0-alpha.2",
+      "link": "/1.0.0-alpha.2"
+    },
+    {
+      "type": "version",
+      "name": "1.0.0-alpha.3",
+      "link": "/1.0.0-alpha.3"
+    }
+  ]
 }
