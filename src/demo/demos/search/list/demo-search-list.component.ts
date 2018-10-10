@@ -62,7 +62,7 @@ export class DemoSearchListComponent {
     this.searchForm = fb.group({
       q: ['', Validators.required],
       key: ['', [Validators.required, Validators.maxLength(39), Validators.minLength(39)]],
-      accessToken: [{ value: '', disabled: true }],
+      accessToken: [{ value: '', disabled: true }, Validators.required],
       maxResults: [50, [Validators.required, Validators.min(0), Validators.max(50)]],
       type: ['video,channel,playlist', Validators.required],
       videoOptions: fb.group({
