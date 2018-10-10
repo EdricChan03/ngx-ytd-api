@@ -55,6 +55,7 @@
         <mat-form-field>
           <mat-label>OAuth access token</mat-label>
           <input matInput formControlName="accessToken">
+          <mat-error *ngIf="searchForm.get('accessToken')?.hasError('required')">This is required.</mat-error>
           <button mat-icon-button matSuffix matTooltip="Authenticate using OAuth" (click)="shared.oauth2SignIn('_blank', 'https://www.googleapis.com/auth/youtube')"
             [disabled]="searchForm.get('accessToken')?.disabled">
             <mat-icon>open_in_new</mat-icon>
