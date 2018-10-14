@@ -175,7 +175,7 @@ export interface NgxYtdApiVideosListResultItem {
     uploadStatus?: string;
     failureReason?: string;
     rejectionReason?: string;
-    privacyPolicy?: string;
+    privacyStatus?: string;
     publishAt?: string;
     license?: string;
     embeddable?: boolean;
