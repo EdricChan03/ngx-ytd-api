@@ -17,6 +17,7 @@ export class NgxYtdApiVideoService {
   list(opts: NgxYtdApiVideosListOpts): Observable<NgxYtdApiVideosListResult> {
     let _hasPartOpt = false;
     let _apiUrl = `${this.ytdApiVideoBaseApiUrl}`;
+    let _httpHeaders;
     // Loop through every property in the opts object
     for (const prop in opts) {
       // Check if property has a non-null value
@@ -25,12 +26,17 @@ export class NgxYtdApiVideoService {
         _apiUrl += `&${prop}=${encodeURI(opts[prop])}`;
         if (prop === 'part') {
           _hasPartOpt = true;
+        } else if (prop === 'accessToken') {
+          _httpHeaders = new HttpHeaders({ 'Authorization': `Bearer ${opts[prop]}` });
         }
       }
     }
     // Default if `part` parameter isn't specified
     if (!_hasPartOpt) {
       _apiUrl += '&part=snippet,id';
+    }
+    if (_httpHeaders) {
+      return this.http.get<NgxYtdApiVideosListResult>(_apiUrl, { headers: _httpHeaders });
     }
     return this.http.get<NgxYtdApiVideosListResult>(_apiUrl);
   }
