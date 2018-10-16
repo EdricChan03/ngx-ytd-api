@@ -133,7 +133,7 @@ export class SharedService {
    * @param queryString The query strings to add to the URL
    */
   addQueryString(url: string, queryString: string) {
-    const isQuestionMarkPresent = url && url.indexOf('?') !== -1
+    const isQuestionMarkPresent = url && url.indexOf('?') !== -1;
     let separator = '';
 
     if (queryString) {
