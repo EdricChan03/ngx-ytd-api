@@ -1,9 +1,13 @@
 {
   "groups": {
-    "default": {
+    "lib": {
       "packages": [
-        "package.json",
         "projects/ngx-ytd-api-lib/src/package.json"
+      ]
+    },
+    "src": {
+      "packages": [
+        "package.json"
       ]
     }
   }
