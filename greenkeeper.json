@@ -2,7 +2,7 @@
   "groups": {
     "lib": {
       "packages": [
-        "projects/ngx-ytd-api-lib/src/package.json"
+        "projects/ngx-ytd-api-lib/package.json"
       ]
     },
     "src": {
