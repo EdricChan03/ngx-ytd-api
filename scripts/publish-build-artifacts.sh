@@ -36,7 +36,7 @@ publishPackage() {
   packageRepo=$2
   packageLocation=$3
   buildDir="$TRAVIS_BUILD_DIR/dist/$packageLocation"
-  buildVersion=$(node -pe "require('$TRAVIS_BUILD_DIR/src/lib/package.json').version")
+  buildVersion=$(node -pe "require('$TRAVIS_BUILD_DIR/projects/ngx-ytd-api-lib/src/package.json').version")
   branchName=${TRAVIS_BRANCH:-'master'}
 
   commitSha=$(git rev-parse --short HEAD)

@@ -1,5 +1,9 @@
 # ngx-ytd-api components
-src/lib/* @Chan4077
+projects/ngx-ytd-api-lib/* @Chan4077
 
 # Demo
-src/demo/* @Chan4077
+projects/ngx-ytd-api-demo/* @Chan4077
+
+# Documentation
+docs/* @Chan4077
+*.md @Chan4077

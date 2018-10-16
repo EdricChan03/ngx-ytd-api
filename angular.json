@@ -1,44 +1,36 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
-  "newProjectRoot": "",
+  "newProjectRoot": "projects",
   "projects": {
     "ngx-ytd-api-demo": {
-      "root": "",
-      "sourceRoot": "/src/demo",
+      "root": "projects/ngx-ytd-api-demo/",
+      "sourceRoot": "projects/ngx-ytd-api-demo/src",
       "projectType": "application",
       "prefix": "app",
-      "schematics": {
-        "@schematics/angular:component": {
-          "path": "src/demo"
-        },
-        "@schematics/angular:directive": {
-          "path": "src/demo"
-        }
-      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/ngx-ytd-api-demo",
-            "index": "src/demo/index.html",
-            "main": "src/demo/main.ts",
-            "polyfills": "src/demo/polyfills.ts",
-            "tsConfig": "src/demo/tsconfig.app.json",
+            "index": "projects/ngx-ytd-api-demo/src/index.html",
+            "main": "projects/ngx-ytd-api-demo/src/main.ts",
+            "polyfills": "projects/ngx-ytd-api-demo/src/polyfills.ts",
+            "tsConfig": "projects/ngx-ytd-api-demo/tsconfig.app.json",
             "assets": [
               {
                 "glob": "favicon.ico",
-                "input": "src/demo",
+                "input": "projects/ngx-ytd-api-demo/src",
                 "output": "/"
               },
               {
                 "glob": "**/*",
-                "input": "src/demo/assets",
+                "input": "projects/ngx-ytd-api-demo/src/assets",
                 "output": "/assets"
               }
             ],
             "styles": [
-              "src/demo/styles.scss"
+              "projects/ngx-ytd-api-demo/src/styles.scss"
             ],
             "scripts": []
           },
@@ -46,8 +38,8 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "src/demo/environments/environment.ts",
-                  "with": "src/demo/environments/environment.prod.ts"
+                  "replace": "projects/ngx-ytd-api-demo/src/environments/environment.ts",
+                  "with": "projects/ngx-ytd-api-demo/src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -82,10 +74,10 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "src/demo/test.ts",
-            "polyfills": "src/demo/polyfills.ts",
-            "tsConfig": "src/demo/tsconfig.spec.json",
-            "karmaConfig": "src/demo/karma.conf.js",
+            "main": "projects/ngx-ytd-api-demo/src/test.ts",
+            "polyfills": "projects/ngx-ytd-api-demo/src/polyfills.ts",
+            "tsConfig": "projects/ngx-ytd-api-demo/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-ytd-api-demo/karma.conf.js",
             "styles": [
               "styles.scss"
             ],
@@ -93,12 +85,12 @@
             "assets": [
               {
                 "glob": "favicon.ico",
-                "input": "src/demo",
+                "input": "projects/ngx-ytd-api-demo/src",
                 "output": "/"
               },
               {
                 "glob": "**/*",
-                "input": "src/demo/assets",
+                "input": "projects/ngx-ytd-api-demo/src/assets",
                 "output": "/assets"
               }
             ]
@@ -108,8 +100,8 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "src/demo/tsconfig.app.json",
-              "src/demo/tsconfig.spec.json"
+              "projects/ngx-ytd-api-demo/tsconfig.app.json",
+              "projects/ngx-ytd-api-demo/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -119,37 +111,37 @@
       }
     },
     "ngx-ytd-api-lib": {
-      "root": "",
-      "sourceRoot": "/src/lib",
+      "root": "projects/ngx-ytd-api-lib/",
+      "sourceRoot": "projects/ngx-ytd-api-lib/src",
       "projectType": "library",
       "prefix": "ngx",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
-            "tsConfig": "src/lib/tsconfig.lib.json",
-            "project": "src/lib/ng-package.json"
+            "tsConfig": "projects/ngx-ytd-api-lib/tsconfig.lib.json",
+            "project": "projects/ngx-ytd-api-lib/ng-package.json"
           },
           "configurations": {
             "production": {
-              "project": "src/lib/ng-package.prod.json"
+              "project": "projects/ngx-ytd-api-lib/ng-package.prod.json"
             }
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "src/lib/test.ts",
-            "tsConfig": "src/lib/tsconfig.spec.json",
-            "karmaConfig": "src/lib/karma.conf.js"
+            "main": "projects/ngx-ytd-api-lib/test.ts",
+            "tsConfig": "projects/ngx-ytd-api-lib/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-ytd-api-lib/karma.conf.js"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "src/lib/tsconfig.lib.json",
-              "src/lib/tsconfig.spec.json"
+              "projects/ngx-ytd-api-lib/tsconfig.lib.json",
+              "projects/ngx-ytd-api-lib/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"

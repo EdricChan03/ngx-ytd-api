@@ -3,7 +3,7 @@
     "default": {
       "packages": [
         "package.json",
-        "src/lib/package.json"
+        "projects/ngx-ytd-api-lib/src/package.json"
       ]
     }
   }

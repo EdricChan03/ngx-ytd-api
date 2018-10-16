@@ -14,7 +14,7 @@ _Updated as of `1.0.0-alpha.3`_
 
 ## Docs
 
-See the [readme for search](../../src/lib/search/README.md) to view the docs.
+See the [readme for search](../../projects/ngx-ytd-api-lib/src/search/README.md) to view the docs.
 
 ---
 

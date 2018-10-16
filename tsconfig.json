@@ -18,10 +18,10 @@
     ],
     "paths": {
       "ngx-ytd-api": [
-        "src/lib"
+        "projects/ngx-ytd-api-lib/src/lib"
       ],
       "ngx-ytd-api/*": [
-        "src/lib/*"
+        "projects/ngx-ytd-api-lib/src/lib/*"
       ]
     }
   }
