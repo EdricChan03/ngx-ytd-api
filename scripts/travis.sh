@@ -6,7 +6,7 @@ export CLICOLOR=1
 # Immediately exit if any command in the script fails
 set -e
 
-buildVersion=$(node -pe "require('$TRAVIS_BUILD_DIR/projects/ngx-ytd-api-lib/src/package.json').version")
+buildVersion=$(node -pe "require('$TRAVIS_BUILD_DIR/projects/ngx-ytd-api-lib/package.json').version")
 branchName=${TRAVIS_BRANCH:-'master'}
 
 commitSha=$(git rev-parse --short HEAD)
@@ -23,9 +23,9 @@ echo -e "\x1b[34mModifying placeholder versions...\x1b[0m"
 # Replace placeholder versions ('0.0.0-PLACEHOLDER') with the current build version name/tag
 # Code snippet adapted from https://stackoverflow.com/a/17072017
 if [ "$(uname)" == "Darwin" ]; then
-  sed -i "" "s/0.0.0-PLACEHOLDER/$buildVersionName/g" $(find ./src -type f)
+  sed -i "" "s/0.0.0-PLACEHOLDER/$buildVersionName/g" $(find ./projects -type f)
 else
-  sed -i "s/0.0.0-PLACEHOLDER/$buildVersionName/g" $(find ./src -type f)
+  sed -i "s/0.0.0-PLACEHOLDER/$buildVersionName/g" $(find ./projects -type f)
 fi
 # Go to project directory
 if [[ -n "$TRAVIS_BUILD_DIR" ]]; then

@@ -19,9 +19,9 @@ buildDocs() {
     # Replace placeholder versions with the current build version name
     # Code snippet adapted from https://stackoverflow.com/a/17072017
     # if [ "$(uname)" == "Darwin" ]; then
-    # sed -i "" "s/0.0.0-PLACEHOLDER/$VERSION/g" $(find ./src -type f)
+    # sed -i "" "s/0.0.0-PLACEHOLDER/$VERSION/g" $(find ./projects -type f)
     # else
-    # sed -i "s/0.0.0-PLACEHOLDER/$VERSION/g" $(find ./src -type f)
+    # sed -i "s/0.0.0-PLACEHOLDER/$VERSION/g" $(find ./projects -type f)
     # fi
   fi
   deployAt="$1"
@@ -29,7 +29,7 @@ buildDocs() {
   ng build ngx-ytd-api-demo --prod --base-href "/$deployAt/" --delete-output-path false --output-path "dist/ngx-ytd-api-demo/$deployAt"
   echo -e "\x1b[32mDone building.\x1b[0m"
   echo -e "\x1b[34mCopying files...\x1b[0m"
-  cp ./src/demo/versions.json ./dist/ngx-ytd-api-demo
+  cp ./projects/ngx-ytd-api-demo/versions.json ./dist/ngx-ytd-api-demo
   echo -e "\x1b[34mDone copying.\x1b[0m"
 
   exit 0
