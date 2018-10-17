@@ -11,7 +11,7 @@ export class NgxYtdApiVideoService {
 
   constructor(private http: HttpClient) { }
   /**
-   * Returns a list of videos that match the requested API parameters
+   * Retrieves the ratings that the authorized user gave to a list of specified videos
    * @param opts API parameters for the API
    */
   getRating(opts: NgxYtdApiVideosGetRatingOpts): Observable<NgxYtdApiVideosListResult> {
