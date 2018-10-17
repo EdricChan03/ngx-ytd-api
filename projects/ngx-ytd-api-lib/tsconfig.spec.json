@@ -8,7 +8,7 @@
     ]
   },
   "files": [
-    "test.ts"
+    "src/lib/test.ts"
   ],
   "include": [
     "**/*.spec.ts",
