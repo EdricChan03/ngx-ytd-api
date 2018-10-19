@@ -20,7 +20,7 @@ describe('NgxYtdApiSearchService', () => {
   });
   describe('NgxYtdApiSearchService#list', () => {
     it('should return a result when called with an API key and a query', async(() => {
-      service.list({ key: API_KEY, q: 'let\'s play' }).subscribe(result => {
+      service.list({ key: API_KEY, q: 'let\'s play', part: 'snippet' }).subscribe(result => {
         expect(result).not.toBeNull();
       });
     }));

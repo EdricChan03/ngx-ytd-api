@@ -24,7 +24,7 @@ export interface NgxYtdApiGenericOpts {
    * Parts of the result to show
    * Defaults to `snippet,id`
    */
-  part?: string;
+  part: string;
   /**
    * Whether to return the response with line breaks & indentations
    */

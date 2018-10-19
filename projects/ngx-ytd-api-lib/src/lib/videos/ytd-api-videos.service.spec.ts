@@ -20,7 +20,7 @@ describe('NgxYtdApiVideosService', () => {
   });
   describe('NgxYtdApiVideosService#getRating', () => {
     it('should return an error when no access token is specified', async(() => {
-      service.getRating({ key: API_KEY, id: 'dQw4w9WgXcQ' }).subscribe(result => {
+      service.getRating({ key: API_KEY, id: 'dQw4w9WgXcQ', part: 'id,player' }).subscribe(result => {
         expect(result).toBeNull();
       }, error => {
         expect(error).not.toBeNull();

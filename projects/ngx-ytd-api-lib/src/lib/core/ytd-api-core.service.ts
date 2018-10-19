@@ -26,7 +26,7 @@ export class NgxYtdApiCoreService {
    * Generates the query parameters to be used with the API endpoint
    * @returns A `HttpClient` instance
    */
-  _generateApiRequest<T>(apiEndpoint: string, apiParams: any): Observable<T> {
+  _generateApiRequest<R, P extends any>(apiEndpoint: string, apiParams: P): Observable<R> {
     let params = new HttpParams();
     let headers;
     for (const prop in apiParams) {
@@ -40,7 +40,7 @@ export class NgxYtdApiCoreService {
       }
     }
     if (headers) {
-      return this.http.get<T>(
+      return this.http.get<R>(
         apiEndpoint,
         {
           params: params,
@@ -48,7 +48,7 @@ export class NgxYtdApiCoreService {
         }
       );
     } else {
-      return this.http.get<T>(
+      return this.http.get<R>(
         apiEndpoint,
         {
           params: params,

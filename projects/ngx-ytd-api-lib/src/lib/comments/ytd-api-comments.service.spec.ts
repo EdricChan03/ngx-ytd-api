@@ -20,14 +20,16 @@ describe('NgxYtdApiCommentService', () => {
   });
   describe('NgxYtdApiCommentService#list', () => {
     it('should return an error when called without an ID and an API key', async(() => {
-      service.list({ key: API_KEY }).subscribe((result) => {
+      // TODO(Edric): Find out a conservative way to reduce quota costs for API testing
+      service.list({ key: API_KEY, part: 'id' }).subscribe((result) => {
         expect(result).toBeNull();
       }, error => {
         expect(error).not.toBeNull();
       });
     }));
     it('should return a result when called with an ID and an API key', async(() => {
-      service.list({ key: API_KEY, id: 'Ugz0HaaYfwwwfLbyKLN4AaABAg' }).subscribe((result) => {
+      // TODO(Edric): Find out a conservative way to reduce quota costs for API testing
+      service.list({ key: API_KEY, part: 'id', id: 'Ugz0HaaYfwwwfLbyKLN4AaABAg' }).subscribe((result) => {
         expect(result).not.toBeNull();
       });
     }));
