@@ -47,7 +47,7 @@
           <mat-error *ngIf="searchForm.get('key')?.hasError('required')">This is required.</mat-error>
           <mat-error *ngIf="searchForm.get('key')?.hasError('minlength') || searchForm.get('key')?.hasError('maxlength')">Please
             enter a valid API key.</mat-error>
-          <a mat-icon-button matSuffix matTooltip="View parameter on API docs" href="https://developers.google.com/youtube/v3/docs/search/list#apiKey"
+          <a mat-icon-button matSuffix matTooltip="View parameter on API docs" href="https://developers.google.com/youtube/v3/docs/standard_parameters#key"
             [disabled]="searchForm.get('key')?.disabled">
             <mat-icon>open_in_new</mat-icon>
           </a>
