@@ -13,7 +13,7 @@
 [![GitHub contributors](https://img.shields.io/github/contributors/Chan4077/ngx-ytd-api.svg?style=flat-square)](https://github.com/Chan4077/ngx-ytd-api/graphs/contributors)
 [![ngx-ytd-api license](https://img.shields.io/github/license/Chan4077/ngx-ytd-api.svg?style=flat-square)](https://github.com/Chan4077/ngx-ytd-api/blob/master/LICENSE)
 [![GitHub last commit](https://img.shields.io/github/last-commit/Chan4077/ngx-ytd-api.svg?style=flat-square)](https://github.com/Chan4077/ngx-ytd-api/commits)
-[![Greenkeeper badge](https://badges.greenkeeper.io/Chan4077/ngx-ytd-api.svg)](https://greenkeeper.io/)
+[![Greenkeeper badge](https://badges.greenkeeper.io/Chan4077/ngx-ytd-api.svg?style=flat-square)](https://greenkeeper.io/)
 
 <!-- END Badges -->
 
