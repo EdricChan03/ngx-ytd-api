@@ -1,41 +1,21 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { NgxYtdApiCommentListOpts, NgxYtdApiCommentListResult } from './ytd-api-comments.interface';
+import { NgxYtdApiCoreService } from 'ngx-ytd-api/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class NgxYtdApiCommentService {
-  /**
-   * The YouTube base API URL
-   */
-  readonly ytdCommentBaseApiUrl = 'https://www.googleapis.com/youtube/v3/comments';
-  constructor(private http: HttpClient) { }
+  constructor(
+    private core: NgxYtdApiCoreService
+  ) { }
   /**
    * Retrieves comments
    * @param opts Options for the API
    * @returns Results of the search as a stream for subscribing to
    */
   list(opts: NgxYtdApiCommentListOpts): Observable<NgxYtdApiCommentListResult> {
-    let _hasPartOpt = false;
-    let _apiUrl = `${this.ytdCommentBaseApiUrl}?key=${opts.key}`;
-    // Loop through every property in the opts object
-    for (const prop in opts) {
-      // Check if property has a non-null value
-      // Also checks if the property is not `key` to prevent duplication
-      if (opts.hasOwnProperty(prop) && opts[prop] !== null && prop !== 'key') {
-        // Add parameter to the API URL
-        _apiUrl += `&${prop}=${encodeURI(opts[prop])}`;
-        if (prop === 'part') {
-          _hasPartOpt = true;
-        }
-      }
-    }
-    // Default if `part` parameter isn't specified
-    if (!_hasPartOpt) {
-      _apiUrl += '&part=snippet,id';
-    }
-    return this.http.get<NgxYtdApiCommentListResult>(_apiUrl);
+    return this.core._generateApiRequest<NgxYtdApiCommentListResult>(this.core.ngxYtdCommentsApiUrl, opts);
   }
 }

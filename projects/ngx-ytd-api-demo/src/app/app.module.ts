@@ -1,16 +1,18 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { NgxYtdApiSearchService } from 'ngx-ytd-api/search';
-import { NgxYtdApiCommentService } from 'ngx-ytd-api/comments';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
+import { NgxYtdApiCommentsModule } from 'ngx-ytd-api/comments';
+import { NgxYtdApiSearchModule } from 'ngx-ytd-api/search';
+import { NgxYtdApiVideosModule } from 'ngx-ytd-api/videos';
+
 import { MaterialModule } from './material.module';
 
 import { AppComponent } from './app.component';
-import { DemoVideosComponent } from './demos/videos/demo-videos.component';
+import { DemoVideosListComponent } from './demos/videos/list/demo-videos-list.component';
 import { DemoHomeComponent } from './demos/home/demo-home.component';
 import { DemoSearchListComponent } from './demos/search/list/demo-search-list.component';
 
@@ -25,15 +27,10 @@ import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.componen
 import { CallbackComponent } from './callback/callback.component';
 import { RoutingStateService } from './routingstate.service';
 
-const YTD_API_DEMO_SERVICES = [
-  NgxYtdApiCommentService,
-  NgxYtdApiSearchService
-];
-
 @NgModule({
   declarations: [
     AppComponent,
-    DemoVideosComponent,
+    DemoVideosListComponent,
     DemoHomeComponent,
     DemoSearchListComponent,
     DocsHomeComponent,
@@ -50,10 +47,12 @@ const YTD_API_DEMO_SERVICES = [
     AppRouting,
     FlexLayoutModule,
     VersionPickerModule,
-    SharedModule
+    SharedModule,
+    NgxYtdApiCommentsModule,
+    NgxYtdApiSearchModule,
+    NgxYtdApiVideosModule
   ],
   providers: [
-    YTD_API_DEMO_SERVICES,
     ListsService,
     SharedService,
     RoutingStateService

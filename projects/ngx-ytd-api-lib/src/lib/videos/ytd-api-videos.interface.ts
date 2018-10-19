@@ -20,22 +20,48 @@ export interface NgxYtdApiVideosGetRatingOpts extends NgxYtdApiGenericOpts {
   onBehalfOfContentOwner?: string;
 }
 
+export interface NgxYtdApiVideosGetRatingItem {
+  /**
+   * The ID that YouTube uses to to uniquely identify the video
+   *
+   * See https://developers.google.com/youtube/v3/docs/videos/getRating#items[].videoId for more info
+   */
+  videoId?: string;
+  /**
+   * The rating that the authorized user gave to the video
+   *
+   * See https://developers.google.com/youtube/v3/docs/videos/getRating#items[].rating for more info
+   */
+  rating?: 'dislike' | 'like' | 'none' | 'unspecified';
+}
+export interface NgxYtdApiVideosGetRatingResult extends NgxYtdApiGenericOpts {
+  /**
+   * A list of ratings that match the request criteria
+   *
+   * See https://developers.google.com/youtube/v3/docs/videos/getRating#items[] for more info
+   */
+  items?: NgxYtdApiVideosGetRatingItem[];
+}
+
 /**
- * Options for {@link NgxYtdApiVideoService#list}
+ * Options for {@link NgxYtdApiVideosService#list}
  */
 export interface NgxYtdApiVideosListOpts extends NgxYtdApiGenericOpts {
   /**
    * Identifies the chart that should be retrieved.
    * Acceptable values:
    * - `mostPopular`: Return the most popular videos for the specified content region and video category.
-   * See the {@link https://developers.google.com/youtube/v3/docs/videos/list#chart|developer docs} for more info.
    * Note: This parameter is a filter and only one filter is allowed
+   *
+   * See https://developers.google.com/youtube/v3/docs/videos/list#chart for more info.
    */
   chart?: 'mostPopular';
   /**
    * Specifies a comma-separated list of the YouTube video ID(s) for the resource(s) that are being retrieved.
    * In a video resource, the `id` property specifies the video's ID.
    * Note: This parameter is a filter and only one filter is allowed
+   *
+   * See https://developers.google.com/youtube/v3/docs/videos/list#id for more info
    */
   id?: string;
   /**
@@ -45,59 +71,75 @@ export interface NgxYtdApiVideosListOpts extends NgxYtdApiGenericOpts {
    * - `like`: Returns only videos that are liked by the authenticated user
    * Note: This parameter can only be used in a properly authorized request.
    * Note: This parameter is a filter and only one filter is allowed
+   *
+   * See https://developers.google.com/youtube/v3/docs/videos/list#myRating for more info
    */
   myRating?: 'dislike' | 'like';
   /**
    * Specifies the API to return localized resource metadata for a specific language that the YouTube website supports.
-   * See the {@link https://developers.google.com/youtube/v3/docs/videos/list#hl|developer docs} for more info.
+   *
+   * See https://developers.google.com/youtube/v3/docs/videos/list#hl for more info
    */
   hl?: string;
   /**
    * Specifies the maximum height of the embedded YouTube player returned in the `player.embedHtml` property.
    * This parameter can be used to specify a height appropriate for your app's layout.
-   * See the {@link https://developers.google.com/youtube/v3/docs/videos/list#maxHeight|developer docs} for more info
+   * See https://developers.google.com/youtube/v3/docs/videos/list#maxHeight for more info
    * Note: If the `maxWidth` property is also specified, the player may be shorter
    * than the `maxHeight` in order to not violate the maximum width.
    * Acceptable values are 72 to 8192, inclusive.
+   *
+   * See https://developers.google.com/youtube/v3/docs/videos/list#maxHeight for more info
    */
   maxHeight?: number;
   /**
    * Specifies the maximum results that should be returned.
-   * See the {@link https://developers.google.com/youtube/v3/docs/videos/list#maxResults|developer docs} for more info
    * Note: This parameter is to be used for the `myRating` parameter, but should not
    * be used with the `id` parameter.
    * Acceptable values: 1 to 50, inclusive. 5 is the default number.
+   *
+   * See https://developers.google.com/youtube/v3/docs/videos/list#maxResults for more info
    */
   maxResults?: number;
   /**
    * Specifies the maximum width of the embedded YouTube player returned in the `player.embedHtml` property.
    * This parameter can be used to specify a width appropriate for your app's layout.
-   * See the {@link https://developers.google.com/youtube/v3/docs/videos/list#maxWidth|developer docs} for more info
    * Note: If the `maxHeight` property is also specified, the player may be shorter
    * than the `maxWidth` in order to not violate the maximum width.
    * Acceptable values are 72 to 8192, inclusive.
+   *
+   * See https://developers.google.com/youtube/v3/docs/videos/list#maxWidthfor more info
    */
   maxWidth?: number;
   /**
-   * Identifies a specific page in the result set that should be returned.
+   * Indicates that the request's authorization credentials identify a YouTube CMS user who is
+   * acting on behalf of the content owner specified in the parameter value.
    *
-   * See the {@link https://developers.google.com/youtube/v3/docs/videos/list#pageToken|developer docs} for more info
+   * See https://developers.google.com/youtube/v3/docs/videos/list#onBehalfOfContentOwner for more info
+   */
+  onBehalfOfContentOwner?: string;
+  /**
+   * Identifies a specific page in the result set that should be returned.
    * Note: This parameter is to be used with the `myRating` parameter, but is not to be used
    * with the `id` parameter.
+   *
+   * See https://developers.google.com/youtube/v3/docs/videos/list#pageToken for more info
    */
   pageToken?: string;
   /**
    * Tells the API to select a video chart available in the specific region.
-   * See the {@link https://developers.google.com/youtube/v3/docs/videos/list#regionCode|developer docs} for more info
    * Note: This parameter is to only be used with the `chart` parameter.
+   *
+   * See https://developers.google.com/youtube/v3/docs/videos/list#regionCode for more info
    */
   regionCode?: string;
   /**
    * This property identifies the video category for which the video should be retrieved.
-   * See the {@link https://developers.google.com/youtube/v3/docs/videos/list#regionCode|developer docs} for more info
    * Note: This parameter is to only be used with the `chart` parameter.
    * By default, charts are not restricted to a particular category.
    * The default value is 0.
+   *
+   * See https://developers.google.com/youtube/v3/docs/videos/list#regionCode for more info
    */
   videoCategoryById?: string;
 }
