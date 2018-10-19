@@ -1,0 +1,164 @@
+<mat-toolbar color="primary" class="mat-elevation-z3" id="app-toolbar">
+  <button mat-icon-button (click)="shared.sidenav.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  Angular YouTube Data API
+  <span fxFlex></span>
+  <mat-chip-list>
+    <mat-chip *ngIf="!shared.isProd" color="accent" (click)="shared.openDevConfig()">
+      <mat-icon inline class="chip-icon">build</mat-icon>
+      Developer Mode
+    </mat-chip>
+  </mat-chip-list>
+  <app-version-picker></app-version-picker>
+</mat-toolbar>
+<div class="padding-percentage-container">
+  <mat-card class="example-search-result-card">
+    <mat-card-header>
+      <span fxFlex></span>
+      <button mat-icon-button (click)="copyLink()" matTooltip="Copy form link">
+        <mat-icon>link</mat-icon>
+      </button>
+    </mat-card-header>
+    <mat-card-title class="example-search-result-card-title">Get info of YouTube video</mat-card-title>
+    <mat-card-content fxLayout="column">
+      <form [formGroup]="videosForm" class="example-form" fxLayout="column" (keydown.enter)="submitForm()">
+        <mat-form-field>
+          <mat-label>Video ID(s)</mat-label>
+          <input matInput formControlName="id">
+          <mat-error *ngIf="videosForm.get('id')?.hasError('required')">This is required.</mat-error>
+          <mat-hint>Separate each video ID by a comma</mat-hint>
+          <a mat-icon-button matSuffix href="https://developers.google.com/youtube/v3/docs/videos/list#id" matTooltip="View parameter on API docs">
+            <mat-icon>open_in_new</mat-icon>
+          </a>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Authentication method</mat-label>
+          <mat-select [formControl]="authMethod">
+            <mat-option value="key">API Key</mat-option>
+            <mat-option value="oauth">Google OAuth 2.0</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>API Key</mat-label>
+          <input matInput formControlName="key">
+          <mat-error *ngIf="videosForm.get('key')?.hasError('required')">This is required.</mat-error>
+          <a mat-icon-button matSuffix href="https://developers.google.com/youtube/v3/docs/standard_parameters#key"
+            matTooltip="View parameter on API docs" [disabled]="videosForm.get('key')?.disabled">
+            <mat-icon>open_in_new</mat-icon>
+          </a>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>OAuth access token</mat-label>
+          <input matInput formControlName="accessToken">
+          <mat-error *ngIf="videosForm.get('accessToken')?.hasError('required')">This is required.</mat-error>
+          <mat-hint>Click on the button next to this form field to authenticate and retrieve the access token</mat-hint>
+          <button mat-icon-button matSuffix (click)="oAuthAuthenticate()" matTooltip="Authenticate with OAuth"
+            [disabled]="videosForm.get('accessToken')?.disabled">
+            <mat-icon>open_in_new</mat-icon>
+          </button>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Chart</mat-label>
+          <input matInput formControlName="chart">
+          <a mat-icon-button matSuffix href="https://developers.google.com/youtube/v3/docs/videos/list#chart"
+            matTooltip="View parameter on API docs">
+            <mat-icon>open_in_new</mat-icon>
+          </a>
+        </mat-form-field>
+        <section fxLayout="column">
+          <div class="section-header">
+            <h4>Filter by videos&#8230;</h4>
+            <span fxFlex></span>
+            <button mat-icon-button disableRipple matTooltip="This requires authentication" class="example-auth-required-icon">
+              <mat-icon>info</mat-icon>
+            </button>
+            <a mat-icon-button href="https://developers.google.com/youtube/v3/docs/videos/list#myRating" matTooltip="View parameter on API docs">
+              <mat-icon>open_in_new</mat-icon>
+            </a>
+          </div>
+          <mat-radio-group formControlName="myRating" fxLayout="column">
+            <mat-radio-button class="example-radio-button" value="dislike">
+              <mat-icon inline>thumb_down</mat-icon> Dislike
+            </mat-radio-button>
+            <mat-radio-button class="example-radio-button" value="like">
+              <mat-icon inline>thumb_up</mat-icon> Like
+            </mat-radio-button>
+          </mat-radio-group>
+        </section>
+        <mat-form-field>
+          <mat-label>Localized resource metadata (country code)</mat-label>
+          <input matInput formControlName="hl">
+          <a mat-icon-button matSuffix href="https://developers.google.com/youtube/v3/docs/videos/list#hl" matTooltip="View parameter on API docs">
+            <mat-icon>open_in_new</mat-icon>
+          </a>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Max. height of embedded YouTube player returned</mat-label>
+          <input matInput formControlName="maxHeight" type="number" min="72" max="8192">
+          <mat-hint>Acceptable values: 72 - 8192</mat-hint>
+          <a mat-icon-button matSuffix href="https://developers.google.com/youtube/v3/docs/videos/list#maxHeight" matTooltip="View parameter on API docs">
+            <mat-icon>open_in_new</mat-icon>
+          </a>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Max. results returned</mat-label>
+          <input matInput formControlName="maxResults" type="number" min="1" max="50">
+          <mat-hint>Acceptable values: 1 - 50 (Default: 5)</mat-hint>
+          <a mat-icon-button matSuffix href="https://developers.google.com/youtube/v3/docs/videos/list#maxResults" matTooltip="View parameter on API docs">
+            <mat-icon>open_in_new</mat-icon>
+          </a>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Max. width of embedded YouTube player returned</mat-label>
+          <input matInput formControlName="maxWidth" type="number" min="72" max="8192">
+          <mat-hint>Acceptable values: 72 - 8192</mat-hint>
+          <a mat-icon-button matSuffix href="https://developers.google.com/youtube/v3/docs/videos/list#maxWidth" matTooltip="View parameter on API docs">
+            <mat-icon>open_in_new</mat-icon>
+          </a>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>On behalf of content owner</mat-label>
+          <input matInput formControlName="onBehalfOfContentOwner">
+          <mat-hint *ngIf="videosForm.get('accessToken')?.status === 'INVALID'" class="example-auth-required-text"><mat-icon>info</mat-icon> Authentication is required.</mat-hint>
+          <a mat-icon-button matSuffix href="https://developers.google.com/youtube/v3/docs/videos/list#onBehalfOfContentOwner" matTooltip="View parameter on API docs">
+            <mat-icon>open_in_new</mat-icon>
+          </a>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Page token</mat-label>
+          <input matInput formControlName="pageToken">
+          <a mat-icon-button matSuffix href="https://developers.google.com/youtube/v3/docs/videos/list#pageToken" matTooltip="View parameter on API docs">
+            <mat-icon>open_in_new</mat-icon>
+          </a>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Region code</mat-label>
+          <input matInput formControlName="regionCode">
+          <a mat-icon-button matSuffix href="https://developers.google.com/youtube/v3/docs/videos/list#regionCode" matTooltip="View parameter on API docs">
+            <mat-icon>open_in_new</mat-icon>
+          </a>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Video category (ID)</mat-label>
+          <input matInput formControlName="videoCategoryById">
+          <a mat-icon-button matSuffix href="https://developers.google.com/youtube/v3/docs/videos/list#videoCategoryById" matTooltip="View parameter on API docs">
+            <mat-icon>open_in_new</mat-icon>
+          </a>
+        </mat-form-field>
+      </form>
+    </mat-card-content>
+    <mat-card-actions align="end">
+      <button mat-stroked-button color="warn" (click)="reset()">Reset</button>
+      <button mat-stroked-button color="primary" (click)="submitForm()" [disabled]="videosForm.invalid">Submit</button>
+    </mat-card-actions>
+  </mat-card>
+  <hr>
+  <ng-container *ngIf="videosListResult">
+    <pre><code id="output">{{videosListResult | json}}</code></pre>
+  </ng-container>
+  <ng-container id="error-result" *ngIf="errorResult">
+    <p>An error occured:</p>
+    <pre><code>{{errorResult | json}}</code></pre>
+  </ng-container>
+</div>

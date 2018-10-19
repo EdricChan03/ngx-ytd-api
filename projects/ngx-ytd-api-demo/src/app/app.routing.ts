@@ -1,7 +1,7 @@
 import { ModuleWithProviders } from '@angular/core';
 import { RouterModule, Route } from '@angular/router';
 
-import { DemoVideosComponent } from './demos/videos/demo-videos.component';
+import { DemoVideosListComponent } from './demos/videos/list/demo-videos-list.component';
 import { DemoHomeComponent } from './demos/home/demo-home.component';
 import { DemoSearchListComponent } from './demos/search/list/demo-search-list.component';
 import { DocsHomeComponent } from './docs/docs-home/docs-home.component';
@@ -12,7 +12,12 @@ const APP_ROUTES: Route[] = [
   {
     path: 'demos', children: [
       { path: '', component: DemoHomeComponent },
-      { path: 'videos', component: DemoVideosComponent },
+      {
+        path: 'videos', children: [
+          { path: 'list', component: DemoVideosListComponent },
+          { path: '', redirectTo: '/demos/videos/list', pathMatch: 'full' }
+        ]
+      },
       {
         path: 'search', children: [
           { path: 'list', component: DemoSearchListComponent },

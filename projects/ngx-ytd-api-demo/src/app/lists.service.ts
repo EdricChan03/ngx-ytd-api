@@ -49,11 +49,18 @@ const DEMOS: Demo[] = [
       }
     ]
   },
-  /*{
+  {
     name: 'Videos',
     id: 'videos',
-    svgIcon: 'docs:video'
-  }*/
+    icon: 'video_library',
+    methods: [
+      {
+        name: 'list',
+        id: 'list',
+        icon: 'video_library'
+      }
+    ]
+  }
 ];
 const DOCS: Doc[] = [
   {

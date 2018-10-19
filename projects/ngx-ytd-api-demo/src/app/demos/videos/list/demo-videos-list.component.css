@@ -1,0 +1,30 @@
+.example-search-result-card {
+  max-width: 350px;
+  box-sizing: border-box;
+  margin: 8px;
+}
+
+.example-search-result-card .example-search-result-card-title {
+  line-height: 30px;
+}
+
+.example-card-actions>* {
+  margin: 0 8px;
+}
+
+.paginator {
+  text-align: center;
+  margin: 8px;
+}
+
+.paginator>* {
+  margin: 8px;
+}
+
+.example-form>* {
+  margin-bottom: 10px;
+}
+
+.example-radio-button {
+  margin: 5px;
+}
