@@ -76,7 +76,7 @@ npm install --save Chan4077/ngx-ytd-api-builds
       <td>Search</td>
       <td>
         <ul>
-          <li>Most API features are available, apart from OAuth</li>
+          <li>All API features are available (with OAuth support)</li>
         </ul>
       </td>
       <td>
@@ -91,8 +91,8 @@ npm install --save Chan4077/ngx-ytd-api-builds
       <td>Videos</td>
       <td>
         <ul>
-          <li>Only the method for getting info about a video has been implemented.</li>
-          <li>The API is currently postponed due to the lack of time to continue.</li>
+          <li>The methods for getting info about a video and the rating of a video have been implemented.</li>
+          <li>The API is currently being worked on.</li>
         </ul>
       </td>
       <td><em>No docs available</em></td>
