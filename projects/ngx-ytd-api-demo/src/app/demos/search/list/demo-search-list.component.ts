@@ -180,7 +180,8 @@ export class DemoSearchListComponent {
   get demoApiConfig(): any {
     const _apiConfig: NgxYtdApiSearchListOpts = {
       key: '',
-      q: ''
+      q: '',
+      part: 'snippet,id'
     };
     const _rawValue = this.searchForm.value;
     for (const prop in _rawValue) {
