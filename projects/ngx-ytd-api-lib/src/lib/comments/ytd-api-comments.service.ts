@@ -13,7 +13,7 @@ export class NgxYtdApiCommentService {
   /**
    * Retrieves comments
    * @param opts Options for the API
-   * @returns Results of the search as a stream for subscribing to
+   * @return Results of the search as a stream for subscribing to
    */
   list(opts: NgxYtdApiCommentListOpts): Observable<NgxYtdApiCommentListResult> {
     return this.core._generateApiRequest<NgxYtdApiCommentListResult, NgxYtdApiCommentListOpts>(this.core.ngxYtdCommentsApiUrl, opts);

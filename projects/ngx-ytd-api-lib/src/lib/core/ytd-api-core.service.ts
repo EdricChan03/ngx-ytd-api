@@ -20,7 +20,7 @@ export class NgxYtdApiCoreService {
   readonly ngxYtdVideosApiUrl = 'https://www.googleapis.com/youtube/v3/videos';
   /**
    * Generates the query parameters to be used with the API endpoint
-   * @returns A `HttpClient` instance
+   * @return A `HttpClient` instance
    */
   _generateApiRequest<R, P extends any>(apiEndpoint: string, apiParams: P): Observable<R> {
     let params = new HttpParams();

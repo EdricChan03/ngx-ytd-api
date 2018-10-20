@@ -81,7 +81,7 @@ export class SharedService {
   /**
    * Retrieves a property from local storage
    * @param property The property to access
-   * @returns The value of the property, or `null` if the property doesn't exist.
+   * @return The value of the property, or `null` if the property doesn't exist.
    */
   getLocalStorageProperty(property: string) {
     if (localStorage.getItem(property)) {
@@ -148,7 +148,7 @@ export class SharedService {
    * @param returnAsObj Whether to return the result as a config for all properties
    * @param scope The scope to access
    * @param clientId The client ID which can be accessed from the Google Developer console.
-   * @returns An instance of the window
+   * @return An instance of the window
    */
   oAuthSignInWindow(
     scope = 'https://www.googleapis.com/auth/userinfo.email',

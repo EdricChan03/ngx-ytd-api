@@ -15,7 +15,7 @@ export class NgxYtdApiSearchService {
    * @param query The query to search for. See the {@link https://developers.google.com/youtube/v3/docs/search/list#q|developer docs}
    * for more info.
    * @param opts Options for searching
-   * @returns Results of the search as a stream
+   * @return Results of the search as a stream
    */
   list(opts: NgxYtdApiSearchListOpts): Observable<NgxYtdApiSearchListResult> {
     return this.core._generateApiRequest<NgxYtdApiSearchListResult, NgxYtdApiSearchListOpts>(this.core.ngxYtdSearchApiUrl, opts);
