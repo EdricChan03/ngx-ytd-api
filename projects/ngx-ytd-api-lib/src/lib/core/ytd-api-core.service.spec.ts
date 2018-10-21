@@ -19,9 +19,9 @@ describe('NgxYtdApiCoreService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
-  describe('NgxYtdApiCoreService#_generateApiRequest', () => {
+  describe('NgxYtdApiCoreService#createHttpGet', () => {
     it('should return a search request', async(() => {
-      const request = service._generateApiRequest<NgxYtdApiSearchListResult, NgxYtdApiSearchListOpts>(
+      const request = service.createHttpGet<NgxYtdApiSearchListResult, NgxYtdApiSearchListOpts>(
         service.ngxYtdSearchApiUrl,
         {
           q: 'meme review',

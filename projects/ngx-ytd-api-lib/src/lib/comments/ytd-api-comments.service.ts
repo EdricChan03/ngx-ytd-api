@@ -16,6 +16,6 @@ export class NgxYtdApiCommentService {
    * @return Results of the search as a stream for subscribing to
    */
   list(opts: NgxYtdApiCommentListOpts): Observable<NgxYtdApiCommentListResult> {
-    return this.core._generateApiRequest<NgxYtdApiCommentListResult, NgxYtdApiCommentListOpts>(this.core.ngxYtdCommentsApiUrl, opts);
+    return this.core.createHttpGet<NgxYtdApiCommentListResult, NgxYtdApiCommentListOpts>(this.core.ngxYtdCommentsApiUrl, opts);
   }
 }

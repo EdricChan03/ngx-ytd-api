@@ -18,6 +18,6 @@ export class NgxYtdApiSearchService {
    * @return Results of the search as a stream
    */
   list(opts: NgxYtdApiSearchListOpts): Observable<NgxYtdApiSearchListResult> {
-    return this.core._generateApiRequest<NgxYtdApiSearchListResult, NgxYtdApiSearchListOpts>(this.core.ngxYtdSearchApiUrl, opts);
+    return this.core.createHttpGet<NgxYtdApiSearchListResult, NgxYtdApiSearchListOpts>(this.core.ngxYtdSearchApiUrl, opts);
   }
 }

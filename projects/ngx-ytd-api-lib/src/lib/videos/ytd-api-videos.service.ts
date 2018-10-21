@@ -20,7 +20,7 @@ export class NgxYtdApiVideosService {
    * @param opts API parameters for the API
    */
   getRating(opts: NgxYtdApiVideosGetRatingOpts): Observable<NgxYtdApiVideosGetRatingResult> {
-    return this.core._generateApiRequest<NgxYtdApiVideosGetRatingResult, NgxYtdApiVideosGetRatingOpts>(
+    return this.core.createHttpGet<NgxYtdApiVideosGetRatingResult, NgxYtdApiVideosGetRatingOpts>(
       `${this.core.ngxYtdVideosApiUrl}/getRating`,
       opts
     );
@@ -30,6 +30,6 @@ export class NgxYtdApiVideosService {
    * @param opts API parameters for the API
    */
   list(opts: NgxYtdApiVideosListOpts): Observable<NgxYtdApiVideosListResult> {
-    return this.core._generateApiRequest<NgxYtdApiVideosListResult, NgxYtdApiVideosListOpts>(`${this.core.ngxYtdVideosApiUrl}`, opts);
+    return this.core.createHttpGet<NgxYtdApiVideosListResult, NgxYtdApiVideosListOpts>(`${this.core.ngxYtdVideosApiUrl}`, opts);
   }
 }
