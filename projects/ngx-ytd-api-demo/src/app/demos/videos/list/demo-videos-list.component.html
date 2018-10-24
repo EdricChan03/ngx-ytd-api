@@ -13,14 +13,14 @@
   <app-version-picker></app-version-picker>
 </mat-toolbar>
 <div class="padding-percentage-container">
-  <mat-card class="example-search-result-card">
+  <mat-card>
     <mat-card-header>
       <span fxFlex></span>
       <button mat-icon-button (click)="copyLink()" matTooltip="Copy form link">
         <mat-icon>link</mat-icon>
       </button>
     </mat-card-header>
-    <mat-card-title class="example-search-result-card-title">Get info of YouTube video</mat-card-title>
+    <mat-card-title>Get info of YouTube video</mat-card-title>
     <mat-card-content fxLayout="column">
       <form [formGroup]="videosForm" class="example-form" fxLayout="column" (keydown.enter)="submitForm()">
         <mat-form-field>
