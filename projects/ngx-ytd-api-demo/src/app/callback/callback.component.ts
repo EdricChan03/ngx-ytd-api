@@ -37,6 +37,7 @@ export class CallbackComponent implements OnInit {
       if (!this.hasError && !window.opener) {
         this.router.navigateByUrl(this.routingState.getPreviousUrl());
       } else if (window.opener) {
+        window.opener.location.reload(true);
         window.close();
       }
     });
