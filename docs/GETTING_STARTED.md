@@ -24,22 +24,4 @@ Alternatively, you can install the `next` feature branch which will be published
 npm install ngx-ytd-api@next --save
 ```
 
-## Step 3. Including the service in your app
-
-Import the service in your app's module in the `providers` array of `NgModule`:
-
-`app.module.ts`
-
-```typescript
-import { NgxYtdApiService } from 'ngx-ytd-api';
-import { NgModule } from '@angular/core';
-
-@NgModule({
-  providers: [
-    NgxYtdApiService
-  ]
-})
-export class AppModule { }
-```
-
 That's it! For documentation on a submodule, see the individual `README.md` in the specified submodule.
