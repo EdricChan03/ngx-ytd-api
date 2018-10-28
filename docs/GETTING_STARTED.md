@@ -8,20 +8,36 @@ For existing apps, follow the steps bellow to begin using `ngx-ytd-api`!
 
 Follow [these steps](https://developers.google.com/youtube/v3/getting-started#before-you-start) to setup an app to use the YouTube Data API. Once you're done, head back here.
 
-## Step 2. Install `ngx-ytd-api`
+## Step 2. Install the library
 
-Install the latest version (`1.0.0-alpha.0`) by running this command:
+Install the latest version (`1.0.0-alpha.3`) by running this command:
+
+### NPM v5 and above
 
 ```bash
-npm install ngx-ytd-api --save
+npm i ngx-ytd-api
 ```
 
-### Alternative: Daily build
-
-Alternatively, you can install the `next` feature branch which will be published daily. Take note that these builds may be experimental and may break your app.
+### NPM v4 and below
 
 ```bash
-npm install ngx-ytd-api@next --save
+npm i --save ngx-ytd-api
+```
+
+### Alternative: Snapshot builds
+
+Alternatively, you can install snapshot builds which are built for every commit and published to `https://github.com/Chan4077/ngx-ytd-api-builds`. Take note that these builds may be experimental and may break your app.
+
+#### NPM v5 and above
+
+```bash
+npm i Chan4077/ngx-ytd-api-builds
+```
+
+#### NPM v4 and below
+
+```bash
+npm i --save Chan4077/ngx-ytd-api-builds
 ```
 
 That's it! For documentation on a submodule, see the individual `README.md` in the specified submodule.
