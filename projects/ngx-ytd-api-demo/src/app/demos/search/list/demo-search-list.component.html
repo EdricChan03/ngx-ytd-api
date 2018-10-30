@@ -57,7 +57,7 @@
           <input matInput formControlName="accessToken">
           <mat-error *ngIf="searchForm.get('accessToken')?.hasError('required')">This is required.</mat-error>
           <button mat-icon-button matSuffix matTooltip="Authenticate using OAuth" (click)="oAuthAuthenticate()"
-            [disabled]="searchForm.get('accessToken')?.disabled">
+            [disabled]="searchForm.get('accessToken')?.disabled" type="button">
             <mat-icon>open_in_new</mat-icon>
           </button>
         </mat-form-field>
