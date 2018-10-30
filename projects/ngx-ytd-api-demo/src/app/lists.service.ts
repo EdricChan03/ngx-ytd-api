@@ -66,7 +66,7 @@ const DOCS: Doc[] = [
   {
     name: 'Getting started',
     id: 'getting-started',
-    href: 'docs/GETTING_STARTED.md',
+    href: 'docs/getting-started.md',
     icon: 'chrome_reader_mode'
   }
 ];
