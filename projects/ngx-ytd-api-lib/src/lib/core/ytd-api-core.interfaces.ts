@@ -1,7 +1,7 @@
 /**
- * Generic options
+ * Standard parameters
  */
-export interface NgxYtdApiGenericOpts {
+export interface NgxYtdApiStandardOpts {
   /**
    * The access token from Google's OAuth 2.0 API
    * This is to be passed to the `Authorization` HTTP header
@@ -21,11 +21,6 @@ export interface NgxYtdApiGenericOpts {
    */
   key?: string;
   /**
-   * Parts of the result to show
-   * Defaults to `snippet,id`
-   */
-  part: string;
-  /**
    * Whether to return the response with line breaks & indentations
    */
   prettyPrint?: boolean;
@@ -41,6 +36,16 @@ export interface NgxYtdApiGenericOpts {
    * See https://developers.google.com/youtube/v3/docs/standard_parameters#userIp for more info
    */
   userIp?: string;
+}
+/**
+ * Generic options
+ */
+export interface NgxYtdApiGenericOpts extends NgxYtdApiStandardOpts {
+  /**
+   * Parts of the result to show
+   * Defaults to `snippet,id`
+   */
+  part?: string;
 }
 
 export interface NgxYtdApiGenericResource {
