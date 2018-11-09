@@ -1,22 +1,17 @@
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { DevModeDialogComponent, SharedService } from './shared.service';
-import { MaterialModule } from './material.module';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { SharedService } from './shared.service';
 
 @NgModule({
-  declarations: [
-    DevModeDialogComponent
-  ],
-  entryComponents: [
-    DevModeDialogComponent
-  ],
   imports: [
-    MaterialModule
+    CommonModule,
+    MatSidenavModule,
+    MatSnackBarModule
   ],
   providers: [
     SharedService
-  ],
-  exports: [
-    DevModeDialogComponent
   ]
 })
 export class SharedModule { }

@@ -7,12 +7,6 @@
   <a routerLink="." mat-icon-button matTooltip="View docs">
     <mat-icon>code</mat-icon>
   </a>
-  <mat-chip-list>
-    <mat-chip *ngIf="!shared.isProd" color="accent" (click)="shared.openDevConfig()">
-      <mat-icon inline class="chip-icon">build</mat-icon>
-      Developer Mode
-    </mat-chip>
-  </mat-chip-list>
   <app-version-picker></app-version-picker>
 </mat-toolbar>
 <div class="padding-percentage-container">
