@@ -19,7 +19,7 @@
 
 * **lib:** `NgxYtdApiGenericOpts#apiKey` has been renamed to `NgxYtdApiGenericOpts#key` for convenience with the YouTube Data v3 API.
 
-* **lib/search:** `NgxYtdApiService#searchVideos` has been removed in favour of `NgxYtdApiService#search` as the former is the same, except that the `type` parameter would be set as `video`. For those who want to filter videos, pass in a `type` parameter of `video` as the configuration to only search videos. See `NgxYtdApiSearchOpts#type` for more info.
+* **lib/search:** `NgxYtdApiService#searchVideos` has been removed in favour of `NgxYtdApiService#search` as the former is the same, except that the `type` parameter would be set as `video`. For those who want to filter videos, pass in the `type` parameter set to `video` as the configuration to only search videos. See `NgxYtdApiSearchOpts#type` for more info.
 
 
 
