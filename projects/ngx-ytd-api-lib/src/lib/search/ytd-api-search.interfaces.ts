@@ -243,7 +243,7 @@ export interface NgxYtdApiSearchListResult extends NgxYtdApiGenericResource {
   /**
    * Paging info about the result
    */
-  pagingInfo?: {
+  pageInfo?: {
     /**
      * Total results. Note that the max value is `1000000` and is approximate.
      */
