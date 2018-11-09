@@ -64,7 +64,7 @@ export class NgxYtdApiCoreService {
     let params = new HttpParams();
     let headers;
     for (const prop in apiParams) {
-      if (prop in apiParams && typeof apiParams[prop] !== undefined && apiParams[prop] !== null) {
+      if (prop in apiParams && apiParams[prop]) {
         if (prop === 'accessToken') {
           headers = new HttpHeaders()
             .set('Authorization', `Bearer ${apiParams[prop]}`);
