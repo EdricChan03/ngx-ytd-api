@@ -1,9 +1,97 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import '~@angular/material/theming';
+@mixin demo-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+  $is-dark-theme: map-get($theme, is-dark);
+  mat-card.hover {
+    @include mat-elevation-transition;
+    &:hover {
+      @include mat-elevation(8);
+    }
+  }
+  .strike>span {
+    &::before,
+    &::after {
+      background-color: map-get($foreground, divider);
+    }
+    color: map-get($foreground, text);
+  }
+  .active-link {
+    // Since it's a bit hard to actually see the text in the dark theme, it'll use the accent color if it's dark and primary if it's not. Same applies for mat-icon
+    color: if($is-dark-theme, mat-color($accent), mat-color($primary)) !important;
+    mat-icon {
+      color: if($is-dark-theme, mat-color($accent), mat-color($primary)) !important;
+    } // Note: These colors are based on the Android sidenav selection state
+    background-color: if($is-dark-theme, #595959, #DCDCDC) !important;
+  }
+  .currently-selected {
+    background-color: if($is-dark-theme, #595959, #DCDCDC) !important;
+  }
+  a.anchor-link {
+    color: mat-color($primary);
+    &:active {
+      color: mat-color($accent);
+    }
+  }
+  .mat-list-item:not(.active-link) .mat-list-item-content mat-icon, .icon {
+    color: map-get($foreground, icons);
+  }
+  .error-icon {
+    color: mat-color($warn) !important;
+  }
+}
+
+@include mat-core();
+
+$demo-primary: mat-palette($mat-indigo);
+$demo-accent: mat-palette($mat-pink, A200, A100, A400);
+
+$demo-app-theme: mat-light-theme($demo-primary, $demo-accent);
+@include angular-material-theme($demo-app-theme);
+@include demo-theme($demo-app-theme);
 pre, code, xmp, kbd {
   font-family: 'Roboto Mono', monospace;
   white-space: pre-wrap;
+}
+
+.example-search-result-card {
+  max-width: 350px;
+  box-sizing: border-box;
+  margin: 8px;
+}
+
+.example-search-result-card .example-search-result-card-title {
+  line-height: 30px;
+}
+
+.example-card-title {
+  line-height: 40px;
+}
+
+.example-card-actions>* {
+  margin: 0 8px !important;
+}
+
+.paginator {
+  text-align: center;
+  margin: 8px;
+}
+
+.paginator>* {
+  margin: 8px;
+}
+
+.example-form>* {
+  margin-bottom: 10px;
+}
+
+.example-radio-button {
+  margin: 5px;
 }
 
 /* Code adapted from material.angular.io */
@@ -22,15 +110,6 @@ app-root {
   min-width: 250px;
 }
 
-.active-link {
-  color: #3F51B5 !important;
-  background-color: #DCDCDC !important;
-}
-
-.mat-list-item:not(.active-link) .mat-list-item-content mat-icon, .icon {
-  color: rgba(0, 0, 0, .54);
-}
-
 .padding-percentage-container {
   padding: 5%;
 }
@@ -46,16 +125,10 @@ app-root {
   font-size: 72px;
   width: 72px !important;
   height: 72px !important;
-  color: #f44336 !important;
 }
 
 .mat-button, .mat-stroked-button, .mat-raised-button, .mat-flat-button, .mat-simple-snackbar-action {
   text-transform: uppercase;
-}
-
-.active-menu-item {
-  color: #3F51B5;
-  background-color: #E8E8E8 !important;
 }
 
 .chip-icon {
