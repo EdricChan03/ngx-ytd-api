@@ -26,6 +26,14 @@
           </a>
         </mat-form-field>
         <mat-form-field>
+          <mat-label>Parts</mat-label>
+          <input matInput formControlName="part">
+          <mat-error *ngIf="searchForm.get('part')?.hasError('required')">This is required.</mat-error>
+          <a mat-icon-button matSuffix href="https://developers.google.com/youtube/v3/docs/search/list#part" matTooltip="View parameter on API docs">
+            <mat-icon>open_in_new</mat-icon>
+          </a>
+        </mat-form-field>
+        <mat-form-field>
           <mat-label>Authentication method</mat-label>
           <mat-select [formControl]="authMethod">
             <mat-option value="key">API Key</mat-option>

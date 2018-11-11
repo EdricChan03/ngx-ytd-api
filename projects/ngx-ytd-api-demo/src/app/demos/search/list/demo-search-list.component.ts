@@ -62,6 +62,7 @@ export class DemoSearchListComponent {
   ) {
     this.searchForm = fb.group({
       q: ['', Validators.required],
+      part: ['snippet,id', Validators.required],
       key: ['', [Validators.required, Validators.maxLength(39), Validators.minLength(39)]],
       accessToken: [{ value: '', disabled: true }, Validators.required],
       maxResults: [50, [Validators.required, Validators.min(0), Validators.max(50)]],
@@ -141,6 +142,7 @@ export class DemoSearchListComponent {
                 this.searchForm.get('videoOptions').patchValue({ [prop]: result[prop] });
               }
               break;
+            case 'part':
             case 'q':
             case 'query':
             case 'key':
@@ -181,14 +183,13 @@ export class DemoSearchListComponent {
     const _apiConfig: NgxYtdApiSearchListOpts = {
       key: '',
       q: '',
-      part: 'snippet,id'
+      part: ''
     };
     const _rawValue = this.searchForm.value;
     for (const prop in _rawValue) {
       if (typeof _rawValue[prop] === 'object') {
         const _rawValueObj = _rawValue[prop];
         if (this.isVideoType) {
-          // tslint:disable-next-line:forin
           for (const objProp in _rawValueObj) {
             if (typeof _apiConfig[objProp] === 'string') {
               if (_apiConfig[objProp].length > 0) {
