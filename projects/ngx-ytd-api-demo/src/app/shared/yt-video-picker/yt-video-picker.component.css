@@ -1,0 +1,30 @@
+.example-table {
+  width: 100%;
+}
+
+.example-table td img {
+  height: auto;
+  width: auto;
+  max-height: 150px;
+  max-width: 150px;
+  padding: 8px;
+  /*
+  CSS trick to center an image
+  See https://stackoverflow.com/a/36858012 for more info
+  */
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.example-table tr.mat-row {
+  cursor: pointer;
+}
+
+.example-table tr.mat-row:hover {
+  background-color: #f5f5f5;
+}
+
+.example-table tr.mat-row:active {
+  background-color: #eeeeee;
+}
