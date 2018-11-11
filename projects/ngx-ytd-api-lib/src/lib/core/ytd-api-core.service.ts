@@ -19,6 +19,10 @@ export class NgxYtdApiCoreService {
    */
   readonly ngxYtdVideosApiUrl = 'https://www.googleapis.com/youtube/v3/videos';
   /**
+   * The API URL for the Videos API for uploading a video of the YouTube Data v3 API
+   */
+  readonly ngxYtdVideoUploadsApiUrl = 'https://www.googleapis.com/upload/youtube/v3/videos';
+  /**
    * Generates the query parameters to be used for a HTTP DELETE request
    * @param apiEndpoint The API endpoint
    * @param apiParams Parameters to be appended to the API endpoint

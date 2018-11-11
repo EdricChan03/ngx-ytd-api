@@ -91,11 +91,16 @@ npm install --save Chan4077/ngx-ytd-api-builds
       <td>Videos</td>
       <td>
         <ul>
-          <li>The methods for getting info about a video and the rating of a video have been implemented.</li>
-          <li>The API is currently being worked on.</li>
+          <li>All methods have been implemented!</li>
+          <li>However, more examples are needed.</li>
         </ul>
       </td>
-      <td><em>No docs available</em></td>
+      <td>
+        <ul>
+          <li><a href="https://developers.google.com/youtube/v3/docs/videos">Google Developer Documentation</a></li>
+          <li><a href="https://developers.google.com/youtube/v3/docs/videos#resource-representation">Resource representation</a></li>
+        </ul>
+      </td>
   </tbody>
 </table>
 
@@ -113,7 +118,6 @@ Playlist items / Playlists | Not planned | -
 Subscriptions | Not planned | -
 Thumbnails | Not planned | -
 Video abuse report reasons / Video categories | Not planned | -
-Videos | In progress | [#9](https://github.com/Chan4077/ngx-ytd-api/issues/9)
 Watermarks | Not planned | -
 
 See the [developer docs](https://developers.google.com/youtube/v3/docs) for a list of all endpoints of the YouTube Data API.

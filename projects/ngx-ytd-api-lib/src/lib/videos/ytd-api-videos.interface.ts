@@ -1,148 +1,8 @@
-import { NgxYtdApiGenericOpts, NgxYtdApiGenericResource } from 'ngx-ytd-api/core';
-
-/**
- * Options for {@link NgxYtdApiVideosService#getRating}
- */
-export interface NgxYtdApiVideosGetRatingOpts extends NgxYtdApiGenericOpts {
-  /**
-   * Specifies a comma-separated list of the YouTube video ID(s) for retrieving rating data
-   *
-   * See https://developers.google.com/youtube/v3/docs/videos/getRating#id for more info
-   */
-  id: string;
-  /**
-   * Note: This parameter is optional.
-   * Note: This parameter can only be used in a properly authorized request.
-   * Note: This parameter is intended for YouTube Creators.
-   *
-   * See https://developers.google.com/youtube/v3/docs/videos/getRating#onBehalfOfContentOwner for more info
-   */
-  onBehalfOfContentOwner?: string;
-}
-
-export interface NgxYtdApiVideosGetRatingItem {
-  /**
-   * The ID that YouTube uses to to uniquely identify the video
-   *
-   * See https://developers.google.com/youtube/v3/docs/videos/getRating#items[].videoId for more info
-   */
-  videoId?: string;
-  /**
-   * The rating that the authorized user gave to the video
-   *
-   * See https://developers.google.com/youtube/v3/docs/videos/getRating#items[].rating for more info
-   */
-  rating?: 'dislike' | 'like' | 'none' | 'unspecified';
-}
-export interface NgxYtdApiVideosGetRatingResult extends NgxYtdApiGenericOpts {
-  /**
-   * A list of ratings that match the request criteria
-   *
-   * See https://developers.google.com/youtube/v3/docs/videos/getRating#items[] for more info
-   */
-  items?: NgxYtdApiVideosGetRatingItem[];
-}
-
-/**
- * Options for {@link NgxYtdApiVideosService#list}
- */
-export interface NgxYtdApiVideosListOpts extends NgxYtdApiGenericOpts {
-  /**
-   * Identifies the chart that should be retrieved.
-   * Acceptable values:
-   * - `mostPopular`: Return the most popular videos for the specified content region and video category.
-   * Note: This parameter is a filter and only one filter is allowed
-   *
-   * See https://developers.google.com/youtube/v3/docs/videos/list#chart for more info.
-   */
-  chart?: 'mostPopular';
-  /**
-   * Specifies a comma-separated list of the YouTube video ID(s) for the resource(s) that are being retrieved.
-   * In a video resource, the `id` property specifies the video's ID.
-   * Note: This parameter is a filter and only one filter is allowed
-   *
-   * See https://developers.google.com/youtube/v3/docs/videos/list#id for more info
-   */
-  id?: string;
-  /**
-   * Specifies the API to return videos that are liked or disliked by the authenticated user
-   * Acceptable values:
-   * - `dislike`: Returns only videos that are disliked by the authenticated user
-   * - `like`: Returns only videos that are liked by the authenticated user
-   * Note: This parameter can only be used in a properly authorized request.
-   * Note: This parameter is a filter and only one filter is allowed
-   *
-   * See https://developers.google.com/youtube/v3/docs/videos/list#myRating for more info
-   */
-  myRating?: 'dislike' | 'like';
-  /**
-   * Specifies the API to return localized resource metadata for a specific language that the YouTube website supports.
-   *
-   * See https://developers.google.com/youtube/v3/docs/videos/list#hl for more info
-   */
-  hl?: string;
-  /**
-   * Specifies the maximum height of the embedded YouTube player returned in the `player.embedHtml` property.
-   * This parameter can be used to specify a height appropriate for your app's layout.
-   * See https://developers.google.com/youtube/v3/docs/videos/list#maxHeight for more info
-   * Note: If the `maxWidth` property is also specified, the player may be shorter
-   * than the `maxHeight` in order to not violate the maximum width.
-   * Acceptable values are 72 to 8192, inclusive.
-   *
-   * See https://developers.google.com/youtube/v3/docs/videos/list#maxHeight for more info
-   */
-  maxHeight?: number;
-  /**
-   * Specifies the maximum results that should be returned.
-   * Note: This parameter is to be used for the `myRating` parameter, but should not
-   * be used with the `id` parameter.
-   * Acceptable values: 1 to 50, inclusive. 5 is the default number.
-   *
-   * See https://developers.google.com/youtube/v3/docs/videos/list#maxResults for more info
-   */
-  maxResults?: number;
-  /**
-   * Specifies the maximum width of the embedded YouTube player returned in the `player.embedHtml` property.
-   * This parameter can be used to specify a width appropriate for your app's layout.
-   * Note: If the `maxHeight` property is also specified, the player may be shorter
-   * than the `maxWidth` in order to not violate the maximum width.
-   * Acceptable values are 72 to 8192, inclusive.
-   *
-   * See https://developers.google.com/youtube/v3/docs/videos/list#maxWidthfor more info
-   */
-  maxWidth?: number;
-  /**
-   * Indicates that the request's authorization credentials identify a YouTube CMS user who is
-   * acting on behalf of the content owner specified in the parameter value.
-   *
-   * See https://developers.google.com/youtube/v3/docs/videos/list#onBehalfOfContentOwner for more info
-   */
-  onBehalfOfContentOwner?: string;
-  /**
-   * Identifies a specific page in the result set that should be returned.
-   * Note: This parameter is to be used with the `myRating` parameter, but is not to be used
-   * with the `id` parameter.
-   *
-   * See https://developers.google.com/youtube/v3/docs/videos/list#pageToken for more info
-   */
-  pageToken?: string;
-  /**
-   * Tells the API to select a video chart available in the specific region.
-   * Note: This parameter is to only be used with the `chart` parameter.
-   *
-   * See https://developers.google.com/youtube/v3/docs/videos/list#regionCode for more info
-   */
-  regionCode?: string;
-  /**
-   * This property identifies the video category for which the video should be retrieved.
-   * Note: This parameter is to only be used with the `chart` parameter.
-   * By default, charts are not restricted to a particular category.
-   * The default value is 0.
-   *
-   * See https://developers.google.com/youtube/v3/docs/videos/list#regionCode for more info
-   */
-  videoCategoryById?: string;
-}
+import {
+  NgxYtdApiGenericOpts,
+  NgxYtdApiGenericResource,
+  NgxYtdApiStandardOpts
+} from 'ngx-ytd-api/core';
 
 export interface NgxYtdApiVideosResourceSuggestionTagSuggestion {
   /**
@@ -302,48 +162,6 @@ export interface NgxYtdApiVideosResourceThumbnail {
    */
   height?: number;
 }
-
-/**
- * @deprecated Use {@link NgxYtdApiVideosResourceAudioStream} instead
- */
-// tslint:disable-next-line:no-empty-interface
-export interface NgxYtdApiVideosListResultItemAudioStream extends NgxYtdApiVideosResourceAudioStream {}
-
-/**
- * @deprecated Use {@link NgxYtdApiVideosResourceLocalization} instead
- */
-// tslint:disable-next-line:no-empty-interface
-export interface NgxYtdApiVideosListResultItemLocalization extends NgxYtdApiVideosResourceLocalization {}
-
-/**
- * @deprecated Use {@link NgxYtdApiVideosResourceLocalizations} instead
- */
-// tslint:disable-next-line:no-empty-interface
-export interface NgxYtdApiVideosListResultItemLocalizations extends NgxYtdApiVideosResourceLocalizations {}
-
-/**
- * @deprecated Use {@link NgxYtdApiVideosResourceThumbnail} instead
- */
-// tslint:disable-next-line:no-empty-interface
-export interface NgxYtdApiVideosListResultItemThumbnail extends NgxYtdApiVideosResourceThumbnail {}
-
-/**
- * @deprecated Use {@link NgxYtdApiVideosResourceThumbnails} instead
- */
-// tslint:disable-next-line:no-empty-interface
-export interface NgxYtdApiVideosListResultItemThumbnails extends NgxYtdApiVideosResourceThumbnails {}
-
-/**
- * @deprecated Use {@link NgxYtdApiVideosResourceSuggestionTagSuggestion} instead
- */
-// tslint:disable-next-line:no-empty-interface
-export interface NgxYtdApiVideosListResultItemSuggestionTagSuggestion extends NgxYtdApiVideosResourceSuggestionTagSuggestion {}
-
-/**
- * @deprecated Use {@link NgxYtdApiVideosResourceVideoStream} instead
- */
-// tslint:disable-next-line:no-empty-interface
-export interface NgxYtdApiVideosListResultItemVideoStream extends NgxYtdApiVideosResourceVideoStream {}
 /**
  * A video resource
  */
@@ -1061,11 +879,47 @@ export interface NgxYtdApiVideosResource {
    */
   localizations?: NgxYtdApiVideosResourceLocalizations;
 }
+export interface NgxYtdApiVideosInsertOpts extends NgxYtdApiGenericOpts {
+  /**
+   * Indicates whether YouTube should automatically enhance the video's lighting and color.
+   *
+   * See https://developers.google.com/youtube/v3/docs/videos/insert#autoLevels for more info
+   */
+  autoLevels?: boolean;
+  /**
+   * Indicates whether YouTube should send a notification about the new video to users who
+   * subscribe to the video's channel
+   *
+   * See https://developers.google.com/youtube/v3/docs/videos/insert#notifySubscribers for more info
+   */
+  notifySubscribers?: boolean;
+  /**
+   * Note: This parameter is optional.
+   * Note: This parameter can only be used in a properly authorized request.
+   * Note: This parameter is intended for YouTube content partners.
+   *
+   * See https://developers.google.com/youtube/v3/docs/videos/insert#onBehalfOfContentOwner for more info
+   */
+  onBehalfOfContentOwner?: string;
+  /**
+   * Note: This parameter is optional.
+   * Note: This parameter can only be used in a properly authorized request.
+   *
+   * See https://developers.google.com/youtube/v3/docs/videos/insert#onBehalfOfContentOwnerChannel for more info
+   */
+  onBehalfOfContentOwnerChannel?: string;
+  /**
+   * Indicates whether YouTube should adjust the video to remove shaky camera motions
+   *
+   * See https://developers.google.com/youtube/v3/docs/videos/insert#stabilize for more info
+   */
+  stabilize?: boolean;
+}
 /**
  * @deprecated Use {@link NgxYtdApiVideosResource} instead
  */
 // tslint:disable-next-line:no-empty-interface
-export interface NgxYtdApiVideosListResultItem extends NgxYtdApiVideosResource {}
+export interface NgxYtdApiVideosListResultItem extends NgxYtdApiVideosResource { }
 export interface NgxYtdApiVideosListResult extends NgxYtdApiGenericResource {
   /**
    * The token that can be passed via the `pageToken` parameter to retrieve the next page
@@ -1104,4 +958,285 @@ export interface NgxYtdApiVideosListResult extends NgxYtdApiGenericResource {
    * See https://developers.google.com/youtube/v3/docs/videos/list#items[] for more info
    */
   items?: NgxYtdApiVideosResource[];
+}
+
+/**
+ * @deprecated Use {@link NgxYtdApiVideosResourceAudioStream} instead
+ */
+// tslint:disable-next-line:no-empty-interface
+export interface NgxYtdApiVideosListResultItemAudioStream extends NgxYtdApiVideosResourceAudioStream { }
+
+/**
+ * @deprecated Use {@link NgxYtdApiVideosResourceLocalization} instead
+ */
+// tslint:disable-next-line:no-empty-interface
+export interface NgxYtdApiVideosListResultItemLocalization extends NgxYtdApiVideosResourceLocalization { }
+
+/**
+ * @deprecated Use {@link NgxYtdApiVideosResourceLocalizations} instead
+ */
+// tslint:disable-next-line:no-empty-interface
+export interface NgxYtdApiVideosListResultItemLocalizations extends NgxYtdApiVideosResourceLocalizations { }
+
+/**
+ * @deprecated Use {@link NgxYtdApiVideosResourceThumbnail} instead
+ */
+// tslint:disable-next-line:no-empty-interface
+export interface NgxYtdApiVideosListResultItemThumbnail extends NgxYtdApiVideosResourceThumbnail { }
+
+/**
+ * @deprecated Use {@link NgxYtdApiVideosResourceThumbnails} instead
+ */
+// tslint:disable-next-line:no-empty-interface
+export interface NgxYtdApiVideosListResultItemThumbnails extends NgxYtdApiVideosResourceThumbnails { }
+
+/**
+ * @deprecated Use {@link NgxYtdApiVideosResourceSuggestionTagSuggestion} instead
+ */
+// tslint:disable-next-line:no-empty-interface
+export interface NgxYtdApiVideosListResultItemSuggestionTagSuggestion extends NgxYtdApiVideosResourceSuggestionTagSuggestion { }
+
+/**
+ * @deprecated Use {@link NgxYtdApiVideosResourceVideoStream} instead
+ */
+// tslint:disable-next-line:no-empty-interface
+export interface NgxYtdApiVideosListResultItemVideoStream extends NgxYtdApiVideosResourceVideoStream { }
+
+/**
+ * Options for {@link NgxYtdApiVideosService#delete}
+ */
+export interface NgxYtdApiVideosDeleteOpts extends NgxYtdApiStandardOpts {
+  /**
+   * Specifies the YouTube video ID for the resource that is being deleted
+   *
+   * See https://developers.google.com/youtube/v3/docs/videos/delete#id for more info
+   */
+  id: string;
+  /**
+   * Note: This parameter is optional.
+   * Note: This parameter can only be used in a properly authorized request.
+   * Note: This parameter is intended for YouTube content partners.
+   *
+   * See https://developers.google.com/youtube/v3/docs/videos/delete#onBehalfOfContentOwner for more info
+   */
+  onBehalfOfContentOwner?: string;
+}
+/**
+ * Options for {@link NgxYtdApiVideosService#getRating}
+ */
+export interface NgxYtdApiVideosGetRatingOpts extends NgxYtdApiGenericOpts {
+  /**
+   * Specifies a comma-separated list of the YouTube video ID(s) for retrieving rating data
+   *
+   * See https://developers.google.com/youtube/v3/docs/videos/getRating#id for more info
+   */
+  id: string;
+  /**
+   * Note: This parameter is optional.
+   * Note: This parameter can only be used in a properly authorized request.
+   * Note: This parameter is intended for YouTube content partners.
+   *
+   * See https://developers.google.com/youtube/v3/docs/videos/getRating#onBehalfOfContentOwner for more info
+   */
+  onBehalfOfContentOwner?: string;
+}
+
+export interface NgxYtdApiVideosGetRatingItem {
+  /**
+   * The ID that YouTube uses to to uniquely identify the video
+   *
+   * See https://developers.google.com/youtube/v3/docs/videos/getRating#items[].videoId for more info
+   */
+  videoId?: string;
+  /**
+   * The rating that the authorized user gave to the video
+   *
+   * See https://developers.google.com/youtube/v3/docs/videos/getRating#items[].rating for more info
+   */
+  rating?: 'dislike' | 'like' | 'none' | 'unspecified';
+}
+export interface NgxYtdApiVideosGetRatingResult extends NgxYtdApiGenericResource {
+  /**
+   * A list of ratings that match the request criteria
+   *
+   * See https://developers.google.com/youtube/v3/docs/videos/getRating#items[] for more info
+   */
+  items?: NgxYtdApiVideosGetRatingItem[];
+}
+
+/**
+ * Options for {@link NgxYtdApiVideosService#list}
+ */
+export interface NgxYtdApiVideosListOpts extends NgxYtdApiGenericOpts {
+  /**
+   * Identifies the chart that should be retrieved.
+   * Acceptable values:
+   * - `mostPopular`: Return the most popular videos for the specified content region and video category.
+   * Note: This parameter is a filter and only one filter is allowed
+   *
+   * See https://developers.google.com/youtube/v3/docs/videos/list#chart for more info.
+   */
+  chart?: 'mostPopular';
+  /**
+   * Specifies a comma-separated list of the YouTube video ID(s) for the resource(s) that are being retrieved.
+   * In a video resource, the `id` property specifies the video's ID.
+   * Note: This parameter is a filter and only one filter is allowed
+   *
+   * See https://developers.google.com/youtube/v3/docs/videos/list#id for more info
+   */
+  id?: string;
+  /**
+   * Specifies the API to return videos that are liked or disliked by the authenticated user
+   * Acceptable values:
+   * - `dislike`: Returns only videos that are disliked by the authenticated user
+   * - `like`: Returns only videos that are liked by the authenticated user
+   * Note: This parameter can only be used in a properly authorized request.
+   * Note: This parameter is a filter and only one filter is allowed
+   *
+   * See https://developers.google.com/youtube/v3/docs/videos/list#myRating for more info
+   */
+  myRating?: 'dislike' | 'like';
+  /**
+   * Specifies the API to return localized resource metadata for a specific language that the YouTube website supports.
+   *
+   * See https://developers.google.com/youtube/v3/docs/videos/list#hl for more info
+   */
+  hl?: string;
+  /**
+   * Specifies the maximum height of the embedded YouTube player returned in the `player.embedHtml` property.
+   * This parameter can be used to specify a height appropriate for your app's layout.
+   * See https://developers.google.com/youtube/v3/docs/videos/list#maxHeight for more info
+   * Note: If the `maxWidth` property is also specified, the player may be shorter
+   * than the `maxHeight` in order to not violate the maximum width.
+   * Acceptable values are 72 to 8192, inclusive.
+   *
+   * See https://developers.google.com/youtube/v3/docs/videos/list#maxHeight for more info
+   */
+  maxHeight?: number;
+  /**
+   * Specifies the maximum results that should be returned.
+   * Note: This parameter is to be used for the `myRating` parameter, but should not
+   * be used with the `id` parameter.
+   * Acceptable values: 1 to 50, inclusive. 5 is the default number.
+   *
+   * See https://developers.google.com/youtube/v3/docs/videos/list#maxResults for more info
+   */
+  maxResults?: number;
+  /**
+   * Specifies the maximum width of the embedded YouTube player returned in the `player.embedHtml` property.
+   * This parameter can be used to specify a width appropriate for your app's layout.
+   * Note: If the `maxHeight` property is also specified, the player may be shorter
+   * than the `maxWidth` in order to not violate the maximum width.
+   * Acceptable values are 72 to 8192, inclusive.
+   *
+   * See https://developers.google.com/youtube/v3/docs/videos/list#maxWidthfor more info
+   */
+  maxWidth?: number;
+  /**
+   * Indicates that the request's authorization credentials identify a YouTube CMS user who is
+   * acting on behalf of the content owner specified in the parameter value.
+   *
+   * See https://developers.google.com/youtube/v3/docs/videos/list#onBehalfOfContentOwner for more info
+   */
+  onBehalfOfContentOwner?: string;
+  /**
+   * Identifies a specific page in the result set that should be returned.
+   * Note: This parameter is to be used with the `myRating` parameter, but is not to be used
+   * with the `id` parameter.
+   *
+   * See https://developers.google.com/youtube/v3/docs/videos/list#pageToken for more info
+   */
+  pageToken?: string;
+  /**
+   * Tells the API to select a video chart available in the specific region.
+   * Note: This parameter is to only be used with the `chart` parameter.
+   *
+   * See https://developers.google.com/youtube/v3/docs/videos/list#regionCode for more info
+   */
+  regionCode?: string;
+  /**
+   * This property identifies the video category for which the video should be retrieved.
+   * Note: This parameter is to only be used with the `chart` parameter.
+   * By default, charts are not restricted to a particular category.
+   * The default value is 0.
+   *
+   * See https://developers.google.com/youtube/v3/docs/videos/list#regionCode for more info
+   */
+  videoCategoryById?: string;
+}
+/**
+ * Options for {@link NgxYtdApiVideosService#rate}
+ */
+export interface NgxYtdApiVideosRateOpts extends NgxYtdApiStandardOpts {
+  /**
+   * Specifies the YouTube video ID that is being rated or having its rating removed
+   *
+   * See https://developers.google.com/youtube/v3/docs/videos/rate#id for more info
+   */
+  id: string;
+  /**
+   * Specifies the rating to record
+   * Acceptable values:
+   * - `dislike`: Records that the authenticated user disliked the video
+   * - `like`: Records that the authenticated user liked the video
+   * - `none`: Removes any rating that the authenticated user previously set for the video
+   */
+  rating: 'dislike' | 'like' | 'none';
+}
+/**
+ * Options for {@link NgxYtdApiVideosService#reportAbuse}
+ */
+export interface NgxYtdApiVideosReportAbuseOpts extends NgxYtdApiStandardOpts {
+  /**
+   * Note: This parameter is optional.
+   * Note: This parameter can only be used in a properly authorized request.
+   * Note: This parameter is intended for YouTube content partners.
+   *
+   * See https://developers.google.com/youtube/v3/docs/videos/reportAbuse#onBehalfOfContentOwner for more info
+   */
+  onBehalfOfContentOwner?: string;
+}
+/**
+ * Options for the request body of {@link NgxYtdApiVideosService#reportAbuse}
+ */
+export interface NgxYtdApiVideosReportAbuseBody {
+  /**
+   * The video that is being reported for abusive content
+   *
+   * See https://developers.google.com/youtube/v3/docs/videos/reportAbuse#videoId for more info
+   */
+  videoId: string;
+  /**
+   * Specifies the reason that the video is being reported for containing abusive content
+   *
+   * See https://developers.google.com/youtube/v3/docs/videos/reportAbuse#reasonId for more info
+   */
+  reasonId: string;
+  /**
+   * Specifies the secondary reason that the video is being reported for containing abusive content
+   *
+   * See zhttps://developers.google.com/youtube/v3/docs/videos/reportAbuse#secondaryReasonId for more info
+   */
+  secondaryReasonId?: string;
+  /**
+   * Provides any additional information that the reporter wants to add
+   *
+   * See https://developers.google.com/youtube/v3/docs/videos/reportAbuse#comments for more info
+   */
+  comments?: string;
+  /**
+   * Identifies a language spoken by the reporter
+   */
+  language?: string;
+}
+
+export interface NgxYtdApiVideosUpdateOpts extends NgxYtdApiGenericOpts {
+  /**
+   * Note: This parameter is optional.
+   * Note: This parameter can only be used in a properly authorized request.
+   * Note: This parameter is intended for YouTube content partners.
+   *
+   * See https://developers.google.com/youtube/v3/docs/videos/update#onBehalfOfContentOwner for more info
+   */
+  onBehalfOfContentOwner?: string;
 }
