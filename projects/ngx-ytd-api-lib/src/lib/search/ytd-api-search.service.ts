@@ -12,7 +12,7 @@ export class NgxYtdApiSearchService {
   ) { }
   /**
    * Searches using the YouTube HTTP Data API
-   * @param query The query to search for. See the {@link https://developers.google.com/youtube/v3/docs/search/list#q|developer docs}
+   * @param query The query to search for. See the [developer docs](https://developers.google.com/youtube/v3/docs/search/list#q)
    * for more info.
    * @param opts Options for searching
    * @return Results of the search as a stream
