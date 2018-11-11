@@ -97,7 +97,9 @@ export class NgxYtdApiCoreService {
    * @param apiBody The request body
    * @return A `HttpClient` instance
    */
-  createHttpPost<R, P extends any>(apiEndpoint: string, apiParams: P, apiBody: any): Observable<R> {
+  createHttpPost<
+    P extends any,
+    B extends any | null>(apiEndpoint: string, apiParams: P, apiBody: B = null): Observable<any> {
     let params = new HttpParams();
     let headers;
     for (const prop in apiParams) {
@@ -111,22 +113,42 @@ export class NgxYtdApiCoreService {
       }
     }
     if (headers) {
-      return this.http.post<R>(
-        apiEndpoint,
-        apiBody,
-        {
-          params: params,
-          headers: headers
-        }
-      );
+      if (apiBody) {
+        return this.http.post(
+          apiEndpoint,
+          apiBody,
+          {
+            params: params,
+            headers: headers
+          }
+        );
+      } else {
+        return this.http.post(
+          apiEndpoint,
+          apiBody,
+          {
+            params: params,
+            headers: headers
+          }
+        );
+      }
     } else {
-      return this.http.post<R>(
-        apiEndpoint,
-        apiBody,
-        {
-          params: params
-        }
-      );
+      if (apiBody) {
+        return this.http.post(
+          apiEndpoint,
+          apiBody,
+          {
+            params: params
+          }
+        );
+      } else {
+        return this.http.post(
+          apiEndpoint,
+          {
+            params: params
+          }
+        );
+      }
     }
   }
   /**
@@ -136,7 +158,7 @@ export class NgxYtdApiCoreService {
    * @param apiBody The request body
    * @return A `HttpClient` instance
    */
-  createHttpPut<R, P extends any>(apiEndpoint: string, apiParams: P, apiBody: any): Observable<R> {
+  createHttpPut<R, P extends any, B extends any>(apiEndpoint: string, apiParams: P, apiBody: B): Observable<R> {
     let params = new HttpParams();
     let headers;
     for (const prop in apiParams) {
