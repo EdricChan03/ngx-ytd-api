@@ -23,19 +23,19 @@ export class DemoVideosListComponent {
     private snackBar: MatSnackBar
   ) {
     this.videosForm = fb.group({
-      id: ['', Validators.required],
-      key: ['', Validators.required],
-      accessToken: [{ value: '', disabled: true }, Validators.required],
-      chart: '',
-      myRating: '',
-      hl: '',
+      id: [null, Validators.required],
+      key: [null, Validators.required],
+      accessToken: [{ value: null, disabled: true }, Validators.required],
+      chart: null,
+      myRating: null,
+      hl: null,
       maxHeight: null,
       maxResults: 5,
       maxWidth: null,
-      onBehalfOfContentOwner: '',
-      pageToken: '',
-      regionCode: '',
-      videoCategoryById: ''
+      onBehalfOfContentOwner: null,
+      pageToken: null,
+      regionCode: null,
+      videoCategoryById: null
     });
     this.videosForm.get('accessToken')
         .statusChanges
