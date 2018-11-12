@@ -16,7 +16,10 @@ export class YtVideoPickerService {
    * @param dialogConfig Dialog options
    * @return A dialog reference of the picker
    */
-  openPicker(opts: YtVideoPickerOpts, dialogConfig?: MatDialogConfig<YtVideoPickerOpts>): MatDialogRef<YtVideoPickerComponent> {
+  openPicker(
+    opts: YtVideoPickerOpts,
+    dialogConfig?: MatDialogConfig<YtVideoPickerOpts>
+  ): MatDialogRef<YtVideoPickerComponent, SelectionModel<NgxYtdApiSearchResource> | string> {
     let pickerConfig: MatDialogConfig<YtVideoPickerOpts>;
     if (dialogConfig) {
       // Override the data property with options for the picker
