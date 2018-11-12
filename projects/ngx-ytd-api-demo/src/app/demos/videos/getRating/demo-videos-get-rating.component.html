@@ -1,0 +1,71 @@
+<mat-toolbar color="primary" class="mat-elevation-z3" id="app-toolbar">
+  <button mat-icon-button (click)="shared.sidenav.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  Angular YouTube Data API
+  <span fxFlex></span>
+  <app-version-picker></app-version-picker>
+</mat-toolbar>
+<div class="padding-percentage-container">
+  <mat-card>
+    <mat-card-title class="example-card-title">
+      Get rating of YouTube video(s)
+      <span fxFlex></span>
+      <button mat-icon-button (click)="copyLink()" matTooltip="Copy form link">
+        <mat-icon>link</mat-icon>
+      </button>
+    </mat-card-title>
+    <mat-card-content fxLayout="column">
+      <form [formGroup]="videosForm" class="example-form" fxLayout="column" (keydown.enter)="submitForm()">
+        <mat-slide-toggle [formControl]="useVideoPicker">Use video picker?</mat-slide-toggle>
+        <mat-form-field>
+          <mat-label>Video ID(s)</mat-label>
+          <input matInput formControlName="id">
+          <mat-error *ngIf="videosForm.get('id')?.hasError('required')">This is required.</mat-error>
+          <mat-hint>Separate each video ID by a comma</mat-hint>
+          <a mat-icon-button matSuffix href="https://developers.google.com/youtube/v3/docs/videos/getRating#id" matTooltip="View parameter on API docs"
+            *ngIf="!useVideoPicker?.value">
+            <mat-icon>open_in_new</mat-icon>
+          </a>
+          <button mat-icon-button matSuffix (click)="openVideoPicker()" matTooltip="Open video picker" *ngIf="useVideoPicker?.value"
+            type="button">
+            <mat-icon svgIcon="docs:video"></mat-icon>
+          </button>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>OAuth access token</mat-label>
+          <input matInput formControlName="accessToken">
+          <mat-error *ngIf="videosForm.get('accessToken')?.hasError('required')">This is required.</mat-error>
+          <mat-hint>Click on the button next to this form field to authenticate and retrieve the access token</mat-hint>
+          <button mat-icon-button matSuffix (click)="oAuthAuthenticate()" matTooltip="Authenticate with OAuth"
+            [disabled]="videosForm.get('accessToken')?.disabled" type="button">
+            <mat-icon>open_in_new</mat-icon>
+          </button>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>On behalf of content owner</mat-label>
+          <input matInput formControlName="onBehalfOfContentOwner">
+          <mat-hint *ngIf="videosForm.get('accessToken')?.status === 'INVALID'" class="example-auth-required-text">
+            <mat-icon>info</mat-icon> Authentication is required.
+          </mat-hint>
+          <a mat-icon-button matSuffix href="https://developers.google.com/youtube/v3/docs/videos/getRating#onBehalfOfContentOwner"
+            matTooltip="View parameter on API docs">
+            <mat-icon>open_in_new</mat-icon>
+          </a>
+        </mat-form-field>
+      </form>
+    </mat-card-content>
+    <mat-card-actions align="end" class="example-card-actions">
+      <button mat-stroked-button color="warn" (click)="reset()">Reset</button>
+      <button mat-stroked-button color="primary" (click)="submitForm()" [disabled]="videosForm.invalid">Submit</button>
+    </mat-card-actions>
+  </mat-card>
+  <hr>
+  <ng-container *ngIf="videosListResult">
+    <pre><code id="output">{{videosListResult | json}}</code></pre>
+  </ng-container>
+  <ng-container id="error-result" *ngIf="errorResult">
+    <p>An error occured:</p>
+    <pre><code>{{errorResult | json}}</code></pre>
+  </ng-container>
+</div>

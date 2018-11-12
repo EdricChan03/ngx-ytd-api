@@ -7,6 +7,7 @@ import { DemoSearchListComponent } from './demos/search/list/demo-search-list.co
 import { DocsHomeComponent } from './docs/docs-home/docs-home.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 import { CallbackComponent } from './callback/callback.component';
+import { DemoVideosGetRatingComponent } from './demos/videos/getRating/demo-videos-get-rating.component';
 
 const APP_ROUTES: Route[] = [
   {
@@ -14,6 +15,8 @@ const APP_ROUTES: Route[] = [
       { path: '', component: DemoHomeComponent },
       {
         path: 'videos', children: [
+          { path: 'getRating', component: DemoVideosGetRatingComponent },
+          { path: 'get-rating', redirectTo: '/demos/videos/getRating', pathMatch: 'full' },
           { path: 'list', component: DemoVideosListComponent },
           { path: '', redirectTo: '/demos/videos/list', pathMatch: 'full' }
         ]

@@ -194,4 +194,12 @@ export class SharedService {
     document.body.appendChild(form);
     form.submit();
   }
+  /**
+   * Removes duplicates from an array
+   * @param a The array
+   * @return A unique array
+   */
+  removeDuplicates<P = {}>(a: P[]): P[] {
+    return Array.from(new Set(a));
+  }
 }

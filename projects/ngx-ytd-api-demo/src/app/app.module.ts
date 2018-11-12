@@ -1,38 +1,36 @@
+import { HttpClientModule } from '@angular/common/http';
+import { NgModule } from '@angular/core';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-import { FlexLayoutModule } from '@angular/flex-layout';
-
 import { NgxYtdApiCommentsModule } from 'ngx-ytd-api/comments';
 import { NgxYtdApiSearchModule } from 'ngx-ytd-api/search';
 import { NgxYtdApiVideosModule } from 'ngx-ytd-api/videos';
-
-import { MaterialModule } from './material.module';
-
 import { AppComponent } from './app.component';
-import { DemoVideosListComponent } from './demos/videos/list/demo-videos-list.component';
+import { AppRouting } from './app.routing';
+import { CallbackComponent } from './callback/callback.component';
 import { DemoHomeComponent } from './demos/home/demo-home.component';
 import { DemoSearchListComponent } from './demos/search/list/demo-search-list.component';
-
-import { ListsService } from './lists.service';
-
-import { AppRouting } from './app.routing';
+import { DemoVideosGetRatingComponent } from './demos/videos/getRating/demo-videos-get-rating.component';
+import { DemoVideosListComponent } from './demos/videos/list/demo-videos-list.component';
 import { DocsHomeComponent } from './docs/docs-home/docs-home.component';
+import { ListsService } from './lists.service';
+import { MaterialModule } from './material.module';
+import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
+import { RoutingStateService } from './routingstate.service';
+import { SharedModule } from './shared.module';
 import { SharedService } from './shared.service';
 import { VersionPickerModule } from './shared/version-picker/version-picker.module';
-import { SharedModule } from './shared.module';
-import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
-import { CallbackComponent } from './callback/callback.component';
-import { RoutingStateService } from './routingstate.service';
+import { YtVideoPickerModule } from './shared/yt-video-picker/yt-video-picker.module';
 
 @NgModule({
   declarations: [
     AppComponent,
+    DemoSearchListComponent,
+    DemoVideosGetRatingComponent,
     DemoVideosListComponent,
     DemoHomeComponent,
-    DemoSearchListComponent,
     DocsHomeComponent,
     PrivacyPolicyComponent,
     CallbackComponent
@@ -47,6 +45,7 @@ import { RoutingStateService } from './routingstate.service';
     AppRouting,
     FlexLayoutModule,
     VersionPickerModule,
+    YtVideoPickerModule,
     SharedModule,
     NgxYtdApiCommentsModule,
     NgxYtdApiSearchModule,

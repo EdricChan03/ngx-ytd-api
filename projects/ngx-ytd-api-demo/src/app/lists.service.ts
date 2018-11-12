@@ -44,8 +44,7 @@ const DEMOS: Demo[] = [
     methods: [
       {
         name: 'list',
-        id: 'list',
-        icon: 'search'
+        id: 'list'
       }
     ]
   },
@@ -55,9 +54,12 @@ const DEMOS: Demo[] = [
     icon: 'video_library',
     methods: [
       {
+        name: 'getRating',
+        id: 'getRating'
+      },
+      {
         name: 'list',
-        id: 'list',
-        icon: 'video_library'
+        id: 'list'
       }
     ]
   }
