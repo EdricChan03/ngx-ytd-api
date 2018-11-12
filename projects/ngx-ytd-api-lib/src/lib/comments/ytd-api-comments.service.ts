@@ -6,7 +6,7 @@ import { NgxYtdApiCommentListOpts, NgxYtdApiCommentListResult } from './ytd-api-
 @Injectable({
   providedIn: 'root'
 })
-export class NgxYtdApiCommentService {
+export class NgxYtdApiCommentsService {
   constructor(
     private core: NgxYtdApiCoreService
   ) { }

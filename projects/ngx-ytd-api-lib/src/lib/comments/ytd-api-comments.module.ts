@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
-import { NgxYtdApiCommentService } from './ytd-api-comments.service';
 import { NgxYtdApiCoreModule } from 'ngx-ytd-api/core';
+import { NgxYtdApiCommentsService } from './ytd-api-comments.service';
 
 @NgModule({
   imports: [
     NgxYtdApiCoreModule
   ],
   providers: [
-    NgxYtdApiCommentService
+    NgxYtdApiCommentsService
   ]
 })
 export class NgxYtdApiCommentsModule { }
