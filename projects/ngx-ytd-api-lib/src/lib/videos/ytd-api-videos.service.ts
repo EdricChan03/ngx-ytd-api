@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { NgxYtdApiCoreService } from 'ngx-ytd-api/core';
+import { Observable } from 'rxjs';
 import {
   NgxYtdApiVideosDeleteOpts,
   NgxYtdApiVideosGetRatingOpts,
@@ -12,8 +14,6 @@ import {
   NgxYtdApiVideosResource,
   NgxYtdApiVideosUpdateOpts
 } from './ytd-api-videos.interface';
-import { Observable } from 'rxjs';
-import { NgxYtdApiCoreService } from 'ngx-ytd-api/core';
 
 @Injectable({
   providedIn: 'root'

@@ -1,12 +1,12 @@
+import { SelectionModel } from '@angular/cdk/collections';
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
+import { NgxYtdApiSearchResource } from 'ngx-ytd-api/search';
 import { NgxYtdApiVideosService } from 'ngx-ytd-api/videos';
 import { SharedService } from '../../../shared.service';
 import { YtVideoPickerService } from '../../../shared/yt-video-picker/yt-video-picker.service';
-import { SelectionModel } from '@angular/cdk/collections';
-import { NgxYtdApiSearchResource } from 'ngx-ytd-api';
 
 @Component({
   selector: 'app-demo-videos-get-rating',

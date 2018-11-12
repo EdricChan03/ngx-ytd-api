@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
+import { NgxYtdApiCoreService } from 'ngx-ytd-api/core';
 import { Observable } from 'rxjs';
 import { NgxYtdApiCommentListOpts, NgxYtdApiCommentListResult } from './ytd-api-comments.interface';
-import { NgxYtdApiCoreService } from 'ngx-ytd-api/core';
 
 @Injectable({
   providedIn: 'root'

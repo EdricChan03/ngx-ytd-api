@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
-import { YtVideoPickerComponent, YtVideoPickerOpts } from './yt-video-picker.component';
-import { MatDialog, MatDialogRef, MatDialogConfig } from '@angular/material/dialog';
 import { SelectionModel } from '@angular/cdk/collections';
+import { Injectable } from '@angular/core';
+import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
 import { NgxYtdApiSearchResource } from 'ngx-ytd-api';
+import { YtVideoPickerComponent, YtVideoPickerOpts } from './yt-video-picker.component';
 
 @Injectable()
 export class YtVideoPickerService {

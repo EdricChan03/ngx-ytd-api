@@ -1,16 +1,14 @@
 import { SelectionModel } from '@angular/cdk/collections';
+import { HttpErrorResponse } from '@angular/common/http';
 import { AfterViewInit, Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar, MatSnackBarRef, SimpleSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
-import { NgxYtdApiSearchListResult, NgxYtdApiSearchResource, NgxYtdApiSearchService } from 'ngx-ytd-api/search';
-import { Observable, of } from 'rxjs';
-import { map, switchMap, catchError } from 'rxjs/operators';
+import { NgxYtdApiSearchResource, NgxYtdApiSearchService } from 'ngx-ytd-api/search';
+import { switchMap } from 'rxjs/operators';
 import { SharedService } from '../../shared.service';
-import { MatTableDataSource } from '@angular/material/table';
-import { HttpErrorResponse } from '@angular/common/http';
 
 /**
  * The layout of a video picker

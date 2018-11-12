@@ -1,10 +1,10 @@
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { trigger, state, style, transition, animate } from '@angular/animations';
-
-import { ListsService, Demo, Doc } from './lists.service';
-import { SharedService } from './shared.service';
 import { MatSidenav } from '@angular/material/sidenav';
+import { Demo, Doc, ListsService } from './lists.service';
 import { RoutingStateService } from './routingstate.service';
+import { SharedService } from './shared.service';
+
 
 declare type ToggleState = 'notToggled' | 'toggled';
 

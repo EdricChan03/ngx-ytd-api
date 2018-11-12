@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
-import { environment } from '../environments/environment';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { SharedModule } from './shared.module';
+import { environment } from '../environments/environment';
 @Injectable()
 export class SharedService {
   constructor(
