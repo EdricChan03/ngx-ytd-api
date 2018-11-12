@@ -1,14 +1,12 @@
 import { NgModule } from '@angular/core';
+import { NgxYtdApiCoreModule } from 'ngx-ytd-api/core';
 import { NgxYtdApiSearchService } from './ytd-api-search.service';
-import { NgxYtdApiCoreService } from 'ngx-ytd-api/core';
-import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
-    HttpClientModule
+    NgxYtdApiCoreModule
   ],
   providers: [
-    NgxYtdApiCoreService,
     NgxYtdApiSearchService
   ]
 })
