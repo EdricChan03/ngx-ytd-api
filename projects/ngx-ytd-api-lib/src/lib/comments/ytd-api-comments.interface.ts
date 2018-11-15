@@ -1,4 +1,4 @@
-import { NgxYtdApiGenericOpts, NgxYtdApiGenericResource } from 'ngx-ytd-api/core';
+import { NgxYtdApiGenericOpts, NgxYtdApiGenericResource, NgxYtdApiStandardOpts } from 'ngx-ytd-api/core';
 
 export interface NgxYtdApiCommentsResource extends NgxYtdApiGenericResource {
   /**
@@ -128,6 +128,34 @@ export interface NgxYtdApiCommentsResource extends NgxYtdApiGenericResource {
     updatedAt?: string;
   };
 }
+
+export interface NgxYtdApiCommentsDeleteOpts extends NgxYtdApiStandardOpts {
+  /**
+   * The OAuth 2.0 access token
+   * Note: The `https://www.googleapis.com/auth/youtube.force-ssl` scope is required to delete a comment
+   */
+  accessToken: string;
+  /**
+   * Specifies the comment ID for the resource that is being deleted
+   *
+   * See https://developers.google.com/youtube/v3/docs/comments/delete#id for more info
+   */
+  id: string;
+}
+
+export interface NgxYtdApiCommentsInsertOpts extends NgxYtdApiStandardOpts {
+  /**
+   * The OAuth 2.0 access token
+   * Note: The `https://www.googleapis.com/auth/youtube.force-ssl` scope is required to delete a comment
+   */
+  accessToken: string;
+  /**
+   * Specifies the properties that the API will include
+   *
+   * See https://developers.google.com/youtube/v3/docs/comments/insert#part for more info
+   */
+  part: string;
+}
 export interface NgxYtdApiCommentsListOpts extends NgxYtdApiGenericOpts {
   /**
    * Specifies a comma-separated list of comment IDs for the resources that are being retrieved.
@@ -204,4 +232,65 @@ export interface NgxYtdApiCommentsListResult extends NgxYtdApiGenericResource {
    * A list of comments that match the request criteria.
    */
   items?: NgxYtdApiCommentsResource[];
+}
+
+export interface NgxYtdApiCommentsMarkAsSpamOpts extends NgxYtdApiStandardOpts {
+  /**
+   * The OAuth 2.0 access token
+   * Note: The `https://www.googleapis.com/auth/youtube.force-ssl` scope is required to mark a comment as spam
+   */
+  accessToken: string;
+  /**
+   * Specifies a comma-separated list of IDs of comments that (according to the caller) should be classified as spam
+   *
+   * See https://developers.google.com/youtube/v3/docs/comments/markAsSpam#id for more info
+   */
+  id: string;
+}
+
+export interface NgxYtdApiCommentsSetModerationStatusOpts extends NgxYtdApiStandardOpts {
+  /**
+   * The OAuth 2.0 access token
+   * Note: The `https://www.googleapis.com/auth/youtube.force-ssl` scope is required to set the moderation status
+   */
+  accessToken: string;
+  /**
+   * Specifies a comma-separated list of IDs that identify the comments to update their moderation status
+   *
+   * See https://developers.google.com/youtube/v3/docs/comments/setModerationStatus#id for more info
+   */
+  id: string;
+  /**
+   * Specifies the new moderation status of the specified comments
+   *
+   * Acceptable values:
+   * - `heldForReview`: Marks a comment as awaiting review by a moderator
+   * - `published`: Marks a comment as public
+   * - `rejected`: Rejects a comment (Note: Also hides all replies to the rejected comment)
+   *
+   * See https://developers.google.com/youtube/v3/docs/comments/setModerationStatus#moderationStatus for more info
+   */
+  moderationStatus: 'heldForReview' | 'published' | 'rejected';
+  /**
+   * Whether to indicate that you want to automatically reject any additional comments written by the comment's author
+   *
+   * Note: This parameter is only valid if the `moderationStatus` is also set to `rejected`
+   *
+   * See https://developers.google.com/youtube/v3/docs/comments/setModerationStatus#banAuthor for more info
+   */
+  banAuthor?: boolean;
+}
+
+export interface NgxYtdApiCommentsUpdateOpts extends NgxYtdApiStandardOpts {
+  /**
+   * The OAuth 2.0 access token
+   * Note: The `https://www.googleapis.com/auth/youtube.force-ssl` scope is required to set the moderation status
+   */
+  accessToken: string;
+  /**
+   * Identifies the properties that the API response will include
+   *
+   * See https://developers.google.com/youtube/v3/docs/comments/update#part for more info
+   */
+  part: string;
 }
