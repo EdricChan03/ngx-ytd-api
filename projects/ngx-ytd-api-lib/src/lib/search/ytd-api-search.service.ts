@@ -11,11 +11,11 @@ export class NgxYtdApiSearchService {
     private core: NgxYtdApiCoreService
   ) { }
   /**
-   * Searches using the YouTube HTTP Data API
-   * @param query The query to search for. See the [developer docs](https://developers.google.com/youtube/v3/docs/search/list#q)
-   * for more info.
-   * @param opts Options for searching
-   * @return Results of the search as a stream
+   * Returns a collection of search results that match the query parameters specified
+   *
+   * See https://developers.google.com/youtube/v3/docs/search/list for more info
+   * @param opts API parameters for the API
+   * @return Results of the search has an `Observable`
    */
   list(opts: NgxYtdApiSearchListOpts): Observable<NgxYtdApiSearchListResult> {
     return this.core.createHttpGet<NgxYtdApiSearchListResult, NgxYtdApiSearchListOpts>(this.core.ngxYtdSearchApiUrl, opts);
