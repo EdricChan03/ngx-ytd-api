@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { NgxYtdApiCoreService } from 'ngx-ytd-api/core';
 import { Observable } from 'rxjs';
-import { NgxYtdApiCommentListOpts, NgxYtdApiCommentListResult } from './ytd-api-comments.interface';
+import { NgxYtdApiCommentsListOpts, NgxYtdApiCommentsListResult } from './ytd-api-comments.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +15,7 @@ export class NgxYtdApiCommentsService {
    * @param opts Options for the API
    * @return Results of the search as a stream for subscribing to
    */
-  list(opts: NgxYtdApiCommentListOpts): Observable<NgxYtdApiCommentListResult> {
-    return this.core.createHttpGet<NgxYtdApiCommentListResult, NgxYtdApiCommentListOpts>(this.core.ngxYtdCommentsApiUrl, opts);
+  list(opts: NgxYtdApiCommentsListOpts): Observable<NgxYtdApiCommentsListResult> {
+    return this.core.createHttpGet<NgxYtdApiCommentsListResult, NgxYtdApiCommentsListOpts>(this.core.ngxYtdCommentsApiUrl, opts);
   }
 }

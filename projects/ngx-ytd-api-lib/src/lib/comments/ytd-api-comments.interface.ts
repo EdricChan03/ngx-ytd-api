@@ -1,51 +1,6 @@
 import { NgxYtdApiGenericOpts, NgxYtdApiGenericResource } from 'ngx-ytd-api/core';
 
-export interface NgxYtdApiCommentListOpts extends NgxYtdApiGenericOpts {
-  /**
-   * Specifies a comma-separated list of comment IDs for the resources that are being retrieved.
-   *
-   * Note: This parameter is a filter, where only one filter should be specified
-   *
-   * See https://developers.google.com/youtube/v3/docs/comments/list#id for more info
-   */
-  id?: string;
-  /**
-   * Specifies the ID of the comment for which replies should be retrieved.
-   *
-   * Note: This parameter is a filter, where only one filter should be specified
-   *
-   * See https://developers.google.com/youtube/v3/docs/comments/list#parentId for more info
-   */
-  parentId?: string;
-  /**
-   * Specifies the maximum number of items that should be returned in the results.
-   *
-   * Note: This parameter is not supported for use in conjunction with the id parameter.
-   * Acceptable values are 1 to 100, inclusive. The default value is 20.
-   *
-   * See https://developers.google.com/youtube/v3/docs/comments/list#maxResults for more info
-   */
-  maxResults?: number;
-  /**
-   * Identifies a specific page in the result set that should be returned.
-   *
-   * Note: This parameter is not supported for use in conjunction with the id parameter.
-   *
-   * See https://developers.google.com/youtube/v3/docs/comments/list#pageToken for more info
-   */
-  pageToken?: string;
-  /**
-   * Indicates whether the API should return comments formatted as HTML or as plain text.
-   *
-   * Acceptable values are:
-   * - html – Returns the comments in HTML format. This is the default value.
-   * - plainText – Returns the comments in plain text format.
-   * See https://developers.google.com/youtube/v3/docs/comments/list#textFormat for more info
-   */
-  textFormat?: 'html' | 'plainText';
-}
-
-export interface NgxYtdApiCommentResource extends NgxYtdApiGenericResource {
+export interface NgxYtdApiCommentsResource extends NgxYtdApiGenericResource {
   /**
    * The ID that YouTube uses to uniquely identify the comment.
    *
@@ -173,14 +128,59 @@ export interface NgxYtdApiCommentResource extends NgxYtdApiGenericResource {
     updatedAt?: string;
   };
 }
+export interface NgxYtdApiCommentsListOpts extends NgxYtdApiGenericOpts {
+  /**
+   * Specifies a comma-separated list of comment IDs for the resources that are being retrieved.
+   *
+   * Note: This parameter is a filter, where only one filter should be specified
+   *
+   * See https://developers.google.com/youtube/v3/docs/comments/list#id for more info
+   */
+  id?: string;
+  /**
+   * Specifies the ID of the comment for which replies should be retrieved.
+   *
+   * Note: This parameter is a filter, where only one filter should be specified
+   *
+   * See https://developers.google.com/youtube/v3/docs/comments/list#parentId for more info
+   */
+  parentId?: string;
+  /**
+   * Specifies the maximum number of items that should be returned in the results.
+   *
+   * Note: This parameter is not supported for use in conjunction with the id parameter.
+   * Acceptable values are 1 to 100, inclusive. The default value is 20.
+   *
+   * See https://developers.google.com/youtube/v3/docs/comments/list#maxResults for more info
+   */
+  maxResults?: number;
+  /**
+   * Identifies a specific page in the result set that should be returned.
+   *
+   * Note: This parameter is not supported for use in conjunction with the id parameter.
+   *
+   * See https://developers.google.com/youtube/v3/docs/comments/list#pageToken for more info
+   */
+  pageToken?: string;
+  /**
+   * Indicates whether the API should return comments formatted as HTML or as plain text.
+   *
+   * Acceptable values are:
+   * - html – Returns the comments in HTML format. This is the default value.
+   * - plainText – Returns the comments in plain text format.
+   * See https://developers.google.com/youtube/v3/docs/comments/list#textFormat for more info
+   */
+  textFormat?: 'html' | 'plainText';
+}
+
 
 /**
  * @deprecated Use {@link NgxYtdApiCommentListResource}
  */
 // tslint:disable-next-line:no-empty-interface
-export interface NgxYtdApiCommentListResultItem extends NgxYtdApiCommentResource { }
+export interface NgxYtdApiCommentsListResultItem extends NgxYtdApiCommentsResource { }
 
-export interface NgxYtdApiCommentListResult extends NgxYtdApiGenericResource {
+export interface NgxYtdApiCommentsListResult extends NgxYtdApiGenericResource {
   /**
    * The token that can be used as the value of the `pageToken` parameter to retrieve the next page in the result set.
    *
@@ -203,5 +203,5 @@ export interface NgxYtdApiCommentListResult extends NgxYtdApiGenericResource {
   /**
    * A list of comments that match the request criteria.
    */
-  items?: NgxYtdApiCommentResource[];
+  items?: NgxYtdApiCommentsResource[];
 }
