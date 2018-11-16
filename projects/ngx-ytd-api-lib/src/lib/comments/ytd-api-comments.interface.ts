@@ -50,13 +50,13 @@ export interface NgxYtdApiCommentsResource extends NgxYtdApiGenericResource {
      * and the snippet.videoId property identifies the video.
      * - If the comment is a channel comment, then this property identifies the channel that the comment is about.
      *
-     * See https://developers.google.com/youtube/v3/docs/comments#channelId for more info
+     * See https://developers.google.com/youtube/v3/docs/comments#snippet.channelId for more info
      */
     channelId?: string;
     /**
      * The ID of the video that the comment refers to. This property is only present if the comment was made on a video.
      *
-     * See https://developers.google.com/youtube/v3/docs/comments#videoId for more info
+     * See https://developers.google.com/youtube/v3/docs/comments#snippet.videoId for more info
      */
     videoId?: string;
     /**
@@ -67,7 +67,7 @@ export interface NgxYtdApiCommentsResource extends NgxYtdApiGenericResource {
      *
      * Note that even the plain text may differ from the original comment text. For example, it may replace video links with video titles.
      *
-     * See https://developers.google.com/youtube/v3/docs/comments#textDisplay for more info
+     * See https://developers.google.com/youtube/v3/docs/comments#snippet.textDisplay for more info
      */
     textDisplay?: string;
     /**
@@ -75,19 +75,19 @@ export interface NgxYtdApiCommentsResource extends NgxYtdApiGenericResource {
      * The original text is only returned if it is accessible to the authenticated user,
      * which is only guaranteed if the user is the comment's author.
      *
-     * See https://developers.google.com/youtube/v3/docs/comments#textOriginal for more info
+     * See https://developers.google.com/youtube/v3/docs/comments#snippet.textOriginal for more info
      */
     textOriginal?: string;
     /**
      * The unique ID of the parent comment. This property is only set if the comment was submitted as a reply to another comment.
      *
-     * See https://developers.google.com/youtube/v3/docs/comments#parentId for more info
+     * See https://developers.google.com/youtube/v3/docs/comments#snippet.parentId for more info
      */
     parentId?: string;
     /**
      * This setting indicates whether the current viewer can rate the comment.
      *
-     * See https://developers.google.com/youtube/v3/docs/comments#canRate for more info
+     * See https://developers.google.com/youtube/v3/docs/comments#snippet.canRate for more info
      */
     canRate?: boolean;
     /**
@@ -96,13 +96,13 @@ export interface NgxYtdApiCommentsResource extends NgxYtdApiGenericResource {
      * In the meantime, the property value is like if the viewer has rated the comment positively.
      * The value is none in all other cases, including the user having given the comment a negative rating or not having rated the comment.
      *
-     * See https://developers.google.com/youtube/v3/docs/comments#viewerRating for more info
+     * See https://developers.google.com/youtube/v3/docs/comments#snippet.viewerRating for more info
      */
     viewerRating?: 'like' | 'none';
     /**
      * The total number of likes (positive ratings) the comment has received.
      *
-     * See https://developers.google.com/youtube/v3/docs/comments#likeCount for more info
+     * See https://developers.google.com/youtube/v3/docs/comments#snippet.likeCount for more info
      */
     likeCount?: number;
     /**
@@ -111,19 +111,19 @@ export interface NgxYtdApiCommentsResource extends NgxYtdApiGenericResource {
      * or the video on which the requested comments were made.
      * In addition, note that this property is not set if the API request used the id filter parameter.
      *
-     * See https://developers.google.com/youtube/v3/docs/comments#moderationStatus for more info
+     * See https://developers.google.com/youtube/v3/docs/comments#snippet.moderationStatus for more info
      */
     moderationStatus?: 'heldForReview' | 'likelySpam' | 'published' | 'rejected';
     /**
      * The date and time when the comment was orignally published. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
      *
-     * See https://developers.google.com/youtube/v3/docs/comments#publishedAt for more info
+     * See https://developers.google.com/youtube/v3/docs/comments#snippet.publishedAt for more info
      */
     publishedAt?: string;
     /**
      * The date and time when the comment was last updated. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
      *
-     * See https://developers.google.com/youtube/v3/docs/comments#updatedAt for more info
+     * See https://developers.google.com/youtube/v3/docs/comments#snippet.updatedAt for more info
      */
     updatedAt?: string;
   };
