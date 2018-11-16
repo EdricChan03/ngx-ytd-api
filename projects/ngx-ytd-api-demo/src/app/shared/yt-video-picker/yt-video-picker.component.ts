@@ -23,12 +23,13 @@ export type PickerLayout = 'grid' | 'table';
  */
 export interface YtVideoPickerOpts {
   /**
-   * The API key to be used for the YouTube Data v3 Searchh API
+   * The API key to be used for the YouTube Data v3 Search API
    */
   apiKey: string;
   /**
    * Sets the layout of the video picker
    */
+  // TODO: Add support for the `layout` parameter. Currently this does nothing.
   layout?: PickerLayout;
   /**
    * Whether to enable the selection of multiple videos
