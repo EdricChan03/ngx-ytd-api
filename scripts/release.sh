@@ -44,7 +44,7 @@ if [[ $* == "--dryRun" ]]; then
   DRY_RUN=true
   echo -e "\x1b[34mDEBUG: Dry run is enabled. Builds will not be published to the NPM registry.\x1b[0m"
 fi
-if [[ "$1" == "--releaseType" ]]; then
+if [[ $* == "--releaseType" ]]; then
   npm version "$2"
 elif [[ -n "$RELEASE_TYPE" ]]; then
   npm version "$RELEASE_TYPE"
@@ -110,4 +110,17 @@ cd ..
 echo -e "\x1b[34mCleaning up...\x1b[0m"
 rm -rf ngx-ytd-api-demo-builds
 
-echo -e "\x1b[32m\x1b[1mSuccessfully pushed the release to Chan4077/ngx-ytd-api-demo-builds.\x1b[0m"
+echo -e "\x1b[32mSuccessfully pushed the release to Chan4077/ngx-ytd-api-demo-builds.\x1b[0m"
+
+cd dist/ngx-ytd-api-lib
+echo -e "\x1b[32mPublishing library to NPM...\x1b[0m"
+if [[ $* == "--publishNext" ]] || [[ $* == "--publishNextTag" ]]; then
+  npm publish --tag next
+else
+  npm publish
+fi
+
+cd ../../
+
+echo -e "\x1b[32mDone!\x1b[0m"
+exit 0
