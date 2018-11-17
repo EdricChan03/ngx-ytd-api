@@ -56,9 +56,9 @@ publishPackage() {
   # Create a release of the current repository.
   if [[ ! ${COMMAND_ARGS} = *--no-build* ]]; then
     if [[ ${COMMAND_ARGS} = *--publishNext* ]]; then
-      ./scripts/scripts.sh build-docs --publishNext --skipNpm --version ${buildVersionName}
+      ./scripts/scripts.sh build-lib --publishNext --skipNpm --version ${buildVersionName}
     else
-      ./scripts/scripts.sh build-docs --skipNpm --version ${buildVersionName}
+      ./scripts/scripts.sh build-lib --skipNpm --version ${buildVersionName}
     fi
   fi
 
