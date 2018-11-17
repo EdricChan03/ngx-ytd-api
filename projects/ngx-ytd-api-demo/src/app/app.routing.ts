@@ -7,6 +7,7 @@ import { DemoVideosGetRatingComponent } from './demos/videos/getRating/demo-vide
 import { DemoVideosListComponent } from './demos/videos/list/demo-videos-list.component';
 import { DocsHomeComponent } from './docs/docs-home/docs-home.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
+import { SettingsComponent } from './settings/settings.component';
 
 
 const APP_ROUTES: Route[] = [
@@ -35,6 +36,7 @@ const APP_ROUTES: Route[] = [
   { path: 'privacy-policy', component: PrivacyPolicyComponent },
   { path: 'policy', redirectTo: '/privacy-policy' },
   { path: 'privacy', redirectTo: '/privacy-policy' },
+  { path: 'settings', component: SettingsComponent },
   { path: '**', redirectTo: '/docs' }
 ];
 

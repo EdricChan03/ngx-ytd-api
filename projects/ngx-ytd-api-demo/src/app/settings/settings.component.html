@@ -1,0 +1,31 @@
+<mat-toolbar color="primary" class="mat-elevation-z3" id="app-toolbar">
+  <button mat-icon-button (click)="shared.sidenav.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  Angular YouTube Data API
+  <span fxFlex></span>
+  <app-version-picker></app-version-picker>
+</mat-toolbar>
+<div class="padding-percentage-container">
+  <mat-card>
+    <mat-card-title>Settings</mat-card-title>
+    <mat-card-content fxLayout="column">
+      <p>All changes will be applied on reload.</p>
+      <form [formGroup]="settingsForm" class="settings-form">
+        <mat-slide-toggle formControlName="darkModeEnabled">Toggle dark mode</mat-slide-toggle>
+        <br>
+        <h4>Indent style</h4>
+        <mat-radio-group formControlName="indentSpacing" fxLayout="column">
+          <mat-radio-button value="0" disabled class="settings-radio-button">Tab character</mat-radio-button>
+          <mat-radio-button value="2" class="settings-radio-button">2 spaces</mat-radio-button>
+          <mat-radio-button value="4" class="settings-radio-button">4 spaces</mat-radio-button>
+          <mat-radio-button value="8" class="settings-radio-button">8 spaces</mat-radio-button>
+        </mat-radio-group>
+      </form>
+    </mat-card-content>
+    <mat-card-actions align="end">
+      <button mat-button color="warn" (click)="reset()">Reset</button>
+      <button mat-button color="primary" (click)="save()">Save</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

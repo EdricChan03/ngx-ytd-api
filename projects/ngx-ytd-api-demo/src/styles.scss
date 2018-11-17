@@ -54,6 +54,16 @@ $demo-accent: mat-palette($mat-pink, A200, A100, A400);
 $demo-app-theme: mat-light-theme($demo-primary, $demo-accent);
 @include angular-material-theme($demo-app-theme);
 @include demo-theme($demo-app-theme);
+
+$demo-dark-primary: mat-palette($mat-teal);
+$demo-dark-accent: mat-palette($mat-amber, A200, A100, A400);
+
+$demo-dark-app-theme: mat-dark-theme($demo-dark-primary, $demo-dark-accent);
+
+.dark-theme {
+  @include angular-material-theme($demo-dark-app-theme);
+  @include demo-theme($demo-dark-app-theme);
+}
 pre, code, xmp, kbd {
   font-family: 'Roboto Mono', monospace;
   white-space: pre-wrap;

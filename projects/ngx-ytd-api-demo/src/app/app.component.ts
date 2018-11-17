@@ -50,6 +50,14 @@ export class AppComponent implements OnInit {
     private routingState: RoutingStateService
   ) { }
   ngOnInit() {
+    if (localStorage['settings']) {
+      const settings = JSON.parse(localStorage['settings']);
+      if (settings['darkModeEnabled']) {
+        if (!document.body.classList.contains('dark-theme')) {
+          document.body.classList.add('dark-theme');
+        }
+      }
+    }
     this.routingState.init();
     this.demos = this.listsService.getDemos();
     this.docs = this.listsService.getDocs();

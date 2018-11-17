@@ -19,6 +19,7 @@ import { ListsService } from './lists.service';
 import { MaterialModule } from './material.module';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 import { RoutingStateService } from './routingstate.service';
+import { SettingsComponent } from './settings/settings.component';
 import { SharedModule } from './shared.module';
 import { SharedService } from './shared.service';
 import { VersionPickerModule } from './shared/version-picker/version-picker.module';
@@ -33,7 +34,8 @@ import { YtVideoPickerModule } from './shared/yt-video-picker/yt-video-picker.mo
     DemoHomeComponent,
     DocsHomeComponent,
     PrivacyPolicyComponent,
-    CallbackComponent
+    CallbackComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,
