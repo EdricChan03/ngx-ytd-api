@@ -4,9 +4,11 @@
   "homepage": "https://github.com/Chan4077/ngx-ytd-api",
   "license": "MIT",
   "scripts": {
-    "buildLib": "bash ./scripts/scripts.sh build",
-    "buildLibDryRun": "bash ./scripts/scripts.sh build --dryRun",
-    "buildLibNext": "bash ./scripts/scripts.sh build --publishNext",
+    "buildDemo": "bash ./scripts/scripts.sh build-demo",
+    "buildDocs": "npm run buildDemo",
+    "buildLib": "bash ./scripts/scripts.sh build-lib",
+    "buildLibDryRun": "bash ./scripts/scripts.sh build-lib --dryRun",
+    "buildLibNext": "bash ./scripts/scripts.sh build-lib --publishNext",
     "lintLib": "ng lint ngx-ytd-api-lib",
     "testLib": "ng test ngx-ytd-api-lib",
     "packageTags": "bash ./scripts/scripts.sh package --tags"

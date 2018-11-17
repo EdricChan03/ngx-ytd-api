@@ -6,7 +6,8 @@ export CLICOLOR=1
 # Immediately exit if any command in the script fails
 set -e
 
-buildVersion=$(node -pe "require('$TRAVIS_BUILD_DIR/projects/ngx-ytd-api-lib/package.json').version")
+buildDir=${TRAVIS_BUILD_DIR:-$(pwd)}
+buildVersion=$(node -pe "require('$buildDir/projects/ngx-ytd-api-lib/package.json').version")
 branchName=${TRAVIS_BRANCH:-'master'}
 
 commitSha=$(git rev-parse --short HEAD)

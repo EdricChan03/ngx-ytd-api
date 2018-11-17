@@ -42,12 +42,9 @@ do
   shift # expose next argument
   case "$opt" in
   "--generate-for-tag" | "--tag")
-    if [[ -n "$TRAVIS_TAG" ]]; then
-      DEPLOY_FOLDER="$TRAVIS_TAG"
-    else
-      echo -e "\x1b[31m\x1b[1mERROR: The environment variable TRAVIS_TAG isn't set and you're trying to generate for a tag. Aborting...\x1b[0m" >&2
-      exit 1
-    fi
+    TAG="$1"
+    # Expose the new argument
+    shift
     ;;
   "--generate-for-master" | "--master" | "--head")
     DEPLOY_FOLDER="master"
@@ -79,10 +76,9 @@ if [[ ${#INVALID_ARGS[@]} -ne 0 ]]; then
   echo -e "\x1b[31m\x1b[1mInvalid option(s): ${INVALID_ARGS[*]}\nRun --help for all valid options.\x1b[0m" >&2
   exit 1
 else
-  # Check if commit has a tag
-  if [[ -n "$TRAVIS_TAG" ]]; then
-    echo -e "\x1b[34mGenerating docs for tag $TRAVIS_TAG...\x1b[0m"
-    buildDocs "$TRAVIS_TAG"
+  if [[ -n "$TAG" ]]; then
+    echo -e "\x1b[34mGenerating docs for tag $TAG...\x1b[0m"
+    buildDocs "$TAG"
   else
     echo -e "\x1b[34mGenerating docs for master...\x1b[0m"
     buildDocs "$DEPLOY_FOLDER"

@@ -11,7 +11,15 @@ if [ $# -eq 0 ]; then
 else
   for i in "$@"; do
     case "$i" in
-    "build-script" | "build")
+    "build-demo" | "build-docs")
+      bash $(pwd)/scripts/build-docs.sh "${@:2}"
+      if [ $? -eq 0 ]; then
+        exit 0
+      else
+        exit 1
+      fi
+      ;;
+    "build-lib")
       # Pass in all arguments passed to this script
       bash $(pwd)/scripts/build-lib.sh --from-scripts "${@:2}"
       if [ $? -eq 0 ]; then
