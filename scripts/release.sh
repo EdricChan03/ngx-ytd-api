@@ -88,7 +88,9 @@ cp -Rf dist/ngx-ytd-api-demo/"$PACKAGE_VERSION" ngx-ytd-api-demo-builds
 cd ngx-ytd-api-demo-builds
 
 echo -e "\x1b[34mAdding routing of release to Firebase config file...\x1b[0m"
-jq '.versions += [{"type": "version", "name": "1.0.0-alpha.4", "link": "/1.0.0-alpha.4"}]'
+if [[ -e firebase.json ]]; then
+  jq '.versions += [{"type": "version", "name": "1.0.0-alpha.4", "link": "/1.0.0-alpha.4"}]' firebase.json
+fi
 
 # GitHub token specified as Travis environment variable
 git config user.name "${commitAuthorName}"
