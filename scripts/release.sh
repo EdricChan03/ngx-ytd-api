@@ -125,7 +125,7 @@ if ! [[ "$SKIP_FIREBASE" = true ]]; then
   if ! [[ -d latest ]]; then
     mkdir -p latest
   fi
-  cp -Rf "$PACKAGE_VERSION" latest
+  cp -Rf "$PACKAGE_VERSION"/. latest
 
   echo -e "\x1b[34mAdding routing of release to Firebase config file...\x1b[0m"
   if [[ -e firebase.json ]]; then
