@@ -30,10 +30,6 @@ do
   "--from-scripts")
     FROM_SCRIPTS=true
     ;;
-  # Whether to skip confirmations
-  "--skip-confirm" | "--skipConfirm")
-    SKIP_CONFIRM=true
-    ;;
   # Whether to skip publishing to NPM altogether
   "--skip-npm" | "--skipNpm" | "--skipNPM")
     SKIP_NPM=true
@@ -45,9 +41,9 @@ do
     ;;
   "--help" | "-h")
     if [[ "$FROM_SCRIPTS" == true ]]; then
-      echo -e "\x1b[33mSyntax: ./scripts.sh (build-script | build) [--publishNext | --publish-next | --skip-confirm | --dry-run | --dryRun | --skipNpm | --help | -h]\x1b[0m"
+      echo -e "\x1b[33mSyntax: ./scripts.sh (build-script | build) [--publishNext | --publish-next | --dry-run | --dryRun | --skipNpm | --help | -h]\x1b[0m"
     else
-      echo -e "\x1b[33mSyntax: ./build-lib.sh [--publishNext | --publish-next | --skip-confirm | --dry-run | --dryRun | --skipNpm | --help | -h]\x1b[0m"
+      echo -e "\x1b[33mSyntax: ./build-lib.sh [--publishNext | --publish-next | --dry-run | --dryRun | --skipNpm | --help | -h]\x1b[0m"
     fi
     exit 0
     ;;
@@ -88,27 +84,16 @@ else
         if [[ $SKIP_NPM == false ]]; then
           if [[ $DRY_RUN == false ]]; then
             cd dist/ngx-ytd-api-lib
-            if [[ $SKIP_CONFIRM == false ]]; then
-              # Require confirmation to prevent accidental publishing of the library to NPM
-              read -p "Please press ENTER to publish to the NPM registry. " CONFIRMATION
-            else
-              CONFIRMATION=0
-            fi
-            if [[ ${#CONFIRMATION} -eq 0 ]]; then
-              # Check if NPM exists
-              if [[ ! -x $(type -P npm >/dev/null) ]] && [[ ! -x $(command -v npm) ]]; then
-                echo -e "\x1b[31mNPM is not installed. Please visit https://nodejs.org to get the latest package for your OS.\x1b[0m"
-                exit 1
-              else
-                if [[ $PUBLISH_NEXT = true ]]; then
-                  npm publish --tag next
-                else
-                  npm publish
-                fi
-              fi
-            else
-              echo -e "\x1b[31mUser didn't press the ENTER key. Exiting..\x1b[0m" >&2
+            # Check if NPM exists
+            if [[ ! -x $(type -P npm >/dev/null) ]] && [[ ! -x $(command -v npm) ]]; then
+              echo -e "\x1b[31mNPM is not installed. Please visit https://nodejs.org to get the latest package for your OS.\x1b[0m"
               exit 1
+            else
+              if [[ $PUBLISH_NEXT = true ]]; then
+                npm publish --tag next
+              else
+                npm publish
+              fi
             fi
           else
             echo -e "\x1b[33mDry run has been enabled. Files will not be published to the NPM registry.\x1b[0m"

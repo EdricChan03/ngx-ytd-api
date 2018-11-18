@@ -162,7 +162,7 @@ if ! [[ "$SKIP_FIREBASE" = true ]]; then
 fi
 
 echo -e "\x1b[34mBuilding library...\x1b[0m"
-./scripts/build-lib.sh --skipConfirm --version "$PACKAGE_VERSION"
+./scripts/build-lib.sh --version "$PACKAGE_VERSION"
 
 echo -e "\x1b[34mGenerating changelog...\x1b[0m"
 gulp changelog
