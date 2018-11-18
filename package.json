@@ -44,6 +44,7 @@
     "codelyzer": "~4.5.0",
     "gulp": "^4.0.0",
     "gulp-conventional-changelog": "^2.0.9",
+    "inquirer": "^6.2.0",
     "jasmine": "^3.3.0",
     "jasmine-core": "^3.3.0",
     "jasmine-spec-reporter": "~4.2.1",
