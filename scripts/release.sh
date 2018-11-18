@@ -129,10 +129,10 @@ if ! [[ "$SKIP_FIREBASE" = true ]]; then
 
   echo -e "\x1b[34mAdding routing of release to Firebase config file...\x1b[0m"
   if [[ -e firebase.json ]]; then
-    jq '.hosting.rewrites += [{"source": "/'"$PACKAGE_VERSION"'/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))", "destination": "/'"$PACKAGE_VERSION"'/index.html"}]' firebase.json > firebase.json
+    echo $(cat firebase.json | jq '.hosting.rewrites += [{"source": "/'"$PACKAGE_VERSION"'/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))", "destination": "/'"$PACKAGE_VERSION"'/index.html"}]') > firebase.json
   fi
   if [[ -e versions.json ]]; then
-    jq '.versions += [{"type": "version", "name": "'"$PACKAGE_VERSION"'", "link": "/'"$PACKAGE_VERSION"'"}]' versions.json > versions.json
+    echo $(cat versions.json | jq '.versions += [{"type": "version", "name": "'"$PACKAGE_VERSION"'", "link": "/'"$PACKAGE_VERSION"'"}]') > versions.json
   fi
 
   # GitHub token specified as Travis environment variable
