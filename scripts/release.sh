@@ -20,7 +20,7 @@ function checkCommandExists {
     return 1
   else
     if [[ "$2" = true ]]; then
-      echo -e '\x1b[33mDEBUG: The $1 command exists!\x1b[0m'
+      echo -e '\x1b[33mDEBUG: The '"$1"' command exists!\x1b[0m'
     fi
     return
   fi
@@ -91,7 +91,7 @@ PACKAGE_VERSION=$(cat package.json \
   | sed 's/[",]//g' \
   | tr -d '[[:space:]]')
 
-echo -e '\x1b[33mSuccessfully bumped from $PACKAGE_PREV_VERSION to $PACKAGE_VERSION!\x1b[0m'
+echo -e '\x1b[33mSuccessfully bumped from '"$PACKAGE_PREV_VERSION"' to '"$PACKAGE_VERSION"'!\x1b[0m'
 
 # Go back to the project's root
 cd ../../
