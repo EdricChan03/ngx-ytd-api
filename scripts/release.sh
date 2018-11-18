@@ -33,6 +33,9 @@ do
   opt="$1"
   shift # Expose the next argument
   case "$opt" in
+  "--skipFirebase")
+    SKIP_FIREBASE=true
+    ;;
   # Publish to the `next` tag on NPM
   "--releaseType")
     RELEASE_TYPE="$1"
@@ -100,64 +103,66 @@ echo -e "\x1b[34mModifying version placeholders...\x1b[0m"
 
 # Replace placeholder versions ('0.0.0-PLACEHOLDER') with the current build version tag
 # Code snippet adapted from https://stackoverflow.com/a/17072017
-if [ "$(uname)" == "Darwin" ]; then
+if [[ "$(uname)" == "Darwin" ]]; then
 	sed -i "" "s/0.0.0-PLACEHOLDER/$PACKAGE_VERSION/g" $(find ./projects -type f)
 else
 	sed -i "s/0.0.0-PLACEHOLDER/$PACKAGE_VERSION/g" $(find ./projects -type f)
 fi
 
-./scripts/build-docs.sh --generate-for-tag "$PACKAGE_VERSION"
+if ! [[ "$SKIP_FIREBASE" = true ]]; then
+  ./scripts/build-docs.sh --generate-for-tag "$PACKAGE_VERSION"
 
-echo -e "\x1b[34mCloning Chan4077/ngx-ytd-api-demo-builds...\x1b[0m"
+  echo -e "\x1b[34mCloning Chan4077/ngx-ytd-api-demo-builds...\x1b[0m"
 
-rm -rf ngx-ytd-api-demo-builds
-git clone https://github.com/Chan4077/ngx-ytd-api-demo-builds --depth=1
+  rm -rf ngx-ytd-api-demo-builds
+  git clone https://github.com/Chan4077/ngx-ytd-api-demo-builds --depth=1
 
-echo -e "\x1b[34mCopying release docs to builds repository...\x1b[0m"
-cp -Rf dist/ngx-ytd-api-demo/"$PACKAGE_VERSION" ngx-ytd-api-demo-builds
+  echo -e "\x1b[34mCopying release docs to builds repository...\x1b[0m"
+  cp -Rf dist/ngx-ytd-api-demo/"$PACKAGE_VERSION" ngx-ytd-api-demo-builds
+  cd ngx-ytd-api-demo-builds
 
-cd ngx-ytd-api-demo-builds
-
-echo -e "\x1b[34mAdding routing of release to Firebase config file...\x1b[0m"
-if [[ -e firebase.json ]]; then
-  jq '.versions += [{"type": "version", "name": "1.0.0-alpha.4", "link": "/1.0.0-alpha.4"}]' firebase.json
-fi
-
-# GitHub token specified as Travis environment variable
-if [[ "$TRAVIS" = true ]]; then
-  commitAuthorName=$(git --no-pager show -s --format='%an' HEAD)
-  commitAuthorEmail=$(git --no-pager show -s --format='%ae' HEAD)
-  git config user.name "${commitAuthorName}"
-  git config user.email "${commitAuthorEmail}"
-  git config credential.helper "store --file=.git/credentials"
-  echo "https://$NGX_YTD_API_BUILDS_TOKEN:@github.com" >.git/credentials
-else
-  if [[ "$SHOW_DEBUG" = true ]]; then
-    echo -e "\x1b[34mDEBUG: Script is not being run on TravisCI. Assuming user's credentials.\x1b[0m"
+  echo -e "\x1b[34mCopying release docs to 'latest' folder...\x1b[0m"
+  if ! [[ -d latest ]]; then
+    mkdir -p latest
   fi
+  cp -Rf "$PACKAGE_VERSION" latest
+
+  echo -e "\x1b[34mAdding routing of release to Firebase config file...\x1b[0m"
+  if [[ -e firebase.json ]]; then
+    jq '.hosting.rewrites += [{"source": "/'"$PACKAGE_VERSION"'/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))", "destination": "/'"$PACKAGE_VERSION"'/index.html"}]' firebase.json > firebase.json
+  fi
+  if [[ -e versions.json ]]; then
+    jq '.versions += [{"type": "version", "name": "'"$PACKAGE_VERSION"'", "link": "/'"$PACKAGE_VERSION"'"}]' versions.json > versions.json
+  fi
+
+  # GitHub token specified as Travis environment variable
+  if [[ "$TRAVIS" = true ]]; then
+    commitAuthorName=$(git --no-pager show -s --format='%an' HEAD)
+    commitAuthorEmail=$(git --no-pager show -s --format='%ae' HEAD)
+    git config user.name "${commitAuthorName}"
+    git config user.email "${commitAuthorEmail}"
+    git config credential.helper "store --file=.git/credentials"
+    echo "https://$NGX_YTD_API_BUILDS_TOKEN:@github.com" >.git/credentials
+  else
+    if [[ "$SHOW_DEBUG" = true ]]; then
+      echo -e "\x1b[34mDEBUG: Script is not being run on TravisCI. Assuming user's credentials.\x1b[0m"
+    fi
+  fi
+
+  echo -e "\x1b[34mCommiting release...\x1b[0m"
+  git add -A
+  git commit -m "release: $PACKAGE_VERSION"
+
+  echo -e "\x1b[34mPushing release...\x1b[0m"
+  git push -q origin master
+
+  cd ..
+
+  echo -e "\x1b[32mSuccessfully pushed the release to Chan4077/ngx-ytd-api-demo-builds.\x1b[0m"
 fi
 
-echo -e "\x1b[34mCommiting release...\x1b[0m"
-git add -A
-git commit -m "release: $PACKAGE_VERSION"
-
-echo -e "\x1b[34mPushing release...\x1b[0m"
-git push -q origin master
-
-cd ..
-
-echo -e "\x1b[32mSuccessfully pushed the release to Chan4077/ngx-ytd-api-demo-builds.\x1b[0m"
-
-cd dist/ngx-ytd-api-lib
-
-echo -e "\x1b[34mPublishing library to NPM...\x1b[0m"
-if [[ $* == *--publishNext* ]]; then
-  npm publish --tag next
-else
-  npm publish
-fi
-
-cd ../../
+echo -e "\x1b[34mBuilding library...\x1b[0m"
+./scripts/build-lib.sh --skipConfirm --version "$PACKAGE_VERSION"
 
 echo -e "\x1b[34mGenerating changelog...\x1b[0m"
 gulp changelog

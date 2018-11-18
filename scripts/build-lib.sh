@@ -66,9 +66,9 @@ else
     # Replace placeholder versions with the current build version name
     # Code snippet adapted from https://stackoverflow.com/a/17072017
     if [ "$(uname)" == "Darwin" ]; then
-      sed -i "" "s/0.0.0-PLACEHOLDER/$buildVersionName/g" $(find ./projects -type f)
+      sed -i "" "s/0.0.0-PLACEHOLDER/$VERSION/g" $(find ./projects -type f)
     else
-      sed -i "s/0.0.0-PLACEHOLDER/$buildVersionName/g" $(find ./projects -type f)
+      sed -i "s/0.0.0-PLACEHOLDER/$VERSION/g" $(find ./projects -type f)
     fi
   fi
   # Check if Angular CLI exists
