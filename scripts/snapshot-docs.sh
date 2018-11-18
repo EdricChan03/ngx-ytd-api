@@ -55,4 +55,4 @@ cd ..
 echo -e "\x1b[34m\x1b[1mCleaning up...\x1b[0m"
 rm -rf $TRAVIS_BUILD_DIR/ngx-ytd-api-demo-builds
 
-echo -e "\x1b[32m\x1b[1mSuccessfully pushed the snapshot to Chan4077/ngx-ytd-api-demo-builds!\x1b[0m"
+echo -e '\x1b[32m\x1b[1mSuccessfully pushed the snapshot to Chan4077/ngx-ytd-api-demo-builds!\x1b[0m'
