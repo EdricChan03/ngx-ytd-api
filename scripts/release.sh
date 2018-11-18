@@ -9,7 +9,7 @@ set -e
 # @param $2 Whether to show debug messages (default: `true`)
 # @param $3 An optional parameter to state the reason for this dependency
 function checkCommandExists {
-  if [[ "$2" = "true" ]]; then
+  if [[ "$2" = true ]]; then
     echo -e "\x1b[34mDEBUG: Checking if the $1 command exists...\x1b[0m"
   fi
   if ! [[ -x "$(command -v $1)" ]]; then
@@ -19,13 +19,41 @@ function checkCommandExists {
     fi
     return 1
   else
-    if [[ "$2" = "true" ]]; then
+    if [[ "$2" = true ]]; then
       echo -e '\x1b[33mDEBUG: The $1 command exists!\x1b[0m'
     fi
     return
   fi
 }
 SHOW_DEBUG=${SHOW_DEBUG:-true}
+
+# Arguments
+while [[ $# -gt 0 ]];
+do
+  opt="$1"
+  shift # Expose the next argument
+  case "$opt" in
+  # Publish to the `next` tag on NPM
+  "--releaseType")
+    RELEASE_TYPE="$1"
+    shift
+    ;;
+  "--publishNext")
+    PUBLISH_NEXT=true
+    ;;
+  # Prevent builds from being published to NPM
+  "--dry-run" | "--dryRun")
+    DRY_RUN=true
+    if [[ "$SHOW_DEBUG" = true ]]; then
+      echo -e "\x1b[34mDEBUG: Dry run is enabled. Builds will not be published to the NPM registry.\x1b[0m"
+    fi
+    ;;
+  "--help" | "-h")
+    echo -e "\x1b[33mSyntax: ./release.sh [--publishNext | --publish-next | --dry-run | --dryRun | --releaseType [semver] | --help | -h]\x1b[0m"
+    exit 0
+    ;;
+  esac
+done
 
 echo -e "\x1b[34mChecking if the project is clean (aka no uncommitted changes)...\x1b[0m"
 if [[ -n $(git status --porcelain) ]]; then
@@ -49,13 +77,7 @@ PACKAGE_PREV_VERSION=$(cat package.json \
   | sed 's/[",]//g' \
   | tr -d '[[:space:]]')
 
-if [[ $* == "--dryRun" ]]; then
-  DRY_RUN=true
-  echo -e "\x1b[34mDEBUG: Dry run is enabled. Builds will not be published to the NPM registry.\x1b[0m"
-fi
-if [[ $* == *--releaseType* ]]; then
-  npm version "$2"
-elif [[ -n "$RELEASE_TYPE" ]]; then
+if [[ -n "$RELEASE_TYPE" ]]; then
   npm version "$RELEASE_TYPE"
 else
   echo -e '\x1b[31m\x1b[1mERROR: Please specify a release type (via the --releaseType parameter) to bump the version!\x1b[0m'
