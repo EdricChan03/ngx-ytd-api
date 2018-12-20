@@ -11,10 +11,9 @@ import {
   NgxYtdApiCommentsSetModerationStatusOpts,
   NgxYtdApiCommentsUpdateOpts
 } from './ytd-api-comments.interface';
-import { NgxYtdApiCommentsModule } from './ytd-api-comments.module';
 
 @Injectable({
-  providedIn: NgxYtdApiCommentsModule
+  providedIn: 'root'
 })
 export class NgxYtdApiCommentsService {
   constructor(

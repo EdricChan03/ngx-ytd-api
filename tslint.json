@@ -1,5 +1,4 @@
 {
-  "$schema": "https://schemastore.azurewebsites.net/schemas/json/tslint.json",
   "rulesDirectory": [
     "node_modules/codelyzer"
   ],
