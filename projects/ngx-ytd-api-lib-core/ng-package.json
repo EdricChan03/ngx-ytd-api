@@ -1,8 +1,8 @@
 {
   "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
-  "dest": "../../dist/ngx-ytd-api-lib",
+  "dest": "../../dist/ngx-ytd-api-lib/core",
   "deleteDestPath": false,
   "lib": {
-    "entryFile": "src/lib/public_api.ts"
+    "entryFile": "src/public_api.ts"
   }
 }

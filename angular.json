@@ -4,7 +4,7 @@
   "newProjectRoot": "projects",
   "projects": {
     "ngx-ytd-api-demo": {
-      "root": "projects/ngx-ytd-api-demo/",
+      "root": "projects/ngx-ytd-api-demo",
       "sourceRoot": "projects/ngx-ytd-api-demo/src",
       "projectType": "application",
       "prefix": "app",
@@ -111,7 +111,7 @@
       }
     },
     "ngx-ytd-api-lib": {
-      "root": "projects/ngx-ytd-api-lib/",
+      "root": "projects/ngx-ytd-api-lib",
       "sourceRoot": "projects/ngx-ytd-api-lib/src",
       "projectType": "library",
       "prefix": "ngx",
@@ -121,11 +121,6 @@
           "options": {
             "tsConfig": "projects/ngx-ytd-api-lib/tsconfig.lib.json",
             "project": "projects/ngx-ytd-api-lib/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "project": "projects/ngx-ytd-api-lib/ng-package.prod.json"
-            }
           }
         },
         "test": {
@@ -142,6 +137,41 @@
             "tsConfig": [
               "projects/ngx-ytd-api-lib/tsconfig.lib.json",
               "projects/ngx-ytd-api-lib/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "ngx-ytd-api-lib-core": {
+      "root": "projects/ngx-ytd-api-lib-core",
+      "sourceRoot": "projects/ngx-ytd-api-lib-core/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/ngx-ytd-api-lib-core/tsconfig.lib.json",
+            "project": "projects/ngx-ytd-api-lib-core/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngx-ytd-api-lib-core/src/test.ts",
+            "tsConfig": "projects/ngx-ytd-api-lib-core/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-ytd-api-lib-core/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ngx-ytd-api-lib-core/tsconfig.lib.json",
+              "projects/ngx-ytd-api-lib-core/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
