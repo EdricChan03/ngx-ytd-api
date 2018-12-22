@@ -17,9 +17,12 @@ commitMessage=$(git log --oneline -n 1)
 buildVersionName="${buildVersion}-${commitSha}"
 buildTagName="${branchName}-${commitSha}"
 buildCommitMessage="${branchName} - ${commitMessage}"
-echo -e "\x1b[34m\x1b[1mBuilding docs site release...\x1b[0m"
+
 rm -rf dist
-./scripts/build-docs.sh --generate-for-master --version $buildVersionName
+echo -e "\x1b[34m\x1b[1mBuilding ngx-ytd-api library...\x1b[0m"
+./scripts/build-lib.sh --dry-run --version ${buildVersionName}
+echo -e "\x1b[34m\x1b[1mBuilding docs site release...\x1b[0m"
+./scripts/build-docs.sh --generate-for-master --version ${buildVersionName}
 
 
 echo -e "\x1b[34m\x1b[1mCloning ngx-ytd-api-demo-builds...\x1b[0m"
