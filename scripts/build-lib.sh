@@ -82,7 +82,7 @@ else
         exit 1
       else
         echo -e "\x1b[32mDone copying files.\x1b[0m"
-        if [[ $DRY_RUN == false ]]; then
+        if [[ $SKIP_NPM == false ]]; then
           cd dist/ngx-ytd-api-lib
           # Check if NPM exists
           if [[ ! -x $(type -P npm >/dev/null) ]] && [[ ! -x $(command -v npm) ]]; then
@@ -96,7 +96,7 @@ else
             fi
           fi
         else
-          echo -e "\x1b[33mDry run has been enabled. Files will not be published to the NPM registry.\x1b[0m"
+          echo -e "\x1b[33mThe flag to skip NPM has been enabled. Files will not be published to the NPM registry.\x1b[0m"
           echo -e "\x1b[32mDone executing.\x1b[0m"
           exit 0
         fi
