@@ -132,7 +132,7 @@ if ! [[ "$SKIP_FIREBASE" = true ]]; then
     echo $(cat firebase.json | jq '.hosting.rewrites += [{"source": "/'"$PACKAGE_VERSION"'/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))", "destination": "/'"$PACKAGE_VERSION"'/index.html"}]') > firebase.json
   fi
   if [[ -e versions.json ]]; then
-    echo $(cat versions.json | jq '.versions += [{"type": "version", "name": "'"$PACKAGE_VERSION"'", "link": "/'"$PACKAGE_VERSION"'"}]') > versions.json
+    echo "$(cat versions.json | jq '.versions += [{"type": "version", "name": "'"$PACKAGE_VERSION"'", "link": "/'"$PACKAGE_VERSION"'"}]')" > versions.json
   fi
 
   # GitHub token specified as Travis environment variable
