@@ -68,8 +68,8 @@ else
     fi
   fi
   # Check if Angular CLI exists
-  if [[ -f $(pwd)/node_modules/.bin/ng ]]; then
-    $(pwd)/node_modules/.bin/ng build --prod ngx-ytd-api-lib
+  if [[ -f $(npm bin)/ng ]]; then
+    $(npm bin)/ng build ngx-ytd-api-lib
     # Continue execution only if build has been successful
     if [[ $? -eq 0 ]]; then
       sleep 1
