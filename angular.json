@@ -126,7 +126,7 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/ngx-ytd-api-lib/src/test.ts",
+            "main": "projects/ngx-ytd-api-lib/test.ts",
             "tsConfig": "projects/ngx-ytd-api-lib/tsconfig.spec.json",
             "karmaConfig": "projects/ngx-ytd-api-lib/karma.conf.js"
           }
