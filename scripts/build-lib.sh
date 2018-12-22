@@ -4,10 +4,8 @@
 CLICOLOR=1
 
 PUBLISH_NEXT=false
-DRY_RUN=false
 INVALID_ARGS=()
 FROM_SCRIPTS=false
-SKIP_CONFIRM=false
 SKIP_NPM=false
 # Immediately exit if any command in the script fails
 set -e
