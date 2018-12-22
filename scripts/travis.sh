@@ -71,10 +71,4 @@ case "$DEPLOY_MODE" in
   echo -e "\x1b[34mGenerating changelog for tag $TRAVIS_TAG...\x1b[0m"
   # Generate a changelog through a gulp task located at the `gulpfile.js` file in the root of this project.
   gulp changelog
-  ;;
-"npm")
-  echo -e "\x1b[34mGenerating release for tag $TRAVIS_TAG for NPM...\x1b[0m"
-  # Skip confirmations, enable dry run mode (which skips publishing to NPM locally) and set the version to '$TRAVIS_TAG'.
-  ./scripts/build-lib.sh --skip-confirm --dry-run --version "$TRAVIS_TAG"
-
 esac
