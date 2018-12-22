@@ -3,8 +3,8 @@
   "lib": {
     "entryFile": "src/lib/public_api.ts"
   },
-  "deleteDestPath": false,
   "whitelistedNonPeerDependencies": [
+    "ngx-simple-http",
     "tslib"
   ],
   "dest": "../../dist/ngx-ytd-api-lib"

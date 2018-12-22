@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { VERSION as ngxYtdApiVersion } from 'ngx-ytd-api/core';
+import { VERSION as ngxYtdApiVersion } from 'ngx-ytd-api/version';
 import { environment } from '../../../environments/environment';
 
 export interface VersionFile {

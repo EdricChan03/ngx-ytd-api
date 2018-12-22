@@ -1,4 +1,5 @@
-import { NgxYtdApiGenericOpts, NgxYtdApiGenericResource, NgxYtdApiStandardOpts } from 'ngx-ytd-api/core';
+// import { NgxYtdApiGenericOpts, NgxYtdApiGenericResource, NgxYtdApiStandardOpts } from 'ngx-ytd-api/core';
+import { NgxYtdApiGenericOpts, NgxYtdApiGenericResource, NgxYtdApiStandardOpts } from './ytd-api-common.interface';
 
 export interface NgxYtdApiCommentsResource extends NgxYtdApiGenericResource {
   /**

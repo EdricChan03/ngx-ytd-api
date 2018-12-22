@@ -2,7 +2,7 @@ import {
   NgxYtdApiGenericOpts,
   NgxYtdApiGenericResource,
   NgxYtdApiStandardOpts
-} from 'ngx-ytd-api/core';
+} from './ytd-api-common.interface';
 
 export interface NgxYtdApiVideosResourceSuggestionTagSuggestion {
   /**
