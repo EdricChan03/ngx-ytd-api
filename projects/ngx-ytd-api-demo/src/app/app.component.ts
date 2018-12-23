@@ -1,4 +1,4 @@
-import { animate, state, style, transition, trigger } from '@angular/animations';
+// import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { Demo, Doc, ListsService } from './lists.service';
@@ -12,7 +12,7 @@ declare type ToggleState = 'notToggled' | 'toggled';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  animations: [
+  /* animations: [
     trigger('toggleIconAnim', [
       state('toggled', style({
         transform: 'rotate(90deg)'
@@ -36,11 +36,11 @@ declare type ToggleState = 'notToggled' | 'toggled';
       transition('notToggled => toggled', animate('500ms ease-in-out')),
       transition('toggled => notToggled', animate('280ms ease-out'))
     ])
-  ]
+  ] */
 })
 export class AppComponent implements OnInit {
-  toggleStateDocs: ToggleState = 'notToggled';
-  toggleStateList: ToggleState = 'notToggled';
+  // toggleStateDocs: ToggleState = 'notToggled';
+  // toggleStateList: ToggleState = 'notToggled';
   demos: Demo[];
   docs: Doc[];
   @ViewChild('docsSidenav') sidenav: MatSidenav;
@@ -69,8 +69,8 @@ export class AppComponent implements OnInit {
     event.stopPropagation();
   }
   // tslint:disable-next-line:no-shadowed-variable
-  toggleStates(state: 'demos' | 'docs') {
-     if (state === 'docs') {
+  /* toggleStates(state: 'demos' | 'docs') {
+    if (state === 'docs') {
       if (this.toggleStateDocs === 'toggled') {
         this.toggleStateDocs = 'notToggled';
       } else {
@@ -98,5 +98,5 @@ export class AppComponent implements OnInit {
     }
     this.toggleStates('docs');
     // Do some stuff
-  }
+  } */
 }

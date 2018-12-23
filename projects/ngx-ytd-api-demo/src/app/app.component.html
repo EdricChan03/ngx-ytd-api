@@ -3,9 +3,6 @@
     <mat-toolbar>
       Links
       <span fxFlex></span>
-      <button mat-icon-button (click)="toggleLists()" matTooltip="Toggle all lists">
-        <mat-icon class="icon">{{toggleStateList === 'notToggled' ? 'unfold_more' : 'unfold_less'}}</mat-icon>
-      </button>
       <button mat-icon-button (click)="docsSidenav.close()" matTooltip="Close" matTooltipPosition="right" aria-label="Close sidenav">
         <mat-icon class="icon">keyboard_arrow_left</mat-icon>
       </button>
@@ -19,18 +16,7 @@
       <a mat-list-item routerLink="/docs" routerLinkActive="active-link">
         <mat-icon matListIcon>chrome_reader_mode</mat-icon>
         <h3 matLine>Docs</h3>
-        <span fxFlex></span>
-        <button mat-icon-button (click)="toggleDocsList($event)" aria-label="Toggle demos" matTooltip="Toggle docs list" matTooltipPosition="right">
-          <mat-icon [@toggleIconAnim]="toggleStateDocs">keyboard_arrow_right</mat-icon>
-        </button>
       </a>
-      <div [@toggleItemsAnim]="toggleStateDocs">
-        <a mat-list-item *ngFor="let doc of docs" [routerLink]="['docs', doc.id]" routerLinkActive="active-link">
-          <mat-icon matListIcon *ngIf="doc.icon && !doc.svgIcon">{{doc.icon}}</mat-icon>
-          <mat-icon matListIcon *ngIf="doc.svgIcon" [svgIcon]="doc.svgIcon"></mat-icon>
-          <h3 matLine>{{doc.name}}</h3>
-        </a>
-      </div>
       <a mat-list-item routerLink="/privacy-policy" routerLinkActive="active-link">
         <mat-icon matListIcon>information</mat-icon>
         <h3 matLine>Privacy policy</h3>
