@@ -45,7 +45,7 @@ export interface YtVideoPickerOpts {
 @Component({
   selector: 'app-yt-video-picker',
   templateUrl: './yt-video-picker.component.html',
-  styleUrls: ['./yt-video-picker.component.css']
+  styleUrls: ['./yt-video-picker.component.scss']
 })
 export class YtVideoPickerComponent implements AfterViewInit, OnInit {
   /**

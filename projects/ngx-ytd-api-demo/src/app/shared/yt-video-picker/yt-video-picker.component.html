@@ -10,7 +10,7 @@
       </mat-form-field>
     </form>
     <div class="example-table-container" fxLayout="column" [style.display]="(data.length > 0) ? 'block' : 'none'">
-      <table mat-table [dataSource]="data" class="example-table">
+      <!-- <table mat-table [dataSource]="data" class="example-table">
         <ng-container matColumnDef="select">
           <th mat-header-cell *matHeaderCellDef>
             <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()"
@@ -40,7 +40,38 @@
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns" (click)="selection.toggle(row)"></tr>
-      </table>
+      </table> -->
+      <mat-table [dataSource]="data" class="example-table">
+        <ng-container matColumnDef="select">
+          <mat-header-cell *matHeaderCellDef>
+            <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()"
+              [indeterminate]="selection.hasValue() && !isAllSelected()" [disabled]="!opts?.selectMultiple || data.length === 0"></mat-checkbox>
+          </mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null" [checked]="selection.isSelected(row)">
+            </mat-checkbox>
+          </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="thumbnail">
+          <mat-header-cell *matHeaderCellDef>Thumbnail</mat-header-cell>
+          <mat-cell *matCellDef="let row"><img [src]="row?.snippet?.thumbnails?.high?.url"></mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="title">
+          <mat-header-cell *matHeaderCellDef>Title</mat-header-cell>
+          <mat-cell *matCellDef="let row">{{ row?.snippet?.title }}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="channelTitle">
+          <mat-header-cell *matHeaderCellDef>Uploaded by</mat-header-cell>
+          <mat-cell *matCellDef="let row">{{ row?.snippet?.channelTitle }}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="publishedAt">
+          <mat-header-cell *matHeaderCellDef>Published at</mat-header-cell>
+          <mat-cell *matCellDef="let row">{{ row?.snippet?.publishedAt | date }}</mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns" (click)="selection.toggle(row)"></mat-row>
+      </mat-table>
       <mat-paginator [pageSizeOptions]="[10, 30, 50]" [length]="resultsLength"></mat-paginator>
     </div>
   </div>
