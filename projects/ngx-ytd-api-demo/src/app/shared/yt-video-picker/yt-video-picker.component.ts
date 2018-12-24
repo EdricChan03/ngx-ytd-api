@@ -12,6 +12,7 @@ import { SharedService } from '../../shared.service';
 
 /**
  * The layout of a video picker
+ *
  * Values:
  * - `grid`: Represents the view as a grid (Not implemented)
  * - `table`: Represents the view as a table
@@ -19,6 +20,7 @@ import { SharedService } from '../../shared.service';
 export type PickerLayout = 'grid' | 'table';
 /**
  * Options for the video picker
+ *
  * Passed in through the `data` property
  */
 export interface YtVideoPickerOpts {
