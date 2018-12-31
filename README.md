@@ -66,8 +66,8 @@ npm install --save Chan4077/ngx-ytd-api-builds
       <td>Comments</td>
       <td>
         <ul>
-          <li>So far, only the minimal API to get a comment has been implemented.</li>
-          <li>This should be released with the upcoming version.</li>
+          <li>All API features are available (with OAuth support)</li>
+          <li>However, more examples are needed.</li>
         </ul>
       </td>
       <td><em>No docs available</em></td>
@@ -91,7 +91,7 @@ npm install --save Chan4077/ngx-ytd-api-builds
       <td>Videos</td>
       <td>
         <ul>
-          <li>All methods have been implemented!</li>
+          <li>All API features are available (with OAuth support)</li>
           <li>However, more examples are needed.</li>
         </ul>
       </td>
@@ -119,6 +119,12 @@ Subscriptions | Not planned | -
 Thumbnails | Not planned | -
 Video abuse report reasons / Video categories | Not planned | -
 Watermarks | Not planned | -
+
+### Roadmap
+
+Please see the [ROADMAP.md](/ROADMAP.md) file for the whole roadmap.
+
+---
 
 See the [developer docs](https://developers.google.com/youtube/v3/docs) for a list of all endpoints of the YouTube Data API.
 
