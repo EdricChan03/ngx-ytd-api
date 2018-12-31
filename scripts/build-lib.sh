@@ -3,12 +3,38 @@
 # Enable color support
 CLICOLOR=1
 
+SCRIPT_VERSION="1.0.1"
 PUBLISH_NEXT=false
 INVALID_ARGS=()
 FROM_SCRIPTS=false
 SKIP_NPM=false
 # Immediately exit if any command in the script fails
 set -e
+
+# Shows a help message and exits with return code 0
+# @return Exit code 0
+function showHelpMsg {
+  echo -e "\x1b[33mVersion: $SCRIPT_VERSION\x1b[0m\n"
+  if [[ "$FROM_SCRIPTS" == true ]]; then
+    echo -e "\x1b[33mSyntax: ./scripts.sh (build-lib) [--publishNext | --publish-next | --dryRun | --skipNpm | --help | -h]\x1b[0m"
+  else
+    echo -e "\x1b[33mSyntax: ./build-lib.sh [--publishNext | --publish-next | --dry-run | --dryRun | --skipNpm | --help | -h]\x1b[0m"
+  fi
+  echo
+  echo -e "\x1b[36m--publishNext\x1b[0m"
+  echo -e "\x1b[96mPublishes the library to the next tag\x1b[0m"
+  echo
+  echo -e "\x1b[36m--dryRun\x1b[0m"
+  echo -e "\x1b[96mSkips publishing to NPM\x1b[0m"
+  echo -e "\x1b[33;1mWARNING: Deprecated in favor of the --skipNpm flag!\x1b[0m"
+  echo
+  echo -e "\x1b[36m--skipNpm\x1b[0m"
+  echo -e "\x1b[96mSkips publishing to NPM\x1b[0m"
+  echo
+  echo -e "\x1b[36m--help\x1b[0m"
+  echo -e "\x1b[96mShows this help message and exits with return code 0\x1b[0m"
+  exit 0
+}
 # Arguments
 while
 [[ $# -gt 0 ]]
@@ -22,7 +48,7 @@ do
     ;;
     # Prevent builds from being published to NPM
     "--dry-run" | "--dryRun")
-      echo -e "\x1b[33mWARN: The --dryRun command has been deprecated in favour of --skipNpm.\x1b[0m"
+      echo -e "\x1b[33;1mWARN: The --dryRun command has been deprecated in favour of --skipNpm.\x1b[0m"
       SKIP_NPM=true
     ;;
     # Whether this script was executed from `scripts.sh`
@@ -39,12 +65,7 @@ do
       shift
     ;;
     "--help" | "-h")
-      if [[ "$FROM_SCRIPTS" == true ]]; then
-        echo -e "\x1b[33mSyntax: ./scripts.sh (build-script | build) [--publishNext | --publish-next | --dry-run | --dryRun | --skipNpm | --help | -h]\x1b[0m"
-      else
-        echo -e "\x1b[33mSyntax: ./build-lib.sh [--publishNext | --publish-next | --skipNpm | --help | -h]\x1b[0m"
-      fi
-      exit 0
+      showHelpMsg
     ;;
     *)
       INVALID_ARGS+=($opt)
@@ -53,7 +74,7 @@ do
 done
 # Check if there are any invalid arguments
 if [[ ${#INVALID_ARGS[@]} -ne 0 ]]; then
-  echo -e "\x1b[31m\x1b[1mInvalid option(s): ${INVALID_ARGS[*]}\nRun --help for all valid options.\x1b[0m" >&2
+  echo -e "\x1b[31;1mInvalid option(s): ${INVALID_ARGS[*]}\nRun --help for all valid options.\x1b[0m" >&2
   exit 1
 else
   if [[ -n "$VERSION" ]]; then
