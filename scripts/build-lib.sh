@@ -14,11 +14,11 @@ set -e
 # Shows a help message and exits with return code 0
 # @return Exit code 0
 function showHelpMsg {
-  echo -e "\x1b[33mVersion: $SCRIPT_VERSION\x1b[0m\n"
+  echo -e "\x1b[36mVersion: $SCRIPT_VERSION\x1b[0m\n"
   if [[ "$FROM_SCRIPTS" == true ]]; then
-    echo -e "\x1b[33mSyntax: ./scripts.sh (build-lib) [--publishNext | --publish-next | --dryRun | --skipNpm | --help | -h]\x1b[0m"
+    echo -e "\x1b[36mSyntax: ./scripts.sh (build-lib) [--publishNext | --publish-next | --dryRun | --skipNpm | --help | -h]\x1b[0m"
   else
-    echo -e "\x1b[33mSyntax: ./build-lib.sh [--publishNext | --publish-next | --dry-run | --dryRun | --skipNpm | --help | -h]\x1b[0m"
+    echo -e "\x1b[36mSyntax: ./build-lib.sh [--publishNext | --publish-next | --dry-run | --dryRun | --skipNpm | --help | -h]\x1b[0m"
   fi
   echo
   echo -e "\x1b[36m--publishNext\x1b[0m"
