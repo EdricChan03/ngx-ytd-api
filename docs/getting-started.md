@@ -10,7 +10,7 @@ Follow [these steps](https://developers.google.com/youtube/v3/getting-started#be
 
 ## Step 2. Install the library
 
-Install the latest version (`1.0.0-alpha.3`) by running this command:
+Install the latest version (`1.0.0-alpha.4`) by running this command:
 
 ### NPM v5 and above
 
