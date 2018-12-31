@@ -3,7 +3,7 @@ const conventionalChangelog = require('gulp-conventional-changelog');
 const { prompt } = require('inquirer');
 
 // Generates a changelog for the latest git tag
-gulp.task('changelog', () => {
+gulp.task('changelog', async () => {
   const { releaseName } = await prompt({
     type: 'text',
     name: 'releaseName',
