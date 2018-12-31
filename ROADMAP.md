@@ -13,3 +13,4 @@ From the start of 2019, I'll try to work as much as I can on this roadmap.
 
 - Support for other API features
 - Initial schematics
+- Remove dependency on `ngx-simple-http`
