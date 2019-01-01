@@ -76,7 +76,8 @@ This release adds the following features:
 
 ### BREAKING CHANGES
 
-* **lib/comments:** * All interfaces in the `comments` module have been renamed to their plural forms to be more consistent with the docs. Below is a migration table:
+* **lib/comments:** All interfaces in the `comments` module have been renamed to their plural forms to be more consistent with the docs. Below is a migration table:
+
   Old | New
   ---|---
   `NgxYtdApiCommentListOpts` | `NgxYtdApiCommentsListOpts`
