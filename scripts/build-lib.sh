@@ -3,7 +3,7 @@
 # Enable color support
 CLICOLOR=1
 
-SCRIPT_VERSION="1.0.1"
+SCRIPT_VERSION="1.0.2"
 PUBLISH_NEXT=false
 INVALID_ARGS=()
 FROM_SCRIPTS=false
@@ -14,12 +14,15 @@ set -e
 # Shows a help message and exits with return code 0
 # @return Exit code 0
 function showHelpMsg {
-  echo -e "\x1b[36mVersion: $SCRIPT_VERSION\x1b[0m\n"
+  echo -e "Version: $SCRIPT_VERSION"
+  echo
   if [[ "$FROM_SCRIPTS" == true ]]; then
-    echo -e "\x1b[36mSyntax: ./scripts.sh (build-lib) [--publishNext | --publish-next | --dryRun | --skipNpm | --help | -h]\x1b[0m"
+    echo -e "Syntax: \x1b[34m./scripts.sh\x1b[0m (\x1b[35mbuild-lib\x1b[0m) [\x1b[33m--publishNext\x1b[0m | \x1b[33m--dryRun\x1b[0m | \x1b[33m--skipNpm\x1b[0m | \x1b[33m--help\x1b[0m]"
   else
-    echo -e "\x1b[36mSyntax: ./build-lib.sh [--publishNext | --publish-next | --dry-run | --dryRun | --skipNpm | --help | -h]\x1b[0m"
+    echo -e "Syntax: \x1b[34m./build-lib.sh\x1b[0m [\x1b[33m--publishNext\x1b[0m | \x1b[33m--dryRun\x1b[0m | \x1b[33m--skipNpm\x1b[0m | \x1b[33m--help\x1b[0m]"
   fi
+  echo
+  echo -e "\x1b[32;1mOptional flags\x1b[0m"
   echo
   echo -e "\x1b[36m--publishNext\x1b[0m"
   echo -e "\x1b[96mPublishes the library to the next tag\x1b[0m"
@@ -101,23 +104,39 @@ else
         exit 1
       else
         echo -e "\x1b[32mDone copying files.\x1b[0m"
-        if [[ $SKIP_NPM == false ]]; then
-          cd dist/ngx-ytd-api-lib
-          # Check if NPM exists
-          if [[ ! -x $(type -P npm >/dev/null) ]] && [[ ! -x $(command -v npm) ]]; then
-            echo -e "\x1b[31mNPM is not installed. Please visit https://nodejs.org to get the latest package for your OS.\x1b[0m"
+        echo -e "\n\x1b[34mCompiling schematics..\x1b[0m"
+        $(npm bin)/tsc -p projects/ngx-ytd-api-lib/schematics/tsconfig.json
+        if [[ $? -ne 0 ]]; then
+          echo -e "\x1b[31;1mCouldn't compile schematics. See the log above for more details.\x1b[0m" >&2
+          exit 1
+        else
+          echo -e "\x1b[32mDone compiling schematics.\x1b[0m"
+          echo -e "\n\x1b[34mCopying schematics files..\x1b[0m"
+          find projects/ngx-ytd-api-lib/schematics -maxdepth 2 -mindepth 1 ! -name tsconfig.json -exec cp -R {} dist/ngx-ytd-api-lib/schematics \;
+          if [[ $? -ne 0 ]]; then
+            echo -e "\x1b[31;1mCouldn't copy schematic files. See the log above for more details.\x1b[0m"
             exit 1
           else
-            if [[ $PUBLISH_NEXT = true ]]; then
-              npm publish --tag next
+            echo -e "\x1b[32mDone copying schematic files.\x1b[0m"
+            if [[ $SKIP_NPM == false ]]; then
+              cd dist/ngx-ytd-api-lib
+              # Check if NPM exists
+              if [[ ! -x $(type -P npm >/dev/null) ]] && [[ ! -x $(command -v npm) ]]; then
+                echo -e "\x1b[31mNPM is not installed. Please visit https://nodejs.org to get the latest package for your OS.\x1b[0m"
+                exit 1
+              else
+                if [[ $PUBLISH_NEXT = true ]]; then
+                  npm publish --tag next
+                else
+                  npm publish
+                fi
+              fi
             else
-              npm publish
+              echo -e "\x1b[33mThe flag to skip NPM has been enabled. Files will not be published to the NPM registry.\x1b[0m"
+              echo -e "\x1b[32mDone executing.\x1b[0m"
+              exit 0
             fi
           fi
-        else
-          echo -e "\x1b[33mThe flag to skip NPM has been enabled. Files will not be published to the NPM registry.\x1b[0m"
-          echo -e "\x1b[32mDone executing.\x1b[0m"
-          exit 0
         fi
       fi
     fi
