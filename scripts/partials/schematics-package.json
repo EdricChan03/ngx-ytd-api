@@ -1,0 +1,13 @@
+{
+  "$schema": "http://json.schemastore.org/package",
+  "description": "Sample minimum schematics file for testing of schematics",
+  "private": true,
+  "name": "schematics",
+  "version": "0.0.0",
+  "schematics": "./collection.json",
+  "peerDependencies": {
+    "@angular-devkit/core": "^0.6.8",
+    "@angular-devkit/schematics": "^0.6.8",
+    "typescript": "^2.5.2"
+  }
+}
