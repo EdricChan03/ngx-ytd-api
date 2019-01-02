@@ -38,4 +38,4 @@ export const moduleNames: ModuleName[] = [
     type: 'videos',
     importFrom: 'ngx-ytd-api/videos'
   }
-]
+];
