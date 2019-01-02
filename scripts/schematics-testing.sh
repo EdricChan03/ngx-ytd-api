@@ -69,7 +69,7 @@ else
   fi
 
   echo -e "\n\x1b[34mCopying all schematic files...\x1b[0m"
-  find projects/ngx-ytd-api-lib/schematics -maxdepth 1 -mindepth 1 ! -name tsconfig.json -exec cp -R {} dist/ngx-ytd-api-schematics \;
+  find projects/ngx-ytd-api-lib/schematics -maxdepth 1 -mindepth 1 ! -name tsconfig.json ! -name tsconfig-testing.json -exec cp -R {} dist/ngx-ytd-api-schematics \;
   if [[ $? -ne 0 ]]; then
     echo -e "\x1b[31;1mCouldn't copy schematic files. See the log above for more details.\x1b[0m"
     exit 1
