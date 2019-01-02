@@ -58,8 +58,6 @@ else
           echo -e "\x1b[31;1mAn error occurred while attempting to copy the sample package.json file. See the log above for more details.\x1b[0m"
         else
           echo -e "\x1b[32mSuccessfully copied the sample package.json file!\x1b[0m"
-          echo "The schematics can now be tested in the dist/ngx-ytd-api-schematics folder."
-          exit
         fi
       fi
     else
@@ -71,11 +69,12 @@ else
   fi
 
   echo -e "\n\x1b[34mCopying all schematic files...\x1b[0m"
-  find projects/ngx-ytd-api-lib/schematics -maxdepth 2 -mindepth 1 ! -name tsconfig.json -exec cp -R {} dist/ngx-ytd-api-schematics \;
+  find projects/ngx-ytd-api-lib/schematics -maxdepth 1 -mindepth 1 ! -name tsconfig.json -exec cp -R {} dist/ngx-ytd-api-schematics \;
   if [[ $? -ne 0 ]]; then
     echo -e "\x1b[31;1mCouldn't copy schematic files. See the log above for more details.\x1b[0m"
     exit 1
   else
     echo -e "\x1b[32mDone copying schematic files.\x1b[0m"
+    echo "The schematics can now be tested in the dist/ngx-ytd-api-schematics folder."
   fi
 fi
