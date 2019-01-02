@@ -1,5 +1,5 @@
 <a name="1.0.0-alpha.4"></a>
-# [1.0.0-alpha.4 dalmatian-peony](https://github.com/Chan4077/ngx-ytd-api/compare/1.0.0-alpha.4...1.0.0-alpha.3) (2018-12-31)
+# [1.0.0-alpha.4 dalmatian-peony](https://github.com/Chan4077/ngx-ytd-api/compare/1.0.0-alpha.3...1.0.0-alpha.4) (2018-12-31)
 
 ### Highlights
 
@@ -98,7 +98,7 @@ This release adds the following features:
 * The library now internally uses the `ngx-simple-http`. This is a **required** dependency and must be installed separately with it.
 
 <a name="1.0.0-alpha.3"></a>
-# [1.0.0-alpha.3 greyhound-puma](https://github.com/Chan4077/ngx-ytd-api/compare/1.0.0-alpha.3...1.0.0-alpha.2) (2018-06-19)
+# [1.0.0-alpha.3 greyhound-puma](https://github.com/Chan4077/ngx-ytd-api/compare/1.0.0-alpha.2...1.0.0-alpha.3) (2018-06-19)
 
 
 ### Bug Fixes
@@ -167,6 +167,6 @@ This release adds the following features:
 * **travis:** add script for generating docs ([5510204](https://github.com/Chan4077/ngx-ytd-api/commit/5510204))
 
 
-
 # 1.0.0-alpha.1 saiga-poppy
-- Placeholder text
+
+* Placeholder text
