@@ -1,8 +1,4 @@
 /**
- * The API type that the Angular module should represent
- */
-export type ModuleType = 'comments' | 'search' | 'videos';
-/**
  * Interface used for an Angular Module from the `ngx-ytd-api` library
  */
 export interface ModuleName {
@@ -13,7 +9,7 @@ export interface ModuleName {
   /**
    * The API type of the module
    */
-  type: ModuleType;
+  type: string;
   /**
    * The full module path to import the module from
    */

@@ -3,6 +3,15 @@
 // import { moduleNames } from './module-names';
 import { Schema } from './schema';
 import { Rule, Tree, SchematicContext } from '@angular-devkit/schematics';
+import {
+  addModuleImportToRootModule,
+  getProjectMainFile,
+  getProjectFromWorkspace,
+  hasNgModuleImport
+} from '../utils';
+import { getWorkspace } from '@schematics/angular/utility/config';
+import { getAppModulePath } from '@schematics/angular/utility/ng-ast-utils';
+import { moduleNames, ModuleName } from './module-names';
 
 export default function (options: Schema): Rule {
   return addModules(options);
@@ -13,16 +22,34 @@ export default function (options: Schema): Rule {
  * @param options The list of options specified via the schematic
  */
 function addModules(options: Schema) {
-  return (_host: Tree, context: SchematicContext) => {
-    if (options.skipSetup) {
-      if (context.debug) {
-        return context.logger.debug('Skipping setup as the --skipSetup flag has been specified.');
-      } else {
-        return;
+  return (host: Tree, context: SchematicContext) => {
+    const workspace = getWorkspace(host);
+    const project = getProjectFromWorkspace(workspace, options.project);
+    const appModulePath = getAppModulePath(host, getProjectMainFile(project));
+    context.logger.info(`Debug mode enabled? ${context.debug}`);
+    if (options.importModules) {
+      context.logger.info('Adding modules to main app module...');
+      // tslint:disable-next-line:forin
+      for (const module of options.importModules) {
+        // tslint:disable-next-line:no-non-null-assertion
+        if (hasNgModuleImport(host, appModulePath, getModuleFromApiType(module)!.name)) {
+          // tslint:disable-next-line:no-non-null-assertion
+          context.logger.warn(`Could not set up ${getModuleFromApiType(module)!.name} as it is already imported.`);
+        } else {
+          // tslint:disable-next-line:no-non-null-assertion
+          addModuleImportToRootModule(host, getModuleFromApiType(module)!.name, getModuleFromApiType(module)!.importFrom, project);
+        }
       }
     }
-    if (options.importModules) {
-      return context.logger.debug(JSON.stringify(options.importModules));
-    }
   };
+}
+
+/**
+ * Retrieves a module name from an API type
+ * @param type The API type
+ * @returns An object of type {@link ModuleName}, or `undefined` otherwise
+ */
+function getModuleFromApiType(type: string): ModuleName | undefined {
+  const module = moduleNames.find((m) => m.type === type);
+  return module;
 }

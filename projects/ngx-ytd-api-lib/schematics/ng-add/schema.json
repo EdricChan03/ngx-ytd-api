@@ -1,7 +1,8 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema",
   "id": "ngx-ytd-api-ng-add",
-  "title": "ngx-ytd-api ng-add schematic",
+  "title": "Adds ngx-ytd-api to a project",
+  "description": "Schematic to add ngx-ytd-api to an Angular project",
   "type": "object",
   "properties": {
     "project": {
@@ -13,7 +14,7 @@
       "alias": "p"
     },
     "importModules": {
-      "type": "string",
+      "type": "array",
       "description": "Modules to import into the project's app module.",
       "x-prompt": {
         "message": "Select the modules to import:",
@@ -36,16 +37,28 @@
       },
       "aliases": [
         "modules",
-        "importApis"
+        "importApis",
+        "import-modules",
+        "import-apis"
       ]
+    },
+    "skipInstall": {
+      "type": "boolean",
+      "description": "Whether to skip the installing of dependencies.",
+      "default": false,
+      "alias": "skip-install"
     },
     "skipSetup": {
       "type": "boolean",
       "description": "Whether to skip setup of the ngx-ytd-api library.",
       "default": false,
       "aliases": [
-        "skipInit"
+        "skip-setup",
+        "skipInit",
+        "skip-init"
       ]
     }
-  }
+  },
+  "required": [],
+  "additionalProperties": false
 }

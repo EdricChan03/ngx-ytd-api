@@ -1,7 +1,6 @@
 {
   "$schema": "../../../node_modules/@angular-devkit/schematics/collection-schema.json",
   "schematics": {
-    // Adds the ngx-ytd-api library to the application without changing any templates
     "ng-add": {
       "description": "Adds ngx-ytd-api to the application without affecting any templates",
       "factory": "./ng-add/index",

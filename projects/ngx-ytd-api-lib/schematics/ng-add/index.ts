@@ -6,7 +6,7 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
-import { Rule, SchematicContext, Tree } from '@angular-devkit/schematics';
+import { Rule, SchematicContext, Tree, TaskId } from '@angular-devkit/schematics';
 import { NodePackageInstallTask, RunSchematicTask } from '@angular-devkit/schematics/tasks';
 import { addPackageToPackageJson } from './package-config';
 import { Schema } from './schema';
@@ -29,9 +29,22 @@ export default function (options: Schema): Rule {
       context.logger.debug(`Adding ngx-simple-http of version range ~${ngxSimpleHttpVersion} as a dependency to the package.json file...`);
     }
     addPackageToPackageJson(host, 'ngx-simple-http', `~${ngxSimpleHttpVersion}`);
-    context.logger.info('Installing dependencies...');
-    const installTaskId = context.addTask(new NodePackageInstallTask());
-
-    context.addTask(new RunSchematicTask('ng-add-setup-project', options), [installTaskId]);
+    let installTaskId: TaskId | undefined;
+    if (options.skipInstall) {
+      context.logger.info('The --skipInstall flag has been specified. Skipping installation of dependencies...');
+      installTaskId = undefined;
+    } else {
+      context.logger.info('Installing dependencies...');
+      installTaskId = context.addTask(new NodePackageInstallTask());
+    }
+    if (options.skipSetup) {
+      context.logger.debug('Skipping setup as the --skipSetup flag has been specified.');
+      return;
+    }
+    if (installTaskId) {
+      context.addTask(new RunSchematicTask('ng-add-setup-project', options), [installTaskId]);
+    } else {
+      context.addTask(new RunSchematicTask('ng-add-setup-project', options));
+    }
   };
 }

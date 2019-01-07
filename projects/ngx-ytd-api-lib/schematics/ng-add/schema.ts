@@ -3,6 +3,8 @@ export interface Schema {
   project: string;
   /** A list of API modules to import into the entry module file (i.e. `app.module.ts`) */
   importModules: string[];
-  /** Whether to skip steup of the API */
+  /** Whether to skip setup of the API */
   skipSetup: boolean;
+  /** Whether to skip the installation of dependencies */
+  skipInstall: boolean;
 }
