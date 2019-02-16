@@ -1,7 +1,0 @@
-{
-  // This TypeScript config file is used for testing the schematics without any interfering of the outputs of the main library
-  "extends": "./tsconfig.json",
-  "compilerOptions": {
-    "outDir": "../../../dist/ngx-ytd-api-schematics"
-  }
-}

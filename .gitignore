@@ -36,3 +36,6 @@ Thumbs.db
 
 # AngularDoc extension
 .angulardoc.json
+
+# Temporarily disable support for schematics
+projects/ngx-ytd-api-schematics
