@@ -35,16 +35,6 @@ Run the following comamnd which should install the `latest` version (`1.0.0-alph
 npm install ngx-ytd-api --save
 ```
 
-#### `1.0.0-alpha.4` and up
-
-Versions `1.0.0-alpha.4` now require the `ngx-simple-http` dependency. Install it as well:
-
-```bash
-npm install ngx-simple-http --save
-```
-
-_(P.S. If you're experiencing bugs from this new dependency, please file an issue at <https://github.com/Chan4077/ngx-simple-http>)_
-
 #### Next
 
 To get the latest `next` tag, run the following command:
