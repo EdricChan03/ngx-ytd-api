@@ -1,6 +1,6 @@
 import { TestBed, async } from '@angular/core/testing';
 import { NgxYtdApiVideosService } from './ytd-api-videos.service';
-import { HttpClientModule } from '@angular/common/http';
+import { NgxYtdApiVideosModule } from './ytd-api-videos.module';
 
 const API_KEY = 'AIzaSyBcgBbQaYNjtyunJP3Mo8IDgnzWnhiIKvo';
 describe('NgxYtdApiVideosService', () => {
@@ -8,8 +8,7 @@ describe('NgxYtdApiVideosService', () => {
   beforeEach(() => {
     // Configure the module for testing
     TestBed.configureTestingModule({
-      providers: [NgxYtdApiVideosService],
-      imports: [HttpClientModule]
+      imports: [NgxYtdApiVideosModule]
     });
     // Retrieve the service created from the module
     service = TestBed.get(NgxYtdApiVideosService);

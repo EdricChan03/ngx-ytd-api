@@ -1,5 +1,7 @@
 import { TestBed, async, inject } from '@angular/core/testing';
 import { NgxYtdApiCommentsService } from './ytd-api-comments.service';
+import { NgxYtdApiCommentsModule } from './ytd-api-comments.module';
+import { NgxYtdApiCommonModule } from 'ngx-ytd-api/common';
 import { HttpClientModule } from '@angular/common/http';
 
 const API_KEY = 'AIzaSyBcgBbQaYNjtyunJP3Mo8IDgnzWnhiIKvo';
@@ -8,8 +10,7 @@ describe('NgxYtdApiCommentsService', () => {
   beforeEach(() => {
     // Configure the module for testing
     TestBed.configureTestingModule({
-      providers: [NgxYtdApiCommentsService],
-      imports: [HttpClientModule]
+      imports: [NgxYtdApiCommentsModule]
     });
     // Retrieve the service created from the module
     service = TestBed.get(NgxYtdApiCommentsService);

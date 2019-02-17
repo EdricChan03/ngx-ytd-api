@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
-import { SimpleHttpModule } from 'ngx-simple-http';
+import { NgxYtdApiCommonModule } from 'ngx-ytd-api/common';
 import { NgxYtdApiSearchService } from './ytd-api-search.service';
 
 @NgModule({
   imports: [
-    SimpleHttpModule
+    NgxYtdApiCommonModule
   ],
   providers: [
     NgxYtdApiSearchService

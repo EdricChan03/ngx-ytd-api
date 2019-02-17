@@ -1,5 +1,6 @@
+
 import { Injectable } from '@angular/core';
-import { SimpleHttpService } from 'ngx-simple-http';
+import { NgxYtdApiCommonService } from 'ngx-ytd-api/common';
 import { Observable } from 'rxjs';
 import {
   NgxYtdApiCommentsDeleteOpts,
@@ -11,74 +12,16 @@ import {
   NgxYtdApiCommentsSetModerationStatusOpts,
   NgxYtdApiCommentsUpdateOpts
 } from './ytd-api-comments.interface';
-import { HttpHeaders } from '@angular/common/http';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class NgxYtdApiCommentsService {
   constructor(
-    private http: SimpleHttpService
+    private common: NgxYtdApiCommonService
   ) { }
   /**
    * The API URL for the Comments API of the YouTube Data v3 API
    */
   readonly ngxYtdCommentsApiUrl = 'https://www.googleapis.com/youtube/v3/comments';
-  // Handler for HTTP requests
-  private _httpHandler<B extends any, P extends any, R extends any>(
-    apiEndpoint: string,
-    opts: P,
-    body: B = null,
-    httpType: 'delete' | 'get' | 'post' | 'put'
-  ): Observable<R> {
-    let headers: HttpHeaders;
-    if ('accessToken' in opts && typeof opts['accessToken'] !== undefined && opts['accessToken'] !== null) {
-      headers = new HttpHeaders()
-        .set('Authorization', `Bearer ${opts['accessToken']}`);
-    }
-    switch (httpType) {
-      case 'delete':
-        if (headers) {
-          return this.http.createHttpDelete<P, R>(apiEndpoint, opts, headers);
-        } else {
-          return this.http.createHttpDelete<P, R>(apiEndpoint, opts);
-        }
-      case 'get':
-        if (headers) {
-          return this.http.createHttpGet<P, R>(apiEndpoint, opts, headers);
-        } else {
-          return this.http.createHttpGet<P, R>(apiEndpoint, opts);
-        }
-      case 'post':
-        if (headers) {
-          if (body) {
-            return this.http.createHttpPost<B, P, R>(apiEndpoint, opts, body, headers);
-          } else {
-            return this.http.createHttpPost<B, P, R>(apiEndpoint, opts, null, headers);
-          }
-        } else {
-          if (body) {
-            return this.http.createHttpPost<B, P, R>(apiEndpoint, opts, body);
-          } else {
-            return this.http.createHttpPost<B, P, R>(apiEndpoint, opts, null);
-          }
-        }
-      case 'put':
-        if (headers) {
-          if (body) {
-            return this.http.createHttpPut<B, P, R>(apiEndpoint, opts, body, headers);
-          } else {
-            return this.http.createHttpPut<B, P, R>(apiEndpoint, opts, null, headers);
-          }
-        } else {
-          if (body) {
-            return this.http.createHttpPut<B, P, R>(apiEndpoint, opts, body);
-          } else {
-            return this.http.createHttpPut<B, P, R>(apiEndpoint, opts, null);
-          }
-        }
-    }
-  }
   /**
    * Deletes a comment
    *
@@ -87,9 +30,9 @@ export class NgxYtdApiCommentsService {
    * @return Results of the deletion as an `Observable`
    */
   delete(opts: NgxYtdApiCommentsDeleteOpts): Observable<any> {
-    return this._httpHandler<any, NgxYtdApiCommentsDeleteOpts, any>(
+    return this.common.sendHttpRequest<any, NgxYtdApiCommentsDeleteOpts, any>(
       this.ngxYtdCommentsApiUrl,
-      opts,
+      this.common.mergeOpts<NgxYtdApiCommentsDeleteOpts>(opts),
       null,
       'delete'
     );
@@ -103,9 +46,9 @@ export class NgxYtdApiCommentsService {
    * @return Results of the creation as an `Observable`
    */
   insert(body: NgxYtdApiCommentsResource, opts: NgxYtdApiCommentsInsertOpts): Observable<any> {
-    return this._httpHandler<NgxYtdApiCommentsResource, NgxYtdApiCommentsInsertOpts, any>(
+    return this.common.sendHttpRequest<NgxYtdApiCommentsResource, NgxYtdApiCommentsInsertOpts, any>(
       this.ngxYtdCommentsApiUrl,
-      opts,
+      this.common.mergeOpts<NgxYtdApiCommentsInsertOpts>(opts),
       body,
       'post'
     );
@@ -118,9 +61,9 @@ export class NgxYtdApiCommentsService {
    * @return Results of the request as an `Observable`
    */
   list(opts: NgxYtdApiCommentsListOpts): Observable<NgxYtdApiCommentsListResult> {
-    return this._httpHandler<any, NgxYtdApiCommentsListOpts, NgxYtdApiCommentsListResult>(
+    return this.common.sendHttpRequest<any, NgxYtdApiCommentsListOpts, NgxYtdApiCommentsListResult>(
       this.ngxYtdCommentsApiUrl,
-      opts,
+      this.common.mergeOpts<NgxYtdApiCommentsListOpts>(opts),
       null,
       'get'
     );
@@ -133,9 +76,9 @@ export class NgxYtdApiCommentsService {
    * @return Results of the request as an `Observable`
    */
   markAsSpam(opts: NgxYtdApiCommentsMarkAsSpamOpts): Observable<any> {
-    return this._httpHandler<any, NgxYtdApiCommentsMarkAsSpamOpts, any>(
+    return this.common.sendHttpRequest<any, NgxYtdApiCommentsMarkAsSpamOpts, any>(
       `${this.ngxYtdCommentsApiUrl}/markAsSpam`,
-      opts,
+      this.common.mergeOpts<NgxYtdApiCommentsMarkAsSpamOpts>(opts),
       null,
       'post'
     );
@@ -148,9 +91,9 @@ export class NgxYtdApiCommentsService {
    * @return Results of the request as an `Observable`
    */
   setModerationStatus(opts: NgxYtdApiCommentsSetModerationStatusOpts): Observable<any> {
-    return this._httpHandler<any, NgxYtdApiCommentsSetModerationStatusOpts, any>(
+    return this.common.sendHttpRequest<any, NgxYtdApiCommentsSetModerationStatusOpts, any>(
       `${this.ngxYtdCommentsApiUrl}/setModerationStatus`,
-      opts,
+      this.common.mergeOpts<NgxYtdApiCommentsSetModerationStatusOpts>(opts),
       null,
       'post'
     );
@@ -164,9 +107,9 @@ export class NgxYtdApiCommentsService {
    * @return Results of the update as an `Observable`
    */
   update(body: NgxYtdApiCommentsResource, opts: NgxYtdApiCommentsUpdateOpts): Observable<NgxYtdApiCommentsResource> {
-    return this._httpHandler<NgxYtdApiCommentsResource, NgxYtdApiCommentsUpdateOpts, NgxYtdApiCommentsResource>(
+    return this.common.sendHttpRequest<NgxYtdApiCommentsResource, NgxYtdApiCommentsUpdateOpts, NgxYtdApiCommentsResource>(
       this.ngxYtdCommentsApiUrl,
-      opts,
+      this.common.mergeOpts<NgxYtdApiCommentsUpdateOpts>(opts),
       body,
       'put'
     );

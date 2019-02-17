@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
-import { SimpleHttpModule } from 'ngx-simple-http';
+import { NgxYtdApiCommonModule } from 'ngx-ytd-api/common';
 import { NgxYtdApiCommentsService } from './ytd-api-comments.service';
-
 @NgModule({
   imports: [
-    SimpleHttpModule
+    NgxYtdApiCommonModule
   ],
   providers: [
     NgxYtdApiCommentsService
