@@ -1,4 +1,4 @@
-import { NgxYtdApiGenericOpts, NgxYtdApiGenericResource } from './ytd-api-common.interface';
+import { NgxYtdApiGenericOpts, NgxYtdApiGenericResource } from 'ngx-ytd-api/common';
 
 export interface NgxYtdApiSearchListOpts extends NgxYtdApiGenericOpts {
   /**
