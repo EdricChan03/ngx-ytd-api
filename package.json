@@ -10,8 +10,17 @@
     "buildLibDryRun": "bash ./scripts/scripts.sh build-lib --dryRun",
     "buildLibNext": "bash ./scripts/scripts.sh build-lib --publishNext",
     "lintLib": "ng lint ngx-ytd-api-lib",
-    "testLib": "ng test ngx-ytd-api-lib",
-    "packageTags": "bash ./scripts/scripts.sh package --tags"
+    "testLib": "ng build ngx-ytd-api-lib && ng test ngx-ytd-api-lib",
+    "serveDemo": "ng build ngx-ytd-api-lib && ng serve ngx-ytd-api-demo",
+    "packageTags": "bash ./scripts/scripts.sh package --tags",
+    "demo:build": "bash ./scripts/scripts.sh build-demo",
+    "demo:serve": "ng build ngx-ytd-api-lib && ng serve ngx-ytd-api-demo",
+    "lib:build": "bash ./scripts/scripts.sh build-lib",
+    "lib:buildNext": "npm run lib:build -- --publishNext",
+    "lib:buildSkipNpm": "npm run lib:build -- --skipNpm",
+    "lib:lint": "ng lint ngx-ytd-api-lib",
+    "lib:packageTags": "bash ./scripts/scripts.sh package --tags",
+    "lib:test": "npm run lib:buildSkipNpm && ng test ngx-ytd-api-lib"
   },
   "private": true,
   "dependencies": {
