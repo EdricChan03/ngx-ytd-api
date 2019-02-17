@@ -40,6 +40,9 @@ case "$MODE" in
   ng lint ngx-ytd-api-lib
   ;;
 "test-lib")
+  echo -e "\x1b[34mBuilding library for testing...\x1b[0m"
+  ng build ngx-ytd-api-lib
+  echo -e "\x1b[34mDone building.\x1b[0m"
   echo -e "\x1b[34mTesting the library...\x1b[0m"
   ng test ngx-ytd-api-lib --watch=false
   ;;
