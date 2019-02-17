@@ -33,6 +33,5 @@
   "dependencies": {
     "ngx-simple-http": "^1.0.0",
     "tslib": "^1.9.3"
-  },
-  "schematics": "./schematics/collection.json"
+  }
 }
