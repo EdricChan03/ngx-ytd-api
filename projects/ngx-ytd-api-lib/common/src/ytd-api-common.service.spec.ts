@@ -25,14 +25,14 @@ describe('NgxYtdApiCommonService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
-  describe('NgxYtdApiCommonService#mergeOpts', () => {
+  describe('NgxYtdApiCommonService#mergeParamsWithStandardParams', () => {
     it('should merge a query and the API key together', () => {
-      const mergedOpts = service.mergeOpts<NgxYtdApiSearchListOpts>({ q: 'meme review' });
+      const mergedOpts = service.mergeParamsWithStandardParams<NgxYtdApiSearchListOpts>({ q: 'meme review' });
       expect(mergedOpts['key']).not.toBeNull();
       expect(mergedOpts['q']).not.toBeNull();
     });
     it('should not overwrite the value specified with the default value', () => {
-      const mergedOpts = service.mergeOpts({ key: 'test' });
+      const mergedOpts = service.mergeParamsWithStandardParams({ key: 'test' });
       expect(mergedOpts['key']).not.toBe('test');
       expect(mergedOpts['key']).toBe(API_KEY);
     });
