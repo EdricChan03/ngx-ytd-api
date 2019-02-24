@@ -3,13 +3,13 @@ import { Injectable, Inject, Optional } from '@angular/core';
 import { Observable } from 'rxjs';
 import { SimpleHttpService } from 'ngx-simple-http';
 import { NGX_YTD_API_DEFAULT_STANDARD_OPTIONS } from './ytd-api-common.injectors';
-import { NgxYtdApiStandardOpts } from './ytd-api-common.interface';
+import { NgxYtdApiStandardParams } from './ytd-api-common.interface';
 
 @Injectable()
 export class NgxYtdApiCommonService {
   constructor(
     private http: SimpleHttpService,
-    @Inject(NGX_YTD_API_DEFAULT_STANDARD_OPTIONS) @Optional() private defaultOptions: NgxYtdApiStandardOpts
+    @Inject(NGX_YTD_API_DEFAULT_STANDARD_OPTIONS) @Optional() private defaultOptions: NgxYtdApiStandardParams
   ) { }
   /**
    * Checks for the following:
