@@ -53,35 +53,35 @@ export class YtVideoPickerComponent implements AfterViewInit, OnInit {
   /**
    * A current selection
    */
-  private selection: SelectionModel<NgxYtdApiSearchResource>;
+  selection: SelectionModel<NgxYtdApiSearchResource>;
   /**
    * Data
    */
-  private data: NgxYtdApiSearchResource[] = [];
+  data: NgxYtdApiSearchResource[] = [];
   /**
    * The search Reactive Form
    */
-  private searchForm: FormGroup;
+  searchForm: FormGroup;
   /**
    * The columns to display
    */
-  private displayedColumns = ['select', 'thumbnail', 'title', 'channelTitle', 'publishedAt'];
+  displayedColumns = ['select', 'thumbnail', 'title', 'channelTitle', 'publishedAt'];
   /**
    * The total number of results returned from the API
    */
-  private resultsLength: number;
+  resultsLength: number;
   /**
    * The next page token
    */
-  private nextPageToken: string;
+  nextPageToken: string;
   /**
    * The previous page token
    */
-  private prevPageToken: string;
+  prevPageToken: string;
   /**
    * The current page size
    */
-  private currentPageSize: number;
+  currentPageSize: number;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   constructor(
