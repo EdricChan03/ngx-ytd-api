@@ -55,7 +55,7 @@ export class NgxYtdApiCommentThreadsService {
       'post'
       );
     }
-    
+
     /**
      * Modifies the top-level comment in a comment thread
      * @see [CommentThreads: update](https://developers.google.com/youtube/v3/docs/commentThreads/update)
