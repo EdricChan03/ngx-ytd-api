@@ -64,6 +64,22 @@ npm install --save Chan4077/ngx-ytd-api-builds
       <td><em>No docs available</em></td>
     </tr>
     <tr>
+      <td>Comment threads</td>
+      <td>
+        <ul>
+          <li>All API features are available</li>
+          <li>However, more examples are needed.</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li><a href="https://developers.google.com/youtube/v3/docs/commentThreads/list#parameters">API parameters</a></li>
+          <li><a href="https://developers.google.com/youtube/v3/docs/commentThreads#resource-representation">Resource representation</a></li>
+          <li><a href="https://developers.google.com/youtube/v3/docs/commentThreads#properties">Properties</a></li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
       <td>Search</td>
       <td>
         <ul>
