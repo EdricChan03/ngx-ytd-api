@@ -31,7 +31,7 @@ export class NgxYtdApiCommonService {
    * @returns The merged API request's options
    * @deprecated Use {@link NgxYtdApiCommonService#mergeParamsWithStandardParams}
    */
-  mergeOpts<T extends any>(opts: T): T & NgxYtdApiStandardParams {
+  mergeOpts<T>(opts: T): T & NgxYtdApiStandardParams {
     return this.mergeParamsWithStandardParams<T>(opts);
   }
   /**
@@ -41,7 +41,7 @@ export class NgxYtdApiCommonService {
    * @template T A TypeScript interface to type `opts` against
    * @returns The merged API request's options
    */
-  mergeParamsWithStandardParams<T extends any>(opts: T): T & NgxYtdApiStandardParams {
+  mergeParamsWithStandardParams<T>(opts: T): T & NgxYtdApiStandardParams {
     if (this.defaultOptions) {
       return { ...opts, ...this.defaultOptions };
     } else {
