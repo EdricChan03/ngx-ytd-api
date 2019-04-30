@@ -70,7 +70,7 @@ export class MyAppComponent {
   query: string = '';
   search() {
     // Note: Replace 'your-youtube-api-key' with the API key that you've retrieved from the Cloud Console
-    this.ytdApi.search(this.query, { key: 'your-youtube-api-key', type: 'video,channel,playlist', safeSearch: 'strict' }).subscribe(result => {
+    this.ytdApi.list(this.query, { key: 'your-youtube-api-key', type: 'video,channel,playlist', safeSearch: 'strict' }).subscribe(result => {
       console.log(`Result: ${JSON.stringify(result.items)}`);
       document.getElementById('result').innerText = result;
     })
@@ -93,7 +93,7 @@ export class MyAppComponent {
   constructor(private ytdApi: NgxYtdApiSearchService) { }
   searchVideos() {
     // Note: Replace 'your-youtube-api-key' with the API key that you've retrieved from the Cloud Console
-    this.ytdApi.search('meme review', { key: 'your-youtube-api-key', type: 'video' }).subscribe(result => {
+    this.ytdApi.list('meme review', { key: 'your-youtube-api-key', type: 'video' }).subscribe(result => {
       console.log(`Result: ${JSON.stringify(result.items)}`);
       document.getElementById('result').innerText = result;
     })
