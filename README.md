@@ -9,10 +9,10 @@
 <!-- Badges -->
 [![ngx-ytd-api@latest](https://img.shields.io/npm/v/ngx-ytd-api.svg?style=flat-square)][package-url]
 <!-- [![ngx-ytd-api@next](https://img.shields.io/npm/v/ngx-ytd-api/next.svg?style=flat-square)][package-url] -->
-[![Build Status](https://img.shields.io/travis/com/EdricChan03/ngx-ytd-api.svg?style=flat-square)](https://travis-ci.com/Chan4077/ngx-ytd-api)
-[![GitHub contributors](https://img.shields.io/github/contributors/EdricChan03/ngx-ytd-api.svg?style=flat-square)](https://github.com/Chan4077/ngx-ytd-api/graphs/contributors)
-[![ngx-ytd-api license](https://img.shields.io/github/license/EdricChan03/ngx-ytd-api.svg?style=flat-square)](https://github.com/Chan4077/ngx-ytd-api/blob/master/LICENSE)
-[![GitHub last commit](https://img.shields.io/github/last-commit/EdricChan03/ngx-ytd-api.svg?style=flat-square)](https://github.com/Chan4077/ngx-ytd-api/commits)
+[![Build Status](https://img.shields.io/travis/com/EdricChan03/ngx-ytd-api.svg?style=flat-square)](https://travis-ci.com/EdricChan03/ngx-ytd-api)
+[![GitHub contributors](https://img.shields.io/github/contributors/EdricChan03/ngx-ytd-api.svg?style=flat-square)](https://github.com/EdricChan03/ngx-ytd-api/graphs/contributors)
+[![ngx-ytd-api license](https://img.shields.io/github/license/EdricChan03/ngx-ytd-api.svg?style=flat-square)](https://github.com/EdricChan03/ngx-ytd-api/blob/master/LICENSE)
+[![GitHub last commit](https://img.shields.io/github/last-commit/EdricChan03/ngx-ytd-api.svg?style=flat-square)](https://github.com/EdricChan03/ngx-ytd-api/commits)
 [![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=EdricChan03/ngx-ytd-api)](https://dependabot.com)
 <!-- END Badges -->
 
@@ -39,7 +39,7 @@ npm install ngx-ytd-api --save
 Alternatively, you can get a snapshot build with the latest changes from `master`. Note that this snapshot build should not be considered stable and may break between releases.
 
 ```bash
-npm install --save Chan4077/ngx-ytd-api-builds
+npm install --save EdricChan03/ngx-ytd-api-builds
 ```
 
 ## Features
@@ -118,7 +118,7 @@ Feature | Status | Issue
 Activities | Not planned | -
 Captions | Not planned | -
 Channel banner / Channel sections / Channels | Not planned | -
-Comment threads / Comments | In progress | [#6](https://github.com/Chan4077/ngx-ytd-api/issues/6)
+Comment threads / Comments | In progress | [#6](https://github.com/EdricChan03/ngx-ytd-api/issues/6)
 Guide categories | Not planned | -
 I18n | Not planned | -
 Playlist items / Playlists | Not planned | -
