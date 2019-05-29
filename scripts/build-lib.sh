@@ -111,13 +111,15 @@ else
           exit 1
         else
           echo -e "\x1b[32mDone compiling schematics.\x1b[0m"
-          echo -e "\n\x1b[34mCopying schematics files..\x1b[0m"
-          find projects/ngx-ytd-api-lib/schematics -maxdepth 1 -mindepth 1 ! -path ./testing/* -exec cp -R {} dist/ngx-ytd-api-lib/schematics \;
+          echo -e "\n\x1b[34mCopying schematics JSON files..\x1b[0m"
+          # find projects/ngx-ytd-api-lib/schematics -maxdepth 1 -mindepth 1 ! -path ./testing/* ! -name '*.ts' -name '*.d.ts' -exec cp -R {} dist/ngx-ytd-api-lib/schematics \;
+          # TODO: Use cross-platform version
+          rsync -avh --include='*/' --include='*.json' --exclude='*' projects/ngx-ytd-api-lib/schematics dist/ngx-ytd-api-lib/schematics
           if [[ $? -ne 0 ]]; then
-            echo -e "\x1b[31;1mCouldn't copy schematic files. See the log above for more details.\x1b[0m"
+            echo -e "\x1b[31;1mCouldn't copy schematic JSON files. See the log above for more details.\x1b[0m"
             exit 1
           else
-            echo -e "\x1b[32mDone copying schematic files.\x1b[0m"
+            echo -e "\x1b[32mDone copying schematic JSON files.\x1b[0m"
             if [[ $SKIP_NPM == false ]]; then
               cd dist/ngx-ytd-api-lib
               # Check if NPM exists
