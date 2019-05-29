@@ -19,9 +19,8 @@
     "lib:buildSkipNpm": "npm run lib:build -- --skipNpm",
     "lib:lint": "ng lint ngx-ytd-api-lib",
     "lib:packageTags": "bash ./scripts/scripts.sh package --tags",
-    "lib:test": "npm run lib:buildSkipNpm && ng test ngx-ytd-api-lib --watch=false && npm run lib:testSchematics && npm run lib:cleanSchematicsUnitTesting",
-    "lib:testSchematics": "cd projects/ngx-ytd-api-lib && ts-node ../../node_modules/.bin/jasmine schematics/**/*_spec.ts",
-    "lib:cleanSchematicsUnitTesting": "shx cd dist/ngx-ytd-api-lib/schematics && shx rm -rf *_spec.{d.ts,js,js.map}"
+    "lib:test": "npm run lib:buildSkipNpm && ng test ngx-ytd-api-lib --watch=false && npm run lib:testSchematics",
+    "lib:testSchematics": "cd projects/ngx-ytd-api-lib && ts-node ../../node_modules/.bin/jasmine schematics/**/*_spec.ts"
   },
   "private": true,
   "dependencies": {
