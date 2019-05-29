@@ -136,8 +136,8 @@ else
               echo -e "\x1b[32mDone executing.\x1b[0m"
               exit 0
             fi
-          # fi
-        # fi
+          fi
+        fi
       fi
     fi
   else
