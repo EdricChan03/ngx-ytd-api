@@ -1,13 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { VERSION as ngxYtdApiVersion } from 'ngx-ytd-api';
+import { VERSION as ngxYtdApiVersion } from 'ngx-ytd-api/core';
 import { environment } from '../../../environments/environment';
 
 export interface VersionFile {
   versions: VersionMenuItem[];
 }
 export interface VersionMenuItem {
-  type: 'version' | 'subheader' | 'divider' | 'dividerInset';
   isSelected?: boolean;
   name?: string;
   link?: string;
@@ -27,36 +26,27 @@ export class VersionPickerComponent implements OnInit {
   ngOnInit() {
     if (environment.production) {
       this.http.get<VersionFile>('/versions.json').subscribe(result => {
+        const masterVersionMenuItem = this.versions.versions.find(item => item.name === 'MASTER_VERSION');
+        masterVersionMenuItem.name = this.currentVersion;
         this.versions = result;
       });
     } else {
       this.versions = {
         versions: [
           {
-            type: 'version',
             name: this.currentVersion,
             link: '/',
             isSelected: true
           },
           {
-            type: 'divider'
-          },
-          {
-            type: 'subheader',
-            name: 'Other versions'
-          },
-          {
-            type: 'version',
             name: '0.0.0-alpha.0',
             link: '/'
           },
           {
-            type: 'version',
             name: '0.0.0-beta.0',
             link: '/'
           },
           {
-            type: 'version',
             name: '0.0.0-rc.0',
             link: '/'
           }

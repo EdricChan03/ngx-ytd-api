@@ -4,7 +4,7 @@
 </button>
 <mat-menu #versionPickerMenu="matMenu">
   <ng-template matMenuContent>
-    <mat-nav-list>
+    <!-- <mat-nav-list>
       <ng-container *ngFor="let version of versions.versions">
         <ng-container [ngSwitch]="version.type">
           <mat-divider *ngSwitchCase="'divider'"></mat-divider>
@@ -13,6 +13,8 @@
           <a mat-list-item *ngSwitchCase="'version'" [href]="version.link" [style.display]="version.hidden ? 'none' : 'block'" [class.active-link]="version.isSelected">{{version.name}}</a>
         </ng-container>
       </ng-container>
-    </mat-nav-list>
+    </mat-nav-list> -->
+    <a mat-menu-item *ngFor="let version of versions?.versions" [href]="version?.link"
+      [style.display]="version?.hidden ? 'none' : 'block'" [class.active-link]="version?.isSelected">{{version?.name}}</a>
   </ng-template>
 </mat-menu>
