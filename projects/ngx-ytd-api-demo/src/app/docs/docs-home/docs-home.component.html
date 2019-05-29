@@ -9,7 +9,7 @@
 <div class="padding-percentage-container">
   <h1>Docs</h1>
   <mat-card class="docs-card">
-    <a class="docs-card-section" fxLayout="row" [href]="'https://github.com/Chan4077/ngx-ytd-api/blob/master/' + doc.href"
+    <a class="docs-card-section" fxLayout="row" [href]="'https://github.com/EdricChan03/ngx-ytd-api/blob/master/' + doc.href"
       target="_blank" *ngFor="let doc of docs">
       <mat-icon *ngIf="doc.icon && !doc.svgIcon">{{doc.icon}}</mat-icon>
       <mat-icon *ngIf="!doc.icon && doc.svgIcon" [svgIcon]="doc.svgIcon"></mat-icon>

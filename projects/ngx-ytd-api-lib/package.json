@@ -12,17 +12,17 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/Chan4077/ngx-ytd-api"
+    "url": "https://github.com/EdricChan03/ngx-ytd-api"
   },
   "author": {
     "email": "edric.chan.1997@gmail.com",
     "name": "Edric Chan",
-    "url": "https://github.com/Chan4077"
+    "url": "https://github.com/EdricChan03"
   },
-  "readme": "https://github.com/Chan4077/ngx-ytd-api#readme",
+  "readme": "https://github.com/EdricChan03/ngx-ytd-api#readme",
   "homepage": "https://ngx-ytd-api.firebaseapp.com",
   "bugs": {
-    "url": "https://github.com/Chan4077/ngx-ytd-api",
+    "url": "https://github.com/EdricChan03/ngx-ytd-api",
     "email": "edric.chan.1997@gmail.com"
   },
   "peerDependencies": {

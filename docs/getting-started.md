@@ -26,18 +26,18 @@ npm i --save ngx-ytd-api
 
 ### Alternative: Snapshot builds
 
-Alternatively, you can install snapshot builds which are built for every commit and published to `https://github.com/Chan4077/ngx-ytd-api-builds`. Take note that these builds may be experimental and may break your app.
+Alternatively, you can install snapshot builds which are built for every commit and published to `https://github.com/EdricChan03/ngx-ytd-api-builds`. Take note that these builds may be experimental and may break your app.
 
 #### NPM v5 and above
 
 ```bash
-npm i Chan4077/ngx-ytd-api-builds
+npm i EdricChan03/ngx-ytd-api-builds
 ```
 
 #### NPM v4 and below
 
 ```bash
-npm i --save Chan4077/ngx-ytd-api-builds
+npm i --save EdricChan03/ngx-ytd-api-builds
 ```
 
 ## Step 3. Setting the API key

@@ -1,7 +1,7 @@
 {
   "name": "ngx-ytd-api-src",
   "description": "Source code of unofficial YouTube Data API for Angular",
-  "homepage": "https://github.com/Chan4077/ngx-ytd-api",
+  "homepage": "https://github.com/EdricChan03/ngx-ytd-api",
   "license": "MIT",
   "scripts": {
     "buildDemo": "npm run demo:build",

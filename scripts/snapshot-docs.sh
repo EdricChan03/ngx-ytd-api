@@ -27,7 +27,7 @@ echo -e "\x1b[34m\x1b[1mBuilding docs site release...\x1b[0m"
 
 echo -e "\x1b[34m\x1b[1mCloning ngx-ytd-api-demo-builds...\x1b[0m"
 rm -rf ngx-ytd-api-demo-builds
-git clone https://github.com/Chan4077/ngx-ytd-api-demo-builds --depth=1
+git clone https://github.com/EdricChan03/ngx-ytd-api-demo-builds --depth=1
 
 echo -e "\x1b[34m\x1b[1mRemoving previous snapshot...\x1b[0m"
 rm -rf ngx-ytd-api-demo-builds/master
@@ -58,4 +58,4 @@ cd ..
 echo -e "\x1b[34m\x1b[1mCleaning up...\x1b[0m"
 rm -rf $TRAVIS_BUILD_DIR/ngx-ytd-api-demo-builds
 
-echo -e '\x1b[32m\x1b[1mSuccessfully pushed the snapshot to Chan4077/ngx-ytd-api-demo-builds!\x1b[0m'
+echo -e '\x1b[32m\x1b[1mSuccessfully pushed the snapshot to EdricChan03/ngx-ytd-api-demo-builds!\x1b[0m'

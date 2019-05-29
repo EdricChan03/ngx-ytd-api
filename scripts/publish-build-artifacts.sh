@@ -48,7 +48,7 @@ publishPackage() {
   buildTagName="$branchName-$commitSha"
   buildCommitMessage="$branchName - $commitMessage"
 
-  repoUrl="https://github.com/Chan4077/${packageRepo}.git"
+  repoUrl="https://github.com/EdricChan03/${packageRepo}.git"
   repoDir="tmp/${packageRepo}"
 
   echo -e "\x1b[34mStarting publish process of $packageName for $buildVersionName into $branchName..\x1b[0m"

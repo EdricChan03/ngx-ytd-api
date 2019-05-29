@@ -222,10 +222,10 @@ fi
 if containsElement "deployDemo" "${SKIP_STEPS_ARR[@]}"; then
   ./scripts/build-docs.sh --generate-for-tag "$PACKAGE_VERSION"
   
-  echo -e "\x1b[34mCloning Chan4077/ngx-ytd-api-demo-builds...\x1b[0m"
+  echo -e "\x1b[34mCloning EdricChan03/ngx-ytd-api-demo-builds...\x1b[0m"
   
   rm -rf ngx-ytd-api-demo-builds
-  git clone https://github.com/Chan4077/ngx-ytd-api-demo-builds --depth=1
+  git clone https://github.com/EdricChan03/ngx-ytd-api-demo-builds --depth=1
   
   echo -e "\x1b[34mCopying release docs to builds repository...\x1b[0m"
   cp -Rf dist/ngx-ytd-api-demo/"$PACKAGE_VERSION" ngx-ytd-api-demo-builds
@@ -268,7 +268,7 @@ if containsElement "deployDemo" "${SKIP_STEPS_ARR[@]}"; then
   
   cd ..
   
-  echo -e "\x1b[32mSuccessfully pushed the release to Chan4077/ngx-ytd-api-demo-builds.\x1b[0m"
+  echo -e "\x1b[32mSuccessfully pushed the release to EdricChan03/ngx-ytd-api-demo-builds.\x1b[0m"
 fi
 
 echo -e "\x1b[34mBuilding library...\x1b[0m"
@@ -295,7 +295,7 @@ if containsElement "pushChanges" "${SKIP_STEPS_ARR[@]}"; then
   git push -q origin master
   git push -q origin "$PACKAGE_VERSION"
 
-  echo -e "\x1b[32mSuccessfully pushed the release to Chan4077/ngx-ytd-api.\x1b[0m"
+  echo -e "\x1b[32mSuccessfully pushed the release to EdricChan03/ngx-ytd-api.\x1b[0m"
 fi
 
 echo -e "\x1b[34mCleaning up...\x1b[0m"
