@@ -26,7 +26,7 @@ export class VersionPickerComponent implements OnInit {
   ngOnInit() {
     if (environment.production) {
       this.http.get<VersionFile>('/versions.json').subscribe(result => {
-        const masterVersionMenuItem = this.versions.versions.find(item => item.name === 'MASTER_VERSION');
+        const masterVersionMenuItem = result.versions.find(item => item.name === 'MASTER_VERSION');
         masterVersionMenuItem.name = this.currentVersion;
         this.versions = result;
       });
