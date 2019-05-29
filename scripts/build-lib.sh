@@ -114,7 +114,7 @@ else
           echo -e "\n\x1b[34mCopying schematics JSON files..\x1b[0m"
           # find projects/ngx-ytd-api-lib/schematics -maxdepth 1 -mindepth 1 ! -path ./testing/* ! -name '*.ts' -name '*.d.ts' -exec cp -R {} dist/ngx-ytd-api-lib/schematics \;
           # TODO: Use cross-platform version
-          rsync -avh --include='*/' --include='*.json' --exclude='*' projects/ngx-ytd-api-lib/schematics dist/ngx-ytd-api-lib/schematics
+          rsync -avh --include='*/' --include='*.json' --exclude='*' projects/ngx-ytd-api-lib/schematics/ dist/ngx-ytd-api-lib/schematics
           if [[ $? -ne 0 ]]; then
             echo -e "\x1b[31;1mCouldn't copy schematic JSON files. See the log above for more details.\x1b[0m"
             exit 1
