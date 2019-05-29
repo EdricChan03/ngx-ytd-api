@@ -4,14 +4,13 @@
   "homepage": "https://github.com/Chan4077/ngx-ytd-api",
   "license": "MIT",
   "scripts": {
-    "buildDemo": "bash ./scripts/scripts.sh build-demo",
-    "buildDocs": "npm run buildDemo",
-    "buildLib": "bash ./scripts/scripts.sh build-lib",
-    "buildLibDryRun": "bash ./scripts/scripts.sh build-lib --dryRun",
-    "buildLibNext": "bash ./scripts/scripts.sh build-lib --publishNext",
-    "lintLib": "ng lint ngx-ytd-api-lib",
-    "testLib": "ng build ngx-ytd-api-lib && ng test ngx-ytd-api-lib",
-    "serveDemo": "ng build ngx-ytd-api-lib && ng serve ngx-ytd-api-demo",
+    "buildDemo": "npm run demo:build",
+    "buildDocs": "npm run demo:build",
+    "buildLib": "npm run lib:build",
+    "buildLibNext": "npm run lib:buildNext",
+    "lintLib": "npm run lib:lint",
+    "testLib": "npm run lib:test",
+    "serveDemo": "npm run demo:serve",
     "packageTags": "bash ./scripts/scripts.sh package --tags",
     "demo:build": "bash ./scripts/scripts.sh build-demo",
     "demo:serve": "ng build ngx-ytd-api-lib && ng serve ngx-ytd-api-demo",
@@ -20,7 +19,9 @@
     "lib:buildSkipNpm": "npm run lib:build -- --skipNpm",
     "lib:lint": "ng lint ngx-ytd-api-lib",
     "lib:packageTags": "bash ./scripts/scripts.sh package --tags",
-    "lib:test": "npm run lib:buildSkipNpm && ng test ngx-ytd-api-lib"
+    "lib:test": "npm run lib:buildSkipNpm && ng test ngx-ytd-api-lib && npm run lib:testSchematics && npm run lib:cleanSchematicsUnitTesting",
+    "lib:testSchematics": "cd projects/ngx-ytd-api-lib && tsc -p tsconfig.schematics-testing.json && jasmine schematics/index_spec.js",
+    "lib:cleanSchematicsUnitTesting": "shx cd dist/ngx-ytd-api-lib/schematics && shx rm -rf *_spec.{d.ts,js,js.map}"
   },
   "private": true,
   "dependencies": {
