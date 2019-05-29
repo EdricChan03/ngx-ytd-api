@@ -104,20 +104,20 @@ else
         exit 1
       else
         echo -e "\x1b[32mDone copying files.\x1b[0m"
-        # echo -e "\n\x1b[34mCompiling schematics..\x1b[0m"
-        # $(npm bin)/tsc -p projects/ngx-ytd-api-lib/schematics/tsconfig.json
-        # if [[ $? -ne 0 ]]; then
-        #   echo -e "\x1b[31;1mCouldn't compile schematics. See the log above for more details.\x1b[0m" >&2
-        #   exit 1
-        # else
-        #   echo -e "\x1b[32mDone compiling schematics.\x1b[0m"
-        #   echo -e "\n\x1b[34mCopying schematics files..\x1b[0m"
-        #   find projects/ngx-ytd-api-lib/schematics -maxdepth 1 -mindepth 1 ! -name tsconfig.json ! -name tsconfig-testing.json -exec cp -R {} dist/ngx-ytd-api-lib/schematics \;
-        #   if [[ $? -ne 0 ]]; then
-        #     echo -e "\x1b[31;1mCouldn't copy schematic files. See the log above for more details.\x1b[0m"
-        #     exit 1
-        #   else
-        #     echo -e "\x1b[32mDone copying schematic files.\x1b[0m"
+        echo -e "\n\x1b[34mCompiling schematics..\x1b[0m"
+        $(npm bin)/tsc -p projects/ngx-ytd-api-lib/tsconfig.schematics.json
+        if [[ $? -ne 0 ]]; then
+          echo -e "\x1b[31;1mCouldn't compile schematics. See the log above for more details.\x1b[0m" >&2
+          exit 1
+        else
+          echo -e "\x1b[32mDone compiling schematics.\x1b[0m"
+          echo -e "\n\x1b[34mCopying schematics files..\x1b[0m"
+          find projects/ngx-ytd-api-lib/schematics -maxdepth 1 -mindepth 1 ! -path ./testing/* -exec cp -R {} dist/ngx-ytd-api-lib/schematics \;
+          if [[ $? -ne 0 ]]; then
+            echo -e "\x1b[31;1mCouldn't copy schematic files. See the log above for more details.\x1b[0m"
+            exit 1
+          else
+            echo -e "\x1b[32mDone copying schematic files.\x1b[0m"
             if [[ $SKIP_NPM == false ]]; then
               cd dist/ngx-ytd-api-lib
               # Check if NPM exists

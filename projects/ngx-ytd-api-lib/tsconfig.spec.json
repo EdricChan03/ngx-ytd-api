@@ -14,6 +14,7 @@
     "**/*.spec.ts"
   ],
   "exclude": [
-    "**/schematics/**/*.ts"
+    // Schematics aren't supported for testing
+    "**/schematics/**/*"
   ]
 }
