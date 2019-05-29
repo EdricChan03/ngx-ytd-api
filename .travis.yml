@@ -1,8 +1,7 @@
 os:
 - linux
 language: node_js
-node_js:
-- 10.6.0
+node_js: lts/*
 addons:
   apt:
     sources:
@@ -16,6 +15,7 @@ branches:
   only:
   - master
   # Allow testing on greenkeeper branches
+  # TODO: Remove this line
   - /^greenkeeper/.*$/
 stages:
   - lint
