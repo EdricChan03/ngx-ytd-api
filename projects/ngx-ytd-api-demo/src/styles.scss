@@ -177,11 +177,11 @@ app-root {
 
 // Adapted from https://github.com/angular/material.angular.io/issues/333#issuecomment-410070162
 @media print {
-  // Force to print colors, otherwise the material components will look white
-  color-adjust: exact;
-  -webkit-print-color-adjust: exact;
-
+  
   body {
+    // Force to print colors, otherwise the material components will look white
+    color-adjust: exact;
+    -webkit-print-color-adjust: exact;
     overflow: auto;
     // Roboto not printing ok on Chrome, fallback on supported fonts
     font-family: 'Helvetica Neue', sans-serif !important;
