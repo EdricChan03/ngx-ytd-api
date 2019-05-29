@@ -43,7 +43,7 @@ export class AppComponent implements OnInit {
   // toggleStateList: ToggleState = 'notToggled';
   demos: Demo[];
   docs: Doc[];
-  @ViewChild('docsSidenav') sidenav: MatSidenav;
+  @ViewChild('docsSidenav', { static: true }) sidenav: MatSidenav;
   constructor(
     private listsService: ListsService,
     private shared: SharedService,

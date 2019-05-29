@@ -82,8 +82,8 @@ export class YtVideoPickerComponent implements AfterViewInit, OnInit {
    * The current page size
    */
   currentPageSize: number;
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  @ViewChild(MatSort, { static: false }) sort: MatSort;
   constructor(
     private fb: FormBuilder,
     @Inject(MAT_DIALOG_DATA) public opts: YtVideoPickerOpts,
