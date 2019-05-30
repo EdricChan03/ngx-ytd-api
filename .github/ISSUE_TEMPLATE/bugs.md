@@ -1,7 +1,7 @@
 ---
 name: 🐞 Bug report
 about: Found a bug in the library? Report it here!
-
+labels: bug
 ---
 
 <!--

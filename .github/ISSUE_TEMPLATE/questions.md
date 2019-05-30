@@ -1,7 +1,7 @@
 ---
 name: ❓ Questions
 about: Have a question? Use this template!
-
+labels: question
 ---
 
 # Question
