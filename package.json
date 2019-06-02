@@ -54,7 +54,7 @@
     "@types/node": "^12.0.3",
     "@types/parse5": "^5.0.0",
     "angular-cli-ghpages": "^0.5.3",
-    "codelyzer": "~5.0.1",
+    "codelyzer": "~5.1.0",
     "gulp": "^4.0.2",
     "gulp-conventional-changelog": "^2.0.19",
     "inquirer": "^6.3.1",
