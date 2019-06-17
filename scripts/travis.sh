@@ -44,7 +44,11 @@ case "$MODE" in
   ng build ngx-ytd-api-lib
   echo -e "\x1b[34mDone building.\x1b[0m"
   echo -e "\x1b[34mTesting the library...\x1b[0m"
-  ng test ngx-ytd-api-lib --watch=false
+  ng test ngx-ytd-api-lib --watch=false --no-progress --browsers=ChromeHeadlessCI
+  echo -e "\x1b[34mDone testing library.\x1b[0m"
+  echo -e "\x1b[34mTesting schematics...\x1b[0m"
+  npm run lib:lintSchematics
+  echo -e "\x1b[34mDone testing schematics.\x1b[0m"
   ;;
 "lint-demo")
   echo -e "\x1b[34mLinting the demo app...\x1b[0m"

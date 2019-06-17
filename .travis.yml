@@ -39,15 +39,6 @@ jobs:
     # Don't deploy docs on PRs
   - env: DEPLOY_MODE=docs
     name: "Documentation"
-before_script:
-- sudo chown root /opt/google/chrome/chrome-sandbox
-- sudo chmod 4755 /opt/google/chrome/chrome-sandbox
-before_install:
-- export CHROME_BIN=/usr/bin/google-chrome
-- export DISPLAY=:99.0
-- sh -e /etc/init.d/xvfb start
-- npm install -g @angular/cli
-- ng --version
 install:
 - npm install
 script:
