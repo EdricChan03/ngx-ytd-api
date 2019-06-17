@@ -47,7 +47,7 @@ case "$MODE" in
   ng test ngx-ytd-api-lib --watch=false --no-progress --browsers=ChromeHeadlessCI
   echo -e "\x1b[34mDone testing library.\x1b[0m"
   echo -e "\x1b[34mTesting schematics...\x1b[0m"
-  npm run lib:lintSchematics
+  npm run lib:testSchematics
   echo -e "\x1b[34mDone testing schematics.\x1b[0m"
   ;;
 "lint-demo")
