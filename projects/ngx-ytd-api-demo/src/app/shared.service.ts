@@ -11,6 +11,11 @@ export class SharedService {
     public snackbar: MatSnackBar
   ) { }
   private _sidenav: MatSidenav;
+  /** The array of allowed Firebase domain hosts */
+  readonly firebaseDomainHosts = [
+    'ngx-ytd-api.firebaseapp.com',
+    'ngx-ytd-api.web.app'
+  ]
   /**
    * A sidenav to set
    */
@@ -128,7 +133,7 @@ export class SharedService {
 
     let redirectUri: string;
     // Since the demo has multiple versions, check if the app is running on Firebase.
-    if (window.location.host === 'ngx-ytd-api.firebaseapp.com') {
+    if (this.firebaseDomainHosts.includes(window.location.host)) {
       // Get the version and paste it in the URI below
       redirectUri = `${window.location.origin}/${window.location.pathname.split('/')[1]}/callback`;
     } else {
