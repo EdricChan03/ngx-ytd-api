@@ -15,7 +15,7 @@ export class SharedService {
   readonly firebaseDomainHosts = [
     'ngx-ytd-api.firebaseapp.com',
     'ngx-ytd-api.web.app'
-  ]
+  ];
   /**
    * A sidenav to set
    */
