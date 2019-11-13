@@ -47,7 +47,7 @@
     "@angular-devkit/schematics": "^8.0.2",
     "@angular/cli": "^8.0.2",
     "@angular/compiler-cli": "^8.0.0",
-    "@angular/language-service": "^8.2.11",
+    "@angular/language-service": "^8.2.14",
     "@schematics/angular": "^8.0.2",
     "@types/jasmine": "^3.4.0",
     "@types/jasminewd2": "^2.0.8",
