@@ -49,7 +49,7 @@
     "@angular/compiler-cli": "^8.0.0",
     "@angular/language-service": "^8.2.14",
     "@schematics/angular": "^8.0.2",
-    "@types/jasmine": "^3.4.0",
+    "@types/jasmine": "^3.5.0",
     "@types/jasminewd2": "^2.0.8",
     "@types/node": "^12.7.2",
     "@types/parse5": "^5.0.2",
